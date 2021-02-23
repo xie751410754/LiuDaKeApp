@@ -73,7 +73,6 @@ android {
         variant.outputs.all {
             //这里修改apk文件名
             def fileName = "liudake" +
-                    "-vc${defaultConfig.versionCode}" +
                     "-vn${defaultConfig.versionName}" +
                     "-${buildType.name}.apk"
             outputFileName = fileName
