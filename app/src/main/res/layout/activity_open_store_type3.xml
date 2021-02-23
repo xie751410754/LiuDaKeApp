@@ -219,7 +219,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="100dp"
                         android:background="@android:color/transparent"
-                        android:hint="输入结算卡号(借记卡)"
+                        android:hint="输入结算卡号(对公账户)"
                         android:textColorHint="@color/color_DADADA" />
                 </RelativeLayout>
 

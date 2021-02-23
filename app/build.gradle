@@ -11,8 +11,8 @@ android {
         applicationId "com.cdxz.liudake"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 16
-        versionName "1.9.4"
+        versionCode 17
+        versionName "1.9.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
@@ -68,7 +68,20 @@ android {
             }
         }
     }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            //这里修改apk文件名
+            def fileName = "liudake" +
+                    "-vc${defaultConfig.versionCode}" +
+                    "-vn${defaultConfig.versionName}" +
+                    "-${buildType.name}.apk"
+            outputFileName = fileName
+        }
+    }
 }
+
+
 
 dependencies {
 
