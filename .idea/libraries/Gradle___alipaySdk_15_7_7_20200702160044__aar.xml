@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: :alipaySdk-15.7.7-20200702160044:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/34cacc5a0f4ba283a57c43b1fb04f6c6/jetified-alipaySdk-15.7.7-20200702160044/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/34cacc5a0f4ba283a57c43b1fb04f6c6/jetified-alipaySdk-15.7.7-20200702160044/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dfc2c47c72e9ca7b9504c123d1dd1e73/jetified-alipaySdk-15.7.7-20200702160044/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dfc2c47c72e9ca7b9504c123d1dd1e73/jetified-alipaySdk-15.7.7-20200702160044/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dfc2c47c72e9ca7b9504c123d1dd1e73/jetified-alipaySdk-15.7.7-20200702160044/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6e172e2f6d008631238590db806a895/jetified-alipaySdk-15.7.7-20200702160044/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6e172e2f6d008631238590db806a895/jetified-alipaySdk-15.7.7-20200702160044/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a6e172e2f6d008631238590db806a895/jetified-alipaySdk-15.7.7-20200702160044/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

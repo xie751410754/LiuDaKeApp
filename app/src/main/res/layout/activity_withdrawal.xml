@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.my.service.WithdrawalActivity">
+
+    <include layout="@layout/public_title_bar" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_buy_bg2"
+        app:layout_constraintTop_toBottomOf="@+id/titleRootLayout" />
+
+    <TextView
+        style="@style/sp12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="可提现金额（元）"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/view1"
+        app:layout_constraintStart_toStartOf="@id/view1"
+        app:layout_constraintTop_toTopOf="@id/view1" />
+
+    <TextView
+        android:id="@+id/tvRedmi"
+        style="@style/sp20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/view1"
+        app:layout_constraintEnd_toEndOf="@id/view1"
+        app:layout_constraintStart_toStartOf="@id/view1" />
+
+    <TextView
+        android:id="@+id/tvTixianDetail"
+        style="@style/sp12.AppColor"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_invite_code_bg"
+        android:gravity="center"
+        android:text="提现明细"
+        app:layout_constraintEnd_toEndOf="@id/view1"
+        app:layout_constraintTop_toTopOf="@id/view1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tixianLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_radius_white_4dp"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintTop_toBottomOf="@id/view1">
+
+        <TextView
+            android:id="@+id/tvTypeTips"
+            style="@style/sp12.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:gravity="center"
+            android:text="提现方式" />
+
+        <com.cdxz.liudake.view.DrawableTextView
+            android:id="@+id/tvType"
+            style="@style/sp16.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:gravity="center"
+            android:text="银行卡"
+            app:dt_right_drawable="@mipmap/icon_more"
+            app:dt_right_height="20dp"
+            app:dt_right_width="20dp"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/typeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tvType">
+
+            <EditText
+                android:id="@+id/et_input1"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@android:color/transparent"
+                android:hint="请输入微信号"
+                android:maxLines="1"
+                android:textColorHint="@color/color_DADADA" />
+
+            <EditText
+                android:id="@+id/et_input2"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@android:color/transparent"
+                android:hint="请输入真实姓名"
+                android:maxLines="1"
+                android:textColorHint="@color/color_DADADA"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/et_input3"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@android:color/transparent"
+                android:hint="请输入银行全称"
+                android:maxLines="1"
+                android:textColorHint="@color/color_DADADA"
+                android:visibility="visible" />
+
+            <EditText
+                android:id="@+id/et_input4"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@android:color/transparent"
+                android:hint="请输入开户行名称"
+                android:maxLines="1"
+                android:textColorHint="@color/color_DADADA"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvYuanTips"
+            style="@style/sp12.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="提现金额（元）"
+            app:layout_constraintTop_toBottomOf="@id/typeLayout" />
+
+        <LinearLayout
+            android:id="@+id/editLayout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tvYuanTips">
+
+            <TextView
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="¥" />
+
+            <EditText
+                android:id="@+id/etRedmi"
+                style="@style/sp16.Black"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="30dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="请输入提现金额"
+                android:inputType="numberDecimal"
+                android:textColorHint="@color/color_DADADA" />
+
+            <TextView
+                android:id="@+id/tvAll"
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="全部提现" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_F9F9F9"
+            app:layout_constraintTop_toBottomOf="@id/editLayout" />
+
+        <TextView
+            android:id="@+id/tvRemark"
+            style="@style/sp12.999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="备注：将收取1%的手续费，实际到账0.00元"
+            app:layout_constraintTop_toBottomOf="@id/editLayout" />
+
+        <TextView
+            android:id="@+id/tvSubmitTixian"
+            style="@style/sp14"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="26dp"
+            android:background="@drawable/shape_order_detail_red"
+            android:gravity="center"
+            android:text="确认提现"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRemark" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        style="@style/sp14.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="18dp"
+        android:text="提现说明"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tixianLayout" />
+
+    <TextView
+        style="@style/sp12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="45dp"
+        android:text="1.每日最多不超过2次"
+        android:textColor="@color/color_666666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tixianLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

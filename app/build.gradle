@@ -1,0 +1,136 @@
+plugins {
+    id 'com.android.application'
+    id 'com.blankj.bus'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.cdxz.liudake"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 16
+        versionName "1.9.4"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86"
+            // abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+    }
+
+    signingConfigs {
+        config {
+            storeFile file('release.jks')
+            storePassword 'xizhu123'
+            keyAlias = 'key0'
+            keyPassword 'xizhu123'
+        }
+        debug {
+            storeFile file('release.jks')
+            storePassword 'xizhu123'
+            keyAlias = 'key0'
+            keyPassword 'xizhu123'
+        }
+    }
+    //sha1:CE:C0:AE:50:D5:AB:4C:DE:AA:F3:52:74:17:5D:7D:C8:62:C9:4D:F7
+
+
+    dataBinding {
+        enabled true
+    }
+
+    buildTypes {
+        release {
+
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src/main/assets'
+            }
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android:flexbox:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //butterknife
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    //AndroidUtilCode
+    implementation 'com.blankj:utilcodex:1.29.0'
+    //屏幕适配
+    implementation 'me.jessyan:autosize:1.2.1'
+    //banner
+    implementation 'com.youth.banner:banner:2.0.12'
+    //适配器
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.3'
+    //
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+    //ConverterFactory的String依赖包
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    //ConverterFactory的Gson依赖包
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    //CallAdapterFactory的Rx依赖包
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    //fastjson
+    implementation files('libs/fastjson-1.2.68.jar')
+    //侧滑recyclerview
+    implementation 'com.yanzhenjie.recyclerview:x:1.3.2'
+    //RatingBar
+    implementation 'com.github.ome450901:SimpleRatingBar:1.5.0'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    //上拉加载 下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
+    //popup
+    implementation 'com.lxj:xpopup:1.8.17'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //百度地图
+    implementation files('libs/BaiduLBS_Android.jar')
+    //权限请求框架
+    implementation 'com.hjq:xxpermissions:8.8'
+    //照片选择器
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9'
+    //三级联动
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+    //二维码
+//    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.3.7'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.AlexLiuSheng:CheckVersionLib:2.4_androidx'
+    implementation(name: 'alipaySdk-15.7.7-20200702160044', ext: 'aar')
+    implementation files('libs/libammsdk.jar')
+    implementation 'com.sunfusheng:MarqueeView:1.4.1'
+
+}

@@ -1,0 +1,50 @@
+{
+  "BusUtilsClass": "com.blankj.utilcode.util.BusUtils",
+  "rightBus": {
+    "get_store_id": [
+      "{ desc: com.cdxz.liudake.ui.life_circle.LifeCircleChildFragment#onGetStoreId(com.cdxz.liudake.bean.Bus.GetStoreIdBean bean) }"
+    ],
+    "keywords": [
+      "{ desc: com.cdxz.liudake.ui.life_circle.SearchLifeCircleChildFragment#onKeywords(java.lang.String keywords) }"
+    ],
+    "get_search_store_id": [
+      "{ desc: com.cdxz.liudake.ui.life_circle.SearchLifeCircleChildFragment#onGetSearchStoreId(com.cdxz.liudake.bean.Bus.GetStoreIdBean bean) }"
+    ],
+    "pop_suggestion": [
+      "{ desc: com.cdxz.liudake.ui.main.fragment.LifeCircleFragment#onPopSuggestion(com.cdxz.liudake.bean.Bus.PopSuggestionBean bean) }"
+    ],
+    "update_user_info": [
+      "{ desc: com.cdxz.liudake.ui.main.fragment.MyFragment#onUpdateUserInfo(com.cdxz.liudake.bean.Bus.UpdateUserInfoBean bean) }",
+      "{ desc: com.cdxz.liudake.ui.my.UserInfoActivity#onUpdateUserInfo(com.cdxz.liudake.bean.Bus.UpdateUserInfoBean bean) }"
+    ],
+    "update_car": [
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onUpdateCar() }"
+    ],
+    "car_num_add": [
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onCarNumAdd(com.cdxz.liudake.bean.ShopCarListBean$ListBean listBean) }"
+    ],
+    "car_num_minus": [
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onCarNumMinus(com.cdxz.liudake.bean.ShopCarListBean$ListBean listBean) }"
+    ],
+    "update_message_num": [
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopMallFragment#onUpdateMessage() }"
+    ],
+    "goods_detail_to_car": [
+      "{ desc: com.cdxz.liudake.ui.main.MainActivity#onGoodsDetailToCar() }"
+    ],
+    "car_num": [
+      "{ desc: com.cdxz.liudake.ui.main.MainActivity#onCarNum(int num) }"
+    ],
+    "update_address_list": [
+      "{ desc: com.cdxz.liudake.ui.my.service.AddressListActivity#onUpdateList() }"
+    ],
+    "wx_pay_success": [
+      "{ desc: com.cdxz.liudake.ui.order.OrderListFragment#onPaySuccess() }",
+      "{ desc: com.cdxz.liudake.ui.order.OrderSubmitActivity#onPaySuccess() }"
+    ],
+    "select_address": [
+      "{ desc: com.cdxz.liudake.ui.order.OrderSubmitActivity#onSelectAddress(com.cdxz.liudake.bean.AddressListBean bean) }"
+    ]
+  },
+  "wrongBus": {}
+}

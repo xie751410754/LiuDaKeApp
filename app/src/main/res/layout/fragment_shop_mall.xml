@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.fragment.ShopMallFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/bg_shop_mall"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvHomeSearch"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/shape_radius_white_4dp"
+        android:gravity="center_vertical"
+        android:hint="@string/hintSearch"
+        android:textColorHint="@color/color_DADADA"
+        app:dt_left_drawable="@mipmap/icon_search"
+        app:dt_left_height="30dp"
+        app:dt_left_width="30dp"
+        app:layout_constraintBottom_toTopOf="@id/refreshHome"
+        app:layout_constraintEnd_toStartOf="@id/ivMsg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivMsg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
+        android:src="@mipmap/icon_shop_mall_msg"
+        app:layout_constraintBottom_toBottomOf="@id/tvHomeSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvHomeSearch"
+        app:layout_constraintTop_toTopOf="@id/tvHomeSearch" />
+
+    <TextView
+        android:id="@+id/tvMessageNum"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:background="@drawable/shape_red_dot"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:minWidth="16dp"
+        android:paddingHorizontal="4dp"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/ivMsg"
+        app:layout_constraintTop_toTopOf="@id/ivMsg" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshHome"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHomeSearch"
+        app:srlAccentColor="@color/white"
+        app:srlEnableLoadMore="false"
+        app:srlEnableOverScrollDrag="true"
+        app:srlEnableRefresh="true">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:fillViewport="true"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingHorizontal="15dp">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="15dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fadingEdge="none"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never" />
+
+                <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+                    android:id="@+id/ivRoundedImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/img_default"
+                    app:riv_corner_radius="4dp" />
+
+                <RelativeLayout
+                    android:id="@+id/qiangGouLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <TextView
+                        android:id="@+id/tvQiangGouTips"
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="限时抢购" />
+
+                    <TextView
+                        android:id="@+id/tvQiangGouTime"
+                        style="@style/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/tvQiangGouTips"
+                        android:background="@drawable/shape_home_time_bg"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="4dp"
+                        android:text="12点场"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvCountDown"
+                        style="@style/sp12.AppColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_toEndOf="@id/tvQiangGouTime"
+                        android:background="@drawable/shape_home_countdown_bg"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="4dp"
+                        android:text="00:00:00" />
+
+                    <TextView
+                        android:id="@+id/tvChaodiTips"
+                        style="@style/sp12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="超低价抢购"
+                        android:textColor="@color/color_FFBB33" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerQiangGou"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvChaodiTips"
+                        android:orientation="horizontal" />
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerMenu2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12dp"
+                    android:fadingEdge="none"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never" />
+
+                <TextView
+                    android:id="@+id/tvActivityTips"
+                    style="@style/sp16.Black"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="活动专栏" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fadingEdge="none"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never" />
+
+                <TextView
+                    android:id="@+id/tvClassTips"
+                    style="@style/sp16.Black"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="分类推荐" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerClass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fadingEdge="none"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never" />
+
+                <TextView
+                    style="@style/sp16.Black"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="推荐商品" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerTuijianGoods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fadingEdge="none"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

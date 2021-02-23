@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/ivStoreCheck"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingHorizontal="14dp"
+        android:src="@mipmap/icon_pay_n" />
+
+    <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+        android:id="@+id/ivStorePic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/ivStoreCheck"
+        app:layout_constraintStart_toEndOf="@id/ivStoreCheck"
+        app:layout_constraintTop_toTopOf="@id/ivStoreCheck"
+        app:riv_oval="true" />
+
+    <TextView
+        android:id="@+id/tvStoreName"
+        style="@style/sp12.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="店铺名"
+        app:layout_constraintBottom_toBottomOf="@id/ivStoreCheck"
+        app:layout_constraintStart_toEndOf="@id/ivStorePic"
+        app:layout_constraintTop_toTopOf="@id/ivStoreCheck" />
+
+    <TextView
+        android:id="@+id/tvCoupon"
+        style="@style/sp12"
+        android:layout_width="16dp"
+        android:layout_height="12dp"
+        android:layout_marginEnd="15dp"
+        android:text="优惠"
+        android:textColor="@color/color_FFBB33"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/ivStoreCheck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivStoreCheck" />
+
+    <com.yanzhenjie.recyclerview.SwipeRecyclerView
+        android:id="@+id/recyclerGoods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivStoreCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

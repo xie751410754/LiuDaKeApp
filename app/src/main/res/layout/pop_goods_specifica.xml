@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_pop_goods_specifica_bg"
+    android:padding="15dp">
+
+    <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+        android:id="@+id/ivPic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/img_default"
+        app:riv_corner_radius="4dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        style="@style/sp20.AppColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="￥--"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ivPic"
+        app:layout_constraintTop_toTopOf="@id/ivPic" />
+
+    <ImageView
+        android:id="@+id/ivCancel"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@mipmap/icon_pop_cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvPrice" />
+
+    <TextView
+        android:id="@+id/tvKucun"
+        style="@style/sp12.999999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="库存 999+"
+        app:layout_constraintStart_toStartOf="@id/tvPrice"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+    <TextView
+        android:id="@+id/tvGoodsType"
+        style="@style/sp14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请选择颜色和尺寸大小"
+        android:textColor="@color/color_666666"
+        app:layout_constraintBottom_toBottomOf="@id/ivPic"
+        app:layout_constraintStart_toStartOf="@id/tvPrice" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/ivPic">
+
+        <LinearLayout
+            android:id="@+id/viewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/numLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/scrollView">
+
+        <TextView
+            style="@style/sp12.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="数量" />
+
+        <include
+            layout="@layout/public_goods_add_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintTop_toBottomOf="@id/numLayout" />
+
+    <TextView
+        android:id="@+id/tvSubmit"
+        style="@style/sp16.AppColor"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:background="@drawable/shape_pop_submit"
+        android:gravity="center"
+        android:text="完成"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

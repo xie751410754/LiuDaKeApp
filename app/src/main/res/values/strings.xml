@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">溜达客</string>
+    <string name="tabShopMall">商城</string>
+    <string name="tabLifeCircle">生活圈</string>
+    <string name="tabShopCar">购物车</string>
+    <string name="tabMy">个人</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hintSearch">搜索商品、店铺</string>
+
+</resources>

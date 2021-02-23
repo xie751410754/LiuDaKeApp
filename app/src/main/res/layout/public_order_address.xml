@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/addressRootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="12dp">
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvAddress"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:drawablePadding="12dp"
+        android:text="收货地址"
+        app:dt_left_drawable="@mipmap/icon_address"
+        app:dt_left_height="20dp"
+        app:dt_left_width="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvPerson"
+        style="@style/sp14.999999"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:drawablePadding="12dp"
+        android:text="收货人 收货人电话"
+        app:dt_left_drawable="@mipmap/icon_person"
+        app:dt_left_height="20dp"
+        app:dt_left_width="20dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+    <ImageView
+        android:id="@+id/ivMore"
+        android:layout_width="8dp"
+        android:layout_height="12dp"
+        android:src="@mipmap/icon_more_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

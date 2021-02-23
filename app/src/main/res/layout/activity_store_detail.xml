@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.life_circle.StoreDetailActivity">
+
+    <include layout="@layout/public_title_bar" />
+
+    <ImageView
+        android:id="@+id/ivShare"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:src="@mipmap/icon_share_store"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/ivThreeDot"
+        app:layout_constraintTop_toTopOf="@id/ivThreeDot" />
+
+    <ImageView
+        android:id="@+id/ivThreeDot"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="15dp"
+        android:src="@mipmap/icon_store_three_dot"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/titleRootLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titleRootLayout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleRootLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="375dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvStoreName"
+                style="@style/sp16.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:text="店铺名"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner" />
+
+            <TextView
+                android:id="@+id/tvStoreConsumption"
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:text="人均 ¥0.00"
+                app:layout_constraintBottom_toBottomOf="@id/tvStoreName"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvStoreType"
+                style="@style/sp12.999999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="生活类 > 日常用品"
+                app:layout_constraintStart_toStartOf="@id/tvStoreName"
+                app:layout_constraintTop_toBottomOf="@id/tvStoreName" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvStoreAppoint"
+                style="@style/sp12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="预约"
+                android:textColor="@color/color_666666"
+                app:dt_top_drawable="@mipmap/icon_store_appointment"
+                app:dt_top_height="36dp"
+                app:dt_top_width="36dp"
+                app:layout_constraintEnd_toStartOf="@id/tvStoreGoods"
+                app:layout_constraintStart_toStartOf="@id/tvStoreName"
+                app:layout_constraintTop_toBottomOf="@id/tvStoreType" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvStoreGoods"
+                style="@style/sp12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="商品"
+                android:textColor="@color/color_666666"
+                android:visibility="invisible"
+                app:dt_top_drawable="@mipmap/icon_store_goods"
+                app:dt_top_height="36dp"
+                app:dt_top_width="36dp"
+                app:layout_constraintEnd_toStartOf="@id/tvStoreLineup"
+                app:layout_constraintStart_toEndOf="@id/tvStoreAppoint"
+                app:layout_constraintTop_toTopOf="@id/tvStoreAppoint" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvStoreLineup"
+                style="@style/sp12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="排队"
+                android:textColor="@color/color_666666"
+                android:visibility="invisible"
+                app:dt_top_drawable="@mipmap/icon_store_lineup"
+                app:dt_top_height="36dp"
+                app:dt_top_width="36dp"
+                app:layout_constraintEnd_toStartOf="@id/tvStorePay"
+                app:layout_constraintStart_toEndOf="@id/tvStoreGoods"
+                app:layout_constraintTop_toTopOf="@id/tvStoreAppoint" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvStorePay"
+                style="@style/sp12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="买单"
+                android:textColor="@color/color_666666"
+                android:visibility="invisible"
+                app:dt_top_drawable="@mipmap/icon_store_pay"
+                app:dt_top_height="36dp"
+                app:dt_top_width="36dp"
+                app:layout_constraintEnd_toEndOf="@id/tvStoreConsumption"
+                app:layout_constraintStart_toEndOf="@id/tvStoreLineup"
+                app:layout_constraintTop_toTopOf="@id/tvStoreAppoint" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvStoreInfoTips"
+                style="@style/sp14.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="18dp"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:paddingHorizontal="15dp"
+                android:text="商家信息"
+                app:dt_left_drawable="@drawable/shape_goods_class_check"
+                app:dt_left_height="12dp"
+                app:dt_left_width="2dp"
+                app:layout_constraintTop_toBottomOf="@id/tvStoreAppoint" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvCollectNum"
+                style="@style/sp12.999999"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:drawablePadding="2dp"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="0人 收藏"
+                android:visibility="invisible"
+                app:dt_right_drawable="@mipmap/icon_store_collection"
+                app:dt_right_height="30dp"
+                app:dt_right_width="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvStoreInfoTips" />
+
+            <TextView
+                android:id="@+id/tvStoreTime"
+                style="@style/sp12.999999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="营业时间  早9:00-晚22:00 (法定节假日除外)"
+                app:layout_constraintStart_toStartOf="@id/tvStoreName"
+                app:layout_constraintTop_toBottomOf="@id/tvStoreInfoTips" />
+
+            <TextView
+                android:id="@+id/tvStoreActivity"
+                style="@style/sp12.999999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="优惠活动  开业大酬宾 全店8折优惠"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/tvStoreName"
+                app:layout_constraintTop_toBottomOf="@id/tvStoreTime" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvStoreAddress"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="8dp"
+                android:text="店铺地址"
+                app:dt_left_drawable="@mipmap/icon_address_gray"
+                app:dt_left_height="30dp"
+                app:dt_left_width="30dp"
+                app:layout_constraintStart_toStartOf="@id/tvStoreName"
+                app:layout_constraintTop_toBottomOf="@id/tvStoreActivity" />
+
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvGo"
+                style="@style/sp12.999999"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="GO店里"
+                app:dt_right_drawable="@mipmap/icon_more"
+                app:dt_right_height="20dp"
+                app:dt_right_width="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvStoreAddress" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvStoreComment"
+                style="@style/sp14.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:paddingHorizontal="15dp"
+                android:text="店铺评价"
+                app:dt_left_drawable="@drawable/shape_goods_class_check"
+                app:dt_left_height="12dp"
+                app:dt_left_width="2dp"
+                app:layout_constraintTop_toBottomOf="@id/tvStoreAddress" />
+
+            <TextView
+                style="@style/sp12.999999"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="共 0 条"
+                app:layout_constraintEnd_toEndOf="@id/tvStoreConsumption"
+                app:layout_constraintTop_toTopOf="@id/tvStoreComment" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerStoreComment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/tvStoreComment" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvShopPhone"
+                style="@style/sp14.999999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="000-0000-0000"
+                app:dt_left_drawable="@mipmap/icon_store_phone"
+                app:dt_left_height="30dp"
+                app:dt_left_width="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerStoreComment" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

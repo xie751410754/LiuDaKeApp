@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.AlexLiuSheng:CheckVersionLib:2.4_androidx@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f0b9ef97f773b185a8b39e8d2feabfdc/CheckVersionLib-2.4_androidx/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f0b9ef97f773b185a8b39e8d2feabfdc/CheckVersionLib-2.4_androidx/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f0b9ef97f773b185a8b39e8d2feabfdc/CheckVersionLib-2.4_androidx/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.AlexLiuSheng/CheckVersionLib/2.4_androidx/b865192e4bf2c0dceec1680318833faa086d43cf/CheckVersionLib-2.4_androidx-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

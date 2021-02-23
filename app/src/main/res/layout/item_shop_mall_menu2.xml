@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:background="@drawable/shape_radius_white_4dp"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tvTips"
+        style="@style/sp16.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:text="热卖推荐"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTips2"
+        style="@style/sp12.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:includeFontPadding="false"
+        android:text="热卖推荐"
+        app:layout_constraintTop_toBottomOf="@id/tvTips" />
+
+    <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+        android:id="@+id/ivImage1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivImage2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTips2"
+        app:riv_corner_radius="4dp" />
+
+    <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+        android:id="@+id/ivImage2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivImage1"
+        app:layout_constraintTop_toTopOf="@id/ivImage1"
+        app:riv_corner_radius="4dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

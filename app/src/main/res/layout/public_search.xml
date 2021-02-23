@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/ivTitleBack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:onClick="onBack"
+        android:padding="16dp"
+        android:src="@mipmap/ic_black_back"
+        tools:ignore="OnClick" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvSearch"
+        style="@style/sp12"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/shape_item_message_bg"
+        android:gravity="center_vertical"
+        android:hint="搜索商品"
+        android:lines="1"
+        android:paddingHorizontal="5dp"
+        android:textColor="@color/color_343434"
+        android:textColorHint="@color/color_DADADA"
+        app:dt_left_drawable="@mipmap/icon_search"
+        app:dt_left_height="30dp"
+        app:dt_left_width="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivTitleBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivTitleBack"
+        app:layout_constraintTop_toTopOf="@id/ivTitleBack" />
+
+</merge>

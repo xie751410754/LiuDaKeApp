@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.order.OrderSubmitActivity">
+
+    <include layout="@layout/public_title_bar" />
+
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            style="@style/sp12.999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="12dp"
+            android:text="合计" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            style="@style/sp18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥0.00"
+            android:textColor="@color/color_FF5033"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvJifen"
+            style="@style/sp12.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+积分" />
+
+        <TextView
+            android:id="@+id/tvSubmit"
+            style="@style/sp14"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/shape_buy_bg"
+            android:gravity="center"
+            android:text="立即购买"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomLayout"
+        app:layout_constraintTop_toBottomOf="@+id/titleRootLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/public_order_address" />
+
+            <TextView
+                android:id="@+id/tvAddAddress"
+                style="@style/sp18.Black"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="15dp"
+                android:text="请添加收货地址" />
+
+            <LinearLayout
+                android:id="@+id/goodsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:text="共计1件商品：¥0.00"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvGoodsPrice"
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="商品价：¥0.00" />
+
+            <TextView
+                android:id="@+id/tvExpressFee"
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="运费：¥0.00" />
+
+            <TextView
+                android:id="@+id/tvRedmi"
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="红米余额抵扣：¥0.00" />
+
+            <TextView
+                android:id="@+id/tvJifen1"
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="积分抵扣：¥0.00" />
+
+            <TextView
+                android:id="@+id/tvPayPrice"
+                style="@style/sp12.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="应付金额：¥0.00"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/etRemark"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:gravity="end|center_vertical"
+                android:hint="添加备注"
+                android:paddingHorizontal="15dp"
+                android:textColorHint="@color/color_DADADA"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="15dp"
+                android:text="抵扣方式" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvRedmiDeduction"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="15dp"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:tag="NO"
+                android:text="红米余额抵扣"
+                android:visibility="gone"
+                app:dt_right_drawable="@mipmap/icon_open_n"
+                app:dt_right_height="40dp"
+                app:dt_right_width="40dp" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvIntegralDeduction"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="15dp"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:tag="YES"
+                android:text="积分抵扣"
+                app:dt_right_drawable="@mipmap/icon_open_y"
+                app:dt_right_height="40dp"
+                app:dt_right_width="40dp" />
+
+            <TextView
+                android:id="@+id/tvPayWay"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="15dp"
+                android:text="支付方式" />
+
+            <include layout="@layout/public_order_pay" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

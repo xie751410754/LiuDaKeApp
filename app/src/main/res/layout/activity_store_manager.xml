@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.store_manager.StoreManagerActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <TextView
+                android:text="我的店铺"
+                android:textColor="#333333"
+                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:text="提交"
+                android:textColor="#333333"
+                android:textSize="15sp"
+                android:layout_gravity="center|right"
+                android:paddingRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ls"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_avatar"
+                        android:background="@color/white"
+                        style="@style/IMTble_No_Line">
+
+                        <TextView
+                            android:id="@+id/tv_avatar"
+                            android:layout_centerVertical="true"
+                            style="@style/IMTbleLine_TextKey"
+                            android:text="商铺图标" />
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/avatar_img"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="4dp"
+                            android:scaleType="centerCrop"
+
+                            android:visibility="visible"
+                            app:riv_corner_radius="7dp"
+                            app:riv_border_color="@color/white"
+                            app:riv_border_width="4dip"
+                            app:riv_oval="false" />
+
+                        <ImageView
+                            android:id="@+id/iv_avatar"
+                            style="@style/basic_info"
+                            android:contentDescription="@string/app_name" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp">
+
+                        <RelativeLayout style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/name_text"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="商铺名称" />
+
+                            <TextView
+                                android:id="@+id/name_edit"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_marginRight="2dp"
+                                android:layout_toRightOf="@+id/name_text"
+                                android:background="@null"
+
+                                android:drawablePadding="10dp"
+                                android:hint="请输入名称"
+                                android:inputType="text"
+                                android:maxLength="8" />
+
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/store_type"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/sex_text"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="商铺类别" />
+
+                            <TextView
+                                android:id="@+id/tv_store_type"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_toLeftOf="@+id/sex_arrow_img"
+                                android:layout_toRightOf="@+id/sex_text" />
+
+                            <ImageView
+                                android:id="@+id/sex_arrow_img"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/store_info"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/birthday_text"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="商铺简介" />
+
+                            <TextView
+                                android:id="@+id/tv_store_info"
+                                style="@style/IMTbleLine_TextValue"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:maxLength="10"
+                                android:layout_toLeftOf="@+id/birthday_arrow_img"
+                                android:layout_toRightOf="@+id/birthday_text" />
+
+                            <ImageView
+                                android:id="@+id/birthday_arrow_img"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/store_local"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/city_text"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="商铺定位" />
+
+                            <TextView
+                                android:id="@+id/tv_store_local"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_toLeftOf="@+id/city_arrow_img"
+                                android:layout_toRightOf="@+id/city_text" />
+
+                            <ImageView
+                                android:id="@+id/city_arrow_img"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/store_time"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/desc_text"
+                                style="@style/IMTbleLine_TextKey"
+                                android:drawablePadding="5dp"
+                                android:text="营业时间" />
+                            <TextView
+                                android:id="@+id/tv_store_time"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_marginLeft="-15dp"
+                                android:layout_marginRight="30dp"
+                                android:ellipsize="end" />
+                            <ImageView
+                                android:id="@+id/desc_arrow_img"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/store_xiaofei"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/city_text_02"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="人均消费" />
+
+                            <TextView
+                                android:id="@+id/tv_store_xiaofei"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_toLeftOf="@+id/city_arrow_img_02"
+                                android:layout_toRightOf="@+id/city_text_02" />
+
+                            <ImageView
+                                android:id="@+id/city_arrow_img_02"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/store_manager"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/city_text_03"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="预约管理" />
+
+                            <TextView
+                                android:id="@+id/tv_store_manager"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_toLeftOf="@+id/city_arrow_img_03"
+                                android:layout_toRightOf="@+id/city_text_03" />
+
+                            <ImageView
+                                android:id="@+id/city_arrow_img_03"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/store_phone"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/city_text_04"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="联系号码" />
+
+                            <TextView
+                                android:id="@+id/tv_store_phone"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_toLeftOf="@+id/city_arrow_img_04"
+                                android:layout_toRightOf="@+id/city_text_04" />
+
+                            <ImageView
+                                android:id="@+id/city_arrow_img_04"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/store_pinlun"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/city_text_05"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="查看评论" />
+
+                            <TextView
+                                android:id="@+id/tv_store_pinlun"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_toLeftOf="@+id/city_arrow_img_05"
+                                android:layout_toRightOf="@+id/city_text_05" />
+
+                            <ImageView
+                                android:id="@+id/city_arrow_img_05"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/store_picture"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="店铺相册" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcv_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/text_edit"
+                        android:background="@color/white"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:descendantFocusability="blocksDescendants"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        tools:itemCount="8"
+                        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        tools:listitem="@layout/item_post_activity"
+                        tools:spanCount="3" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cdxz.liudake.view.DrawableTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tvItemFAQ"
+    style="@style/sp14.Black"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="15dp"
+    android:text="@string/app_name"
+    app:dt_right_drawable="@mipmap/icon_more"
+    app:dt_right_height="24dp"
+    app:dt_right_width="24dp" />

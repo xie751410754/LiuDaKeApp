@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cdxz.liudake">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 获取网络状态，根据网络状态切换进行数据请求网络转换 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读取外置存储。如果开发者使用了so动态加载功能并且把so文件放在了外置存储区域，则需要申请该权限，否则不需要 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 写外置存储。如果开发者使用了离线地图，并且数据写在外置存储区域，则需要申请该权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".LiudakeApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.order.ApplyAfterSalesActivity"></activity>
+        <activity android:name=".ui.my.service.OpenStoreType3Activity" />
+        <activity android:name=".ui.my.service.OpenStoreType2Activity" />
+        <activity android:name=".ui.my.service.OpenStoreType1Activity" />
+        <activity android:name=".ui.my.service.OpenStoreTypeActivity" />
+        <activity android:name=".ui.ScanQRCodeActivity" />
+        <activity android:name=".ui.StorePayActivity" />
+        <activity android:name=".ui.shop_mall.MessageDetailActivity" />
+        <activity android:name=".ui.shop_mall.HomeToGoodsListActivity" />
+        <activity android:name=".ui.my.EditUserInfoActivity" />
+        <activity android:name=".ui.login.ResetPwdActivity" />
+        <activity android:name=".ui.life_circle.LifeCircleMapActivity" />
+        <activity android:name=".ui.WebActivity" />
+        <activity android:name=".ui.my.service.FAQDetailActivity" />
+        <activity android:name=".ui.my.service.CollectActivity" />
+        <activity android:name=".map.MapActivity" />
+        <activity android:name=".ui.login.RegisterActivity" />
+        <activity android:name=".ui.my.service.ScoreBillActivity" />
+        <activity android:name=".ui.my.service.RedmiBillActivity" />
+        <activity android:name=".ui.my.service.WithdrawalActivity" />
+        <activity android:name=".ui.my.service.AddAddressActivity" />
+        <activity android:name=".ui.my.service.AddressListActivity" />
+        <activity android:name=".ui.my.service.OpenStoreActivity" />
+        <activity android:name=".ui.my.service.WalletActivity" />
+        <activity android:name=".ui.my.service.ToPromoteActivity" />
+        <activity android:name=".ui.my.InviteCodeActivity" />
+        <activity android:name=".ui.my.SetPayPwdActivity" />
+        <activity android:name=".ui.my.AboutUsActivity" />
+        <activity android:name=".ui.my.SetActivity" />
+        <activity android:name=".ui.my.UserInfoActivity" />
+        <activity android:name=".ui.my.service.FAQActivity" />
+        <activity android:name=".ui.order.OrderDetailActivity" />
+        <activity android:name=".ui.order.OrderListActivity" />
+        <activity android:name=".ui.life_circle.StoreDetailActivity" />
+        <activity android:name=".ui.life_circle.StoreListActivity" />
+        <activity android:name=".ui.shop_mall.GoodsClassActivity" />
+        <activity android:name=".ui.shop_mall.GoodsListActivity" />
+        <activity android:name=".ui.order.OrderSubmitActivity" />
+        <activity android:name=".ui.SearchResultActivity" />
+        <activity android:name=".ui.SearchActivity" />
+        <activity android:name=".ui.shop_mall.MessageListActivity" />
+        <activity android:name=".ui.shop_mall.GoodsDetailActivity" />
+
+        <activity android:name=".ui.store_manager.BillActivity"/>
+        <activity android:name=".ui.store_manager.StoreCoreActivity"/>
+        <activity android:name=".ui.store_manager.StoreHomeActivity"/>
+        <activity android:name=".ui.store_manager.StoreQuXianActivity"/>
+        <activity android:name=".ui.store_manager.StoreWalletActivity"/>
+        <activity android:name=".ui.store_manager.StoreClassActivity"/>
+        <activity android:name=".ui.store_manager.StoreCommentActivity"/>
+        <activity android:name=".ui.store_manager.StoreGuideActivity"/>
+        <activity android:name=".ui.store_manager.StoreManagerActivity"/>
+        <activity android:name=".ui.store_manager.StorePayActivity"/>
+        <activity android:name=".ui.store_manager.StoreQRActivity"/>
+        <activity android:name=".ui.store_manager.StoreMessageActivity"/>
+
+
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/MainTheme" />
+        <activity android:name=".ui.LaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <activity android:name=".ui.LookUpActivity" />
+
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="375" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="812" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="16ALFKzkoWODZGFtRHhZbuZ2K1GokYGy" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.cdxz.liudake.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

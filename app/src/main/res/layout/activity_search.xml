@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.SearchActivity">
+
+    <RelativeLayout
+        android:id="@+id/topLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivTitleBack"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:onClick="onBack"
+            android:padding="16dp"
+            android:src="@mipmap/ic_black_back"
+            tools:ignore="OnClick" />
+
+        <TextView
+            android:id="@+id/tvSearch"
+            style="@style/sp14.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:paddingHorizontal="15dp"
+            android:text="搜索商品" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/tvSearch"
+            android:layout_toEndOf="@id/ivTitleBack"
+            android:background="@drawable/shape_item_message_bg" />
+
+        <ImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignStart="@id/view"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:src="@mipmap/icon_search"
+            android:tint="@color/color_666666" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            style="@style/sp12"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_alignEnd="@id/view"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ivSearch"
+            android:background="@android:color/transparent"
+            android:hint="搜索商品"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:lines="1"
+            android:paddingHorizontal="5dp"
+            android:textColor="@color/color_343434"
+            android:textColorHint="@color/color_DADADA" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvHotSearch"
+        style="@style/sp14.999999"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="热门搜索"
+        app:layout_constraintTop_toBottomOf="@id/topLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        app:layout_constraintTop_toBottomOf="@id/tvHotSearch" />
+
+    <TextView
+        android:id="@+id/tvHistorySearch"
+        style="@style/sp14.999999"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="历史搜索"
+        app:layout_constraintTop_toBottomOf="@id/recyclerHot" />
+
+    <TextView
+        android:id="@+id/tvClear"
+        style="@style/sp12"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="清空记录"
+        android:textColor="@color/color_666666"
+        app:layout_constraintBottom_toBottomOf="@id/tvHistorySearch"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        app:layout_constraintTop_toBottomOf="@id/tvClear" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

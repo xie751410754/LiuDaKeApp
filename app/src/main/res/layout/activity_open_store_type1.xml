@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.my.service.OpenStoreType1Activity">
+
+        <include layout="@layout/public_title_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleRootLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="12dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="商店名称" />
+
+                    <EditText
+                        android:id="@+id/etName"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="输入要入驻的商店名称"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="商店简称" />
+
+                    <EditText
+                        android:id="@+id/etJianjie"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="输入商店简称"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="存款账户编号" />
+
+                    <EditText
+                        android:id="@+id/etLicenseNumber"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="基本存款账户编号"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="法人证件号码" />
+
+                    <EditText
+                        android:id="@+id/etIDCardNumber"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="请输入法人证件号码"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="联系人邮箱" />
+
+                    <EditText
+                        android:id="@+id/etEmail"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="商户联系人邮箱"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="联系电话" />
+
+                    <EditText
+                        android:id="@+id/etCompanyPhone"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="联系电话"
+                        android:inputType="number"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical"
+                        android:text="经营地址" />
+
+                    <TextView
+                        android:id="@+id/tvCity"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="100dp"
+                        android:gravity="center_vertical"
+                        android:hint="请选择省市区"
+                        android:textColorHint="@color/color_DADADA" />
+
+                    <EditText
+                        android:id="@+id/etAddress"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/tvCity"
+                        android:layout_alignStart="@id/tvCity"
+                        android:background="@android:color/transparent"
+                        android:hint="请输入详细地址"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="结算卡" />
+
+                    <EditText
+                        android:id="@+id/etBlank"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="输入结算卡号(借记卡)"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="银行总行编码" />
+
+                    <EditText
+                        android:id="@+id/etBlankCode"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="银行账户开户总行编码"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="营业执照号" />
+
+                    <EditText
+                        android:id="@+id/etNumber"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="营业执照上的社会信用码"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="营业执照(副本)" />
+
+                    <ImageView
+                        android:id="@+id/ivLicense"
+                        style="@style/sp14.Black"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="120dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/img_default" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="法人姓名" />
+
+                    <EditText
+                        android:id="@+id/etContactPerson"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="营业执照上的法人姓名"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="法人身份证" />
+
+                    <ImageView
+                        android:id="@+id/ivFront"
+                        style="@style/sp14.Black"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="100dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/img_default" />
+
+                    <ImageView
+                        android:id="@+id/ivReverse"
+                        style="@style/sp14.Black"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@id/ivFront"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/img_default" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="存款账户照片" />
+
+                    <ImageView
+                        android:id="@+id/ivKaiHuPic"
+                        style="@style/sp14.Black"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="100dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/img_default" />
+
+                    <TextView
+                        style="@style/sp12.999999"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@id/ivKaiHuPic"
+                        android:text="上传基本\n存款账户\n信息表照片" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="门头合影照" />
+
+                    <ImageView
+                        android:id="@+id/ivMenTou"
+                        style="@style/sp14.Black"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="100dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/img_default" />
+
+                    <TextView
+                        style="@style/sp12.999999"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@id/ivMenTou"
+                        android:text="手持营业执照\n在门头logo处\n合影拍照上传" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="环境照" />
+
+                    <ImageView
+                        android:id="@+id/ivPicture1"
+                        style="@style/sp14.Black"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="100dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/img_default" />
+
+                    <ImageView
+                        android:id="@+id/ivPicture2"
+                        style="@style/sp14.Black"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@id/ivPicture1"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/img_default" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="折扣比例" />
+
+                    <EditText
+                        android:id="@+id/etZhekou"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="请输入折扣比例(%)"
+                        android:inputType="numberDecimal"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="+86" />
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:background="@android:color/transparent"
+                        android:hint="请输入已注册手机号码"
+                        android:inputType="number"
+                        android:textColorHint="@color/color_DADADA" />
+                </RelativeLayout>
+
+                <!--            <TextView-->
+                <!--                style="@style/sp14.AppColor"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginHorizontal="15dp"-->
+                <!--                android:layout_marginVertical="6dp"-->
+                <!--                android:text="错误提示" />-->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingHorizontal="15dp">
+
+                    <TextView
+                        style="@style/sp16.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="验证码" />
+
+                    <EditText
+                        android:id="@+id/etCode"
+                        style="@style/sp14.Black"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="100dp"
+                        android:layout_toStartOf="@id/tvGetCode"
+                        android:background="@android:color/transparent"
+                        android:hint="输入验证码"
+                        android:paddingEnd="10dp"
+                        android:textColorHint="@color/color_DADADA" />
+
+                    <TextView
+                        android:id="@+id/tvGetCode"
+                        style="@style/sp14.AppColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="center"
+                        android:text="获取验证码" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvSubmit"
+                    style="@style/sp14"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="80dp"
+                    android:background="@drawable/shape_buy_bg2"
+                    android:gravity="center"
+                    android:text="入驻申请提交"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/sp14.999999"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="预计3个工作日内完成" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

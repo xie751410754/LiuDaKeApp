@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+<!--    <color name="appColor">#FF5034</color>-->
+    <color name="appColor">#E62129</color>
+    <color name="color_343434">#343434</color>
+    <color name="color_9A9A9A">#9A9A9A</color>
+    <color name="color_DADADA">#DADADA</color>
+    <color name="color_FF4E4E">#FF4E4E</color>
+    <color name="color_FF5033">#FF5033</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_FFBB33">#FFBB33</color>
+    <color name="color_F9F9F9">#F9F9F9</color>
+    <color name="color_FF6833">#FF6833</color>
+    <color name="color_F3F3F3">#F3F3F3</color>
+    <color name="normal_bg">#f2f2f2</color>
+    <color name="view_line">#DEDFE1</color>
+    <color name="color_EEEEEE">#EEEEEE</color>
+    <color name="black_trans_33">#11000000</color>
+
+</resources>

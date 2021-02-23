@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.my.service.WalletActivity">
+
+    <include layout="@layout/public_title_bar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_radius_white_4dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/allLayout"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@id/useLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvRedmiScore"
+                style="@style/sp20.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/sp12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="红米"
+                android:textColor="@color/color_666666" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/useLayout"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@id/lingquLayout"
+            app:layout_constraintStart_toEndOf="@id/allLayout"
+            app:layout_constraintTop_toTopOf="@id/allLayout">
+
+            <TextView
+                android:id="@+id/tvUseScore"
+                style="@style/sp20.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/sp12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="可用积分"
+                android:textColor="@color/color_666666" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lingquLayout"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@id/tvLingquTag"
+            app:layout_constraintStart_toEndOf="@id/useLayout"
+            app:layout_constraintTop_toTopOf="@id/allLayout">
+
+            <TextView
+                android:id="@+id/tvLingquScore"
+                style="@style/sp20.AppColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/sp12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="待领积分"
+                android:textColor="@color/color_666666" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvLingquTag"
+            style="@style/sp14.AppColor"
+            android:layout_width="50dp"
+            android:layout_height="24dp"
+            android:background="@drawable/shape_wallet_lingqu_bg"
+            android:gravity="center"
+            android:text="领取"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/allLayout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/allLayout">
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvTuiguang"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="我的推广"
+                app:dt_left_drawable="@mipmap/icon_wallet_tuiguang"
+                app:dt_left_height="30dp"
+                app:dt_left_width="30dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="22dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvTiXian"
+                style="@style/sp14.Black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="红米提现"
+                app:dt_left_drawable="@mipmap/icon_wallet_tixian"
+                app:dt_left_height="30dp"
+                app:dt_left_width="30dp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/shareLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_radius_white_4dp"
+        android:paddingHorizontal="12dp">
+
+        <ImageView
+            android:id="@+id/ivImage1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@mipmap/icon_wallet_share" />
+
+        <TextView
+            style="@style/sp16.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ivImage1"
+            android:layout_toEndOf="@id/ivImage1"
+            android:text="分享邀请码" />
+
+        <TextView
+            style="@style/sp12.999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ivImage1"
+            android:layout_toEndOf="@id/ivImage1"
+            android:text="邀请赚红米" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_more" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_radius_white_4dp"
+        android:paddingHorizontal="12dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivImage2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@mipmap/icon_wallet_shopping" />
+
+        <TextView
+            style="@style/sp16.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ivImage2"
+            android:layout_toEndOf="@id/ivImage2"
+            android:text="拼团购物" />
+
+        <TextView
+            style="@style/sp12.999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ivImage2"
+            android:layout_toEndOf="@id/ivImage2"
+            android:text="一起买才划算" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_more" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_radius_white_4dp"
+        android:paddingHorizontal="12dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivImage3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@mipmap/icon_wallet_gongnue" />
+
+        <TextView
+            style="@style/sp16.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ivImage3"
+            android:layout_toEndOf="@id/ivImage3"
+            android:text="钱包攻略" />
+
+        <TextView
+            style="@style/sp12.999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ivImage3"
+            android:layout_toEndOf="@id/ivImage3"
+            android:text="懂了才会用" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_more" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.fragment.ShopCarFragment">
+
+    <TextView
+        android:id="@+id/tvShopCarTitle"
+        style="@style/sp16.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="购物车" />
+
+    <TextView
+        android:id="@+id/tvEdit"
+        style="@style/sp14.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:paddingHorizontal="15dp"
+        android:text="编辑"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshShopCar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomLayout"
+        app:layout_constraintTop_toBottomOf="@id/tvEdit"
+        app:srlAccentColor="@color/appColor"
+        app:srlEnableLoadMore="false"
+        app:srlEnableRefresh="true"
+        app:srlPrimaryColor="@android:color/transparent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerShopCar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.cdxz.liudake.view.DrawableTextView
+            android:id="@+id/tvAll"
+            style="@style/sp12.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:paddingHorizontal="15dp"
+            android:text="全选"
+            app:dt_left_drawable="@mipmap/icon_pay_n"
+            app:dt_left_height="12dp"
+            app:dt_left_width="12dp" />
+
+        <TextView
+            style="@style/sp12.999999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="合计" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            style="@style/sp18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥0.00"
+            android:textColor="@color/color_FF5033"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvJifen"
+            style="@style/sp12.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="+积分" />
+
+        <TextView
+            android:id="@+id/tvGoodsNum"
+            style="@style/sp12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="（共0件）"
+            android:textColor="@color/color_666666"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvBuy"
+            style="@style/sp14"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/shape_buy_bg2"
+            android:gravity="center"
+            android:text="立即购买"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

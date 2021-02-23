@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.my.UserInfoActivity">
+
+    <include layout="@layout/public_title_bar" />
+
+    <LinearLayout
+        android:id="@+id/avatarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp">
+
+        <TextView
+            style="@style/sp14.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="头像" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            style="@style/sp12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="点击更换"
+            android:textColor="@color/color_DADADA"
+            android:visibility="gone" />
+
+        <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/img_default"
+            app:riv_oval="true" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp">
+
+        <TextView
+            style="@style/sp14.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="昵称" />
+
+        <TextView
+            android:id="@+id/tvNick"
+            style="@style/sp14.999999"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|end"
+            android:text="用户的昵称" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvSexTips"
+            style="@style/sp14.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="性别" />
+
+        <TextView
+            android:id="@+id/tvSex"
+            style="@style/sp14.999999"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical|end"
+            android:hint="设置性别" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/sp14.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="生日" />
+
+        <TextView
+            android:id="@+id/tvBirthday"
+            style="@style/sp14.999999"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical|end"
+            android:hint="设置生日" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp">
+
+        <TextView
+            style="@style/sp14.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="绑定手机号码" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            style="@style/sp14.999999"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|end" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/sp14.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="绑定微信号" />
+
+        <TextView
+            android:id="@+id/tvWxAccount"
+            style="@style/sp14.999999"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|end"
+            android:text="wx_001" />
+
+    </LinearLayout>
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvResetPwd"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="修改密码"
+        app:dt_right_drawable="@mipmap/icon_more"
+        app:dt_right_height="24dp"
+        app:dt_right_width="24dp" />
+
+</LinearLayout>

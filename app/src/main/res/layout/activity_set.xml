@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.my.SetActivity">
+
+    <include layout="@layout/public_title_bar" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="消息"
+        android:visibility="gone"
+        app:dt_right_drawable="@mipmap/icon_open_n"
+        app:dt_right_height="30dp"
+        app:dt_right_width="30dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="系统消息"
+        android:visibility="gone"
+        app:dt_right_drawable="@mipmap/icon_open_y"
+        app:dt_right_height="30dp"
+        app:dt_right_width="30dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="订单消息"
+        android:visibility="gone"
+        app:dt_right_drawable="@mipmap/icon_open_n"
+        app:dt_right_height="30dp"
+        app:dt_right_width="30dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="互动消息"
+        android:visibility="gone"
+        app:dt_right_drawable="@mipmap/icon_open_n"
+        app:dt_right_height="30dp"
+        app:dt_right_width="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="15dp">
+
+        <TextView
+            style="@style/sp14.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清除缓存" />
+
+        <TextView
+            android:id="@+id/tvCacheSize"
+            style="@style/sp14.999999"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end|center_vertical"
+            android:text="0M" />
+    </LinearLayout>
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvAboutUs"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="关于我们"
+        app:dt_right_drawable="@mipmap/icon_more"
+        app:dt_right_height="24dp"
+        app:dt_right_width="24dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvSetPayPwd"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="设置支付密码"
+        app:dt_right_drawable="@mipmap/icon_more"
+        app:dt_right_height="24dp"
+        app:dt_right_width="24dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tvLogout"
+        style="@style/sp14"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_logou"
+        android:gravity="center"
+        android:text="退出登录"
+        android:textColor="@color/white" />
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvLeft"
+        style="@style/sp14.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvRight"
+        style="@style/sp14.999999"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical|end"
+        android:text="@string/app_name"
+        app:dt_right_drawable="@mipmap/icon_more_right"
+        app:dt_right_height="30dp"
+        app:dt_right_width="30dp" />
+
+</LinearLayout>

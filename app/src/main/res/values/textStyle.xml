@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="sp12">
+        <item name="android:textSize">12sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="sp14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="sp16">
+        <item name="android:textSize"></item>16sp
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="sp18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="sp20">
+        <item name="android:textSize">20sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <!---->
+    <style name="sp12.Black">
+        <item name="android:textColor">@color/color_343434</item>
+    </style>
+
+    <style name="sp14.Black">
+        <item name="android:textColor">@color/color_343434</item>
+    </style>
+
+    <style name="sp16.Black">
+        <item name="android:textColor">@color/color_343434</item>
+    </style>
+
+    <style name="sp18.Black">
+        <item name="android:textColor">@color/color_343434</item>
+    </style>
+
+    <style name="sp20.Black">
+        <item name="android:textColor">@color/color_343434</item>
+    </style>
+    <!---->
+    <style name="sp12.AppColor">
+        <item name="android:textColor">@color/appColor</item>
+    </style>
+
+    <style name="sp14.AppColor">
+        <item name="android:textColor">@color/appColor</item>
+    </style>
+
+    <style name="sp16.AppColor">
+        <item name="android:textColor">@color/appColor</item>
+    </style>
+
+    <style name="sp18.AppColor">
+        <item name="android:textColor">@color/appColor</item>
+    </style>
+
+    <style name="sp20.AppColor">
+        <item name="android:textColor">@color/appColor</item>
+    </style>
+    <!---->
+    <style name="sp12.999999">
+        <item name="android:textColor">@color/color_999999</item>
+    </style>
+
+    <style name="sp14.999999">
+        <item name="android:textColor">@color/color_999999</item>
+    </style>
+
+    <style name="sp16.999999">
+        <item name="android:textColor">@color/color_999999</item>
+    </style>
+
+    <style name="sp18.999999">
+        <item name="android:textColor">@color/color_999999</item>
+    </style>
+
+    <style name="sp20.999999">
+        <item name="android:textColor">@color/color_999999</item>
+    </style>
+</resources>

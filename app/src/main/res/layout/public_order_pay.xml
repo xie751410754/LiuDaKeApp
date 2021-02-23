@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvWXPay"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:text="微信"
+        app:dt_right_drawable="@mipmap/icon_pay_n"
+        app:dt_right_height="16dp"
+        app:dt_right_width="16dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvZfbPay"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:text="支付宝"
+        app:dt_right_drawable="@mipmap/icon_pay_n"
+        app:dt_right_height="16dp"
+        app:dt_right_width="16dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvMallRedmiPay"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:text="商城红米"
+        app:dt_right_drawable="@mipmap/icon_pay_n"
+        app:dt_right_height="16dp"
+        app:dt_right_width="16dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvShareRedmiPay"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:text="分享红米"
+        app:dt_right_drawable="@mipmap/icon_pay_n"
+        app:dt_right_height="16dp"
+        app:dt_right_width="16dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvJiaoyiRedmiPay"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:text="交易红米"
+        app:dt_right_drawable="@mipmap/icon_pay_n"
+        app:dt_right_height="16dp"
+        app:dt_right_width="16dp" />
+</merge>

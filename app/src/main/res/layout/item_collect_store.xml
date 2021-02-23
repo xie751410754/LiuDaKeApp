@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/ivStorePic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="12dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/img_default" />
+
+    <TextView
+        android:id="@+id/tvStoreName"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_toStartOf="@id/tvTag"
+        android:layout_toEndOf="@id/ivStorePic"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="商家名称" />
+
+    <TextView
+        android:id="@+id/tvTag"
+        style="@style/sp12.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="已打样" />
+
+    <TextView
+        android:id="@+id/tvComment"
+        style="@style/sp14.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tvTime"
+        android:layout_below="@id/tvStoreName"
+        android:layout_alignStart="@id/tvStoreName"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:gravity="bottom"
+        android:text="评价5.0" />
+
+    <TextView
+        android:id="@+id/tvSaleNum"
+        style="@style/sp14.999999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tvComment"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@id/tvComment"
+        android:gravity="bottom"
+        android:text="销量0" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        style="@style/sp12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tvStoreName"
+        android:layout_alignBottom="@id/ivStorePic"
+        android:text="营业时间 09:00-22:00"
+        android:textColor="@color/color_666666" />
+
+    <TextView
+        style="@style/sp14.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ivStorePic"
+        android:layout_alignParentEnd="true"
+        android:text="人均 ￥0.00" />
+</RelativeLayout>

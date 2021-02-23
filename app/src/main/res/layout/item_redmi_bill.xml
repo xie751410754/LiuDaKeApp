@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="12dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/sp14.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="商城消费"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        style="@style/sp12.999999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="红米消费"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/tvJinE" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        style="@style/sp12.999999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0000.00.00 00:00"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvJinE"
+        style="@style/sp14.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@id/tvDate"
+        app:layout_constraintTop_toBottomOf="@id/tvDate" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/color_F3F3F3"
+        app:layout_constraintTop_toBottomOf="@id/tvJinE" />
+</androidx.constraintlayout.widget.ConstraintLayout>

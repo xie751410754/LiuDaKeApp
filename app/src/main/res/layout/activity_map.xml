@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <TextView
+                android:text="选择地点"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_ok"
+                android:text="确定"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:textSize="16sp"
+                android:layout_gravity="right|center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:id="@+id/rl_map_position"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/map_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/ll_seach_position" />
+
+            <ImageView
+                android:id="@+id/iv_location"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_above="@+id/ll_seach_position"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/iv_location_bg" />
+
+            <LinearLayout
+                android:id="@+id/ll_seach_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ll_postion"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp">
+
+                <com.cdxz.liudake.view.ClearEditText
+                    android:id="@+id/ce_map_position"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/et_search_bg"
+                    android:drawableLeft="@drawable/search"
+                    android:drawablePadding="9dp"
+                    android:gravity="center_vertical"
+                    android:hint="搜索地点"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:singleLine="true"
+                    android:textColor="#ff7a7a7a"
+                    android:textColorHint="#ffa7a7a7"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_keyboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-15dp"
+                    android:gravity="center"
+                    android:onClick="cancelKeyBoard"
+                    android:padding="9dp"
+                    android:text="@string/cancel"
+                    android:textColor="#ff556b95"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_postion"
+                android:layout_above="@id/rv_map_position"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_postion"
+                    android:text=""
+                    android:textSize="13sp"
+                    android:textColor="@color/x_recycler_color_text_gray"
+                    android:padding="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="当前位置"
+                    android:textColor="@color/color_FF6833"
+                    android:textSize="15sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_map_position"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

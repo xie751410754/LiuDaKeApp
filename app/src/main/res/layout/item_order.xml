@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_radius_white_4dp"
+    android:paddingVertical="5dp">
+
+    <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+        android:id="@+id/ivStorePic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:src="@mipmap/img_default"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_oval="true" />
+
+    <TextView
+        android:id="@+id/tvStoreName"
+        style="@style/sp12.Black"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="15dp"
+        android:text="店铺名"
+        app:layout_constraintBottom_toBottomOf="@id/ivStorePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivStorePic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/goodsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/ivStorePic" />
+
+    <!--    <com.cdxz.liudake.view.roundedImageView.RoundedImageView-->
+    <!--        android:id="@+id/ivGoodsPic"-->
+    <!--        android:layout_width="80dp"-->
+    <!--        android:layout_height="80dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:adjustViewBounds="true"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        android:src="@color/color_FF5033"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/ivStorePic"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/ivStorePic"-->
+    <!--        app:riv_corner_radius="4dp" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvGoodsName"-->
+    <!--        style="@style/sp14.Black"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="12dp"-->
+    <!--        android:ellipsize="end"-->
+    <!--        android:maxLines="2"-->
+    <!--        android:text="海尔1.5匹新一级能效变频挂机空调客厅家用官方海尔1.5匹新一级能效变频挂机空调客厅家用官方"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/tvStoreName"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/ivGoodsPic"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/ivGoodsPic" />-->
+
+    <!--    <TextView-->
+    <!--        style="@style/sp12.999999"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="商品类别"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/tvGoodsName"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/tvGoodsName" />-->
+
+    <!--    <TextView-->
+    <!--        style="@style/sp16"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="￥0.00"-->
+    <!--        android:textColor="@color/color_FF5033"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/ivGoodsPic"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/tvGoodsName" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvGoodsNum"-->
+    <!--        style="@style/sp16.Black"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="x1"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/ivGoodsPic"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/tvStoreName" />-->
+
+    <TextView
+        android:id="@+id/tvOrderStatus"
+        style="@style/sp12.AppColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:text="待付款"
+        app:layout_constraintBottom_toBottomOf="@id/ivStorePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivStorePic" />
+
+    <TextView
+        android:id="@+id/tvOrderGoodsNum"
+        style="@style/sp12.999999"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:text="共 1 件商品"
+        app:layout_constraintStart_toStartOf="@id/goodsLayout"
+        app:layout_constraintTop_toBottomOf="@id/goodsLayout" />
+
+    <TextView
+        android:id="@+id/tvOrderPrice"
+        style="@style/sp12.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:text="合计：¥0.00（含运费 ¥0.00)"
+        app:layout_constraintEnd_toEndOf="@id/tvOrderStatus"
+        app:layout_constraintTop_toTopOf="@id/tvOrderGoodsNum" />
+
+    <TextView
+        android:id="@+id/tvOrderRightButton"
+        style="@style/sp12.AppColor"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/shape_order_button_bg"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:text="立即支付"
+        app:layout_constraintEnd_toEndOf="@id/tvOrderStatus"
+        app:layout_constraintTop_toBottomOf="@id/tvOrderPrice" />
+
+    <TextView
+        android:id="@+id/tvOrderLeftButton"
+        style="@style/sp12.999999"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginEnd="14dp"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:text="取消订单"
+        app:layout_constraintBottom_toBottomOf="@id/tvOrderRightButton"
+        app:layout_constraintEnd_toStartOf="@id/tvOrderRightButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

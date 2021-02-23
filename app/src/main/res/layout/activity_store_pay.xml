@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.store_manager.StorePayActivity">
+
+    <include layout="@layout/public_title_bar" />
+
+    <TextView
+        android:id="@+id/tvStoreName"
+        style="@style/sp16.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="30dp"
+        android:text="付款给*的店铺" />
+
+    <TextView
+        style="@style/sp12.Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:text="金额" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/sp18.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="￥"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etMoney"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            android:hint="请输入金额"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@color/color_F3F3F3" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvMallPay"
+        style="@style/sp12.Black"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:text="商城红米"
+        app:dt_left_drawable="@mipmap/icon_pay_n"
+        app:dt_left_height="14dp"
+        app:dt_left_width="14dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvShareRedmiPay"
+        style="@style/sp12.Black"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:text="分享红米"
+        app:dt_left_drawable="@mipmap/icon_pay_n"
+        app:dt_left_height="14dp"
+        app:dt_left_width="14dp" />
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/tvJiaoyiRedmiPay"
+        style="@style/sp12.Black"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:text="交易红米"
+        app:dt_left_drawable="@mipmap/icon_pay_n"
+        app:dt_left_height="14dp"
+        app:dt_left_width="14dp" />
+
+    <TextView
+        android:id="@+id/tvSubmitPay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_order_detail_red"
+        android:gravity="center"
+        android:text="确认支付"
+        android:textColor="@color/white" />
+</LinearLayout>
