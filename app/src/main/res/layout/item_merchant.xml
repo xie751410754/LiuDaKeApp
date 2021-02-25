@@ -1,48 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_margin="3dp"
     android:layout_height="wrap_content">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:layout_marginTop="@dimen/dp_10"
-        android:id="@+id/tv_name"
-        android:textColor="#333333"
-        ></TextView>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_item_history_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/icon_yunying"
+                app:layout_constraintBottom_toBottomOf="@id/ivTopBg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivTopBg"
+                app:riv_oval="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:id="@+id/tv_name"
+                android:textColor="#333333"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textSize="14sp"
+                android:id="@+id/tv_address"
+                android:textColor="#666666"
+                />
+
+            <TextView
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_marginTop="6dp"
+                android:id="@+id/tv_time"
+                android:textColor="#666666"
+                />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:textSize="14sp"
-        android:id="@+id/tv_address"
-        android:textColor="#666666"
-        ></TextView>
+            <TextView
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textSize="14sp"
+                android:id="@+id/tv_phone"
+                android:textColor="#666666"
+                />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_marginTop="6dp"
-        android:id="@+id/tv_time"
-        android:textColor="#666666"
-        ></TextView>
+        </LinearLayout>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:textSize="14sp"
-        android:id="@+id/tv_phone"
-        android:textColor="#666666"
-        ></TextView>
 
     <View
         android:id="@+id/divider"
@@ -50,6 +83,7 @@
         android:layout_height="1px"
         android:layout_marginTop="@dimen/dp_10"
         android:background="#eee"
-        ></View>
+        />
 
+    </LinearLayout>
 </LinearLayout>

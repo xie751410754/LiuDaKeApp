@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="#eeeeee"
-        ></View>
+        />
 
     <LinearLayout
         android:id="@+id/ll_filter_p"
@@ -54,7 +54,7 @@
             android:layout_width="1dp"
             android:layout_height="12dp"
             android:layout_marginLeft="@dimen/dp_10"
-            android:background="#eeeeee"></View>
+            android:background="#eeeeee"/>
 
         <LinearLayout
             android:id="@+id/ll_type"
@@ -86,7 +86,7 @@
             android:layout_width="1dp"
             android:layout_height="12dp"
             android:layout_marginLeft="@dimen/dp_10"
-            android:background="#eeeeee"></View>
+            android:background="#eeeeee"/>
 
         <LinearLayout
             android:id="@+id/ll_filter"
@@ -121,7 +121,7 @@
     android:layout_width="match_parent"
     android:layout_height="1px"
     android:background="#eeeeee"
-    ></View>
+    />
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/sml"
@@ -135,7 +135,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_height="match_parent"
-            ></androidx.recyclerview.widget.RecyclerView>
+            />
 
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
