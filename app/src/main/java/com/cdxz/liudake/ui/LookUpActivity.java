@@ -289,6 +289,11 @@ public class LookUpActivity extends BaseActivity {
                     BaseBean<List<StoreBean>> baseBean = new Gson().
                             fromJson(json,new TypeToken<BaseBean<List<StoreBean>>>(){}.getType());
                     if(baseBean.getData()!=null){
+
+                        if (pageSize>baseBean.getData().size()){
+                            sml.finishLoadMoreWithNoMoreData();
+
+                        }
                         if(page==1){
                             datas.clear();
                             datas.addAll(baseBean.getData());
