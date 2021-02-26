@@ -11,8 +11,8 @@ android {
         applicationId "com.cdxz.liudake"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 17
-        versionName "1.9.5"
+        versionCode 18
+        versionName "1.9.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
@@ -144,5 +144,8 @@ dependencies {
     implementation(name: 'alipaySdk-15.7.7-20200702160044', ext: 'aar')
     implementation files('libs/libammsdk.jar')
     implementation 'com.sunfusheng:MarqueeView:1.4.1'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
 
 }
