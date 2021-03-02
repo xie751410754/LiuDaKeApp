@@ -94,10 +94,10 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginBinding> {
                 ToastUtils.showShort("请输入手机号");
                 return;
             }
-            if (!RegexUtils.isMobileExact(phone)) {
-                ToastUtils.showShort("请输入正确的手机号");
-                return;
-            }
+//            if (!RegexUtils.isMobileExact(phone)) {
+//                ToastUtils.showShort("请输入正确的手机号");
+//                return;
+//            }
             if (binding.forgetPwd.getText().toString().equals("忘记密码")) {
                 String pwd = binding.passwordEdit.getText().toString();
                 if (StringUtils.isEmpty(pwd)) {

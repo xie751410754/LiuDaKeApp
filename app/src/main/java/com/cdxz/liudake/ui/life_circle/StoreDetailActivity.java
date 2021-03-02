@@ -22,8 +22,11 @@ import com.cdxz.liudake.adapter.life_circle.StoreCommentAdapter;
 import com.cdxz.liudake.adapter.shop_mall.GoodsDetailBannerAdapter;
 import com.cdxz.liudake.api.HttpsUtil;
 import com.cdxz.liudake.bean.LifeCircleDetailBean;
+import com.cdxz.liudake.pop.PopMap;
+import com.cdxz.liudake.pop.PopSex;
 import com.cdxz.liudake.ui.base.BaseActivity;
 import com.cdxz.liudake.util.ParseUtils;
+import com.cdxz.liudake.util.ThirdPartyMapsGuide;
 import com.cdxz.liudake.view.DrawableTextView;
 import com.lxj.xpopup.XPopup;
 import com.youth.banner.Banner;
@@ -114,14 +117,36 @@ public class StoreDetailActivity extends BaseActivity {
             tvStoreAddress.setText(detailBean.getAddress());
             tvShopPhone.setText(detailBean.getContact());
             findViewById(R.id.tvGo).setOnClickListener(v -> {
-                Uri uri = Uri.parse("geo:" + detailBean.getLng() + "," + detailBean.getLat());  //打开地图定位
-                Intent it = new Intent(Intent.ACTION_VIEW, uri);
-                ComponentName cn = it.resolveActivity(getPackageManager());
-                if (cn == null) {
-                    ToastUtils.showShort("请先安装第三方导航软件");
-                } else {
-                    startActivity(it);
-                }
+//                Uri uri = Uri.parse("geo:" + detailBean.getLng() + "," + detailBean.getLat()+"?q="+detailBean.getName());  //打开地图定位
+//
+//                Intent it = new Intent(Intent.ACTION_VIEW, uri);
+//                ComponentName cn = it.resolveActivity(getPackageManager());
+//                if (cn == null) {
+//                    ToastUtils.showShort("请先安装第三方导航软件");
+//                } else {
+//                    startActivity(it);
+//                }
+
+
+                new XPopup.Builder(this)
+                        .asCustom(new PopMap(context, position -> {
+                            switch (position) {
+                                case 1:
+                                    ThirdPartyMapsGuide.goToGaoDeMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()), detailBean.getName());
+
+                                    break;
+                                case 2:
+                                    ThirdPartyMapsGuide.baiduMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()), detailBean.getName());
+
+                                    break;
+                                case 3:
+                                    ThirdPartyMapsGuide.goToTencentMap(context, detailBean.getName(), Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()));
+
+                                    break;
+                                default:
+                            }
+                        })).show();
+
             });
         });
     }

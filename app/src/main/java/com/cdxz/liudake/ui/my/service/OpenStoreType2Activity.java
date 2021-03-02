@@ -102,10 +102,10 @@ public class OpenStoreType2Activity extends BaseActivity {
                 ToastUtils.showShort("请输入手机号");
                 return;
             }
-            if (!RegexUtils.isMobileExact(phone)) {
-                ToastUtils.showShort("请输入正确的手机号");
-                return;
-            }
+//            if (!RegexUtils.isMobileExact(phone)) {
+//                ToastUtils.showShort("请输入正确的手机号");
+//                return;
+//            }
             HttpsUtil.getInstance(this).getSmsCode(phone, 5, object -> {
                 downTimer.start();
             });
@@ -219,10 +219,10 @@ public class OpenStoreType2Activity extends BaseActivity {
                 ToastUtils.showShort("请输入手机号");
                 return;
             }
-            if (!RegexUtils.isMobileExact(phone)) {
-                ToastUtils.showShort("请输入正确的手机号");
-                return;
-            }
+//            if (!RegexUtils.isMobileExact(phone)) {
+//                ToastUtils.showShort("请输入正确的手机号");
+//                return;
+//            }
             if (StringUtils.isEmpty(code)) {
                 ToastUtils.showShort("请输入验证码");
                 return;

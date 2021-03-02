@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_pop_goods_specifica_bg"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/sp18.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="选择地图"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_F3F3F3" />
+
+    <TextView
+        android:id="@+id/tv_gaodeMap"
+        style="@style/sp16.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="高德地图" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_F3F3F3" />
+
+    <TextView
+        android:id="@+id/baiduMap"
+        style="@style/sp16.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="百度地图" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_F3F3F3" />
+
+    <TextView
+        android:id="@+id/tv_tencentMap"
+        style="@style/sp16.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="腾讯地图" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_F3F3F3" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        style="@style/sp16.AppColor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="取消" />
+
+</LinearLayout>
