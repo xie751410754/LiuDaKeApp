@@ -133,7 +133,6 @@ public class StoreDetailActivity extends BaseActivity {
                             switch (position) {
                                 case 1:
 
-
                                     ThirdPartyMapsGuide.goToGaoDeMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()), detailBean.getName());
 
                                     break;
