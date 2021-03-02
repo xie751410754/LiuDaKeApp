@@ -132,10 +132,13 @@ public class StoreDetailActivity extends BaseActivity {
                         .asCustom(new PopMap(context, position -> {
                             switch (position) {
                                 case 1:
+
+
                                     ThirdPartyMapsGuide.goToGaoDeMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()), detailBean.getName());
 
                                     break;
                                 case 2:
+
                                     ThirdPartyMapsGuide.baiduMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()), detailBean.getName());
 
                                     break;
