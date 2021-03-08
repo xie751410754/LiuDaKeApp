@@ -74,18 +74,23 @@ public class MapActivity extends BaseTitleActivity<ActivityMapBinding> {
         findViewById(R.id.tv_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MapHelper.Place dataBean = placeMap.get("place");
+                Intent intent = new Intent();
 
                 if (placeMap.get("place") == null){
-                    ToastUtils.showShort("请选择地点");
-                    return;
+//                    ToastUtils.showShort("请选择地点");
+//                    return;
+                    intent.putExtra("address",baiduMapHelper.currentAddress);
+                    intent.putExtra("lng",baiduMapHelper.lng+"");
+                    intent.putExtra("lat",baiduMapHelper.lat+"");
+
+                }else {
+                    intent.putExtra("address", dataBean.getAddress());
+                    intent.putExtra("lng",dataBean.getLatLng().getLongitude()+"");
+                    intent.putExtra("lat",dataBean.getLatLng().getLatitude()+"");
                 }
 
-                MapHelper.Place dataBean = placeMap.get("place");
 
-                Intent intent = new Intent();
-                intent.putExtra("address",dataBean.getAddress());
-                intent.putExtra("lng",dataBean.getLatLng().getLongitude()+"");
-                intent.putExtra("lat",dataBean.getLatLng().getLatitude()+"");
                 setResult(RESULT_OK,intent);
                 finish();
             }
@@ -95,6 +100,8 @@ public class MapActivity extends BaseTitleActivity<ActivityMapBinding> {
         initEvent();
 
     }
+
+    BaiduMapHelper baiduMapHelper;
 
     private void initMap() {
         mapHelper = MapHelper.getInstance();
@@ -111,7 +118,7 @@ public class MapActivity extends BaseTitleActivity<ActivityMapBinding> {
                 public void onSuccess(MapHelper.LatLng latLng) {
                     // 记录开始时定位的位置，用来点击按钮跳回来，
                     beginLatLng = latLng;
-                    BaiduMapHelper baiduMapHelper = (BaiduMapHelper)MapHelper.getInstance(MapHelper.MapType.BAIDU);
+                    baiduMapHelper = (BaiduMapHelper)MapHelper.getInstance(MapHelper.MapType.BAIDU);
                     binding.tvPostion.setText(baiduMapHelper.currentAddress);
                     picker.moveMap(latLng);
                     // 加载周边位置信息，

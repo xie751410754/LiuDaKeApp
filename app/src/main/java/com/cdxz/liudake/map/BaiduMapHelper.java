@@ -47,6 +47,8 @@ public class BaiduMapHelper extends MapHelper {
     private SoftReference<Picker> softPicker = new SoftReference<>(null);
     private String currentCity;
     public String currentAddress = "";
+    public double lat ;
+    public double lng ;
     private BaiduMapHelper(Context context) {
         this.context = context;
         locationClient = new LocationClient(context);
@@ -127,6 +129,9 @@ public class BaiduMapHelper extends MapHelper {
         locationClient.start();
     }
 
+
+
+
     @Override
     public void requestLatLng(@Nullable final OnSuccessListener<LatLng> onSuccessListener,
                               @Nullable final OnErrorListener onErrorListener) {
@@ -136,6 +141,8 @@ public class BaiduMapHelper extends MapHelper {
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 currentCity = location.getCity();
                 currentAddress = location.getAddrStr();
+                lat = location.getLatitude();
+                lng = location.getLongitude();
                 if (onSuccessListener != null) {
                     onSuccessListener.onSuccess(latLng);
                 }

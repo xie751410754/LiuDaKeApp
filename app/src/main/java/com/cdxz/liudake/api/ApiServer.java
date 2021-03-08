@@ -18,6 +18,7 @@ import com.cdxz.liudake.bean.StoreOpenStatus;
 import com.cdxz.liudake.bean.StoreQRBean;
 import com.cdxz.liudake.bean.StoreTodayInviteBean;
 import com.cdxz.liudake.bean.StoreTodaySettlementBean;
+import com.cdxz.liudake.bean.StoreTodaySettlementCashBean;
 import com.cdxz.liudake.bean.StoreUnderMsgResult;
 
 import java.io.File;
@@ -584,6 +585,7 @@ public interface ApiServer {
             @Field("zhekou") String zhekou,
 
             @Field("code") String code,
+            @Field("phone") String phone,
             @Field("xizuetoken") String xizuetoken
     );
 
@@ -697,6 +699,21 @@ public interface ApiServer {
      */
     @GET("shop/api/getHongmiToday")
     Observable<BaseBean<List<StoreTodaySettlementBean>>> storeTodaySettlement(
+            @Query("uid") String uid,
+            @Query("xizuetoken") String xizuetoken,
+            @Query("shop_id") String shopId
+
+    );
+    /**
+     * 店铺管理-商户今日结算现金列表
+     *
+     * @param uid
+     * @param xizuetoken
+     * @param shopId
+     * @return
+     */
+    @GET("shop/api/getYibaoToday")
+    Observable<BaseBean<List<StoreTodaySettlementCashBean>>> storeTodaySettlementCash(
             @Query("uid") String uid,
             @Query("xizuetoken") String xizuetoken,
             @Query("shop_id") String shopId

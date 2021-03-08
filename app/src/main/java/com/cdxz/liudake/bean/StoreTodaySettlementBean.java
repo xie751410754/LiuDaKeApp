@@ -23,6 +23,7 @@ public class StoreTodaySettlementBean extends Object implements MultiItemEntity 
     private String createtime = "";
     private String receipt_amount;
     private String to_account_time;
+    private String create_time;
 
     public String getHongmi() {
         return hongmi;
@@ -75,6 +76,14 @@ public class StoreTodaySettlementBean extends Object implements MultiItemEntity 
     @Override
     public int getItemType() {
         return 0;
+    }
+
+    public String getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(String create_time) {
+        this.create_time = create_time;
     }
 }
 

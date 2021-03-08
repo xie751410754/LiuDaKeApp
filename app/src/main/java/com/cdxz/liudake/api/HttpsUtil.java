@@ -24,6 +24,7 @@ import com.cdxz.liudake.bean.StoreOpenStatus;
 import com.cdxz.liudake.bean.StoreQRBean;
 import com.cdxz.liudake.bean.StoreTodayInviteBean;
 import com.cdxz.liudake.bean.StoreTodaySettlementBean;
+import com.cdxz.liudake.bean.StoreTodaySettlementCashBean;
 import com.cdxz.liudake.bean.StoreUnderMsgResult;
 import com.cdxz.liudake.util.UserInfoUtil;
 
@@ -1107,7 +1108,7 @@ public class HttpsUtil {
             String shop_env_picture1,//环境照
             String shop_env_picture2,
             String zhekou,
-            String code, HttpsCallback callback) {
+            String code, String phone ,HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
                 .regShopCompany(UserInfoUtil.getUid(), 2,
                         shop_type,
@@ -1133,6 +1134,7 @@ public class HttpsUtil {
                         shop_env_picture2,
                         zhekou,
                         code,
+                        phone,
                         UserInfoUtil.getToken()
                 )
                 .subscribeOn(Schedulers.io())
@@ -1351,6 +1353,19 @@ public class HttpsUtil {
     public void storeTodaySettlement(String shopId, BaseObserver<BaseBean<List<StoreTodaySettlementBean>>> baseObserver) {
         ApiRetrofit.getInstance().getApiService()
                 .storeTodaySettlement(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(baseObserver);
+    }
+    /**
+     * 店铺管理-商户今日结算现金列表
+     *
+     * @param shopId
+     * @return
+     */
+    public void storeTodaySettlementCash(String shopId, BaseObserver<BaseBean<List<StoreTodaySettlementCashBean>>> baseObserver) {
+        ApiRetrofit.getInstance().getApiService()
+                .storeTodaySettlementCash(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(baseObserver);

@@ -5,6 +5,7 @@ import com.blankj.utilcode.util.TimeUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.bean.StoreTodayInviteBean;
 import com.cdxz.liudake.bean.StoreTodaySettlementBean;
+import com.cdxz.liudake.bean.StoreTodaySettlementCashBean;
 import com.chad.library.adapter.base.BaseDelegateMultiAdapter;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -40,25 +41,51 @@ public class StoreBillAdapter extends BaseDelegateMultiAdapter<Object,BaseViewHo
     }
 
 
+    private int type =0;
+
+    public void setType(int type){
+        this.type = type;
+    }
+
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, Object o) {
 
         if (baseViewHolder.getItemViewType() == 0){
-            StoreTodaySettlementBean bean = (StoreTodaySettlementBean) o;
 
-            baseViewHolder.setText(R.id.tv_postion,"第"+(baseViewHolder.getPosition()+1)+"位");
-            baseViewHolder.setText(R.id.tv_name,bean.getName() +" "+bean.getPhone());
+            switch (type){
+                case 0:
+                    StoreTodaySettlementBean bean = (StoreTodaySettlementBean) o;
 
-            if (!ObjectUtils.isEmpty(bean.getTo_account_time())){
-                if (!ObjectUtils.isEmpty(bean.getCreatetime())){
-                    baseViewHolder.setText(R.id.tv_time,TimeUtils.millis2String(Long.valueOf(bean.getCreatetime())*1000));
-                }
+                    baseViewHolder.setText(R.id.tv_postion,"第"+(baseViewHolder.getPosition()+1)+"位");
+                    baseViewHolder.setText(R.id.tv_name,bean.getName() +" "+bean.getPhone());
 
+                    if (!ObjectUtils.isEmpty(bean.getTo_account_time())){
+                        if (!ObjectUtils.isEmpty(bean.getCreate_time())){
+                            baseViewHolder.setText(R.id.tv_time,TimeUtils.millis2String(Long.valueOf(bean.getCreate_time())*1000));
+                        }
+
+                    }
+
+                    baseViewHolder.setText(R.id.tv_price,"￥"+bean.getReceipt_amount());
+                    baseViewHolder.setText(R.id.tv_hm,"红米支付"+bean.getReceipt_amount());
+                    break;
+                case 1:
+                    StoreTodaySettlementCashBean bean1 = (StoreTodaySettlementCashBean) o;
+
+                    baseViewHolder.setText(R.id.tv_postion,"第"+(baseViewHolder.getPosition()+1)+"位");
+                    baseViewHolder.setText(R.id.tv_name,bean1.getName() +" "+bean1.getPhone());
+
+                        if (!ObjectUtils.isEmpty(bean1.getPaytime())){
+                            baseViewHolder.setText(R.id.tv_time,TimeUtils.millis2String(Long.valueOf(bean1.getPaytime())*1000));
+                        }
+
+
+                    baseViewHolder.setText(R.id.tv_price,"￥"+bean1.getTotalprice());
+                    baseViewHolder.setText(R.id.tv_hm,bean1.getPayment()+bean1.getTotalprice());
+                    break;
             }
 
-            baseViewHolder.setText(R.id.tv_price,"￥"+bean.getReceipt_amount());
-            baseViewHolder.setText(R.id.tv_hm,"积攒红米"+bean.getReceipt_amount());
 
         }else if (baseViewHolder.getItemViewType() == 1){
             StoreTodayInviteBean bean = (StoreTodayInviteBean) o;

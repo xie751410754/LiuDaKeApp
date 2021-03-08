@@ -16,6 +16,7 @@ import com.cdxz.liudake.base.BaseObserver;
 import com.cdxz.liudake.bean.IndexAllInfoBean;
 import com.cdxz.liudake.bean.StoreTodayInviteBean;
 import com.cdxz.liudake.bean.StoreTodaySettlementBean;
+import com.cdxz.liudake.bean.StoreTodaySettlementCashBean;
 import com.cdxz.liudake.databinding.ActivityBillBinding;
 import com.cdxz.liudake.ui.base.BaseTitleActivity;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -86,6 +87,39 @@ public class BillActivity extends BaseTitleActivity<ActivityBillBinding> {
                 getStoreTodayInvite(true);
             }
         });
+        binding.btnRedMi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.btnCash.setTextColor(Color.parseColor("#666666"));
+                binding.btnRedMi.setTextColor(Color.parseColor("#E62129"));
+
+                binding.refresh.setEnableLoadMore(true);
+                binding.refresh.setEnableRefresh(true);
+
+                adapter.getData().clear();
+                adapter.notifyDataSetChanged();
+                getStoreTodaySettlement();
+                adapter.setType(0);
+
+            }
+        });
+        binding.btnCash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.btnRedMi.setTextColor(Color.parseColor("#666666"));
+                binding.btnCash.setTextColor(Color.parseColor("#E62129"));
+
+
+                binding.refresh.setEnableLoadMore(true);
+                binding.refresh.setEnableRefresh(true);
+
+                adapter.getData().clear();
+                adapter.notifyDataSetChanged();
+                getStoreTodaySettlementCash();
+                adapter.setType(1);
+
+            }
+        });
 
         binding.refresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
@@ -109,6 +143,17 @@ public class BillActivity extends BaseTitleActivity<ActivityBillBinding> {
         HttpsUtil.getInstance(this).storeTodaySettlement(shopId, new BaseObserver<BaseBean<List<StoreTodaySettlementBean>>>(this,true) {
             @Override
             public void onSuccess(BaseBean<List<StoreTodaySettlementBean>> listBaseBean) {
+                if (listBaseBean.getData()!=null&&listBaseBean.getData().size()>0){
+                    adapter.setList(listBaseBean.getData());
+                }
+
+            }
+        });
+    }
+    public void getStoreTodaySettlementCash(){
+        HttpsUtil.getInstance(this).storeTodaySettlementCash(shopId, new BaseObserver<BaseBean<List<StoreTodaySettlementCashBean>>>(this,true) {
+            @Override
+            public void onSuccess(BaseBean<List<StoreTodaySettlementCashBean>> listBaseBean) {
                 if (listBaseBean.getData()!=null&&listBaseBean.getData().size()>0){
                     adapter.setList(listBaseBean.getData());
                 }

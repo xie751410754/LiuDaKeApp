@@ -71,10 +71,11 @@ public class OpenStoreType3Activity extends Base2Activity<ActivityOpenStoreType3
         getRegion();
     }
 
+    String phone;
     @Override
     protected void initListener() {
         binding.tvGetCode.setOnClickListener(v -> {
-            String phone = binding.etPhone.getText().toString();
+             phone = binding.etPhone.getText().toString();
             if (StringUtils.isEmpty(phone)) {
                 ToastUtils.showShort("请输入手机号");
                 return;
@@ -293,7 +294,7 @@ public class OpenStoreType3Activity extends Base2Activity<ActivityOpenStoreType3
             LogUtils.e(" ======= " + region_name);
             HttpsUtil.getInstance(this).regShopCompany(
                     3, name, jianjie, xukeNum, zhengjian, email, contact, province_name, city_name, region_name, address, contactperson_number, kaihu,
-                    number, license, contactperson, front_picture + "," + reverse_picture, permit_picture, shop_picture, shop_env_picture1, shop_env_picture2, zhekou, code, object -> {
+                    number, license, contactperson, front_picture + "," + reverse_picture, permit_picture, shop_picture, shop_env_picture1, shop_env_picture2, zhekou, code,phone, object -> {
                         ActivityUtils.finishActivity(OpenStoreTypeActivity.class);
                         finish();
                     });
