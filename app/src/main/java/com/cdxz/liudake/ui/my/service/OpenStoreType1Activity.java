@@ -120,7 +120,6 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
         region_name = shopInfoDto.getArea_id();
 
 
-
         Glide.with(this)
                 .load(Constants.BASE_URL+"/"+shopInfoDto.getLicense())
                 .placeholder(R.mipmap.img_default)
