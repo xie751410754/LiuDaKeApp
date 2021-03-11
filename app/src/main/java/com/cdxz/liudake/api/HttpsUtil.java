@@ -1705,6 +1705,23 @@ public class HttpsUtil {
                     }
                 });
     }
+    /**
+     * 入住信息
+     *
+     */
+    public void getShopInfo(int shopType, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .getShopInfo(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopType)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, false) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+//                        ToastUtils.showShort(response.getState().getMsg());
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
 
 
 }

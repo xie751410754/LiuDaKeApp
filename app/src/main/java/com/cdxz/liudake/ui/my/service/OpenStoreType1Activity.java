@@ -2,6 +2,7 @@ package com.cdxz.liudake.ui.my.service;
 
 import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
@@ -15,10 +16,13 @@ import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.cdxz.liudake.R;
+import com.cdxz.liudake.api.HttpsCallback;
 import com.cdxz.liudake.api.HttpsUtil;
 import com.cdxz.liudake.api.UploadUtil;
 import com.cdxz.liudake.base.Constants;
+import com.cdxz.liudake.bean.LoginBean;
 import com.cdxz.liudake.bean.RegionBean;
+import com.cdxz.liudake.bean.ShopInfoDto;
 import com.cdxz.liudake.databinding.ActivityOpenStoreType1Binding;
 import com.cdxz.liudake.ui.base.Base2Activity;
 import com.cdxz.liudake.util.ParseUtils;
@@ -67,8 +71,92 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
 
     @Override
     protected void initDatas() {
+        
+        getMyShopInfo();
+        
         getRegion();
     }
+
+    private void getMyShopInfo() {
+
+        HttpsUtil.getInstance(this).getShopInfo(1, new HttpsCallback() {
+            @Override
+            public void onResult(Object object) {
+                ShopInfoDto shopInfoDto = ParseUtils.parseJsonObject(GsonUtils.toJson(object), ShopInfoDto.class);
+
+                setInfo(shopInfoDto);
+            }
+
+
+        });
+
+
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setInfo(ShopInfoDto shopInfoDto) {
+        binding.etName.setText(shopInfoDto.getName());
+        binding.etJianjie.setText(shopInfoDto.getJianjie());
+        binding.etLicenseNumber.setText(shopInfoDto.getXukeNum());
+        binding.etIDCardNumber.setText(shopInfoDto.getZhengjian());
+        binding.etEmail.setText(shopInfoDto.getEmail());
+        binding.etCompanyPhone.setText(shopInfoDto.getContact());
+        binding.tvCity.setText(shopInfoDto.getProvince_name()+" "+shopInfoDto.getCity_name()+" "+shopInfoDto.getRegion_name());
+        binding.etAddress.setText(shopInfoDto.getAddress());
+        binding.etBlank.setText(shopInfoDto.getContactperson_number());
+        binding.etBlankCode.setText(shopInfoDto.getKaihu());
+        binding.etNumber.setText(shopInfoDto.getNumber());
+
+        license = shopInfoDto.getLicense();
+        front_picture = shopInfoDto.getPicture1();
+        reverse_picture = shopInfoDto.getPicture2();
+        permit_picture = shopInfoDto.getPermit_picture();
+        shop_picture = shopInfoDto.getShop_picture();
+        shop_env_picture1 = shopInfoDto.getShop_env_picture1();
+        shop_env_picture2 = shopInfoDto.getShop_env_picture2();
+        province_name = shopInfoDto.getSheng_id();
+        city_name = shopInfoDto.getCity_id();
+        region_name = shopInfoDto.getArea_id();
+
+
+
+        LogUtils.e("xzlfront_picture"+shopInfoDto.getPicture1());
+
+        Glide.with(this)
+                .load(Constants.BASE_URL+"/"+shopInfoDto.getLicense())
+                .placeholder(R.mipmap.img_default)
+                .into(binding.ivLicense);
+
+        binding.etContactPerson.setText(shopInfoDto.getContactperson());
+        Glide.with(this)
+                .load(Constants.BASE_URL+"/"+shopInfoDto.getPicture1())
+                .placeholder(R.mipmap.img_default)
+                .into(binding.ivFront);
+        Glide.with(this)
+                .load(Constants.BASE_URL+"/"+shopInfoDto.getPicture2())
+                .placeholder(R.mipmap.img_default)
+                .into(binding.ivReverse);
+        Glide.with(this)
+                .load(Constants.BASE_URL+"/"+shopInfoDto.getPermit_picture())
+                .placeholder(R.mipmap.img_default)
+                .into(binding.ivKaiHuPic);
+        Glide.with(this)
+                .load(Constants.BASE_URL+"/"+shopInfoDto.getShop_picture())
+                .placeholder(R.mipmap.img_default)
+                .into(binding.ivMenTou);
+        Glide.with(this)
+                .load(Constants.BASE_URL+"/"+shopInfoDto.getShop_env_picture1())
+                .placeholder(R.mipmap.img_default)
+                .into(binding.ivPicture1);
+        Glide.with(this)
+                .load(Constants.BASE_URL+"/"+shopInfoDto.getShop_env_picture2())
+                .placeholder(R.mipmap.img_default)
+                .into(binding.ivPicture2);
+        binding.etZhekou.setText(shopInfoDto.getShare_rate());
+
+    }
+
     String phone;
     @Override
     protected void initListener() {

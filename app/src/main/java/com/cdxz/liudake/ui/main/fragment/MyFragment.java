@@ -285,6 +285,9 @@ public class MyFragment extends BaseFragment {
                                             ToastUtils.showShort("您的入驻申请正在审核！");
                                         } else if (bean.getStatus().equals("1")) {
                                             ToastUtils.showShort("您已经入住成功啦！");
+                                        }else if (bean.getStatus().equals("2")){
+                                            startActivity(new Intent(getActivity(), OpenStoreTypeActivity.class));
+
                                         }
                                     }
                                 } else {

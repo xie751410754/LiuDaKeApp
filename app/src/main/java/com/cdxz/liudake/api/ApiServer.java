@@ -894,4 +894,19 @@ public interface ApiServer {
             @Field("xizuetoken") String xizuetoken,
             @Field("id") String id
     );
+    /**
+     * 入住申请信息
+     *
+     * @param uid
+     * @param xizuetoken
+     * @param shop_type
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("shop/api/getShopInfo")
+    Observable<BaseBean> getShopInfo(
+            @Field("uid") String uid,
+            @Field("xizuetoken") String xizuetoken,
+            @Field("shop_type") int shop_type
+    );
 }
