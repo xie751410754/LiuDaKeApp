@@ -118,7 +118,6 @@ public class OpenStoreType3Activity extends Base2Activity<ActivityOpenStoreType3
 
 
 
-        LogUtils.e("xzlfront_picture"+shopInfoDto.getPicture1());
 
         Glide.with(this)
                 .load(Constants.BASE_URL+"/"+shopInfoDto.getLicense())
