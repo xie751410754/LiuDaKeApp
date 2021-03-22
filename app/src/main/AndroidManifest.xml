@@ -57,6 +57,7 @@
         <activity android:name=".ui.order.OrderDetailActivity" />
         <activity android:name=".ui.order.OrderListActivity" />
         <activity android:name=".ui.life_circle.StoreDetailActivity" />
+        <activity android:name=".ui.life_circle.StoreDetailActivity2" />
         <activity android:name=".ui.life_circle.StoreListActivity" />
         <activity android:name=".ui.shop_mall.GoodsClassActivity" />
         <activity android:name=".ui.shop_mall.GoodsListActivity" />

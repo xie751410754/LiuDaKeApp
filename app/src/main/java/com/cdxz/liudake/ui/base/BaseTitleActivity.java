@@ -1,6 +1,8 @@
 package com.cdxz.liudake.ui.base;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +14,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
+
+import com.blankj.utilcode.util.AdaptScreenUtils;
 
 public abstract class BaseTitleActivity<T extends ViewDataBinding> extends AppCompatActivity {
     protected T binding;
@@ -74,4 +78,7 @@ public abstract class BaseTitleActivity<T extends ViewDataBinding> extends AppCo
     public void initViewObservable() {
 
     }
+
+
+
 }

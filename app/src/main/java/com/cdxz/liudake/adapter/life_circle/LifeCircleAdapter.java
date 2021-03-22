@@ -7,6 +7,7 @@ import com.cdxz.liudake.R;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.LifeCircleBean;
 import com.cdxz.liudake.ui.life_circle.StoreDetailActivity;
+import com.cdxz.liudake.ui.life_circle.StoreDetailActivity2;
 import com.cdxz.liudake.view.roundedImageView.RoundedImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
@@ -15,14 +16,14 @@ import java.util.List;
 
 public class LifeCircleAdapter extends BaseQuickAdapter<LifeCircleBean, BaseViewHolder> {
     public LifeCircleAdapter(List<LifeCircleBean> data) {
-        super(R.layout.item_store, data);
+        super(R.layout.item_store_new, data);
     }
 
     @SuppressLint("DefaultLocale")
     @Override
     protected void convert(BaseViewHolder baseViewHolder, LifeCircleBean bean) {
         baseViewHolder.itemView.setOnClickListener(v -> {
-            StoreDetailActivity.startStoreDetailActivity(getContext(), bean.getId());
+            StoreDetailActivity2.startStoreDetailActivity(getContext(), bean.getId());
         });
         if (bean.getLogo().startsWith("http://") || bean.getLogo().startsWith("https://")) {
             Glide.with(getContext())

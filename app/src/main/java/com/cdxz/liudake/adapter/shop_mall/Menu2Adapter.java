@@ -17,7 +17,7 @@ import java.util.List;
 
 public class Menu2Adapter extends BaseQuickAdapter<HomeIndexBean.GoodsCuxiao1Bean, BaseViewHolder> {
     public Menu2Adapter(List<HomeIndexBean.GoodsCuxiao1Bean> data) {
-        super(R.layout.item_shop_mall_menu2, data);
+        super(R.layout.item_shop_mall_menu2_new, data);
     }
 
     @Override

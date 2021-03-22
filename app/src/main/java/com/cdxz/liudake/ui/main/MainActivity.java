@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.net.Uri;
 
 import androidx.annotation.Nullable;
@@ -21,11 +23,13 @@ import com.allenliu.versionchecklib.v2.AllenVersionChecker;
 import com.allenliu.versionchecklib.v2.builder.DownloadBuilder;
 import com.allenliu.versionchecklib.v2.builder.UIData;
 import com.allenliu.versionchecklib.v2.callback.RequestVersionListener;
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.api.HttpsCallback;
@@ -36,9 +40,12 @@ import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.VersionUpdateBean;
 import com.cdxz.liudake.ui.base.BaseActivity;
 import com.cdxz.liudake.ui.main.fragment.LifeCircleFragment;
+import com.cdxz.liudake.ui.main.fragment.LifeCircleFragment2;
 import com.cdxz.liudake.ui.main.fragment.MyFragment;
+import com.cdxz.liudake.ui.main.fragment.MyFragment2;
 import com.cdxz.liudake.ui.main.fragment.ShopCarFragment;
 import com.cdxz.liudake.ui.main.fragment.ShopMallFragment;
+import com.cdxz.liudake.ui.main.fragment.ShopMallFragment2;
 import com.cdxz.liudake.util.ParseUtils;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -87,10 +94,10 @@ public class MainActivity extends BaseActivity {
         badge.setBackgroundColor(ContextCompat.getColor(this, R.color.appColor));
         badge.setBadgeTextColor(ContextCompat.getColor(this, R.color.white));
         mFragments = new ArrayList<>();
-        mFragments.add(new ShopMallFragment());
-        mFragments.add(new LifeCircleFragment());
+        mFragments.add(new ShopMallFragment2());
+        mFragments.add(new LifeCircleFragment2());
         mFragments.add(new ShopCarFragment());
-        mFragments.add(new MyFragment());
+        mFragments.add(new MyFragment2());
         setFragmentPosition(0);
     }
 
@@ -103,7 +110,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initDatas() {
 
-        LogUtils.e("xzl"+((Math.sqrt(360*360+640*640))/72));
+        LogUtils.e("xzl"+((Math.sqrt(375*375+667*667))/72));
         BusUtils.register(this);
     }
 
@@ -274,4 +281,14 @@ public class MainActivity extends BaseActivity {
         AllenVersionChecker.getInstance().cancelAllMission();
 
     }
+
+    @Override
+    public Resources getResources() {
+        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            return AdaptScreenUtils.adaptHeight(super.getResources(), 750);
+        } else {
+            return AdaptScreenUtils.adaptWidth(super.getResources(), 750);
+        }
+    }
+
 }

@@ -111,6 +111,14 @@ public class HomeIndexBean implements Serializable {
     }
 
     public static class GoodsActivityClassBean implements Serializable {
+        public boolean isSelected() {
+            return isSelected;
+        }
+
+        public void setSelected(boolean selected) {
+            isSelected = selected;
+        }
+
         /**
          * id : 1
          * url : /Uploads/Picture/20201025/s_ae7fe04700d50653.png
@@ -118,6 +126,8 @@ public class HomeIndexBean implements Serializable {
          * sort : 1
          * create_time : 2011-11-11 22:02:00
          */
+
+        public boolean isSelected = false;
 
         private String id;
         private String url;

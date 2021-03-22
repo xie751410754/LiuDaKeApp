@@ -11,23 +11,30 @@
       "{ desc: com.cdxz.liudake.ui.life_circle.SearchLifeCircleChildFragment#onGetSearchStoreId(com.cdxz.liudake.bean.Bus.GetStoreIdBean bean) }"
     ],
     "pop_suggestion": [
-      "{ desc: com.cdxz.liudake.ui.main.fragment.LifeCircleFragment#onPopSuggestion(com.cdxz.liudake.bean.Bus.PopSuggestionBean bean) }"
+      "{ desc: com.cdxz.liudake.ui.main.fragment.LifeCircleFragment#onPopSuggestion(com.cdxz.liudake.bean.Bus.PopSuggestionBean bean) }",
+      "{ desc: com.cdxz.liudake.ui.main.fragment.LifeCircleFragment2#onPopSuggestion(com.cdxz.liudake.bean.Bus.PopSuggestionBean bean) }",
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopMallFragment2#onPopSuggestion(com.cdxz.liudake.bean.Bus.PopSuggestionBean bean) }"
     ],
     "update_user_info": [
       "{ desc: com.cdxz.liudake.ui.main.fragment.MyFragment#onUpdateUserInfo(com.cdxz.liudake.bean.Bus.UpdateUserInfoBean bean) }",
+      "{ desc: com.cdxz.liudake.ui.main.fragment.MyFragment2#onUpdateUserInfo(com.cdxz.liudake.bean.Bus.UpdateUserInfoBean bean) }",
       "{ desc: com.cdxz.liudake.ui.my.UserInfoActivity#onUpdateUserInfo(com.cdxz.liudake.bean.Bus.UpdateUserInfoBean bean) }"
     ],
     "update_car": [
-      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onUpdateCar() }"
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onUpdateCar() }",
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment2#onUpdateCar() }"
     ],
     "car_num_add": [
-      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onCarNumAdd(com.cdxz.liudake.bean.ShopCarListBean$ListBean listBean) }"
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onCarNumAdd(com.cdxz.liudake.bean.ShopCarListBean$ListBean listBean) }",
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment2#onCarNumAdd(com.cdxz.liudake.bean.ShopCarListBean$ListBean listBean) }"
     ],
     "car_num_minus": [
-      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onCarNumMinus(com.cdxz.liudake.bean.ShopCarListBean$ListBean listBean) }"
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onCarNumMinus(com.cdxz.liudake.bean.ShopCarListBean$ListBean listBean) }",
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment2#onCarNumMinus(com.cdxz.liudake.bean.ShopCarListBean$ListBean listBean) }"
     ],
     "update_message_num": [
-      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopMallFragment#onUpdateMessage() }"
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopMallFragment#onUpdateMessage() }",
+      "{ desc: com.cdxz.liudake.ui.main.fragment.ShopMallFragment2#onUpdateMessage() }"
     ],
     "goods_detail_to_car": [
       "{ desc: com.cdxz.liudake.ui.main.MainActivity#onGoodsDetailToCar() }"

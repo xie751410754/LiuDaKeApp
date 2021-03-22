@@ -4,6 +4,7 @@
     style="@style/sp12.Black"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
     android:layout_marginBottom="15dp">
 
     <com.cdxz.liudake.view.roundedImageView.RoundedImageView

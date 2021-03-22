@@ -27,7 +27,7 @@ public class OrderListActivity extends BaseActivity {
     ViewPager2 viewPager;
 
     private List<Fragment> fragmentList = new ArrayList<>();
-    private String[] tabTitle = {"全部订单", "待付款", "待收货",
+    private String[] tabTitle = {"全部订单", "待发货","待付款", "待收货",
 //            "待评价",
             "已完成"};
 
@@ -48,6 +48,7 @@ public class OrderListActivity extends BaseActivity {
 
         fragmentList.add(OrderListFragment.newInstance(0));
         fragmentList.add(OrderListFragment.newInstance(1));
+        fragmentList.add(OrderListFragment.newInstance(2));
         fragmentList.add(OrderListFragment.newInstance(3));
 //        fragmentList.add(OrderListFragment.newInstance(4));
         fragmentList.add(OrderListFragment.newInstance(5));

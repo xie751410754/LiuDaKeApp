@@ -2,9 +2,13 @@ package com.cdxz.liudake.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.StringUtils;
@@ -15,13 +19,17 @@ import com.cdxz.liudake.api.HttpsUtil;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.GetSetBean;
 import com.cdxz.liudake.databinding.ActivityRegisterBinding;
+import com.cdxz.liudake.databinding.ActivityRegisterNewBinding;
+import com.cdxz.liudake.pop.PopPayPwd;
+import com.cdxz.liudake.pop.PopRegisterSuccess;
 import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.BaseTitleActivity;
 import com.cdxz.liudake.util.ParseUtils;
+import com.lxj.xpopup.XPopup;
 
 import java.util.List;
 
-public class RegisterActivity extends BaseTitleActivity<ActivityRegisterBinding> {
+public class RegisterActivity extends BaseTitleActivity<ActivityRegisterNewBinding> {
 
     CountDownTimer downTimer = new CountDownTimer(60 * 1000, 1000) {
         @Override
@@ -39,13 +47,21 @@ public class RegisterActivity extends BaseTitleActivity<ActivityRegisterBinding>
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_register;
+        return R.layout.activity_register_new;
     }
 
     @Override
     public void initViewObservable() {
         super.initViewObservable();
-        initToolbar(binding.toolbar);
+//        initToolbar(binding.toolbar);
+
+
+        binding.tvBackLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         binding.sendAgainBtn.setOnClickListener(v -> {
             String phone = binding.phoneNumerEdit.getText().toString();
@@ -104,7 +120,14 @@ public class RegisterActivity extends BaseTitleActivity<ActivityRegisterBinding>
             return;
         }
         HttpsUtil.getInstance(this).register(phone, pwd, code, invitationCode, object -> {
-            finish();
+
+            new XPopup.Builder(this).asCustom(new PopRegisterSuccess(this, new PopRegisterSuccess.OnPwdListener() {
+                @Override
+                public void onSubmit() {
+                    finish();
+                }
+            })).show();
+
         });
     }
 
@@ -156,5 +179,14 @@ public class RegisterActivity extends BaseTitleActivity<ActivityRegisterBinding>
         super.onDestroy();
         downTimer.cancel();
         downTimer = null;
+    }
+
+    @Override
+    public Resources getResources() {
+        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            return AdaptScreenUtils.adaptHeight(super.getResources(), 750);
+        } else {
+            return AdaptScreenUtils.adaptWidth(super.getResources(), 750);
+        }
     }
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="88pt"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="23pt"
+            android:layout_height="40pt"
+            android:layout_marginStart="20pt"
+            android:src="@mipmap/ic_black_back"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="购物车"
+            android:textColor="#222222"
+            android:textSize="38pt" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl1"
+        android:layout_marginTop="250pt"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/img_empty"
+            android:layout_width="206pt"
+            android:layout_height="192pt"
+            android:src="@mipmap/icon_shop_car_empty" />
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_empty"
+            android:layout_marginTop="33pt"
+            android:text="购物车竟然是空的"
+            android:textColor="#969494"
+            android:textSize="26pt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_empty"
+            android:layout_marginTop="33pt"
+            android:background="@drawable/round30red_shopcar"
+            android:paddingStart="38pt"
+            android:paddingTop="11pt"
+            android:paddingEnd="38pt"
+            android:paddingBottom="11pt"
+            android:text="去首页逛逛"
+            android:textColor="#FFFFFF"
+            android:textSize="26pt" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -113,7 +113,6 @@ public class LifeCircleFragment extends BaseFragment {
 
     @Override
     protected void lazyLoadData() {
-
     }
 
     @Override

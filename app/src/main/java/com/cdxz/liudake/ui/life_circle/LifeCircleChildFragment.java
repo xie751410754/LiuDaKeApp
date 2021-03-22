@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +92,10 @@ public class LifeCircleChildFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        recyclerStore.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        StaggeredGridLayoutManager recyclerViewLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerStore.setLayoutManager(recyclerViewLayoutManager);
+//        recyclerStore.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override

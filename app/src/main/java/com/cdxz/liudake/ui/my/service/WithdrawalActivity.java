@@ -21,7 +21,10 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.api.HttpsCallback;
 import com.cdxz.liudake.api.HttpsUtil;
+import com.cdxz.liudake.bean.BankInfoDto;
+import com.cdxz.liudake.bean.ShopInfoDto;
 import com.cdxz.liudake.ui.base.BaseActivity;
+import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.view.DrawableTextView;
 import com.lxj.xpopup.XPopup;
 import com.lxj.xpopup.interfaces.OnSelectListener;
@@ -89,6 +92,8 @@ public class WithdrawalActivity extends BaseActivity {
         }
         tvRedmi.setText(redmi);
 
+        getBankInfo(shopId);
+
         //
         HttpsUtil.getInstance(this).withdrawFeeValue(object -> {
             try {
@@ -112,6 +117,37 @@ public class WithdrawalActivity extends BaseActivity {
             }
         });
     }
+
+    private void getBankInfo(String shopId) {
+
+        HttpsUtil.getInstance(this).getWithdrawalInfo(shopId, new HttpsCallback() {
+            @Override
+            public void onResult(Object object) {
+                BankInfoDto bankInfoDto = ParseUtils.parseJsonObject(GsonUtils.toJson(object), BankInfoDto.class);
+
+                setInfo(bankInfoDto);
+            }
+
+
+
+        });
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setInfo(BankInfoDto bankInfoDto) {
+        if (bankInfoDto==null){
+            return;
+        }
+            et_input1.setText(bankInfoDto.getType_name()==null? "":bankInfoDto.getType_name());
+            et_input2.setText(bankInfoDto.getUser_real_name()+"");
+            et_input3.setText(bankInfoDto.getBank()+"");
+            et_input3.setText(bankInfoDto.getSub_bank()+"");
+
+
+
+    }
+
 
     @Override
     protected void initListener() {

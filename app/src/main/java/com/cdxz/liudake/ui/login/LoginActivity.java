@@ -2,10 +2,13 @@ package com.cdxz.liudake.ui.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.RegexUtils;
@@ -19,6 +22,7 @@ import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.GetSetBean;
 import com.cdxz.liudake.bean.LoginBean;
 import com.cdxz.liudake.databinding.ActivityLoginBinding;
+import com.cdxz.liudake.databinding.ActivityLoginNewBinding;
 import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.BaseActivity;
 import com.cdxz.liudake.ui.base.BaseTitleActivity;
@@ -29,7 +33,7 @@ import com.cdxz.liudake.util.ParseUtils;
 
 import java.util.List;
 
-public class LoginActivity extends BaseTitleActivity<ActivityLoginBinding> {
+public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
     CountDownTimer downTimer = new CountDownTimer(60 * 1000, 1000) {
         @Override
         public void onTick(long l) {
@@ -49,7 +53,7 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginBinding> {
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_login;
+        return R.layout.activity_login_new;
     }
 
     @Override
@@ -59,6 +63,12 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginBinding> {
             ResetPwdActivity.startResetPwdActivity(this);
         });
         binding.registerAccountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(RegisterActivity.class);
+            }
+        });
+        binding.tvZhuce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(RegisterActivity.class);
@@ -171,5 +181,15 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginBinding> {
         super.onDestroy();
         downTimer.cancel();
         downTimer = null;
+    }
+
+
+    @Override
+    public Resources getResources() {
+        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            return AdaptScreenUtils.adaptHeight(super.getResources(), 750);
+        } else {
+            return AdaptScreenUtils.adaptWidth(super.getResources(), 750);
+        }
     }
 }

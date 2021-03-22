@@ -909,4 +909,19 @@ public interface ApiServer {
             @Field("xizuetoken") String xizuetoken,
             @Field("shop_type") int shop_type
     );
+    /**
+     * 提现银行卡信息
+     *
+     * @param uid
+     * @param xizuetoken
+     * @param shop_id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("user/app/balance_withdraw_card")
+    Observable<BaseBean> getWithdrawalInfo(
+            @Field("uid") String uid,
+            @Field("xizuetoken") String xizuetoken,
+            @Field("shop_id") String shop_id
+    );
 }

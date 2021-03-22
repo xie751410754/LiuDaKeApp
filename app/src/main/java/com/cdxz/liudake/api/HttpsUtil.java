@@ -140,7 +140,7 @@ public class HttpsUtil {
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
                     @Override
                     public void onSuccess(BaseBean response) {
-                        ToastUtils.showShort(response.getState().getMsg());
+//                        ToastUtils.showShort(response.getState().getMsg());
                         callback.onResult(response);
                     }
                 });
@@ -1082,7 +1082,6 @@ public class HttpsUtil {
      * @param shop_env_picture2
      * @param zhekou
      * @param code
-     * @param xizuetoken
      * @param callback
      */
     public void regShopCompany(
@@ -1598,7 +1597,7 @@ public class HttpsUtil {
                 .getRegion()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                .subscribe(new BaseObserver<BaseBean>(context, false) {
                     @Override
                     public void onSuccess(BaseBean response) {
                         callback.onResult(response.getData());
@@ -1714,7 +1713,24 @@ public class HttpsUtil {
                 .getShopInfo(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopType)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<BaseBean>(context, false) {
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+//                        ToastUtils.showShort(response.getState().getMsg());
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
+    /**
+     * 提现到银行行卡信息
+     *
+     */
+    public void getWithdrawalInfo(String shopId, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .getWithdrawalInfo(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
                     @Override
                     public void onSuccess(BaseBean response) {
 //                        ToastUtils.showShort(response.getState().getMsg());

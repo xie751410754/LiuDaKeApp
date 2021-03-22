@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="344pt"
+    android:layout_height="344pt"
+    android:background="@drawable/round20white_shop_my"
+    android:orientation="vertical"
+    android:padding="20pt">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvTips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="热卖推荐"
+            android:textColor="#222222"
+            android:textSize="32pt"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTips2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="每日限兑一次"
+            android:textColor="#222222"
+            android:textSize="24pt" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14pt"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0pt"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+                android:id="@+id/ivImage1"
+                android:layout_width="133pt"
+                android:layout_height="133pt"
+                android:scaleType="fitXY"
+                app:riv_corner_radius="8pt" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10pt"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30积分"
+                    android:textColor="#E62129"
+                    android:textSize="22pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥119"
+                    android:textColor="#808080"
+                    android:textSize="18pt" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0pt"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10pt"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+                android:id="@+id/ivImage2"
+                android:layout_width="133pt"
+                android:layout_height="133pt"
+                android:scaleType="fitXY"
+                app:riv_corner_radius="8pt" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10pt"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30积分"
+                    android:textColor="#E62129"
+                    android:textSize="22pt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥119"
+                    android:textColor="#808080"
+                    android:textSize="18pt" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20pt"
+        android:background="@drawable/bg_jianbian"
+        android:paddingStart="16pt"
+        android:paddingEnd="22pt"
+        android:paddingBottom="5pt"
+        android:text="立即疯抢 >"
+        android:textColor="#FFFFFF"
+        android:textSize="24pt" />
+
+
+</LinearLayout>

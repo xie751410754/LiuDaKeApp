@@ -1,6 +1,8 @@
 package com.cdxz.liudake.ui.base;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.ScreenUtils;
@@ -160,4 +163,7 @@ public abstract class BaseActivity extends FragmentActivity {
             KeyboardUtils.hideSoftInput(this);
         }
     }
+
+
+
 }

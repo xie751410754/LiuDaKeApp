@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:id="@+id/rl1"
+                android:layout_width="match_parent"
+                android:layout_height="650pt">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60pt"
+                    android:layout_marginStart="20pt"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/img_back"
+                        android:layout_width="100pt"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="19pt"
+                            android:layout_height="38pt"
+                            android:src="@mipmap/icon_return" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="244pt"
+                    android:layout_height="82pt"
+                    android:layout_above="@id/ll1"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="20pt"
+                    android:alpha="0.74"
+                    android:background="@drawable/round8black_shop"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10pt"
+                        android:text="5.0"
+                        android:textColor="#FE9D44"
+                        android:textSize="50pt" />
+
+                    <View
+                        android:layout_width="1pt"
+                        android:layout_height="50pt"
+                        android:background="#FE9D44" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10pt"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8pt"
+                            android:text="店里环境很美很棒"
+                            android:textColor="#FE9D44"
+                            android:textSize="18pt" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="共 0 条评论"
+                            android:textColor="#E5E5E5"
+                            android:textSize="18pt" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll1"
+                    android:layout_width="match_parent"
+                    android:layout_height="359pt"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="20pt"
+                    android:background="@drawable/round8white_shop"
+                    android:orientation="vertical"
+                    android:paddingStart="28pt"
+                    android:paddingTop="20pt">
+
+                    <TextView
+                        android:id="@+id/tvStoreName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="溜达客茶饮店"
+                        android:textColor="#222222"
+                        android:textSize="32pt" />
+
+                    <TextView
+                        android:id="@+id/tvStoreType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="生活类 > 日常用品"
+                        android:textColor="#666666"
+                        android:textSize="24pt" />
+
+                    <TextView
+                        android:id="@+id/tvStoreConsumption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10pt"
+                        android:text="人均 ¥0.00"
+                        android:textColor="#E62129"
+                        android:textSize="24pt" />
+
+
+                    <TextView
+                        android:id="@+id/tvStoreTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20pt"
+                        android:text="营业时间  早9:00-晚22:00 (法定节假日除外)"
+                        android:textColor="#666666"
+                        android:textSize="24pt" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1pt"
+                        android:layout_marginTop="20pt"
+                        android:background="#EBECEE" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0pt"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30pt"
+                            android:layout_weight="2"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvStoreAddress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="营业时间  早9:00-晚22:00 (法定节假日除外)"
+                                android:textColor="#666666"
+                                android:textSize="24pt" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0pt"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30pt"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/img_go"
+                                android:layout_width="28pt"
+                                android:layout_height="33pt"
+                                android:layout_gravity="center_vertical"
+                                android:src="@mipmap/icon_location_shop" />
+
+                            <View
+                                android:layout_width="1pt"
+                                android:layout_height="33pt"
+                                android:layout_marginStart="30pt"
+                                android:background="#999999" />
+
+                            <ImageView
+                                android:id="@+id/img_call"
+                                android:layout_width="28pt"
+                                android:layout_height="33pt"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="30pt"
+                                android:src="@mipmap/icon_phone_shop" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rl1"
+                android:layout_margin="20pt"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="店铺评价"
+                        android:textColor="#222222"
+                        android:textSize="32pt"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerStoreComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:nestedScrollingEnabled="false" />
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

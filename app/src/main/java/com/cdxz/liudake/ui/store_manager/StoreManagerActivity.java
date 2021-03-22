@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.blankj.utilcode.util.GsonUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.cdxz.liudake.R;
@@ -124,37 +125,38 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
 
 
         //事件监听
-        binding.rcvImg.addOnItemTouchListener(new OnRecyclerItemClickListener(binding.rcvImg) {
-
-            @Override
-            public void onItemClick(RecyclerView.ViewHolder vh) {
-                int viewType = postArticleImgAdapter.getItemViewType(vh.getAdapterPosition());
-//                if (viewType == 1) {
-//                    showSelectPictureDialog();
-//                } else {
-//                    showPictureActionDialog(vh.getAdapterPosition());
+//        binding.rcvImg.addOnItemTouchListener(new OnRecyclerItemClickListener(binding.rcvImg) {
+//
+//            @Override
+//            public void onItemClick(RecyclerView.ViewHolder vh) {
+//                int viewType = postArticleImgAdapter.getItemViewType(vh.getAdapterPosition());
+////                if (viewType == 1) {
+////                    showSelectPictureDialog();
+////                } else {
+////                    showPictureActionDialog(vh.getAdapterPosition());
+////                }
+////                openPicture(false);
+//
+//                PictureUtil.getInstance(StoreManagerActivity.this).openGallerySingle(false, false, path -> {
+//                    UploadUtil.getInstance().postFile(path, uploadBean -> {
+//                        String license = uploadBean.getImage().getUrllarge();
+//                        runOnUiThread(() -> {
+//                            mPhotoList.add(license);
+//                            postArticleImgAdapter.notifyDataSetChanged();
+//                        });
+//                    });
+//                });
+//            }
+//
+//            @Override
+//            public void onItemLongClick(RecyclerView.ViewHolder vh) {
+//                //如果item不是最后一个，则执行拖拽
+//                if (vh.getLayoutPosition() != mPhotoList.size()) {
+////                    itemTouchHelper.startDrag(vh);
 //                }
-//                openPicture(false);
+//            }
+//        });
 
-                PictureUtil.getInstance(StoreManagerActivity.this).openGallerySingle(false, false, path -> {
-                    UploadUtil.getInstance().postFile(path, uploadBean -> {
-                        String license = uploadBean.getImage().getUrllarge();
-                        runOnUiThread(() -> {
-                            mPhotoList.add(license);
-                            postArticleImgAdapter.notifyDataSetChanged();
-                        });
-                    });
-                });
-            }
-
-            @Override
-            public void onItemLongClick(RecyclerView.ViewHolder vh) {
-                //如果item不是最后一个，则执行拖拽
-                if (vh.getLayoutPosition() != mPhotoList.size()) {
-//                    itemTouchHelper.startDrag(vh);
-                }
-            }
-        });
 
     }
 
@@ -384,8 +386,7 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                     return;
                 }
 
-
-
+                LogUtils.e("xzl","lng="+lng+"lat"+lat);
                 submit(logo, new UploadUtil.OnUploadCallback() {
                     @Override
                     public void onSuccess(UploadBean uploadBean) {
@@ -689,6 +690,30 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
             } else {
                 holder.squareCenterFrameLayout.setVisibility(View.VISIBLE);
             }
+
+            holder.deleteImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mDatas.remove(position);
+                    postArticleImgAdapter.notifyItemRemoved(position);
+                    notifyDataSetChanged();
+                }
+            });
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PictureUtil.getInstance(StoreManagerActivity.this).openGallerySingle(false, false, path -> {
+                        UploadUtil.getInstance().postFile(path, uploadBean -> {
+                            String license = uploadBean.getImage().getUrllarge();
+                            runOnUiThread(() -> {
+                                mPhotoList.add(license);
+                                postArticleImgAdapter.notifyDataSetChanged();
+                            });
+                        });
+                    });
+                }
+            });
         }
 
         @Override
@@ -717,14 +742,17 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {
-            ImageView imageView;
+            ImageView imageView,deleteImg;
             SquareCenterFrameLayout squareCenterFrameLayout;
 
             MyViewHolder(View itemView) {
                 super(itemView);
                 squareCenterFrameLayout = itemView.findViewById(R.id.add_sc);
                 imageView = itemView.findViewById(R.id.sdv);
+                deleteImg = itemView.findViewById(R.id.iap_btn_del);
+
             }
+
         }
     }
 

@@ -4,11 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.InputType;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.RegexUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -34,6 +40,14 @@ public class ResetPwdActivity extends BaseActivity {
 
     @BindView(R.id.etPwd2)
     EditText etPwd2;
+
+    @BindView(R.id.btn_switchPwd)
+    ImageView btn_switchPwd;
+
+    @BindView(R.id.btn_switchPwd2)
+    ImageView btn_switchPwd2;
+
+
     CountDownTimer downTimer = new CountDownTimer(60 * 1000, 1000) {
         @Override
         public void onTick(long l) {
@@ -55,7 +69,7 @@ public class ResetPwdActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_reset_pwd;
+        return R.layout.activity_reset_pwd_new;
     }
 
     @Override
@@ -70,6 +84,20 @@ public class ResetPwdActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
+        findViewById(R.id.btn_switchPwd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchPwd(btn_switchPwd,etPwd);
+            }
+        });
+        findViewById(R.id.btn_switchPwd2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchPwd(btn_switchPwd2,etPwd2);
+            }
+        });
+
         tvGetCode.setOnClickListener(v -> {
             String phone = etPhone.getText().toString();
             if (StringUtils.isEmpty(phone)) {
@@ -126,5 +154,25 @@ public class ResetPwdActivity extends BaseActivity {
         super.onDestroy();
         downTimer.cancel();
         downTimer = null;
+    }
+
+    public static void switchPwd(ImageView ivPwd, EditText edtPwd) {
+        ivPwd.setSelected(!ivPwd.isSelected());
+        if (ivPwd.isSelected()) {
+            edtPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        } else {
+            edtPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        }
+        edtPwd.setSelection(edtPwd.getText().length());
+    }
+
+
+    @Override
+    public Resources getResources() {
+        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            return AdaptScreenUtils.adaptHeight(super.getResources(), 750);
+        } else {
+            return AdaptScreenUtils.adaptWidth(super.getResources(), 750);
+        }
     }
 }

@@ -11,8 +11,8 @@ android {
         applicationId "com.cdxz.liudake"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 20
-        versionName "1.9.8"
+        versionCode 21
+        versionName "1.9.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
@@ -98,7 +98,7 @@ dependencies {
     //AndroidUtilCode
     implementation 'com.blankj:utilcodex:1.29.0'
     //屏幕适配
-    implementation 'me.jessyan:autosize:1.2.1'
+//    implementation 'me.jessyan:autosize:1.2.1'
     //banner
     implementation 'com.youth.banner:banner:2.0.12'
     //适配器

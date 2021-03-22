@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlAccentColor="@color/appColor"
+    app:srlEnableLoadMore="false"
+    app:srlEnableOverScrollDrag="true"
+    app:srlEnableRefresh="true"
+    app:srlPrimaryColor="@android:color/transparent"
+    tools:context=".ui.main.fragment.MyFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:background="#F3F5F7"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="445pt"
+                android:background="@mipmap/shop_my_bg">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="120pt"
+                        android:layout_height="120pt"
+                        android:layout_marginStart="20pt"
+                        android:layout_marginTop="68pt"
+                        app:riv_oval="true" />
+
+                    <TextView
+                        android:id="@+id/tvNick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28pt"
+                        android:layout_marginTop="68pt"
+                        android:layout_toEndOf="@id/ivAvatar"
+                        android:text="用户昵称"
+                        android:textColor="@color/white"
+                        android:textSize="46pt"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvNick"
+                        android:layout_alignStart="@id/tvNick"
+                        android:text="TEL：123456901"
+                        android:textColor="@color/white"
+                        android:textSize="26pt" />
+
+                    <TextView
+                        android:id="@+id/tv_kouling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvPhone"
+                        android:layout_alignStart="@id/tvNick"
+                        android:text="邀请口令：1257889920"
+                        android:textColor="@color/white"
+                        android:textSize="26pt" />
+
+                    <TextView
+                        android:id="@+id/tvCopyInviteCode"
+                        android:layout_width="60pt"
+                        android:layout_height="32pt"
+                        android:layout_alignTop="@id/tv_kouling"
+                        android:layout_marginStart="12pt"
+                        android:layout_toEndOf="@id/tv_kouling"
+                        android:background="@mipmap/shop_my_copy" />
+
+                    <TextView
+                        android:id="@+id/tvInviteCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_kouling"
+                        android:layout_alignStart="@id/tvNick"
+                        android:layout_marginTop="20pt"
+                        android:background="@drawable/round_shop_my"
+                        android:paddingStart="52pt"
+                        android:paddingTop="6pt"
+                        android:paddingEnd="52pt"
+                        android:paddingBottom="6pt"
+                        android:text="邀请码"
+                        android:textColor="@color/white"
+                        android:textSize="22pt" />
+
+                    <ImageView
+                        android:id="@+id/ivSet"
+                        android:layout_width="40pt"
+                        android:layout_height="40pt"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="68pt"
+                        android:layout_marginEnd="20pt"
+                        android:src="@mipmap/shop_my_set" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="320pt"
+                android:layout_marginStart="20pt"
+                android:layout_marginTop="-150pt"
+                android:layout_marginEnd="20pt"
+                android:background="@mipmap/shop_my_shouyi_bg"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_marginTop="30pt"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_marginStart="20pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="可提现¥"
+                        android:textColor="@color/white"
+                        android:textSize="28pt" />
+                    <TextView
+                        android:id="@+id/redMi"
+                        android:layout_marginStart="10pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2689"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="48pt" />
+
+                    <androidx.legacy.widget.Space
+                        android:layout_width="0pt"
+                        android:layout_height="0pt"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_tiXian"
+                        android:layout_marginEnd="30pt"
+                        android:layout_width="160pt"
+                        android:layout_height="54pt"
+                        android:background="@mipmap/shop_my_tixian"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="20pt"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/scoreLayout1"
+                        android:gravity="center"
+                        android:layout_width="0pt"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_centerHorizontal="true"
+                            android:id="@+id/tv_dailing"
+                            android:layout_marginStart="10pt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="待领积分"
+                            android:textColor="@color/white"
+                            android:textSize="26pt" />
+                        <TextView
+                            android:id="@+id/tvLingquTag"
+                            android:padding="5pt"
+                            android:layout_toRightOf="@id/tv_dailing"
+                            android:background="@drawable/round_shop_my"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="领取"
+                            android:textColor="@color/white"
+                            android:textSize="16pt" />
+                        <TextView
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/tv_dailing"
+                            android:id="@+id/tvDaiLing"
+                            android:layout_marginTop="14pt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="36pt" />
+
+                    </RelativeLayout>
+                    
+                    <View
+                        android:layout_width="2pt"
+                        android:layout_height="80pt"
+                        android:background="@color/white"
+                        />
+                    <LinearLayout
+                        android:id="@+id/scoreLayout2"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="0pt"
+                        android:layout_height="100pt"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_marginStart="10pt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="可用积分"
+                            android:textColor="@color/white"
+                            android:textSize="26pt" />
+                        <TextView
+                            android:id="@+id/tvKeYong"
+                            android:layout_marginTop="14pt"
+                            android:layout_marginStart="10pt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="600.00"
+                            android:textColor="@color/white"
+                            android:textSize="36pt" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="2pt"
+                        android:layout_height="80pt"
+                        android:background="@color/white"
+                        />
+                    <LinearLayout
+                        android:id="@+id/redmiLayout"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_width="0pt"
+                        android:layout_height="100pt"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_marginStart="10pt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="红米"
+                            android:textColor="@color/white"
+                            android:textSize="26pt" />
+                        <TextView
+                            android:id="@+id/tvRedmi"
+                            android:layout_marginTop="14pt"
+                            android:layout_marginStart="10pt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8468"
+                            android:textColor="@color/white"
+                            android:textSize="36pt" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_marginBottom="15pt"
+                        android:layout_marginStart="20pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="每月25号提现上月确认收货的订单收入"
+                        android:textColor="@color/white"
+                        android:textSize="20pt" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="20pt"
+                android:background="@drawable/round20white_shop_my"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginTop="20pt"
+                        android:layout_marginStart="20pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="我的订单"
+                        android:textColor="#666666"
+                        android:textSize="30pt" />
+
+                    <com.cdxz.liudake.view.DrawableTextView
+                        android:id="@+id/tvOrderAll"
+                        android:layout_marginEnd="20pt"
+                        android:layout_marginTop="20pt"
+                        android:layout_gravity="end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="7pt"
+                        android:gravity="center"
+                        android:text="全部"
+                        android:textColor="#666666"
+                        android:textSize="26pt"
+                        app:dt_right_drawable="@mipmap/icon_check_more_arrow"
+                        app:dt_right_height="24pt"
+                        app:dt_right_width="14pt" />
+
+
+                </FrameLayout>
+                <View
+                    android:layout_marginTop="20pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="2pt"
+                    android:background="#EBECEE"
+                    />
+
+                <LinearLayout
+                    android:layout_margin="40pt"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.cdxz.liudake.view.DrawableTextView
+                        android:id="@+id/tvOrder2"
+                        android:layout_width="0pt"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:drawablePadding="6pt"
+                        android:text="待付款"
+                        android:textColor="#222222"
+                        app:dt_top_drawable="@mipmap/shop_my_waitpay"
+                        app:dt_top_height="36pt"
+                        app:dt_top_width="36pt" />
+
+                    <com.cdxz.liudake.view.DrawableTextView
+                        android:id="@+id/tv_sendGoods"
+                        android:layout_width="0pt"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="6pt"
+                        android:gravity="center"
+                        android:text="待发货"
+                        android:textColor="#222222"
+                        app:dt_top_drawable="@mipmap/shop_my_waitgetgoods"
+                        app:dt_top_height="36pt"
+                        app:dt_top_width="36pt" />
+                    <com.cdxz.liudake.view.DrawableTextView
+                        android:id="@+id/tvOrder1"
+                        android:layout_width="0pt"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="6pt"
+                        android:gravity="center"
+                        android:text="待收货"
+                        android:textColor="#222222"
+                        app:dt_top_drawable="@mipmap/shop_my_sendgoods"
+                        app:dt_top_height="36pt"
+                        app:dt_top_width="36pt" />
+                    <com.cdxz.liudake.view.DrawableTextView
+                        android:id="@+id/tvOrder3"
+                        android:layout_width="0pt"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="6pt"
+                        android:gravity="center"
+                        android:text="已完成"
+                        android:textColor="#222222"
+                        app:dt_top_drawable="@mipmap/shop_my_getgoods"
+                        app:dt_top_height="36pt"
+                        app:dt_top_width="36pt" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <com.youth.banner.Banner
+                android:layout_marginStart="20pt"
+                android:layout_marginEnd="20pt"
+                android:id="@+id/bannerMy"
+                android:layout_width="match_parent"
+                android:layout_height="200pt"
+                />
+
+            <LinearLayout
+                android:layout_margin="20pt"
+                android:background="@drawable/round20white_shop_my"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginTop="20pt"
+                        android:layout_marginStart="20pt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="生活服务"
+                        android:textColor="#666666"
+                        android:textSize="30pt" />
+
+                </FrameLayout>
+                <View
+                    android:layout_marginTop="20pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="2pt"
+                    android:background="#EBECEE"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerService"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingHorizontal="10pt" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

@@ -12,12 +12,24 @@
         android:layout_height="100dp"
         android:scaleType="centerCrop" />
 
+    <ImageView
+        android:id="@+id/iap_btn_del"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="end"
+        android:layout_margin="5dp"
+        android:contentDescription="@null"
+        android:src="@mipmap/mrxp_sc_hs"
+        android:visibility="visible" />
+
+
     <com.cdxz.liudake.view.SquareCenterFrameLayout
         android:id="@+id/add_sc"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="gone"
         tools:visibility="visible">
+
 
         <ImageView
             android:layout_width="match_parent"
@@ -46,7 +58,7 @@
                 android:singleLine="true"
                 android:text="添加图片"
                 android:textColor="#ff999999"
-                android:textSize="13sp" />sp
+                android:textSize="13sp" />
 
         </FrameLayout>
 

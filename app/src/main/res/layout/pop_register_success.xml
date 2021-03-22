@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/r4_while_new"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/btn_return"
+        android:layout_margin="30pt"
+        android:layout_gravity="end"
+        android:textSize="30pt"
+        android:textColor="#666666"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳过"/>
+
+
+    <ImageView
+        android:layout_width="161pt"
+        android:layout_height="161pt"
+        android:src="@mipmap/register_successful"/>
+
+    <TextView
+        android:layout_marginTop="20pt"
+        android:textSize="54pt"
+        android:textColor="#222222"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册成功"/>
+
+    <TextView
+        android:id="@+id/tvSubmitReset"
+        android:layout_marginTop="80pt"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="返回登录"
+        android:textSize="32pt"
+        android:textColor="#FFFFFF"
+        android:background="#E62129"
+        android:layout_width="match_parent"
+        android:layout_height="90pt"/>
+
+
+
+</LinearLayout>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.login.ResetPwdActivity">
+
+    <include layout="@layout/public_title_bar_new" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginStart="100pt"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="120pt"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24pt"
+                android:layout_height="38pt"
+                android:src="@mipmap/forget_password_phone"/>
+
+            <com.cdxz.liudake.view.ClearEditText
+                android:id="@+id/etPhone"
+                android:layout_marginStart="43pt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="请输入手机号"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textColorHint="#999999"
+                android:textSize="24pt"
+                android:background="@null"
+                android:inputType="number"
+                android:maxLength="11"
+                />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginEnd="30pt"
+            android:layout_marginStart="30pt"
+            android:layout_width="match_parent"
+            android:layout_height="2pt"
+            android:background="#EBECEE" />
+        <LinearLayout
+            android:layout_marginStart="100pt"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="120pt"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24pt"
+                android:layout_height="38pt"
+                android:src="@mipmap/forget_password_verification_code"/>
+
+            <com.cdxz.liudake.view.ClearEditText
+                android:id="@+id/etCode"
+                android:layout_marginStart="43pt"
+                android:layout_width="0pt"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:hint="请输入验证码"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textColorHint="#999999"
+                android:textSize="24pt"
+                android:background="@null"
+                android:inputType="number"
+                android:maxLength="11"
+                />
+
+            <TextView
+                android:id="@+id/tvGetCode"
+                android:layout_margin="20pt"
+                android:textSize="32pt"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:layout_width="0pt"
+                android:layout_height="match_parent"
+                android:background="@mipmap/register_yzm"
+                android:textColor="#FFFFFF"
+                android:text="获取验证码" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginEnd="30pt"
+            android:layout_marginStart="30pt"
+            android:layout_width="match_parent"
+            android:layout_height="2pt"
+            android:background="#EBECEE" />
+        <LinearLayout
+            android:layout_marginStart="100pt"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="120pt"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24pt"
+                android:layout_height="38pt"
+                android:src="@mipmap/forget_password"/>
+
+            <com.cdxz.liudake.view.ClearEditText
+                android:id="@+id/etPwd"
+                android:layout_marginStart="43pt"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:hint="请重设密码"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textColorHint="#999999"
+                android:textSize="24pt"
+                android:background="@null"
+                android:inputType="textWebPassword"
+                android:lines="1"
+                />
+
+            <ImageView
+                android:id="@+id/btn_switchPwd"
+                android:layout_margin="30pt"
+                android:layout_width="36pt"
+                android:layout_height="20pt"
+                android:src="@drawable/selector_eye"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginEnd="30pt"
+            android:layout_marginStart="30pt"
+            android:layout_width="match_parent"
+            android:layout_height="2pt"
+            android:background="#EBECEE" />
+        <LinearLayout
+            android:layout_marginStart="100pt"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="120pt"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24pt"
+                android:layout_height="38pt"
+                android:src="@mipmap/forget_password"/>
+
+            <com.cdxz.liudake.view.ClearEditText
+                android:id="@+id/etPwd2"
+                android:layout_marginStart="43pt"
+                android:layout_width="0pt"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:hint="请确认密码"
+                android:singleLine="true"
+                android:textColor="#333333"
+                android:textColorHint="#999999"
+                android:textSize="24pt"
+                android:background="@null"
+                android:inputType="textWebPassword"
+                android:lines="1"
+                />
+
+            <ImageView
+                android:id="@+id/btn_switchPwd2"
+                android:layout_margin="30pt"
+                android:layout_width="36pt"
+                android:layout_height="20pt"
+                android:src="@drawable/selector_eye"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginEnd="30pt"
+            android:layout_marginStart="30pt"
+            android:layout_width="match_parent"
+            android:layout_height="2pt"
+            android:background="#EBECEE" />
+
+
+        <TextView
+            android:id="@+id/tvSubmitReset"
+            android:layout_marginTop="80pt"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="确定"
+            android:textSize="32pt"
+            android:textColor="#FFFFFF"
+            android:background="#E62129"
+            android:layout_width="690pt"
+            android:layout_height="90pt"/>
+
+    </LinearLayout>
+
+</LinearLayout>
