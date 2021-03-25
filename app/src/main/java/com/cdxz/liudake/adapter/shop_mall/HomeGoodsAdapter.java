@@ -19,7 +19,7 @@ import java.util.List;
 
 public class HomeGoodsAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsCuxiao4Bean, BaseViewHolder> {
     public HomeGoodsAdapter(List<HomeIndexBean.GoodsCuxiao4Bean> data) {
-        super(R.layout.item_shop_mall_goods, data);
+        super(R.layout.item_shop_mall_goods_new, data);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class HomeGoodsAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsCuxiao
                     .into((RoundedImageView) baseViewHolder.getView(R.id.ivImage));
         }
         baseViewHolder.setText(R.id.tvGoodsName, goodsBean.getName())
-                .setText(R.id.tvGoodsNewPrice, "¥" + goodsBean.getSaleprice())
+                .setText(R.id.tvGoodsNewPrice, "¥" + goodsBean.getSaleprice()+"+")
                 .setText(R.id.tvGoodsPrice, "¥" + goodsBean.getOrginalprice())
                 .setText(R.id.tvSellNum, "已售 " + goodsBean.getSalescount())
                 .setText(R.id.tvScore, "积分 " + goodsBean.getGold());

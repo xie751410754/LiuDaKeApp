@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvTips"
+            android:id="@+id/four_tvTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="热卖推荐"
@@ -24,27 +24,29 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvTips2"
+            android:id="@+id/four_tvTips2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="每日限兑一次"
             android:textColor="#222222"
-            android:textSize="24pt" />
+            android:textSize="24pt"
+            android:visibility="gone" />
 
         <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/ll_miaosha"
+            android:id="@+id/ll_miaosha4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="20pt"
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <TextView
-                android:id="@+id/tv_hour"
+                android:id="@+id/four_tv_hour"
                 android:layout_width="29pt"
                 android:layout_height="24pt"
                 android:background="#222222"
                 android:gravity="center"
-                android:text="05"
+                android:text="00"
                 android:textColor="@color/white"
                 android:textSize="17pt" />
 
@@ -58,12 +60,12 @@
                 android:textSize="17pt" />
 
             <TextView
-                android:id="@+id/tv_min"
+                android:id="@+id/four_tv_min"
                 android:layout_width="29pt"
                 android:layout_height="24pt"
                 android:background="#222222"
                 android:gravity="center"
-                android:text="05"
+                android:text="00"
                 android:textColor="@color/white"
                 android:textSize="17pt" />
 
@@ -77,12 +79,12 @@
                 android:textSize="17pt" />
 
             <TextView
-                android:id="@+id/tv_sec"
+                android:id="@+id/four_tv_sec"
                 android:layout_width="29pt"
                 android:layout_height="24pt"
                 android:background="#222222"
                 android:gravity="center"
-                android:text="05"
+                android:text="00"
                 android:textColor="@color/white"
                 android:textSize="17pt" />
 
@@ -103,7 +105,7 @@
             android:orientation="vertical">
 
             <com.cdxz.liudake.view.roundedImageView.RoundedImageView
-                android:id="@+id/ivImage1"
+                android:id="@+id/four_ivImage1"
                 android:layout_width="133pt"
                 android:layout_height="133pt"
                 android:scaleType="fitXY"
@@ -116,7 +118,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_jifen"
+                    android:id="@+id/four_tv_jifen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="30积分"
@@ -124,7 +126,7 @@
                     android:textSize="22pt" />
 
                 <TextView
-                    android:id="@+id/tv_price"
+                    android:id="@+id/four_tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥119"
@@ -134,7 +136,7 @@
 
 
             <TextView
-                android:id="@+id/tv_priceType"
+                android:id="@+id/four_tv_priceType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30积分"
@@ -150,7 +152,7 @@
             android:orientation="vertical">
 
             <com.cdxz.liudake.view.roundedImageView.RoundedImageView
-                android:id="@+id/ivImage2"
+                android:id="@+id/four_ivImage2"
                 android:layout_width="133pt"
                 android:layout_height="133pt"
                 android:scaleType="fitXY"
@@ -163,7 +165,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_jifen2"
+                    android:id="@+id/four_jifen2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="30积分"
@@ -171,7 +173,7 @@
                     android:textSize="22pt" />
 
                 <TextView
-                    android:id="@+id/tv_price2"
+                    android:id="@+id/four_tv_price2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥119"

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0">
+
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="88pt"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="23pt"
+            android:layout_height="40pt"
+            android:layout_marginStart="20pt"
+            android:src="@mipmap/ic_black_back"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="购物车"
+            android:textColor="#222222"
+            android:textSize="38pt" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl1"
+        android:layout_marginTop="20pt"
+        android:background="@color/white"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshShopCar"
+                android:layout_width="match_parent"
+                android:layout_height="0pt"
+                android:layout_weight="1"
+                app:srlAccentColor="@color/appColor"
+                app:srlEnableLoadMore="false"
+                app:srlEnableRefresh="true"
+                app:srlPrimaryColor="@android:color/transparent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerShopCar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <com.cdxz.liudake.view.DrawableTextView
+                    android:id="@+id/tvAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="8pt"
+                    android:gravity="center"
+                    android:paddingHorizontal="12pt"
+                    android:text="全选"
+                    android:textColor="#333333"
+                    android:textSize="24pt"
+                    app:dt_left_drawable="@mipmap/icon_pay_n"
+                    app:dt_left_height="29pt"
+                    app:dt_left_width="29pt" />
+
+                <LinearLayout
+                    android:layout_width="0pt"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="30pt"
+                    android:layout_weight="1"
+                    android:gravity="right|center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总计:"
+                        android:textColor="#FF4141"
+                        android:textSize="28pt" />
+
+                    <TextView
+                        android:id="@+id/tvJifen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+30积分:"
+                        android:textColor="#222222"
+                        android:textSize="24pt" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="188pt"
+                    android:layout_height="match_parent"
+                    android:background="#E62129"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvBuy"
+                        android:layout_width="188pt"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="结算"
+                        android:textColor="#FFFFFF"
+                        android:textSize="30pt" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

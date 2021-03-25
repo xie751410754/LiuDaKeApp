@@ -75,7 +75,7 @@
 
                     <TextView
                         android:id="@+id/tv_tixian"
-                        android:text="去提现"
+                        android:text="红米明细"
                         android:textColor="#FFFFFF"
                         android:textSize="12sp"
                         android:drawableTop="@mipmap/icon_store_manager3"

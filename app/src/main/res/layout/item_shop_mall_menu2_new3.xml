@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tvTips"
+            android:id="@+id/three_tvTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="热卖推荐"
@@ -24,7 +24,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvTips2"
+            android:id="@+id/three_tvTips2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="每日限兑一次"
@@ -103,7 +103,7 @@
             android:orientation="vertical">
 
             <com.cdxz.liudake.view.roundedImageView.RoundedImageView
-                android:id="@+id/ivImage1"
+                android:id="@+id/three_ivImage1"
                 android:layout_width="133pt"
                 android:layout_height="133pt"
                 android:scaleType="fitXY"
@@ -116,7 +116,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_jifen"
+                    android:id="@+id/three_tv_jifen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="30积分"
@@ -124,7 +124,7 @@
                     android:textSize="22pt" />
 
                 <TextView
-                    android:id="@+id/tv_price"
+                    android:id="@+id/three_tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥119"
@@ -134,7 +134,7 @@
 
 
             <TextView
-                android:id="@+id/tv_priceType"
+                android:id="@+id/three_tv_priceType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30积分"
@@ -150,7 +150,7 @@
             android:orientation="vertical">
 
             <com.cdxz.liudake.view.roundedImageView.RoundedImageView
-                android:id="@+id/ivImage2"
+                android:id="@+id/three_ivImage2"
                 android:layout_width="133pt"
                 android:layout_height="133pt"
                 android:scaleType="fitXY"
@@ -163,7 +163,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_jifen2"
+                    android:id="@+id/three_jifen2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="30积分"
@@ -171,7 +171,7 @@
                     android:textSize="22pt" />
 
                 <TextView
-                    android:id="@+id/tv_price2"
+                    android:id="@+id/three_tv_price2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥119"

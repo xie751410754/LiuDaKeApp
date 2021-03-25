@@ -7,97 +7,105 @@
     android:background="@color/white"
     tools:context=".ui.main.fragment.ShopMallFragment">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true">
 
 
+        <!--        <RelativeLayout-->
+        <!--            android:id="@+id/rl1"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="450pt">-->
+
         <RelativeLayout
-            android:id="@+id/rl1"
             android:layout_width="match_parent"
-            android:layout_height="450pt">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="250pt"
-                android:background="#E62129">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100pt"
-                    android:layout_marginStart="24pt"
-                    android:layout_marginEnd="24pt"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <com.cdxz.liudake.view.DrawableTextView
-                        android:id="@+id/tvSearch"
-                        android:layout_width="0pt"
-                        android:layout_height="60pt"
-                        android:layout_margin="15pt"
-                        android:layout_weight="1"
-                        android:background="@drawable/round_shop_mall"
-                        android:drawablePadding="7pt"
-                        android:gravity="center_vertical"
-                        android:hint="@string/hintSearch"
-                        android:paddingStart="28pt"
-                        android:textColor="#FFFFFF"
-                        android:textColorHint="@color/color_DADADA"
-                        android:textSize="28pt"
-                        app:dt_left_drawable="@mipmap/icon_search"
-                        app:dt_left_height="30pt"
-                        app:dt_left_width="30pt" />
-
-                    <com.cdxz.liudake.view.DrawableTextView
-                        android:id="@+id/tvAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="7pt"
-                        android:gravity="center"
-                        android:text="定位中..."
-                        android:textColor="#FFFFFF"
-                        android:textSize="28pt"
-                        app:dt_right_drawable="@mipmap/icon_address"
-                        app:dt_right_height="33pt"
-                        app:dt_right_width="24pt" />
-
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <com.youth.banner.Banner
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="300pt"
-                android:layout_marginStart="20pt"
-                android:layout_marginEnd="20pt"
-                android:layout_marginTop="100pt"
-                 />
+            android:layout_height="280pt"
+            android:background="@mipmap/circle_ll_bg">
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            android:layout_marginStart="24pt"
+            android:layout_marginEnd="24pt"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/ivScan2"
+                android:layout_width="35pt"
+                android:layout_height="35pt"
+                android:layout_marginStart="20pt"
+                android:layout_marginEnd="20pt"
+                android:src="@mipmap/shop_mall_scan" />
+
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvSearch"
+                android:layout_width="0pt"
+                android:layout_height="60pt"
+                android:layout_margin="15pt"
+                android:layout_weight="1"
+                android:background="@drawable/round_shop_mall"
+                android:drawablePadding="7pt"
+                android:gravity="center_vertical"
+                android:hint="@string/hintSearch"
+                android:paddingStart="28pt"
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/color_DADADA"
+                android:textSize="28pt"
+                app:dt_left_drawable="@mipmap/icon_search"
+                app:dt_left_height="30pt"
+                app:dt_left_width="30pt" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="7pt"
+                android:gravity="center"
+                android:text="定位中..."
+                android:textColor="#FFFFFF"
+                android:textSize="28pt"
+                app:dt_right_drawable="@mipmap/icon_address"
+                app:dt_right_height="33pt"
+                app:dt_right_width="24pt" />
+
+
+        </LinearLayout>
+
+
+        <!--        </RelativeLayout>-->
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_marginTop="-30pt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/rl1">
+            android:layout_margin="20pt"
+            android:layout_below="@id/ll1"
+            >
 
             <!-- 第二部分:缩放控件-->
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:orientation="vertical">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="328pt"
+                    app:layout_scrollFlags="scroll" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="200pt"
-                    android:layout_below="@id/rl1"
-                    android:layout_margin="20pt"
                     android:orientation="vertical"
                     app:layout_scrollFlags="scroll">
 

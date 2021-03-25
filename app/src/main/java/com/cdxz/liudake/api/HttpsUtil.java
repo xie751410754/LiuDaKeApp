@@ -343,9 +343,9 @@ public class HttpsUtil {
      * @param city
      * @param callback
      */
-    public void goodsDetail(String goodsid, String lng, String lat, String size, String city, HttpsCallback callback) {
+    public void goodsDetail(String goodsid, String lng, String lat, String size, String city,String cuxiao_id, HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .goodsDetail(UserInfoUtil.getUid(), goodsid, lng, lat, size, city, UserInfoUtil.getToken())
+                .goodsDetail(UserInfoUtil.getUid(), goodsid, lng, lat, size, city, UserInfoUtil.getToken(),cuxiao_id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
@@ -428,6 +428,29 @@ public class HttpsUtil {
                           String lat, String lng, int sort, HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
                 .goodsList(page, Constants.LIST_SIZE, activity_id, guxiao_id, cateid, brand, keywords, shopid, shopcateid, lat, lng, sort, UserInfoUtil.getUid(), UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
+    /**
+     * 活动商品列表
+     *
+     * @param cateid
+     * @param brand
+     * @param keywords
+     * @param shopid
+     * @param shopcateid
+     * @param callback
+     */
+    public void activeGoodsList(int page, String activity_id, String guxiao_id, String cateid, String brand, String keywords, String shopid, String shopcateid,
+                          String lat, String lng, int sort, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .activeGoodsList(page, Constants.LIST_SIZE, activity_id, guxiao_id, cateid, brand, keywords, shopid, shopcateid, lat, lng, sort, UserInfoUtil.getUid(), UserInfoUtil.getToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
@@ -1226,6 +1249,26 @@ public class HttpsUtil {
                     }
                 });
     }
+    /**
+     * 促销广告列表 banner
+     *
+     * @param position 1、分类界面banner 2、个人中心广告图 3、商户中心广告图 4、生活圈banner 5. 首页banner
+     * @param lng
+     * @param lat
+     * @param callback
+     */
+    public void cxBannerList(int position, String lng, String lat, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .cxBannerList(UserInfoUtil.getUid(), position, lng, lat, UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
 
     /**
      * 获取系统手机号
@@ -1651,9 +1694,9 @@ public class HttpsUtil {
      * @param size
      * @param callback
      */
-    public void buy(String id, int count, String size, HttpsCallback callback) {
+    public void buy(String id, int count, String size,String cuxiao_id, HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .buy(UserInfoUtil.getUid(), UserInfoUtil.getToken(), id, count, size)
+                .buy(UserInfoUtil.getUid(), UserInfoUtil.getToken(), id, count, size,cuxiao_id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {

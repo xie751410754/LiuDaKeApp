@@ -53,7 +53,7 @@
                             android:layout_height="50pt"
                             android:drawablePadding="7pt"
                             android:gravity="center"
-                            android:text="昆明"
+                            android:text="定位中"
                             android:textColor="#FFFFFF"
                             android:textSize="28pt"
                             app:dt_right_drawable="@mipmap/icon_address"
@@ -114,11 +114,10 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerView"
                             android:layout_width="0pt"
-                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="30pt"
                             android:layout_marginStart="-30pt"
-                             />
+                            android:layout_marginEnd="30pt"
+                            android:layout_weight="1" />
 
                         <com.cdxz.liudake.view.DrawableTextView
                             android:id="@+id/dtv_more"
@@ -157,8 +156,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50pt"
-                    android:layout_margin="20pt"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20pt"
+                    android:layout_marginTop="20pt"
+                    android:layout_marginEnd="20pt"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:visibility="visible">
@@ -187,11 +188,11 @@
                     android:overScrollMode="never" />
 
                 <com.youth.banner.Banner
+                    android:id="@+id/cxBanner"
                     android:layout_width="match_parent"
                     android:layout_height="180pt"
                     android:layout_marginStart="20pt"
                     android:layout_marginEnd="20pt" />
-
 
 
                 <com.cdxz.liudake.view.roundedImageView.RoundedImageView
@@ -303,18 +304,18 @@
 
 
                 <LinearLayout
-                    android:background="@mipmap/shop_mall_rl_bg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@mipmap/shop_mall_rl_bg"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="100pt"
                         android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -342,7 +343,56 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="20pt"
-                         />
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20pt"
+                        android:orientation="horizontal">
+
+                        <include
+                            android:id="@+id/active1"
+                            layout="@layout/item_shop_mall_menu2_new"
+                            android:layout_width="0pt"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20pt"
+                            android:layout_weight="1" />
+
+                        <include
+                            android:id="@+id/active2"
+                            layout="@layout/item_shop_mall_menu2_new2"
+                            android:layout_width="0pt"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20pt"
+                            android:layout_marginEnd="20pt"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20pt"
+                        android:layout_marginBottom="20pt"
+                        android:orientation="horizontal">
+
+                        <include
+                            android:id="@+id/active3"
+                            layout="@layout/item_shop_mall_menu2_new3"
+                            android:layout_width="0pt"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20pt"
+                            android:layout_weight="1" />
+
+                        <include
+                            android:id="@+id/active4"
+                            layout="@layout/item_shop_mall_menu2_new4"
+                            android:layout_width="0pt"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20pt"
+                            android:layout_marginEnd="20pt"
+                            android:layout_weight="1" />
+                    </LinearLayout>
 
 
                 </LinearLayout>
@@ -385,19 +435,18 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="470pt"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100pt"
-                        android:layout_gravity="center_vertical"
+                        android:layout_height="60pt"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:layout_gravity="bottom"
                             android:layout_marginStart="20pt"
                             android:text="推荐商品"
                             android:textColor="#E62129"
@@ -410,8 +459,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerTuijianGoods"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" />
+                        android:layout_height="wrap_content" />
 
 
                 </LinearLayout>

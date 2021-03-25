@@ -160,7 +160,8 @@ public interface ApiServer {
             @Field("lat") String lat,
             @Field("size") String size,
             @Field("city") String city,
-            @Field("xizuetoken") String xizuetoken
+            @Field("xizuetoken") String xizuetoken,
+            @Field("cuxiao_id") String cuxiao_id
     );
 
     //加入购物车
@@ -194,6 +195,26 @@ public interface ApiServer {
             @Field("pageSize") int pageSize,
             @Field("activity_id") String activity_id,
             @Field("guxiao_id") String guxiao_id,
+            @Field("cateid") String cateid,
+            @Field("brand") String brand,
+            @Field("keywords") String keywords,
+            @Field("shopid") String shopid,
+            @Field("shopcateid") String shopcateid,
+            @Field("lat") String lat,
+            @Field("lng") String lng,
+            @Field("sort") int sort,
+            @Field("uid") String uid,
+            @Field("xizuetoken") String xizuetoken
+
+    );
+    //活动列表
+    @FormUrlEncoded
+    @POST("home/api/get_cuxiao_goods")
+    Observable<BaseBean> activeGoodsList(
+            @Field("page") int page,
+            @Field("pageSize") int pageSize,
+            @Field("activity_id") String activity_id,
+            @Field("cuxiao_id") String cuxiao_id,
             @Field("cateid") String cateid,
             @Field("brand") String brand,
             @Field("keywords") String keywords,
@@ -636,6 +657,16 @@ public interface ApiServer {
             @Field("lat") String lat,
             @Field("xizuetoken") String xizuetoken
     );
+    //促销广告列表（Banner）
+    @FormUrlEncoded
+    @POST("Home/Api/cx_banner")
+    Observable<BaseBean> cxBannerList(
+            @Field("uid") String uid,
+            @Field("position") int position,
+            @Field("lng") String lng,
+            @Field("lat") String lat,
+            @Field("xizuetoken") String xizuetoken
+    );
 
     //获取系统手机号
     @FormUrlEncoded
@@ -871,7 +902,8 @@ public interface ApiServer {
             @Field("xizuetoken") String xizuetoken,
             @Field("id") String id,
             @Field("count") int count,
-            @Field("size") String size
+            @Field("size") String size,
+            @Field("cuxiao_id") String cuxiao_id
     );
 
     //申请售后

@@ -30,6 +30,7 @@ import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.BaseTitleActivity;
 import com.cdxz.liudake.ui.main.MainActivity;
 import com.cdxz.liudake.ui.my.service.FAQActivity;
+import com.cdxz.liudake.ui.my.service.RedmiBillActivity;
 import com.cdxz.liudake.ui.my.service.ToPromoteActivity;
 import com.cdxz.liudake.ui.my.service.WithdrawalActivity;
 import com.cdxz.liudake.util.ParseUtils;
@@ -157,15 +158,18 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBindin
                 startActivity(StoreQRActivity.class, bundle1);
                 break;
             case R.id.tv_tixian://提现
-//                startActivity(StoreQuXianActivity.class);
-                Intent intent1 = new Intent(StoreHomeActivity.this, WithdrawalActivity.class);
-                if (shopBalance == null) {
-                    intent1.putExtra("redmi", "0");
-                } else {
-                    intent1.putExtra("redmi", (Serializable) shopBalance.getMy_balance().getShop_balance());
-                }
-                intent1.putExtra("shopId",shopList.getId());
-                startActivity(intent1);
+//                startActivity(StoreQuXianActivity.class);//不是我注释的
+
+//                Intent intent1 = new Intent(StoreHomeActivity.this, WithdrawalActivity.class);
+//                if (shopBalance == null) {
+//                    intent1.putExtra("redmi", "0");
+//                } else {
+//                    intent1.putExtra("redmi", (Serializable) shopBalance.getMy_balance().getShop_balance());
+//                }
+//                intent1.putExtra("shopId",shopList.getId());
+//                startActivity(intent1);
+
+                RedmiBillActivity.startRedmiBillActivity(this,shopList.getId());
                 break;
             case R.id.tv_message://新消息
                 Bundle bundle2 = new Bundle();

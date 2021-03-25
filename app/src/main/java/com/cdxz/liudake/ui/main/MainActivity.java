@@ -44,6 +44,7 @@ import com.cdxz.liudake.ui.main.fragment.LifeCircleFragment2;
 import com.cdxz.liudake.ui.main.fragment.MyFragment;
 import com.cdxz.liudake.ui.main.fragment.MyFragment2;
 import com.cdxz.liudake.ui.main.fragment.ShopCarFragment;
+import com.cdxz.liudake.ui.main.fragment.ShopCarFragment2;
 import com.cdxz.liudake.ui.main.fragment.ShopMallFragment;
 import com.cdxz.liudake.ui.main.fragment.ShopMallFragment2;
 import com.cdxz.liudake.util.ParseUtils;
@@ -96,7 +97,7 @@ public class MainActivity extends BaseActivity {
         mFragments = new ArrayList<>();
         mFragments.add(new ShopMallFragment2());
         mFragments.add(new LifeCircleFragment2());
-        mFragments.add(new ShopCarFragment());
+        mFragments.add(new ShopCarFragment2());
         mFragments.add(new MyFragment2());
         setFragmentPosition(0);
     }

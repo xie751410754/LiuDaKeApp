@@ -53,8 +53,7 @@ public class ShopCarFragment2 extends BaseFragment implements ShopCarAdapter.OnS
     @BindView(R.id.tvJifen)
     TextView tvJifen;
 
-    @BindView(R.id.tvGoodsNum)
-    TextView tvGoodsNum;
+
     private ShopCarAdapter mAdapter;
     private List<ShopCarListBean> shopCarListBeanList = new ArrayList<>();
 
@@ -76,7 +75,7 @@ public class ShopCarFragment2 extends BaseFragment implements ShopCarAdapter.OnS
 
     @Override
     protected int getResource() {
-        return R.layout.fragment_shop_car;
+        return R.layout.fragment_shop_car_new;
     }
 
     @Override
@@ -90,7 +89,7 @@ public class ShopCarFragment2 extends BaseFragment implements ShopCarAdapter.OnS
         BusUtils.register(this);
         mAdapter = new ShopCarAdapter(shopCarListBeanList, this);
         recyclerShopCar.setAdapter(mAdapter);
-        mAdapter.setEmptyView(R.layout.public_no_data);
+        mAdapter.setEmptyView(R.layout.fragment_shop_car_empty);
         getCarList();
     }
 
@@ -240,13 +239,13 @@ public class ShopCarFragment2 extends BaseFragment implements ShopCarAdapter.OnS
             }
         }
         if (count == shopCarListBeanList.size()) {
-            tvAll.setLeftDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_pay_y));
+            tvAll.setLeftDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_shop_car_goods_selector));
             tvAll.setTag("y");
         } else {
             tvAll.setLeftDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_pay_n));
             tvAll.setTag("n");
         }
-        tvTotal.setText(String.format("￥%.2f", total));
+        tvTotal.setText("总计："+String.format("￥%.2f", total));
         if (jifen > 0) {
             tvJifen.setText(String.format("+积分%.2f", jifen));
             tvJifen.setVisibility(View.VISIBLE);

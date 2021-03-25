@@ -142,10 +142,17 @@ public class GoodsDetailActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-    public static void startGoodsDetailActivity(Context context, String goodsId,boolean needPhoneNumber) {
+    public static void startGoodsDetailActivity(Context context, String goodsId, String activeId) {
         Intent intent = new Intent(context, GoodsDetailActivity.class);
         intent.putExtra("goodsId", goodsId);
-        intent.putExtra("need_phone_number",needPhoneNumber);
+        intent.putExtra("cuxiao_id", activeId);
+        context.startActivity(intent);
+    }
+
+    public static void startGoodsDetailActivity(Context context, String goodsId, boolean needPhoneNumber) {
+        Intent intent = new Intent(context, GoodsDetailActivity.class);
+        intent.putExtra("goodsId", goodsId);
+        intent.putExtra("need_phone_number", needPhoneNumber);
         context.startActivity(intent);
     }
 
@@ -162,7 +169,7 @@ public class GoodsDetailActivity extends BaseActivity {
 
         tvGoodsOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
-        needPhoneNumber = getIntent().getBooleanExtra("need_phone_number",false);
+        needPhoneNumber = getIntent().getBooleanExtra("need_phone_number", false);
 
         webView.setWebViewClient(new WebViewClient());
         webView.setWebChromeClient(new WebChromeClient());
@@ -177,7 +184,7 @@ public class GoodsDetailActivity extends BaseActivity {
         recyclerComment.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(20), false));
 
 
-        if(needPhoneNumber){
+        if (needPhoneNumber) {
             marqueeView.setVisibility(View.VISIBLE);
             List<String> messages = new ArrayList<>();
             messages.add("186xxxx9792成功抢购");
@@ -196,7 +203,6 @@ public class GoodsDetailActivity extends BaseActivity {
         }
 
 
-
         banner.addOnPageChangeListener(new OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -207,10 +213,10 @@ public class GoodsDetailActivity extends BaseActivity {
             public void onPageSelected(int position) {
 
                 try {
-                    tvIndex.setText((position+1)+"/"+bannerSize);
-                }catch (Exception e){
+                    tvIndex.setText((position + 1) + "/" + bannerSize);
+                } catch (Exception e) {
                 }
-           }
+            }
 
             @Override
             public void onPageScrollStateChanged(int state) {
@@ -278,16 +284,16 @@ public class GoodsDetailActivity extends BaseActivity {
 
     @SuppressLint("SetTextI18n")
     private void getGoodsDetail() {
-        HttpsUtil.getInstance(this).goodsDetail(getIntent().getStringExtra("goodsId"), Constants.LNG, Constants.LAT, null, Constants.CITY, object -> {
+        HttpsUtil.getInstance(this).goodsDetail(getIntent().getStringExtra("goodsId"), Constants.LNG, Constants.LAT, null, Constants.CITY,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"), object -> {
             GoodsDetailBean detailBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), GoodsDetailBean.class);
 
 
             try {
-                if(Double.parseDouble(detailBean.getSaleprice())==0&&Double.parseDouble(detailBean.getGold())>0){
+                if (Double.parseDouble(detailBean.getSaleprice()) == 0 && Double.parseDouble(detailBean.getGold()) > 0) {
                     tvSellNum.setVisibility(View.INVISIBLE);
                     tvClickNum.setVisibility(View.INVISIBLE);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
 
@@ -332,7 +338,7 @@ public class GoodsDetailActivity extends BaseActivity {
                 new XPopup.Builder(this)
                         .asCustom(new PopGoodsSpecifica(this, detailBean, (s, num) -> {
                             tvSelectCanShu.setText("已选择：" + s);
-                            buy(detailBean.getId(), num, s);
+                            buy(detailBean.getId(), num, s, getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"));
                         })).show();
             });
             tvCollect.setOnClickListener(v -> {
@@ -355,11 +361,11 @@ public class GoodsDetailActivity extends BaseActivity {
 
             bannerSize = detailBean.getGallery().size();
 
-            if(detailBean.getGallery()!=null&&detailBean.getGallery().size()>1){
+            if (detailBean.getGallery() != null && detailBean.getGallery().size() > 1) {
 
                 tvIndex.setVisibility(View.VISIBLE);
-                tvIndex.setText("1/"+detailBean.getGallery().size());
-            }else{
+                tvIndex.setText("1/" + detailBean.getGallery().size());
+            } else {
                 tvIndex.setVisibility(View.INVISIBLE);
             }
 
@@ -427,8 +433,8 @@ public class GoodsDetailActivity extends BaseActivity {
      * @param count
      * @param size
      */
-    private void buy(String id, int count, String size) {
-        HttpsUtil.getInstance(this).buy(id, count, size, object -> {
+    private void buy(String id, int count, String size, String cuxiao_id) {
+        HttpsUtil.getInstance(this).buy(id, count, size, cuxiao_id, object -> {
             settlement();
         });
     }

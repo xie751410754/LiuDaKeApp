@@ -23,7 +23,6 @@ import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.R;
-import com.cdxz.liudake.adapter.shop_mall.GoodsAdapter;
 import com.cdxz.liudake.adapter.shop_mall.SearchHistoryAdapter;
 import com.cdxz.liudake.adapter.shop_mall.SearchHotAdapter;
 import com.cdxz.liudake.api.HttpsUtil;

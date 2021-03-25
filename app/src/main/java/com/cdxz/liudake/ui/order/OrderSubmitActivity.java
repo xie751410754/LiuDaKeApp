@@ -195,7 +195,7 @@ public class OrderSubmitActivity extends BaseActivity {
         api = WXAPIFactory.createWXAPI(this, Constants.WX_APP_ID);
         bean = (ShopCarSettlementBean) getIntent().getSerializableExtra("bean");
         assert bean != null;
-        if (ObjectUtils.isNotEmpty(bean.getAddress()) && !StringUtils.isEmpty(bean.getAddress().getPhone())) {
+        if (ObjectUtils.isNotEmpty(bean) && ObjectUtils.isNotEmpty(bean.getAddress()) && !StringUtils.isEmpty(bean.getAddress().getPhone())) {
             addressRootLayout.setVisibility(View.VISIBLE);
             tvAddAddress.setVisibility(View.GONE);
             addressid = bean.getAddress().getId();

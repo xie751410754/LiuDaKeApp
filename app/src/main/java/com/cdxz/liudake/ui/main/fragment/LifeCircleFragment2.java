@@ -147,6 +147,12 @@ public class LifeCircleFragment2 extends BaseFragment {
 
         });
 
+        getActivity().findViewById(R.id.ivScan2).setOnClickListener(v -> {
+            ScanQRCodeActivity.startScanQRCodeActivity(getContext(), ScanQRCodeActivity.TYPE_PAY);
+//            Intent intent = new Intent(getContext(), CaptureActivity.class);
+//            startActivityForResult(intent, 0);
+        });
+
     }
 
     private void getStoreCat(boolean isCat) {

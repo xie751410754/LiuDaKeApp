@@ -118,7 +118,7 @@ public class ShopMallFragment extends BaseFragment {
     private HomeGoodsAdapter goodsAdapter;
     private HomeQianggouAdapter qianggouAdapter;
     private List<HomeIndexBean.GoodsActivityClassBean> menuList = new ArrayList<>();
-    private List<HomeIndexBean.GoodsCuxiao1Bean> menu2List = new ArrayList<>();
+    private List<HomeIndexBean.GoodsCuxiaoBean> menu2List = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao2Bean> activityList = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao3Bean> classList = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao4Bean> tuijianGoodsList = new ArrayList<>();
@@ -267,7 +267,7 @@ public class ShopMallFragment extends BaseFragment {
             }
             //
             menu2List.clear();
-            menu2List.addAll(homeIndexBean.getGoods_cuxiao1());
+            menu2List.addAll(homeIndexBean.getGoods_cuxiao());
             menu2Adapter.notifyDataSetChanged();
 //            //活动专栏
 //            if (CollectionUtils.isEmpty(homeIndexBean.getGoods_cuxiao2())) {

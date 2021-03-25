@@ -1,6 +1,7 @@
 package com.cdxz.liudake.ui.main.fragment;
 
 import android.annotation.SuppressLint;
+import android.graphics.Paint;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -22,11 +23,13 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.TimeUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.adapter.shop_mall.ActivityAdapter;
 import com.cdxz.liudake.adapter.shop_mall.ClassAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeBannerAdapter;
+import com.cdxz.liudake.adapter.shop_mall.HomeCXBannerAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeGoodsAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeMenuAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeQianggouAdapter;
@@ -37,6 +40,7 @@ import com.cdxz.liudake.base.BusTag;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.BannerBean;
 import com.cdxz.liudake.bean.Bus.PopSuggestionBean;
+import com.cdxz.liudake.bean.CXBannerBean;
 import com.cdxz.liudake.bean.HomeIndexBean;
 import com.cdxz.liudake.ui.ScanQRCodeActivity;
 import com.cdxz.liudake.ui.SearchActivity;
@@ -49,6 +53,7 @@ import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.view.DrawableTextView;
 import com.cdxz.liudake.view.GridSpacingItemDecoration;
 import com.cdxz.liudake.view.roundedImageView.RoundedImageView;
+import com.lxj.xpopup.XPopup;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.youth.banner.Banner;
@@ -73,6 +78,9 @@ public class ShopMallFragment2 extends BaseFragment {
     //Banner
     @BindView(R.id.banner)
     Banner banner;
+    //Banner
+    @BindView(R.id.cxBanner)
+    Banner cxBanner;
     //
     @BindView(R.id.tvMessageNum)
     TextView tvMessageNum;
@@ -117,6 +125,93 @@ public class ShopMallFragment2 extends BaseFragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    @BindView(R.id.tvTips)
+    TextView activeName1;
+    @BindView(R.id.tvTips2)
+    TextView activeSubName1;
+    @BindView(R.id.ivImage1)
+    RoundedImageView ivImage1;
+    @BindView(R.id.ivImage2)
+    RoundedImageView ivImage2;
+    @BindView(R.id.tv_jifen)
+    TextView tv_jifen1;
+    @BindView(R.id.tv_jifen2)
+    TextView tv_jifen2;
+    @BindView(R.id.tv_price)
+    TextView tv_price;
+    @BindView(R.id.tv_price2)
+    TextView tv_price2;
+    @BindView(R.id.tv_priceType)
+    TextView tv_priceType1;
+
+    @BindView(R.id.two_tvTips)
+    TextView two_tvTips;
+    @BindView(R.id.two_tvTips2)
+    TextView two_tvTips2;
+    @BindView(R.id.two_ivImage1)
+    RoundedImageView two_ivImage1;
+    @BindView(R.id.two_ivImage2)
+    RoundedImageView two_ivImage2;
+    @BindView(R.id.two_tv_jifen)
+    TextView two_tv_jifen;
+    @BindView(R.id.two_jifen2)
+    TextView two_jifen2;
+    @BindView(R.id.two_tv_price)
+    TextView two_tv_price;
+    @BindView(R.id.two_tv_price2)
+    TextView two_tv_price2;
+    @BindView(R.id.two_tv_priceType)
+    TextView two_tv_priceType;
+
+    @BindView(R.id.three_tvTips)
+    TextView three_tvTips;
+    @BindView(R.id.three_tvTips2)
+    TextView three_tvTips2;
+    @BindView(R.id.three_ivImage1)
+    RoundedImageView three_ivImage1;
+    @BindView(R.id.three_ivImage2)
+    RoundedImageView three_ivImage2;
+    @BindView(R.id.three_tv_jifen)
+    TextView three_tv_jifen;
+    @BindView(R.id.three_jifen2)
+    TextView three_jifen2;
+    @BindView(R.id.three_tv_price)
+    TextView three_tv_price;
+    @BindView(R.id.three_tv_price2)
+    TextView three_tv_price2;
+    @BindView(R.id.three_tv_priceType)
+    TextView three_tv_priceType;
+
+    @BindView(R.id.four_tvTips)
+    TextView four_tvTips;
+    @BindView(R.id.four_tvTips2)
+    TextView four_tvTips2;
+    @BindView(R.id.four_ivImage1)
+    RoundedImageView four_ivImage1;
+    @BindView(R.id.four_ivImage2)
+    RoundedImageView four_ivImage2;
+    @BindView(R.id.four_tv_jifen)
+    TextView four_tv_jifen;
+    @BindView(R.id.four_jifen2)
+    TextView four_jifen2;
+    @BindView(R.id.four_tv_price)
+    TextView four_tv_price;
+    @BindView(R.id.four_tv_price2)
+    TextView four_tv_price2;
+    @BindView(R.id.four_tv_priceType)
+    TextView four_tv_priceType;
+    @BindView(R.id.ll_miaosha4)
+    LinearLayout ll_miaosha4;
+
+    @BindView(R.id.four_tv_hour)
+    TextView tv_hour;
+    @BindView(R.id.four_tv_min)
+    TextView tv_min;
+    @BindView(R.id.four_tv_sec)
+    TextView tv_sec;
+    @BindView(R.id.active4)
+    View miaoshaView;
+
     public LocationClient mLocationClient = null;
     private ShopMallFragment2.MyLocationListener myListener = new ShopMallFragment2.MyLocationListener();
 
@@ -132,7 +227,7 @@ public class ShopMallFragment2 extends BaseFragment {
     private HomeQianggouAdapter qianggouAdapter;
     private List<HomeIndexBean.GoodsActivityClassBean> menuList = new ArrayList<>();
     private List<HomeIndexBean.GoodsActivityClassBean> homeMenuList = new ArrayList<>();
-    private List<HomeIndexBean.GoodsCuxiao1Bean> menu2List = new ArrayList<>();
+    private List<HomeIndexBean.GoodsCuxiaoBean> menu2List = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao2Bean> activityList = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao3Bean> classList = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao4Bean> tuijianGoodsList = new ArrayList<>();
@@ -243,6 +338,7 @@ public class ShopMallFragment2 extends BaseFragment {
         recyclerClass.setVisibility(View.GONE);
         //
         homeIndex();
+        getcxList();
     }
 
     @BusUtils.Bus(tag = BusTag.POP_SUGGESTION)
@@ -265,6 +361,7 @@ public class ShopMallFragment2 extends BaseFragment {
             GoodsClassActivity.startGoodsClassActivity(getContext());
 
         });
+
     }
 
     @BusUtils.Bus(tag = BusTag.UPDATE_MESSAGE_NUM)
@@ -293,6 +390,25 @@ public class ShopMallFragment2 extends BaseFragment {
         HttpsUtil.getInstance(getContext()).positionList(5, Constants.LNG, Constants.LAT, object -> {
             LogUtils.e("banner = " + GsonUtils.toJson(object));
             List<BannerBean> bannerBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), BannerBean.class);
+
+            //http://47.108.198.70/Uploads/Picture/20201030/s_b3f05628067dc322.jpg
+        });
+    }
+
+    /**
+     * 促销banner数据
+     */
+    private void getcxList() {
+        HttpsUtil.getInstance(getContext()).cxBannerList(5, Constants.LNG, Constants.LAT, object -> {
+            LogUtils.e("banner = " + GsonUtils.toJson(object));
+            List<CXBannerBean> bannerBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), CXBannerBean.class);
+
+            List<CXBannerBean> bannerBeans = new ArrayList<>();
+            for (int i = 0; i < bannerBeanList.size(); i++) {
+                bannerBeans.add(bannerBeanList.get(i));
+            }
+            cxBanner.setAdapter(new HomeCXBannerAdapter(bannerBeans), true)
+                    .setIndicator(new CircleIndicator(getContext()));
 
             //http://47.108.198.70/Uploads/Picture/20201030/s_b3f05628067dc322.jpg
         });
@@ -332,8 +448,11 @@ public class ShopMallFragment2 extends BaseFragment {
             }
             //
             menu2List.clear();
-            menu2List.addAll(homeIndexBean.getGoods_cuxiao1());
+            menu2List.addAll(homeIndexBean.getGoods_cuxiao());
             menu2Adapter.notifyDataSetChanged();
+
+            initActiveView(homeIndexBean.getGoods_cuxiao());
+
 //            //活动专栏
 //            if (CollectionUtils.isEmpty(homeIndexBean.getGoods_cuxiao2())) {
 //                tvActivityTips.setVisibility(View.GONE);
@@ -434,10 +553,282 @@ public class ShopMallFragment2 extends BaseFragment {
         });
     }
 
+    public void initActiveView(List<HomeIndexBean.GoodsCuxiaoBean> list) {
+        activeName1.setText(list.get(0).getTitle());
+        activeSubName1.setText(list.get(0).getSubtitle());
+        Glide.with(getContext())
+                .load(list.get(0).getGoods().get(0).getUrl())
+                .placeholder(R.mipmap.img_default)
+                .into(ivImage1);
+        Glide.with(getContext())
+                .load(list.get(0).getGoods().get(1).getUrl())
+                .placeholder(R.mipmap.img_default)
+                .into(ivImage2);
+        tv_jifen1.setText(list.get(0).getGoods().get(0).getCx_points()+"积分");
+        tv_jifen2.setText(list.get(0).getGoods().get(1).getCx_points()+"积分");
+        tv_price.setText(list.get(0).getGoods().get(0).getSaleprice());
+        tv_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        tv_price2.setText(list.get(0).getGoods().get(1).getSaleprice());
+        tv_price2.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+
+        switch (list.get(0).getGoods().get(0).getPrice_type()) {
+            case "0":
+                tv_priceType1.setText("运费￥" + list.get(0).getGoods().get(0).getCx_postage());
+                break;
+            case "1":
+                tv_priceType1.setText("运费￥" + list.get(0).getGoods().get(0).getCx_postage());
+
+                break;
+            case "2":
+
+                tv_priceType1.setText("￥" + list.get(0).getGoods().get(0).getCx_price());
+
+
+                break;
+            case "3":
+                tv_priceType1.setText("￥" + list.get(0).getGoods().get(0).getCx_price());
+
+                break;
+            default:
+                tv_priceType1.setText("￥" + list.get(0).getGoods().get(0).getCx_price());
+
+
+        }
+
+        two_tvTips.setText(list.get(1).getTitle());
+        two_tvTips2.setText(list.get(1).getSubtitle());
+        Glide.with(getContext())
+                .load(list.get(1).getGoods().get(0).getUrl())
+                .placeholder(R.mipmap.img_default)
+                .into(two_ivImage1);
+        Glide.with(getContext())
+                .load(list.get(1).getGoods().get(1).getUrl())
+                .placeholder(R.mipmap.img_default)
+                .into(two_ivImage2);
+        two_tv_jifen.setText(list.get(1).getGoods().get(0).getCx_points()+"积分");
+        two_jifen2.setText(list.get(1).getGoods().get(1).getCx_points()+"积分");
+        two_tv_price.setText(list.get(1).getGoods().get(0).getSaleprice());
+        two_tv_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        two_tv_price2.setText(list.get(1).getGoods().get(1).getSaleprice());
+        two_tv_price2.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+
+        switch (list.get(1).getGoods().get(0).getPrice_type()) {
+            case "0":
+                two_tv_priceType.setText("运费￥" + list.get(1).getGoods().get(0).getCx_postage());
+                break;
+            case "1":
+                two_tv_priceType.setText("运费￥" + list.get(1).getGoods().get(0).getCx_postage());
+
+                break;
+            case "2":
+
+                two_tv_priceType.setText("￥" + list.get(1).getGoods().get(0).getCx_price());
+
+
+                break;
+            case "3":
+                two_tv_priceType.setText("￥" + list.get(1).getGoods().get(0).getCx_price());
+
+                break;
+            default:
+                two_tv_priceType.setText("￥" + list.get(1).getGoods().get(0).getCx_price());
+
+
+        }
+
+        three_tvTips.setText(list.get(2).getTitle());
+        three_tvTips2.setText(list.get(2).getSubtitle());
+        Glide.with(getContext())
+                .load(list.get(2).getGoods().get(0).getUrl())
+                .placeholder(R.mipmap.img_default)
+                .into(three_ivImage1);
+        Glide.with(getContext())
+                .load(list.get(2).getGoods().get(1).getUrl())
+                .placeholder(R.mipmap.img_default)
+                .into(three_ivImage2);
+        three_tv_jifen.setText(list.get(2).getGoods().get(0).getCx_points()+"积分");
+        three_jifen2.setText(list.get(2).getGoods().get(1).getCx_points()+"积分");
+        three_tv_price.setText(list.get(2).getGoods().get(0).getSaleprice());
+        three_tv_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+
+        three_tv_price2.setText(list.get(2).getGoods().get(1).getSaleprice());
+        three_tv_price2.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+
+
+        switch (list.get(2).getGoods().get(0).getPrice_type()) {
+            case "0":
+                three_tv_priceType.setText("运费￥" + list.get(2).getGoods().get(0).getCx_postage());
+                break;
+            case "1":
+                three_tv_priceType.setText("运费￥" + list.get(2).getGoods().get(0).getCx_postage());
+
+                break;
+            case "2":
+
+                three_tv_priceType.setText("￥" + list.get(2).getGoods().get(0).getCx_price());
+
+
+                break;
+            case "3":
+                three_tv_priceType.setText("￥" + list.get(2).getGoods().get(0).getCx_price());
+
+                break;
+            default:
+                three_tv_priceType.setText("￥" + list.get(2).getGoods().get(0).getCx_price());
+
+
+        }
+
+        if (list.size()>3){
+            four_tvTips.setText(list.get(3).getTitle());
+            four_tvTips2.setText(list.get(3).getSubtitle());
+            Glide.with(getContext())
+                    .load(list.get(3).getGoods().get(0).getUrl())
+                    .placeholder(R.mipmap.img_default)
+                    .into(four_ivImage1);
+            Glide.with(getContext())
+                    .load(list.get(3).getGoods().get(1).getUrl())
+                    .placeholder(R.mipmap.img_default)
+                    .into(four_ivImage2);
+            four_tv_jifen.setText(list.get(3).getGoods().get(0).getCx_points()+"积分");
+            four_jifen2.setText(list.get(3).getGoods().get(1).getCx_points()+"积分");
+            four_tv_price.setText(list.get(3).getGoods().get(0).getSaleprice());
+            four_tv_price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+
+            four_tv_price2.setText(list.get(3).getGoods().get(1).getSaleprice());
+            four_tv_price2.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+
+            four_tvTips2.setVisibility(View.GONE);
+            ll_miaosha4.setVisibility(View.VISIBLE);
+
+            switch (list.get(3).getGoods().get(0).getPrice_type()) {
+                case "0":
+                    four_tv_priceType.setText("运费￥" + list.get(3).getGoods().get(0).getCx_postage());
+                    break;
+                case "1":
+                    four_tv_priceType.setText("运费￥" + list.get(3).getGoods().get(0).getCx_postage());
+
+                    break;
+                case "2":
+
+                    four_tv_priceType.setText("￥" + list.get(3).getGoods().get(0).getCx_price());
+
+
+                    break;
+                case "3":
+                    four_tv_priceType.setText("￥" + list.get(3).getGoods().get(0).getCx_price());
+
+                    break;
+                default:
+                    four_tv_priceType.setText("￥" + list.get(3).getGoods().get(0).getCx_price());
+
+            }
+
+            long startMills2 = TimeUtils.string2Millis(list.get(3).getStart_time(), "yyyy-MM-dd HH:mm:ss");
+            long endMills2 = TimeUtils.string2Millis(list.get(3).getEnd_time(), "yyyy-MM-dd HH:mm:ss");
+            long nowMills = TimeUtils.getNowMills();
+
+            LogUtils.e("开始时间 = " + startMills2);
+            LogUtils.e("结束时间 = " + endMills2);
+            LogUtils.e("现在时间 = " + nowMills);
+            if (nowMills < startMills2) {
+//            tvTips2.setText("活动未开始");
+            } else if (nowMills > endMills2) {
+//            tvTips2.setText("活动已结束");
+            } else {
+                if (downTimer != null) {
+                    downTimer.cancel();
+                    downTimer = null;
+                }
+                long timeSpan = endMills2 - nowMills;
+//                    TimeUtils.getM
+                LogUtils.e("时间差1 = " + timeSpan);
+                downTimer = new CountDownTimer(timeSpan, 1000) {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        long ss = millisUntilFinished / 1000;
+                        long h = ss / 3600;
+                        long m = ss % 3600 / 60;
+                        long s = ss % 3600 % 60;
+
+                        String H;
+                        if (h < 10) {
+                            H = "0" + h;
+                        } else {
+                            H = String.valueOf(h);
+                        }
+                        String M;
+                        if (m < 10) {
+                            M = "0" + m;
+                        } else {
+                            M = String.valueOf(m);
+                        }
+                        String S;
+                        if (s < 10) {
+                            S = "0" + s;
+                        } else {
+                            S = String.valueOf(s);
+                        }
+
+//                    tvTips2.setText(H + ":" + M + ":" + S);
+
+                        tv_hour.setText(H);
+                        tv_min.setText(M);
+                        tv_sec.setText(S);
+                    }
+
+                    @Override
+                    public void onFinish() {
+//                    tvTips2.setText("活动已结束");
+                        miaoshaView.setAlpha(0.6f);
+                        miaoshaView.setClickable(false);
+                    }
+                };
+                downTimer.start();
+            }
+        }else {
+            miaoshaView.setAlpha(0.6f);
+            miaoshaView.setClickable(false);
+        }
+
+
+
+        getActivity().findViewById(R.id.active1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(0).getId(), list.get(0).getTitle(), 5);
+            }
+        });
+        getActivity().findViewById(R.id.active2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(1).getId(), list.get(0).getTitle(), 5);
+            }
+        });
+        getActivity().findViewById(R.id.active3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(2).getId(), list.get(0).getTitle(), 5);
+            }
+        });
+        getActivity().findViewById(R.id.active4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (list.size()>3){
+                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(3).getId(), list.get(0).getTitle(), 5);
+                }
+            }
+        });
+
+
+    }
+
     /**
      * 获取未读消息数
      */
     private void getNoreadMessage() {
+
         HttpsUtil.getInstance(getContext()).getNoreadMessage(object -> {
             try {
                 JSONObject jsonObject = new JSONObject(GsonUtils.toJson(object));
