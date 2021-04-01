@@ -51,6 +51,42 @@ public class StoreInfoDetailBean {
     private NoticeBean notice;
     private int is_close;
     private String shareUrl;
+    private String actual_sheng;
+    private String actual_shi;
+    private String actual_qu;
+    private String actual_address;
+
+    public String getActual_sheng() {
+        return actual_sheng;
+    }
+
+    public String getActual_shi() {
+        return actual_shi;
+    }
+
+    public void setActual_shi(String actual_shi) {
+        this.actual_shi = actual_shi;
+    }
+
+    public String getActual_qu() {
+        return actual_qu;
+    }
+
+    public void setActual_qu(String actual_qu) {
+        this.actual_qu = actual_qu;
+    }
+
+    public String getActual_address() {
+        return actual_address;
+    }
+
+    public void setActual_address(String actual_address) {
+        this.actual_address = actual_address;
+    }
+
+    public void setActual_sheng(String actual_sheng) {
+        this.actual_sheng = actual_sheng;
+    }
 
     public String getId() {
         return id;

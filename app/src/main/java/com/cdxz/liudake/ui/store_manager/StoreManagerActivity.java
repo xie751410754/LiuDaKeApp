@@ -2,6 +2,7 @@ package com.cdxz.liudake.ui.store_manager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -30,6 +33,7 @@ import com.cdxz.liudake.api.UploadUtil;
 import com.cdxz.liudake.base.BaseBean;
 import com.cdxz.liudake.base.BaseObserver;
 import com.cdxz.liudake.base.Constants;
+import com.cdxz.liudake.bean.RegionBean;
 import com.cdxz.liudake.bean.StoreInfoDetailBean;
 import com.cdxz.liudake.bean.StoreInfoResult;
 import com.cdxz.liudake.bean.UploadBean;
@@ -110,7 +114,31 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
         binding.storeTime.setOnClickListener(this);
         binding.tvSubmit.setOnClickListener(this);
         binding.storePinlun.setOnClickListener(this);
+        binding.cityTextAdress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPickerView();
+            }
+        });
+        binding.tvStoreLocalAdress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new XPopup.Builder(StoreManagerActivity.this).asInputConfirm("详细地址", "请输入详细地址", new OnInputConfirmListener() {
+                    @Override
+                    public void onConfirm(String text) {
+                        if (TextUtils.isEmpty(text)) {
+                            ToastUtils.showShort("内容不能为空");
+                            return;
+                        }
+                        binding.tvStoreLocalAdress.setText(text);
+                    }
+                }).show();
+            }
+        });
         getStoreInfo(shopId);
+
+        getRegion();
+
 
         initRcv();
     }
@@ -172,6 +200,8 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                 binding.tvStoreXiaofei.setText(storeInfoResultBaseBean.getData().getAverage_money());
                 binding.tvStoreInfo.setText(storeInfoResultBaseBean.getData().getDescription());
                 binding.tvStorePhone.setText(storeInfoResultBaseBean.getData().getContact());
+                binding.cityTextAdress.setText(storeInfoResultBaseBean.getData().getActual_sheng()==null?"请选择商铺的省市区":storeInfoResultBaseBean.getData().getActual_sheng()+storeInfoResultBaseBean.getData().getActual_shi()+storeInfoResultBaseBean.getData().getActual_qu());
+                binding.tvStoreLocalAdress.setText(storeInfoResultBaseBean.getData().getActual_address()==null ? "再输入详细地址(门牌号)":storeInfoResultBaseBean.getData().getActual_address());
 
                 logo = storeInfoResultBaseBean.getData().getLogo();
                 open_start_time = storeInfoResultBaseBean.getData().getOpen_start_time();
@@ -224,8 +254,12 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                 .addFormDataPart("lng", lng)
                 .addFormDataPart("lat", lat)
                 .addFormDataPart("name", name)
-                .addFormDataPart("open_start_time",open_start_time)
-                .addFormDataPart("open_end_time",open_end_time)
+                .addFormDataPart("actual_sheng", province_name)
+                .addFormDataPart("actual_shi", city_name)
+                .addFormDataPart("actual_qu", region_name)
+                .addFormDataPart("actual_address", binding.tvStoreLocalAdress.getText().toString())
+                .addFormDataPart("open_start_time", open_start_time)
+                .addFormDataPart("open_end_time", open_end_time)
                 .addFormDataPart("description", description)
                 .addFormDataPart("cat_id", cat_id)
                 .addFormDataPart("average_money", average_money)
@@ -252,6 +286,53 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                     ToastUtils.showShort("提交成功");
                     finish();
                 }
+            }
+        });
+    }
+
+    private List<RegionBean> levelList1 = new ArrayList<>();
+    private List<RegionBean> levelList2 = new ArrayList<>();
+    private List<RegionBean> levelList3 = new ArrayList<>();
+
+    private List<List<RegionBean>> cityList = new ArrayList<>();
+    private List<List<List<RegionBean>>> areaList = new ArrayList<>();
+
+    /**
+     * 获取省市区
+     */
+    private void getRegion() {
+        HttpsUtil.getInstance(this).getRegion(object -> {
+            List<RegionBean> regionBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), RegionBean.class);
+            for (RegionBean regionBean1 : regionBeanList) {
+                if (!"钓鱼岛".equals(regionBean1.getName())) {
+                    if (regionBean1.getLevel().equals("1")) {
+                        levelList1.add(regionBean1);
+                    } else if (regionBean1.getLevel().equals("2")) {
+                        levelList2.add(regionBean1);
+                    } else if (regionBean1.getLevel().equals("3")) {
+                        levelList3.add(regionBean1);
+                    }
+                }
+            }
+            for (RegionBean regionBean1 : levelList1) {
+                //
+                List<RegionBean> cityListChild = new ArrayList<>();
+                List<List<RegionBean>> areaListChild = new ArrayList<>();
+                for (RegionBean regionBean2 : levelList2) {
+                    if (regionBean2.getPid().equals(regionBean1.getId())) {
+                        cityListChild.add(regionBean2);
+                        //
+                        List<RegionBean> areaListChildChild = new ArrayList<>();
+                        for (RegionBean regionBean3 : levelList3) {
+                            if (regionBean3.getPid().equals(regionBean2.getId())) {
+                                areaListChildChild.add(regionBean3);
+                            }
+                        }
+                        areaListChild.add(areaListChildChild);
+                    }
+                }
+                cityList.add(cityListChild);
+                areaList.add(areaListChild);
             }
         });
     }
@@ -336,8 +417,8 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                 break;
             case R.id.store_pinlun:
                 Bundle bundle3 = new Bundle();
-                bundle3.putString("shopId",shopId);
-                startActivity(StoreCommentActivity.class,bundle3);
+                bundle3.putString("shopId", shopId);
+                startActivity(StoreCommentActivity.class, bundle3);
                 break;
             case R.id.store_phone://联系电话
                 new XPopup.Builder(StoreManagerActivity.this).asInputConfirm("联系电话", "请联系电话", new OnInputConfirmListener() {
@@ -357,7 +438,7 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                     ToastUtils.showShort("请上传店铺头像");
                     return;
                 }
-                if (TextUtils.isEmpty(open_start_time)||TextUtils.isEmpty(open_end_time)){
+                if (TextUtils.isEmpty(open_start_time) || TextUtils.isEmpty(open_end_time)) {
                     ToastUtils.showShort("请设置营业时间");
                     return;
                 }
@@ -385,8 +466,16 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                     ToastUtils.showShort("请填写店铺人均消费");
                     return;
                 }
+                if (TextUtils.isEmpty(province_name)) {
+                    ToastUtils.showShort("请填写店铺省市区");
+                    return;
+                }
+                if (TextUtils.isEmpty(binding.tvStoreLocalAdress.getText().toString())) {
+                    ToastUtils.showShort("请填写店铺详细地址");
+                    return;
+                }
 
-                LogUtils.e("xzl","lng="+lng+"lat"+lat);
+                LogUtils.e("xzl", "lng=" + lng + "lat" + lat);
                 submit(logo, new UploadUtil.OnUploadCallback() {
                     @Override
                     public void onSuccess(UploadBean uploadBean) {
@@ -395,8 +484,57 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                 });
                 break;
 
+            case R.id.city_text_adress:
+
+                showPickerView();
+
+                break;
+            case R.id.tv_store_local_adress:
+                new XPopup.Builder(StoreManagerActivity.this).asInputConfirm("详细地址", "请输入详细地址", new OnInputConfirmListener() {
+                    @Override
+                    public void onConfirm(String text) {
+                        if (TextUtils.isEmpty(text)) {
+                            ToastUtils.showShort("内容不能为空");
+                            return;
+                        }
+                        binding.tvStoreLocalAdress.setText(text);
+                    }
+                }).show();
+                break;
+
         }
     }
+
+    String province_name;//省
+    String city_name;//市
+    String region_name;//区
+
+    private void showPickerView() {
+        if (levelList1.size() == 0 || cityList.size() == 0 || areaList.size() == 0) {
+            ToastUtils.showShort("省市区获取中，请稍后片刻...");
+            return;
+        }
+        OptionsPickerView pickerView = new OptionsPickerBuilder(this, (options1, options2, options3, v) -> {
+            province_name = levelList1.get(options1).getId();
+            city_name = cityList.get(options1).get(options2).getId();
+            region_name = areaList.get(options1).get(options2).get(options3).getId();
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder
+                    .append(levelList1.get(options1).getPickerViewText())
+                    .append(" ")
+                    .append(cityList.get(options1).get(options2).getPickerViewText())
+                    .append(" ")
+                    .append(areaList.get(options1).get(options2).get(options3).getPickerViewText());
+            binding.cityTextAdress.setText(stringBuilder);
+        })
+                .setTitleText("选择经营地区")
+                .setCancelColor(ContextCompat.getColor(this, R.color.appColor))
+                .setSubmitColor(ContextCompat.getColor(this, R.color.appColor))
+                .build();
+        pickerView.setPicker(levelList1, cityList, areaList);
+        pickerView.show();
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -742,7 +880,7 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {
-            ImageView imageView,deleteImg;
+            ImageView imageView, deleteImg;
             SquareCenterFrameLayout squareCenterFrameLayout;
 
             MyViewHolder(View itemView) {

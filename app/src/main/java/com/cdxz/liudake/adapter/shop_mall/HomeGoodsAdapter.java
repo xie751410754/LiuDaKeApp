@@ -38,7 +38,7 @@ public class HomeGoodsAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsCuxiao
                 .setText(R.id.tvGoodsNewPrice, "¥" + goodsBean.getSaleprice()+"+")
                 .setText(R.id.tvGoodsPrice, "¥" + goodsBean.getOrginalprice())
                 .setText(R.id.tvSellNum, "已售 " + goodsBean.getSalescount())
-                .setText(R.id.tvScore, "积分 " + goodsBean.getGold());
+                .setText(R.id.tvScore,  goodsBean.getGold()+ "积分");
 
         TextView tvGoodsPrice = baseViewHolder.getView(R.id.tvGoodsPrice);
         tvGoodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);

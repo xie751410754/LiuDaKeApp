@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
@@ -22,7 +23,9 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.yanzhenjie.recyclerview.SwipeMenuCreator;
 import com.yanzhenjie.recyclerview.SwipeMenuItem;
 import com.yanzhenjie.recyclerview.SwipeRecyclerView;
+import com.yanzhenjie.recyclerview.touch.OnItemMoveListener;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ShopCarAdapter extends BaseQuickAdapter<ShopCarListBean, BaseViewHolder> {
@@ -70,10 +73,11 @@ public class ShopCarAdapter extends BaseQuickAdapter<ShopCarListBean, BaseViewHo
                     // 菜单在Item中的Position
                     int menuPosition = menuBridge.getPosition();
                     if (menuPosition == 0) {
-                        onSelectListener.onDeleteClick(adapterPosition, listBean);
+                        onSelectListener.onDeleteClick(listBean,adapterPosition);
                     }
                 }
             });
+
         }
         ShopCarChildAdapter mAdapter = new ShopCarChildAdapter(listBean.getList());
         recyclerGoods.setAdapter(mAdapter);
@@ -100,6 +104,6 @@ public class ShopCarAdapter extends BaseQuickAdapter<ShopCarListBean, BaseViewHo
     public interface OnSelectListener {
         void onChildClick(int position, ShopCarListBean listBean);
 
-        void onDeleteClick(int position, ShopCarListBean listBean);
+        void onDeleteClick(ShopCarListBean listBean, int position);
     }
 }

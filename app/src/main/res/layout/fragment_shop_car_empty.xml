@@ -6,6 +6,7 @@
 
 
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/rl1"
         android:layout_width="match_parent"
         android:layout_height="88pt"
@@ -61,7 +62,7 @@
             android:paddingTop="11pt"
             android:paddingEnd="38pt"
             android:paddingBottom="11pt"
-            android:text="去首页逛逛"
+            android:text="快去首页逛逛吧"
             android:textColor="#FFFFFF"
             android:textSize="26pt" />
 

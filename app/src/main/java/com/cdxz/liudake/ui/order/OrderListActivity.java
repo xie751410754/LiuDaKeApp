@@ -47,8 +47,8 @@ public class OrderListActivity extends BaseActivity {
         setTitleText("订单列表");
 
         fragmentList.add(OrderListFragment.newInstance(0));
-        fragmentList.add(OrderListFragment.newInstance(1));
         fragmentList.add(OrderListFragment.newInstance(2));
+        fragmentList.add(OrderListFragment.newInstance(1));
         fragmentList.add(OrderListFragment.newInstance(3));
 //        fragmentList.add(OrderListFragment.newInstance(4));
         fragmentList.add(OrderListFragment.newInstance(5));

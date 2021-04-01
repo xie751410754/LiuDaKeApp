@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20pt"
+        android:layout_marginEnd="20pt"
+        android:alpha="0.31"
+        android:background="@drawable/round25999999_welcome"
+        android:text="跳过"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp" />
+
+    <ImageView
+        android:id="@+id/img_go"
+        android:layout_width="360pt"
+        android:layout_height="80pt"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="140pt"
+        android:src="@mipmap/icon_welcome_ljty" />
+
+</RelativeLayout>

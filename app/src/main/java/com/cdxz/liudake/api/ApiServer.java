@@ -147,7 +147,7 @@ public interface ApiServer {
     );
 
     //首页
-    @POST("Home/api/index")
+    @POST("Home/api/index_now")
     Observable<BaseBean> homeIndex();
 
     //商品详情
@@ -172,6 +172,7 @@ public interface ApiServer {
             @Field("size") String size,
             @Field("id") String id,
             @Field("count") int count,
+            @Field("cuxiao_id") String cuxiao_id,
             @Field("xizuetoken") String xizuetoken
     );
 

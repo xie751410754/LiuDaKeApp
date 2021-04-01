@@ -19,5 +19,7 @@
     <color name="view_line">#DEDFE1</color>
     <color name="color_EEEEEE">#EEEEEE</color>
     <color name="black_trans_33">#11000000</color>
+    <color name="transparent">#00000000</color><!--完全透明-->
+
 
 </resources>

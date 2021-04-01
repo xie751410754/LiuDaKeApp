@@ -205,7 +205,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.OnSe
     }
 
     @Override
-    public void onDeleteClick(int position, ShopCarListBean listBean) {
+    public void onDeleteClick(ShopCarListBean listBean ,int position) {
         HttpsUtil.getInstance(getContext()).deleteGoods(listBean.getList().get(position).getGoods_id(), object -> {
             try {
                 JSONObject jsonObject = new JSONObject(GsonUtils.toJson(object));

@@ -15,28 +15,29 @@
         android:orientation="horizontal">
 
         <TextView
+            android:text="暂无活动"
             android:id="@+id/two_tvTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="热卖推荐"
+            android:fontFamily="sans-serif-black"
             android:textColor="#222222"
-            android:textSize="32pt"
-            android:textStyle="bold" />
+            android:textSize="32pt" />
 
         <TextView
+            android:text="敬请期待"
             android:id="@+id/two_tvTips2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="每日限兑一次"
-            android:textColor="#222222"
+            android:layout_marginStart="20pt"
+            android:textColor="#808080"
             android:textSize="24pt" />
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/ll_miaosha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_hour"
@@ -104,42 +105,47 @@
 
             <com.cdxz.liudake.view.roundedImageView.RoundedImageView
                 android:id="@+id/two_ivImage1"
-                android:layout_width="133pt"
-                android:layout_height="133pt"
+                android:layout_width="147pt"
+                android:layout_height="147pt"
                 android:scaleType="fitXY"
                 app:riv_corner_radius="8pt" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/two_tv_jifen"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10pt"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/two_tv_jifen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="30积分"
-                    android:textColor="#E62129"
-                    android:textSize="22pt" />
-
-                <TextView
-                    android:id="@+id/two_tv_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="￥119"
-                    android:textColor="#808080"
-                    android:textSize="18pt" />
-            </LinearLayout>
-
+                android:layout_marginTop="-32pt"
+                android:background="@drawable/round8_666666_shop"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="0.00积分"
+                android:textColor="@color/white"
+                android:textSize="22pt" />
 
             <TextView
                 android:id="@+id/two_tv_priceType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="30积分"
+                android:layout_marginTop="10pt"
+                android:text="0.00"
                 android:textColor="#E62129"
                 android:textSize="22pt" />
+
+            <TextView
+                android:id="@+id/two_tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textColor="#808080"
+                android:textSize="18pt" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#E62129"
+                android:textSize="22pt"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -151,33 +157,39 @@
 
             <com.cdxz.liudake.view.roundedImageView.RoundedImageView
                 android:id="@+id/two_ivImage2"
-                android:layout_width="133pt"
-                android:layout_height="133pt"
+                android:layout_width="147pt"
+                android:layout_height="147pt"
                 android:scaleType="fitXY"
                 app:riv_corner_radius="8pt" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/two_tv_priceType2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-32pt"
+                android:background="@drawable/round8_666666_shop"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="0.00积分"
+                android:textColor="@color/white"
+                android:textSize="22pt" />
+
+            <TextView
+                android:id="@+id/two_jifen2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10pt"
-                android:orientation="horizontal">
+                android:text="0.00"
+                android:textColor="#E62129"
+                android:textSize="22pt" />
 
-                <TextView
-                    android:id="@+id/two_jifen2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="30积分"
-                    android:textColor="#E62129"
-                    android:textSize="22pt" />
-
-                <TextView
-                    android:id="@+id/two_tv_price2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="￥119"
-                    android:textColor="#808080"
-                    android:textSize="18pt" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/two_tv_price2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textColor="#808080"
+                android:textSize="18pt" />
 
 
         </LinearLayout>

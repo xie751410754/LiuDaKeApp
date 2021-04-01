@@ -315,7 +315,7 @@ public class GoodsDetailActivity extends BaseActivity {
                 new XPopup.Builder(this)
                         .asCustom(new PopGoodsSpecifica(this, detailBean, (s, num) -> {
                             tvSelectCanShu.setText("已选择：" + s);
-                            orderAddCar(s, num);
+                            orderAddCar(s, num,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"));
                         })).show();
             });
             findViewById(R.id.tvGoodsExplain).setOnClickListener(v -> {
@@ -325,12 +325,12 @@ public class GoodsDetailActivity extends BaseActivity {
             });
             findViewById(R.id.tvAddShopCar).setOnClickListener(v -> {
                 if (CollectionUtils.isEmpty(detailBean.getSize())) {
-                    orderAddCar(null, 1);
+                    orderAddCar(null, 1,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"));
                 } else {
                     new XPopup.Builder(this)
                             .asCustom(new PopGoodsSpecifica(this, detailBean, (s, num) -> {
                                 tvSelectCanShu.setText("已选择：" + s);
-                                orderAddCar(s, num);
+                                orderAddCar(s, num,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"));
                             })).show();
                 }
             });
@@ -420,8 +420,8 @@ public class GoodsDetailActivity extends BaseActivity {
     /**
      * 加入购物车
      */
-    private void orderAddCar(String size, int count) {
-        HttpsUtil.getInstance(this).orderAddCar(size, getIntent().getStringExtra("goodsId"), count, object -> {
+    private void orderAddCar(String size, int count ,String cuxiao_id) {
+        HttpsUtil.getInstance(this).orderAddCar(size, getIntent().getStringExtra("goodsId"), count, cuxiao_id, object -> {
             BusUtils.post(BusTag.UPDATE_CAR);
         });
     }

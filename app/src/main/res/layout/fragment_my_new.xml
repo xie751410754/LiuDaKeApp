@@ -121,34 +121,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="320pt"
                 android:layout_marginStart="20pt"
-                android:layout_marginTop="-150pt"
+                android:layout_marginTop="-120pt"
                 android:layout_marginEnd="20pt"
                 android:background="@mipmap/shop_my_shouyi_bg"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_marginTop="30pt"
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="30pt"
+                    android:layout_marginBottom="40pt"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_marginStart="20pt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="20pt"
                         android:text="可提现¥"
                         android:textColor="@color/white"
                         android:textSize="28pt" />
+
                     <TextView
                         android:id="@+id/redMi"
-                        android:layout_marginStart="10pt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="10pt"
+                        android:fontFamily="sans-serif"
                         android:text="2689"
-                        android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:textSize="48pt" />
+                        android:textSize="48pt"
+                        android:textStyle="bold" />
 
                     <androidx.legacy.widget.Space
                         android:layout_width="0pt"
@@ -157,83 +160,88 @@
 
                     <TextView
                         android:id="@+id/tv_tiXian"
-                        android:layout_marginEnd="30pt"
                         android:layout_width="160pt"
                         android:layout_height="54pt"
-                        android:background="@mipmap/shop_my_tixian"/>
+                        android:layout_marginEnd="30pt"
+                        android:background="@mipmap/shop_my_tixian" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="20pt"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20pt"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <RelativeLayout
                         android:id="@+id/scoreLayout1"
-                        android:gravity="center"
                         android:layout_width="0pt"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:gravity="center">
+
                         <TextView
-                            android:layout_centerHorizontal="true"
                             android:id="@+id/tv_dailing"
-                            android:layout_marginStart="10pt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="10pt"
                             android:text="待领积分"
                             android:textColor="@color/white"
                             android:textSize="26pt" />
+
                         <TextView
                             android:id="@+id/tvLingquTag"
-                            android:padding="5pt"
-                            android:layout_toRightOf="@id/tv_dailing"
-                            android:background="@drawable/round_shop_my"
-                            android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_toRightOf="@id/tv_dailing"
+                            android:background="@drawable/round_shop_my"
+                            android:padding="5pt"
                             android:text="领取"
                             android:textColor="@color/white"
                             android:textSize="16pt" />
+
                         <TextView
-                            android:layout_centerHorizontal="true"
-                            android:layout_below="@id/tv_dailing"
                             android:id="@+id/tvDaiLing"
-                            android:layout_marginTop="14pt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_dailing"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="14pt"
                             android:text="0"
                             android:textColor="@color/white"
                             android:textSize="36pt" />
 
                     </RelativeLayout>
-                    
+
                     <View
                         android:layout_width="2pt"
                         android:layout_height="80pt"
-                        android:background="@color/white"
-                        />
+                        android:background="@color/white" />
+
                     <LinearLayout
                         android:id="@+id/scoreLayout2"
-                        android:gravity="center"
-                        android:orientation="vertical"
                         android:layout_width="0pt"
                         android:layout_height="100pt"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
-                            android:layout_marginStart="10pt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10pt"
                             android:text="可用积分"
                             android:textColor="@color/white"
                             android:textSize="26pt" />
+
                         <TextView
                             android:id="@+id/tvKeYong"
-                            android:layout_marginTop="14pt"
-                            android:layout_marginStart="10pt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10pt"
+                            android:layout_marginTop="14pt"
                             android:text="600.00"
                             android:textColor="@color/white"
                             android:textSize="36pt" />
@@ -243,28 +251,30 @@
                     <View
                         android:layout_width="2pt"
                         android:layout_height="80pt"
-                        android:background="@color/white"
-                        />
+                        android:background="@color/white" />
+
                     <LinearLayout
                         android:id="@+id/redmiLayout"
-                        android:gravity="center"
-                        android:orientation="vertical"
                         android:layout_width="0pt"
                         android:layout_height="100pt"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
                         <TextView
-                            android:layout_marginStart="10pt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10pt"
                             android:text="红米"
                             android:textColor="@color/white"
                             android:textSize="26pt" />
+
                         <TextView
                             android:id="@+id/tvRedmi"
-                            android:layout_marginTop="14pt"
-                            android:layout_marginStart="10pt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10pt"
+                            android:layout_marginTop="14pt"
                             android:text="8468"
                             android:textColor="@color/white"
                             android:textSize="36pt" />
@@ -272,43 +282,44 @@
                     </LinearLayout>
 
 
-
                 </LinearLayout>
 
                 <LinearLayout
-                    android:gravity="bottom"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="bottom">
+
                     <TextView
-                        android:layout_marginBottom="15pt"
-                        android:layout_marginStart="20pt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="20pt"
+                        android:layout_marginBottom="15pt"
                         android:text="每月25号提现上月确认收货的订单收入"
                         android:textColor="@color/white"
-                        android:textSize="20pt" />
+                        android:textSize="20pt"
+                        android:visibility="gone" />
 
                 </LinearLayout>
-
 
 
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="238pt"
                 android:layout_margin="20pt"
                 android:background="@drawable/round20white_shop_my"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_marginTop="20pt"
-                        android:layout_marginStart="20pt"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="20pt"
+                        android:layout_marginTop="20pt"
                         android:gravity="center"
                         android:text="我的订单"
                         android:textColor="#666666"
@@ -316,11 +327,11 @@
 
                     <com.cdxz.liudake.view.DrawableTextView
                         android:id="@+id/tvOrderAll"
-                        android:layout_marginEnd="20pt"
-                        android:layout_marginTop="20pt"
-                        android:layout_gravity="end"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="20pt"
+                        android:layout_marginEnd="20pt"
                         android:drawablePadding="7pt"
                         android:gravity="center"
                         android:text="全部"
@@ -332,28 +343,29 @@
 
 
                 </FrameLayout>
+
                 <View
-                    android:layout_marginTop="20pt"
                     android:layout_width="match_parent"
                     android:layout_height="2pt"
-                    android:background="#EBECEE"
-                    />
+                    android:layout_marginTop="20pt"
+                    android:background="#EBECEE" />
 
                 <LinearLayout
-                    android:layout_margin="40pt"
-                    android:gravity="center"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="20pt"
+                    android:layout_marginBottom="20pt"
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <com.cdxz.liudake.view.DrawableTextView
                         android:id="@+id/tvOrder2"
                         android:layout_width="0pt"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:drawablePadding="6pt"
-                        android:text="待付款"
+                        android:gravity="center"
+                        android:text="待发货"
                         android:textColor="#222222"
                         app:dt_top_drawable="@mipmap/shop_my_waitpay"
                         app:dt_top_height="36pt"
@@ -366,11 +378,12 @@
                         android:layout_weight="1"
                         android:drawablePadding="6pt"
                         android:gravity="center"
-                        android:text="待发货"
+                        android:text="待付款"
                         android:textColor="#222222"
                         app:dt_top_drawable="@mipmap/shop_my_waitgetgoods"
                         app:dt_top_height="36pt"
                         app:dt_top_width="36pt" />
+
                     <com.cdxz.liudake.view.DrawableTextView
                         android:id="@+id/tvOrder1"
                         android:layout_width="0pt"
@@ -383,6 +396,7 @@
                         app:dt_top_drawable="@mipmap/shop_my_sendgoods"
                         app:dt_top_height="36pt"
                         app:dt_top_width="36pt" />
+
                     <com.cdxz.liudake.view.DrawableTextView
                         android:id="@+id/tvOrder3"
                         android:layout_width="0pt"
@@ -401,41 +415,43 @@
 
 
             </LinearLayout>
+
             <com.youth.banner.Banner
-                android:layout_marginStart="20pt"
-                android:layout_marginEnd="20pt"
                 android:id="@+id/bannerMy"
                 android:layout_width="match_parent"
                 android:layout_height="200pt"
-                />
+                android:layout_marginStart="20pt"
+                android:layout_marginEnd="20pt" />
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="20pt"
                 android:background="@drawable/round20white_shop_my"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_marginTop="20pt"
-                        android:layout_marginStart="20pt"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="20pt"
+                        android:layout_marginTop="20pt"
                         android:gravity="center"
                         android:text="生活服务"
                         android:textColor="#666666"
                         android:textSize="30pt" />
 
                 </FrameLayout>
+
                 <View
-                    android:layout_marginTop="20pt"
                     android:layout_width="match_parent"
                     android:layout_height="2pt"
-                    android:background="#EBECEE"
-                    />
+                    android:layout_marginTop="20pt"
+                    android:background="#EBECEE" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerService"
                     android:layout_width="match_parent"

@@ -364,9 +364,9 @@ public class HttpsUtil {
      * @param count
      * @param callback
      */
-    public void orderAddCar(String size, String id, int count, HttpsCallback callback) {
+    public void orderAddCar(String size, String id, int count, String cuxiao_id ,HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .orderAddCar(UserInfoUtil.getUid(), size, id, count, UserInfoUtil.getToken())
+                .orderAddCar(UserInfoUtil.getUid(), size, id, count, cuxiao_id ,UserInfoUtil.getToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
@@ -1350,7 +1350,7 @@ public class HttpsUtil {
     public void getPriceBySize(String goodsid, String string, HttpsCallback callback) {
         LogUtils.e("获取规格价格 = " + goodsid + "，" + string);
         ApiRetrofit.getInstance().getApiService()
-                .getPriceBySize(UserInfoUtil.getUid(), UserInfoUtil.getToken(), goodsid, string)
+                .getPriceBySize(UserInfoUtil.getUid(), UserInfoUtil.getToken(), goodsid,string)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
@@ -1382,6 +1382,13 @@ public class HttpsUtil {
                     @Override
                     public void onSuccess(BaseBean response) {
                         callback.onResult(response.getData());
+                    }
+
+
+
+                    @Override
+                    public void onFail(String msg) {
+//                        deleteGoods();
                     }
                 });
     }

@@ -88,7 +88,7 @@ public class LifeCircleFragment2 extends BaseFragment {
 
     @Override
     protected int getResource() {
-        return R.layout.fragment_shop_mall_new2;
+        return R.layout.fragment_shop_mall_new22;
     }
 
     @Override
@@ -244,7 +244,7 @@ public class LifeCircleFragment2 extends BaseFragment {
             if (location.hasAddr()) {
                 Constants.LNG = String.valueOf(lng);
                 Constants.LAT = String.valueOf(lat);
-                tvAddress.setText(city + district + street);
+                tvAddress.setText(city);
                 tvAddress.setOnClickListener(v -> {
                     LifeCircleMapActivity.startLifeCircleMapActivity(getContext(), city);
                 });

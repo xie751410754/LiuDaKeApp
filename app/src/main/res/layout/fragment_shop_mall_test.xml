@@ -64,18 +64,19 @@
                             android:id="@+id/tvHomeSearch"
                             android:layout_width="0pt"
                             android:layout_height="60pt"
-                            android:layout_margin="15pt"
+                            android:layout_marginStart="20pt"
                             android:layout_weight="1"
                             android:background="@drawable/round_shop_mall"
                             android:drawablePadding="7pt"
                             android:gravity="center_vertical"
                             android:hint="@string/hintSearch"
-                            android:paddingStart="28pt"
+                            android:paddingStart="20pt"
+                            android:paddingEnd="8pt"
                             android:textColor="#FFFFFF"
                             android:textColorHint="@color/color_DADADA"
                             android:textSize="28pt"
                             app:dt_left_drawable="@mipmap/icon_search"
-                            app:dt_left_height="30pt"
+                            app:dt_left_height="33pt"
                             app:dt_left_width="30pt" />
 
                         <ImageView
@@ -143,7 +144,8 @@
                     android:layout_height="300pt"
                     android:layout_marginStart="20pt"
                     android:layout_marginTop="200pt"
-                    android:layout_marginEnd="20pt" />
+                    android:layout_marginEnd="20pt"
+                    app:banner_radius="8pt" />
 
             </RelativeLayout>
 
@@ -169,9 +171,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:drawablePadding="7pt"
-                        android:text="溜达客祝大家3.8节快乐！"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="溜达客祝大家购物愉快！"
                         android:textColor="#222222"
-                        android:textSize="36pt"
+                        android:textSize="24pt"
                         app:dt_left_drawable="@mipmap/shop_mall_radio"
                         app:dt_left_height="24pt"
                         app:dt_left_width="32pt" />
@@ -191,8 +194,8 @@
                     android:id="@+id/cxBanner"
                     android:layout_width="match_parent"
                     android:layout_height="180pt"
-                    android:layout_marginStart="20pt"
-                    android:layout_marginEnd="20pt" />
+                    android:layout_marginBottom="20pt"
+                    android:background="@color/white" />
 
 
                 <com.cdxz.liudake.view.roundedImageView.RoundedImageView
@@ -435,31 +438,35 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="60pt"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
                             android:layout_marginStart="20pt"
+                            android:layout_marginTop="30pt"
+                            android:layout_marginEnd="20pt"
                             android:text="推荐商品"
                             android:textColor="#E62129"
                             android:textSize="34pt" />
 
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerTuijianGoods"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10pt"
+                            android:layout_marginEnd="10pt" />
+
+
                     </LinearLayout>
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerTuijianGoods"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
 
 
                 </LinearLayout>

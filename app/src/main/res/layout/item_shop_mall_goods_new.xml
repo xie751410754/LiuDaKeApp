@@ -1,45 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20pt"
-    android:background="@color/white"
+    android:background="@drawable/round8white_shop"
     android:orientation="vertical">
 
     <com.cdxz.liudake.view.roundedImageView.RoundedImageView
         android:id="@+id/ivImage"
-        android:layout_width="349pt"
-        android:layout_height="349pt"
-        android:adjustViewBounds="true"
+        android:layout_width="match_parent"
+        android:layout_height="345pt"
         android:scaleType="fitXY"
-        app:riv_corner_radius="8pt" />
+        app:riv_corner_radius_top_left="8pt"
+        app:riv_corner_radius_top_right="8pt" />
 
     <TextView
         android:id="@+id/tvGoodsName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5pt"
+        android:layout_marginStart="17pt"
+        android:layout_marginTop="20pt"
+        android:layout_marginEnd="20pt"
+        android:lineSpacingExtra="5pt"
         android:ellipsize="end"
-        android:includeFontPadding="false"
         android:maxLines="2"
         android:text="商品名称"
         android:textColor="#333333"
         android:textSize="28pt" />
 
     <LinearLayout
+        android:layout_marginTop="10pt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="17pt"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tvGoodsNewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:includeFontPadding="false"
             android:text="¥0.00"
             android:textColor="#E62129"
-            android:textSize="30pt" />
+            android:textSize="30pt"
+            android:textStyle="bold" />
 
 
         <TextView
@@ -48,7 +51,8 @@
             android:layout_height="wrap_content"
             android:text="积分 0"
             android:textColor="#E62129"
-            android:textSize="30pt" />
+            android:textSize="30pt"
+            android:textStyle="bold" />
 
         <androidx.legacy.widget.Space
             android:layout_width="0pt"
@@ -59,8 +63,7 @@
             android:id="@+id/tvGoodsPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="44pt"
-            android:includeFontPadding="false"
+            android:layout_marginEnd="20pt"
             android:text="¥0.00"
             android:textColor="#808080"
             android:textSize="22pt" />
@@ -73,8 +76,9 @@
         android:id="@+id/tvSellNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10pt"
-        android:layout_marginBottom="4pt"
+        android:layout_marginStart="17pt"
+        android:layout_marginTop="4pt"
+        android:layout_marginBottom="20pt"
         android:text="已售 0"
         android:textColor="#808080"
         android:textSize="20pt" />

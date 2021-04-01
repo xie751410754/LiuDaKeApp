@@ -15,27 +15,27 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="我的店铺"
                 android:textColor="#333333"
-                android:textSize="18sp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tv_submit"
-                android:text="提交"
-                android:textColor="#333333"
-                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
                 android:paddingRight="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:text="提交"
+                android:textColor="#333333"
+                android:textSize="15sp" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -60,13 +60,13 @@
 
                     <RelativeLayout
                         android:id="@+id/rl_avatar"
-                        android:background="@color/white"
-                        style="@style/IMTble_No_Line">
+                        style="@style/IMTble_No_Line"
+                        android:background="@color/white">
 
                         <TextView
                             android:id="@+id/tv_avatar"
-                            android:layout_centerVertical="true"
                             style="@style/IMTbleLine_TextKey"
+                            android:layout_centerVertical="true"
                             android:text="商铺图标" />
 
                         <com.makeramen.roundedimageview.RoundedImageView
@@ -80,9 +80,9 @@
                             android:scaleType="centerCrop"
 
                             android:visibility="visible"
-                            app:riv_corner_radius="7dp"
                             app:riv_border_color="@color/white"
                             app:riv_border_width="4dip"
+                            app:riv_corner_radius="7dp"
                             app:riv_oval="false" />
 
                         <ImageView
@@ -92,11 +92,11 @@
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:background="@color/white"
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp">
+                        android:layout_marginTop="12dp"
+                        android:background="@color/white"
+                        android:orientation="vertical">
 
                         <RelativeLayout style="@style/IMTble_No_Line">
 
@@ -116,7 +116,6 @@
                                 android:hint="请输入名称"
                                 android:inputType="text"
                                 android:maxLength="8" />
-
 
 
                         </RelativeLayout>
@@ -155,11 +154,11 @@
                             <TextView
                                 android:id="@+id/tv_store_info"
                                 style="@style/IMTbleLine_TextValue"
-                                android:ellipsize="end"
-                                android:singleLine="true"
-                                android:maxLength="10"
                                 android:layout_toLeftOf="@+id/birthday_arrow_img"
-                                android:layout_toRightOf="@+id/birthday_text" />
+                                android:layout_toRightOf="@+id/birthday_text"
+                                android:ellipsize="end"
+                                android:maxLength="10"
+                                android:singleLine="true" />
 
                             <ImageView
                                 android:id="@+id/birthday_arrow_img"
@@ -191,6 +190,29 @@
                         </RelativeLayout>
 
                         <RelativeLayout
+                            android:id="@+id/store_local_adress"
+                            style="@style/IMTble_No_Line">
+
+                            <TextView
+                                android:id="@+id/city_text_adress"
+                                style="@style/IMTbleLine_TextKey"
+                                android:text="请选择商铺的省市区" />
+
+                            <TextView
+                                android:id="@+id/tv_store_local_adress"
+                                style="@style/IMTbleLine_TextValue"
+                                android:layout_toLeftOf="@+id/city_arrow_img_adress"
+                                android:layout_toRightOf="@+id/city_text_adress"
+                                android:text="再输入详细地址(门牌号)" />
+
+                            <ImageView
+                                android:id="@+id/city_arrow_img_adress"
+                                style="@style/basic_info"
+                                android:contentDescription="@string/app_name" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
                             android:id="@+id/store_time"
                             style="@style/IMTble_No_Line">
 
@@ -199,12 +221,14 @@
                                 style="@style/IMTbleLine_TextKey"
                                 android:drawablePadding="5dp"
                                 android:text="营业时间" />
+
                             <TextView
                                 android:id="@+id/tv_store_time"
                                 style="@style/IMTbleLine_TextValue"
                                 android:layout_marginLeft="-15dp"
                                 android:layout_marginRight="30dp"
                                 android:ellipsize="end" />
+
                             <ImageView
                                 android:id="@+id/desc_arrow_img"
                                 style="@style/basic_info"
@@ -234,9 +258,9 @@
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:visibility="gone"
                             android:id="@+id/store_manager"
-                            style="@style/IMTble_No_Line">
+                            style="@style/IMTble_No_Line"
+                            android:visibility="gone">
 
                             <TextView
                                 android:id="@+id/city_text_03"
@@ -279,9 +303,9 @@
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:visibility="gone"
                             android:id="@+id/store_pinlun"
-                            style="@style/IMTble_No_Line">
+                            style="@style/IMTble_No_Line"
+                            android:visibility="gone">
 
                             <TextView
                                 android:id="@+id/city_text_05"
@@ -300,6 +324,7 @@
                                 android:contentDescription="@string/app_name" />
 
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:id="@+id/store_picture"
                             style="@style/IMTble_No_Line">
@@ -312,6 +337,7 @@
                         </RelativeLayout>
 
                     </LinearLayout>
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcv_img"
                         android:layout_width="match_parent"

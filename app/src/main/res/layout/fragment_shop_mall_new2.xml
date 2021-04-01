@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".ui.main.fragment.ShopMallFragment">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true">
+        android:animateLayoutChanges="true"
+        android:background="#F3F5F7">
 
 
         <!--        <RelativeLayout-->
@@ -30,43 +30,14 @@
             android:id="@+id/ll1"
             android:layout_width="match_parent"
             android:layout_height="100pt"
-            android:layout_marginStart="24pt"
-            android:layout_marginEnd="24pt"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
-
-            <ImageView
-                android:id="@+id/ivScan2"
-                android:layout_width="35pt"
-                android:layout_height="35pt"
-                android:layout_marginStart="20pt"
-                android:layout_marginEnd="20pt"
-                android:src="@mipmap/shop_mall_scan" />
-
-
-            <com.cdxz.liudake.view.DrawableTextView
-                android:id="@+id/tvSearch"
-                android:layout_width="0pt"
-                android:layout_height="60pt"
-                android:layout_margin="15pt"
-                android:layout_weight="1"
-                android:background="@drawable/round_shop_mall"
-                android:drawablePadding="7pt"
-                android:gravity="center_vertical"
-                android:hint="@string/hintSearch"
-                android:paddingStart="28pt"
-                android:textColor="#FFFFFF"
-                android:textColorHint="@color/color_DADADA"
-                android:textSize="28pt"
-                app:dt_left_drawable="@mipmap/icon_search"
-                app:dt_left_height="30pt"
-                app:dt_left_width="30pt" />
 
             <com.cdxz.liudake.view.DrawableTextView
                 android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20pt"
                 android:drawablePadding="7pt"
                 android:gravity="center"
                 android:text="定位中..."
@@ -77,6 +48,34 @@
                 app:dt_right_width="24pt" />
 
 
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvSearch"
+                android:layout_width="0pt"
+                android:layout_height="60pt"
+                android:layout_marginStart="16pt"
+                android:layout_marginEnd="10pt"
+                android:layout_weight="1"
+                android:background="@drawable/round_shop_mall"
+                android:drawablePadding="7pt"
+                android:gravity="center_vertical"
+                android:hint="@string/hintSearch"
+                android:paddingStart="14pt"
+                android:textColor="#FFFFFF"
+                android:textColorHint="@color/color_DADADA"
+                android:textSize="28pt"
+                app:dt_left_drawable="@mipmap/icon_search"
+                app:dt_left_height="33pt"
+                app:dt_left_width="30pt" />
+
+
+            <ImageView
+                android:id="@+id/ivScan2"
+                android:layout_width="35pt"
+                android:layout_height="35pt"
+                android:layout_marginEnd="20pt"
+                android:src="@mipmap/shop_mall_scan" />
+
+
         </LinearLayout>
 
 
@@ -85,21 +84,23 @@
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20pt"
-            android:layout_below="@id/ll1"
-            >
+            android:layout_below="@id/ll1">
 
             <!-- 第二部分:缩放控件-->
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="#F3F5F7"
+                android:orientation="vertical"
+                app:elevation="0dp">
 
                 <com.youth.banner.Banner
                     android:id="@+id/banner"
                     android:layout_width="match_parent"
                     android:layout_height="328pt"
+                    android:layout_margin="20pt"
+                    app:banner_radius="20pt"
                     app:layout_scrollFlags="scroll" />
 
 
@@ -180,7 +181,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="110pt"
-                    android:src="@mipmap/shop_circle_haodian"
+                    android:layout_marginStart="-20pt"
+                    android:layout_marginEnd="-20pt"
+                    android:src="@mipmap/fjhd_bg"
                     app:layout_scrollFlags="scroll" />
 
                 <LinearLayout
@@ -196,7 +199,7 @@
                         android:layout_weight="1"
                         app:tabIndicatorHeight="0dp"
                         app:tabMode="scrollable"
-                        app:tabSelectedTextColor="@color/black"
+                        app:tabSelectedTextColor="#E62129"
                         app:tabTextColor="@color/color_999999" />
 
                     <TextView

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -18,6 +19,7 @@ import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SizeUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.adapter.life_circle.LifeCircleAdapter;
 import com.cdxz.liudake.api.HttpsUtil;
@@ -28,6 +30,9 @@ import com.cdxz.liudake.bean.LifeCircleBean;
 import com.cdxz.liudake.pop.PopLifeCirclePrice;
 import com.cdxz.liudake.ui.base.BaseFragment;
 import com.cdxz.liudake.util.ParseUtils;
+import com.cdxz.liudake.view.GridSpacingItemDecoration;
+import com.cdxz.liudake.view.SpacesItemDecoration;
+import com.cdxz.liudake.view.SpacesItemDecoration2;
 import com.lxj.xpopup.XPopup;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -94,6 +99,8 @@ public class LifeCircleChildFragment extends BaseFragment {
     protected void initView() {
 
         StaggeredGridLayoutManager recyclerViewLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerStore.addItemDecoration(new SpacesItemDecoration2(20));
+
         recyclerStore.setLayoutManager(recyclerViewLayoutManager);
 //        recyclerStore.setLayoutManager(new LinearLayoutManager(getContext()));
     }

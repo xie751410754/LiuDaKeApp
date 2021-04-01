@@ -3,44 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_margin="15pt"
-    android:background="#FBFCFC"
-    >
+    android:background="@drawable/round8white_shop"
+    android:orientation="vertical">
 
     <com.cdxz.liudake.view.roundedImageView.RoundedImageView
         android:id="@+id/ivStorePic"
-        android:layout_width="345pt"
+        android:layout_width="match_parent"
         android:layout_height="286pt"
         android:scaleType="centerCrop"
-        app:riv_corner_radius="20pt" />
+        app:riv_corner_radius_top_left="8pt"
+        app:riv_corner_radius_top_right="8pt" />
 
     <TextView
         android:id="@+id/tvStoreName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10pt"
         android:layout_marginTop="17pt"
+        android:layout_marginEnd="20pt"
         android:ellipsize="end"
+        android:lineSpacingExtra="5pt"
         android:maxLines="2"
         android:text="店铺名"
         android:textColor="#222222"
         android:textSize="30pt" />
 
     <LinearLayout
-        android:layout_marginTop="10pt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10pt"
+        android:layout_marginTop="14pt"
         android:orientation="horizontal">
 
         <TextView
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="人均"
             android:textColor="#666666"
-            android:textSize="24pt" />
+            android:textSize="24pt"
+            android:visibility="gone" />
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/tvAverageMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,10 +59,10 @@
             android:layout_weight="1" />
 
         <TextView
-            android:layout_marginEnd="20pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评价 5.0    销量 0"
+            android:layout_marginEnd="20pt"
+            android:text="销量 0"
             android:textColor="#666666"
             android:textSize="24pt" />
     </LinearLayout>
@@ -67,15 +71,18 @@
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10pt"
         android:text="营业时间 早9:00-晚22:00"
         android:textColor="#666666"
         android:textSize="22pt" />
 
     <TextView
-        android:layout_marginTop="20pt"
         android:id="@+id/tvDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10pt"
+        android:layout_marginTop="20pt"
+        android:layout_marginBottom="10pt"
         android:text="0.0 km"
         android:textColor="#222222"
         android:textSize="22pt" />

@@ -14,6 +14,7 @@ import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.adapter.shop_car.ShopCarAdapter;
+import com.cdxz.liudake.api.HttpsCallback;
 import com.cdxz.liudake.api.HttpsUtil;
 import com.cdxz.liudake.base.BusTag;
 import com.cdxz.liudake.bean.ShopCarListBean;
@@ -198,8 +199,10 @@ public class ShopCarFragment2 extends BaseFragment implements ShopCarAdapter.OnS
     }
 
     @Override
-    public void onDeleteClick(int position, ShopCarListBean listBean) {
-        HttpsUtil.getInstance(getContext()).deleteGoods(listBean.getList().get(position).getGoods_id(), object -> {
+    public void onDeleteClick(ShopCarListBean shopCarListBean , int position) {
+
+        HttpsUtil.getInstance(getContext()).deleteGoods(shopCarListBean.getList().get(position).getGoods_id(), object -> {
+            LogUtils.e(position+"xzl"+shopCarListBean.getList().get(position).getName());
             try {
                 JSONObject jsonObject = new JSONObject(GsonUtils.toJson(object));
                 String list = jsonObject.getString("list");

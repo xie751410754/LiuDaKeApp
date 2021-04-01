@@ -5,7 +5,9 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import com.blankj.utilcode.util.ScreenUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.api.ApiRetrofit;
 import com.cdxz.liudake.base.BaseObserver;
+import com.gyf.immersionbar.ImmersionBar;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -35,11 +38,36 @@ public abstract class BaseActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getContentViewId());
-        unbinder = ButterKnife.bind(this);
+//        setContentView(getContentViewId());
+
         context = this;
         ScreenUtils.setPortrait(this);
         BarUtils.setStatusBarLightMode(this, true);
+        final int layoutId = getContentViewId();
+        ViewGroup contentParent = findViewById(android.R.id.content);
+        View contentView = LayoutInflater.from(this)
+                .inflate(getBaseLayoutId(), contentParent, false);
+        ViewGroup sfl = contentView.findViewById(R.id.sfl);
+        if (layoutId > 0) {
+            View src = LayoutInflater.from(this)
+                    .inflate(layoutId, sfl, false);
+            sfl.addView(src, 0);
+        }
+
+
+//        View vStatusBar = findViewById(R.id.v_status_bar);
+//        if (vStatusBar != null) {
+//            ViewGroup.LayoutParams lp = vStatusBar.getLayoutParams();
+//            lp.height = Build.VERSION.SDK_INT >= 19 ? BarUtils.getStatusBarHeight() : 0;
+//            vStatusBar.setLayoutParams(lp);
+//        }
+//        int statusBarColor = ContextCompat.getColor(context, R.color.transparent);
+//        ImmersionBar.with(this)
+//                .fitsSystemWindows(false)
+//                .transparentNavigationBar()
+//                .statusBarDarkFont(false).init();
+        setContentView(getContentViewId());
+        unbinder = ButterKnife.bind(this);
         initViews();
         initDatas();
         initListener();
@@ -50,6 +78,11 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onDestroy();
         unbinder.unbind();
     }
+
+    protected int getBaseLayoutId() {
+        return R.layout.activity_base;
+    }
+
 
     protected abstract int getContentViewId();//放layoutId
 
@@ -163,7 +196,6 @@ public abstract class BaseActivity extends FragmentActivity {
             KeyboardUtils.hideSoftInput(this);
         }
     }
-
 
 
 }

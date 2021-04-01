@@ -221,7 +221,7 @@ public class MyFragment2 extends BaseFragment {
                 OrderListActivity.startOrderListActivity(getContext(), 3);
                 break;
             case R.id.tvOrder2:
-                OrderListActivity.startOrderListActivity(getContext(), 2);
+                OrderListActivity.startOrderListActivity(getContext(), 1);
                 break;
             case R.id.tvOrder3:
                 OrderListActivity.startOrderListActivity(getContext(), 4);
@@ -231,7 +231,7 @@ public class MyFragment2 extends BaseFragment {
 
                 break;
             case R.id.tv_sendGoods:
-                OrderListActivity.startOrderListActivity(getContext(), 1);
+                OrderListActivity.startOrderListActivity(getContext(), 2);
 
                 break;
             case R.id.tvCopyInviteCode:
