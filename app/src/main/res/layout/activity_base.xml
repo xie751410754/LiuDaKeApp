@@ -12,16 +12,16 @@
         android:visibility="gone"
         android:id="@+id/v_status_bar"
         android:layout_width="match_parent"
-        android:layout_height="50pt"
-        android:background="@drawable/bg_title_bar" />
+        android:layout_height="150pt"
+        android:background="@color/transparent"
+        />
 
-    <LinearLayout
+
+    <FrameLayout
         android:id="@+id/sfl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-    </LinearLayout>
-
+    </FrameLayout>
 
 </LinearLayout>

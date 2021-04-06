@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -34,6 +36,10 @@ public abstract class BaseActivity extends FragmentActivity {
     protected Activity context;
     private Unbinder unbinder;
 
+    protected FrameLayout sfl;
+    LinearLayout ll_activity;
+
+
     @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,36 +48,40 @@ public abstract class BaseActivity extends FragmentActivity {
 
         context = this;
         ScreenUtils.setPortrait(this);
-        BarUtils.setStatusBarLightMode(this, true);
+//        BarUtils.setStatusBarLightMode(this, true);
+
         final int layoutId = getContentViewId();
         ViewGroup contentParent = findViewById(android.R.id.content);
         View contentView = LayoutInflater.from(this)
                 .inflate(getBaseLayoutId(), contentParent, false);
-        ViewGroup sfl = contentView.findViewById(R.id.sfl);
+        sfl = contentView.findViewById(R.id.sfl);
+        ll_activity = contentView.findViewById(R.id.ll_activity);
+
         if (layoutId > 0) {
-            View src = LayoutInflater.from(this)
-                    .inflate(layoutId, sfl, false);
+            View src = LayoutInflater.from(this).inflate(layoutId, sfl, false);
             sfl.addView(src, 0);
+
         }
-
-
-//        View vStatusBar = findViewById(R.id.v_status_bar);
+        unbinder = ButterKnife.bind(this, contentView);
+        setContentView(contentView);
+        View vStatusBar = findViewById(R.id.v_status_bar);
 //        if (vStatusBar != null) {
 //            ViewGroup.LayoutParams lp = vStatusBar.getLayoutParams();
 //            lp.height = Build.VERSION.SDK_INT >= 19 ? BarUtils.getStatusBarHeight() : 0;
 //            vStatusBar.setLayoutParams(lp);
 //        }
-//        int statusBarColor = ContextCompat.getColor(context, R.color.transparent);
-//        ImmersionBar.with(this)
-//                .fitsSystemWindows(false)
-//                .transparentNavigationBar()
-//                .statusBarDarkFont(false).init();
-        setContentView(getContentViewId());
-        unbinder = ButterKnife.bind(this);
+        int statusBarColor = ContextCompat.getColor(context, R.color.transparent);
+        ImmersionBar.with(this)
+                .fitsSystemWindows(false)
+                .statusBarColorInt(statusBarColor)
+                .statusBarDarkFont(true).init();
+
         initViews();
         initDatas();
         initListener();
     }
+
+
 
     @Override
     protected void onDestroy() {

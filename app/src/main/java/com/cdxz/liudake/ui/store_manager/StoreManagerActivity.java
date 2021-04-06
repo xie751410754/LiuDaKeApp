@@ -200,8 +200,13 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                 binding.tvStoreXiaofei.setText(storeInfoResultBaseBean.getData().getAverage_money());
                 binding.tvStoreInfo.setText(storeInfoResultBaseBean.getData().getDescription());
                 binding.tvStorePhone.setText(storeInfoResultBaseBean.getData().getContact());
-                binding.cityTextAdress.setText(storeInfoResultBaseBean.getData().getActual_sheng()==null?"请选择商铺的省市区":storeInfoResultBaseBean.getData().getActual_sheng()+storeInfoResultBaseBean.getData().getActual_shi()+storeInfoResultBaseBean.getData().getActual_qu());
-                binding.tvStoreLocalAdress.setText(storeInfoResultBaseBean.getData().getActual_address()==null ? "再输入详细地址(门牌号)":storeInfoResultBaseBean.getData().getActual_address());
+                binding.cityTextAdress.setText(storeInfoResultBaseBean.getData().getActual_sheng_name() == null ? "请选择商铺的省市区" : storeInfoResultBaseBean.getData().getActual_sheng_name() + storeInfoResultBaseBean.getData().getActual_shi_name() + storeInfoResultBaseBean.getData().getActual_qu_name());
+                binding.tvStoreLocalAdress.setText(storeInfoResultBaseBean.getData().getActual_address() == null ? "再输入详细地址(门牌号)" : storeInfoResultBaseBean.getData().getActual_address());
+
+                province_name = storeInfoResultBaseBean.getData().getActual_sheng();
+                city_name = storeInfoResultBaseBean.getData().getActual_shi();
+                region_name = storeInfoResultBaseBean.getData().getActual_qu();
+
 
                 logo = storeInfoResultBaseBean.getData().getLogo();
                 open_start_time = storeInfoResultBaseBean.getData().getOpen_start_time();
@@ -251,8 +256,8 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                 .addFormDataPart("logo", file) // 第一个参数传到服务器的字段名，第二个你自己的文件名，第三个MediaType.parse("*/*")和我们之前说的那个type其实是一样的
                 .addFormDataPart("contact", contact)
                 .addFormDataPart("address", address)
-                .addFormDataPart("lng", lng)
-                .addFormDataPart("lat", lat)
+                .addFormDataPart("lng", lng == null ? Constants.LNG : lng)
+                .addFormDataPart("lat", lat == null ? Constants.LAT : lat)
                 .addFormDataPart("name", name)
                 .addFormDataPart("actual_sheng", province_name)
                 .addFormDataPart("actual_shi", city_name)
@@ -466,7 +471,7 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                     ToastUtils.showShort("请填写店铺人均消费");
                     return;
                 }
-                if (TextUtils.isEmpty(province_name)) {
+                if (TextUtils.isEmpty(region_name)) {
                     ToastUtils.showShort("请填写店铺省市区");
                     return;
                 }
@@ -475,7 +480,7 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                     return;
                 }
 
-                LogUtils.e("xzl", "lng=" + lng + "lat" + lat);
+                LogUtils.e("aaaa", "lng=" + lng + "lat" + lat);
                 submit(logo, new UploadUtil.OnUploadCallback() {
                     @Override
                     public void onSuccess(UploadBean uploadBean) {

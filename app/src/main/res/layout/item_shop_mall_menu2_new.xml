@@ -16,17 +16,21 @@
 
         <TextView
             android:id="@+id/tvTips"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
+            android:text="暂无活动"
             android:textColor="#222222"
             android:textSize="32pt" />
 
         <TextView
             android:id="@+id/tvTips2"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20pt"
+            android:text="敬请期待"
             android:textColor="#808080"
             android:textSize="24pt" />
 
@@ -110,29 +114,33 @@
 
 
             <TextView
-                android:text="0.00积分"
                 android:id="@+id/tv_jifen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-32pt"
                 android:background="@drawable/round8_666666_shop"
                 android:gravity="center"
+                android:text="0.00积分"
                 android:textColor="#ffffffff"
                 android:textSize="22pt" />
 
 
             <TextView
                 android:id="@+id/tv_priceType"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10pt"
+                android:text="0.00"
                 android:textColor="#E62129"
                 android:textSize="22pt" />
 
             <TextView
                 android:id="@+id/tv_price"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="0.00"
                 android:textColor="#808080"
                 android:textSize="18pt" />
 
@@ -160,7 +168,6 @@
                 app:riv_corner_radius="8pt" />
 
             <TextView
-                android:text="0.00积分"
                 android:id="@+id/tv_priceType2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,21 +175,26 @@
                 android:background="@drawable/round8_666666_shop"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
+                android:text="0.00积分"
                 android:textColor="@color/white"
                 android:textSize="22pt" />
 
             <TextView
                 android:id="@+id/tv_jifen2"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10pt"
+                android:text="0.00"
                 android:textColor="#E62129"
                 android:textSize="22pt" />
 
             <TextView
                 android:id="@+id/tv_price2"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="0.00"
                 android:textColor="#808080"
                 android:textSize="18pt" />
 

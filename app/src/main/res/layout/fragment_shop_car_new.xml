@@ -7,10 +7,11 @@
 
 
     <RelativeLayout
+        android:paddingTop="20pt"
         android:id="@+id/rl1"
         android:layout_width="match_parent"
         android:layout_height="88pt"
-        android:background="@color/white"
+        android:background="@color/appColor"
         android:gravity="center_vertical">
 
         <ImageView
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="购物车"
-            android:textColor="#222222"
+            android:textColor="@color/white"
             android:textSize="38pt" />
 
     </RelativeLayout>

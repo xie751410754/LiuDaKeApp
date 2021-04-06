@@ -3,8 +3,8 @@ package com.cdxz.liudake.base;
 public class Constants {
     public static final String IS_LOGIN = "IS_LOGIN";
     public static final String TOKEN = "TOKEN";
-        public static final String BASE_URL = "http://test.liudashop.xizue.com";//测试地址
-//   public static final String BASE_URL = "https://www.liudashop.com";//正式地址
+//        public static final String BASE_URL = "http://test.liudashop.xizue.com";//测试地址
+   public static final String BASE_URL = "https://www.liudashop.com";//正式地址
     /*****************/
     public static final String BASE_HTTPS_URL = BASE_URL + "/index.php/";
     public static final String PICTURE_HTTPS_URL = "http://47.108.198.70";

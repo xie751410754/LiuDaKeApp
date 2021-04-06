@@ -15,6 +15,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:text="暂无活动"
             android:id="@+id/three_tvTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
             />
 
         <TextView
+            android:text="敬请期待"
             android:layout_marginStart="20pt"
             android:id="@+id/three_tvTips2"
             android:layout_width="wrap_content"
@@ -111,6 +113,7 @@
                 app:riv_corner_radius="8pt" />
 
             <TextView
+                android:text="0.00积分"
                 android:layout_marginTop="-32pt"
                 android:id="@+id/three_tv_jifen"
                 android:layout_width="147pt"
@@ -123,6 +126,8 @@
 
 
             <TextView
+                android:text="0.00"
+
                 android:id="@+id/three_tv_priceType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -130,6 +135,8 @@
                 android:textSize="22pt" />
 
             <TextView
+                android:text="0.00"
+
                 android:id="@+id/three_tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -160,6 +167,8 @@
                 app:riv_corner_radius="8pt" />
 
             <TextView
+                android:text="0.00积分"
+
                 android:id="@+id/three_tv_priceType2"
                 android:layout_marginTop="-32pt"
                 android:layout_width="147pt"
@@ -173,6 +182,8 @@
 
 
             <TextView
+                android:text="0.00"
+
                 android:id="@+id/three_jifen2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -180,6 +191,8 @@
                 android:textSize="22pt" />
 
             <TextView
+                android:text="0.00"
+
                 android:id="@+id/three_tv_price2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

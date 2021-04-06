@@ -16,7 +16,7 @@
             <RelativeLayout
                 android:id="@+id/rl1"
                 android:layout_width="match_parent"
-                android:layout_height="450pt">
+                android:layout_height="600pt">
 
                 <com.youth.banner.Banner
                     android:id="@+id/banner"

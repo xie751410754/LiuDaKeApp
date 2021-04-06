@@ -55,6 +55,33 @@ public class StoreInfoDetailBean {
     private String actual_shi;
     private String actual_qu;
     private String actual_address;
+    private String actual_sheng_name;
+    private String actual_shi_name;
+    private String actual_qu_name;
+
+    public String getActual_sheng_name() {
+        return actual_sheng_name;
+    }
+
+    public void setActual_sheng_name(String actual_sheng_name) {
+        this.actual_sheng_name = actual_sheng_name;
+    }
+
+    public String getActual_shi_name() {
+        return actual_shi_name;
+    }
+
+    public void setActual_shi_name(String actual_shi_name) {
+        this.actual_shi_name = actual_shi_name;
+    }
+
+    public String getActual_qu_name() {
+        return actual_qu_name;
+    }
+
+    public void setActual_qu_name(String actual_qu_name) {
+        this.actual_qu_name = actual_qu_name;
+    }
 
     public String getActual_sheng() {
         return actual_sheng;
