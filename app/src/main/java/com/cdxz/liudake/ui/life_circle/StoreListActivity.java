@@ -74,6 +74,7 @@ public class StoreListActivity extends BaseActivity {
     }
 
 
+
     @Override
     protected void initListener() {
         etSearch.setOnEditorActionListener((v, actionId, event) -> {
