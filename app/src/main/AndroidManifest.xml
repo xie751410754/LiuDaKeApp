@@ -67,24 +67,31 @@
         <activity android:name=".ui.shop_mall.MessageListActivity" />
         <activity android:name=".ui.shop_mall.GoodsDetailActivity" />
 
-        <activity android:name=".ui.store_manager.BillActivity"/>
-        <activity android:name=".ui.store_manager.StoreCoreActivity"/>
-        <activity android:name=".ui.store_manager.StoreHomeActivity"/>
-        <activity android:name=".ui.store_manager.StoreQuXianActivity"/>
-        <activity android:name=".ui.store_manager.StoreWalletActivity"/>
-        <activity android:name=".ui.store_manager.StoreClassActivity"/>
-        <activity android:name=".ui.store_manager.StoreCommentActivity"/>
-        <activity android:name=".ui.store_manager.StoreGuideActivity"/>
-        <activity android:name=".ui.store_manager.StoreManagerActivity"/>
-        <activity android:name=".ui.store_manager.StorePayActivity"/>
-        <activity android:name=".ui.store_manager.StoreQRActivity"/>
-        <activity android:name=".ui.store_manager.StoreMessageActivity"/>
+        <activity android:name=".ui.store_manager.BillActivity" />
+        <activity android:name=".ui.store_manager.StoreCoreActivity" />
+        <activity android:name=".ui.store_manager.StoreHomeActivity" />
+        <activity android:name=".ui.store_manager.StoreQuXianActivity" />
+        <activity android:name=".ui.store_manager.StoreWalletActivity" />
+        <activity android:name=".ui.store_manager.StoreClassActivity" />
+        <activity android:name=".ui.store_manager.StoreCommentActivity" />
+        <activity android:name=".ui.store_manager.StoreGuideActivity" />
+        <activity android:name=".ui.store_manager.StoreManagerActivity" />
+        <activity android:name=".ui.store_manager.StorePayActivity" />
+        <activity android:name=".ui.store_manager.StoreQRActivity" />
+        <activity android:name=".ui.store_manager.StoreMessageActivity" />
 
 
         <activity
             android:name=".ui.main.MainActivity"
             android:theme="@style/MainTheme" />
         <activity android:name=".ui.LaunchActivity">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".ui.main.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

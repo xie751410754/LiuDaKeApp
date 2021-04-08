@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100pt"
+                android:orientation="horizontal"
+                android:paddingTop="20pt">
+
+                <RelativeLayout
+                    android:id="@+id/img_back"
+                    android:layout_width="120pt"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="19pt"
+                        android:layout_height="38pt"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20pt"
+                        android:contentDescription="@null"
+                        android:src="@mipmap/ic_black_back" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingTop="20pt"
+                    android:text="店铺管理"
+                    android:textColor="#0C0C0C"
+                    android:textSize="32pt" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider_info_height_20"
+                android:orientation="vertical"
+                android:showDividers="beginning|middle|end">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/divider_info_height"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="商铺图标"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/avatar_img"
+                            android:layout_width="84pt"
+                            android:layout_height="84pt"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:layout_toStartOf="@id/iv_avatar"
+                            android:scaleType="centerCrop"
+                            app:riv_border_color="@color/white"
+                            app:riv_border_width="4pt"
+                            app:riv_corner_radius="8pt"
+                            app:riv_oval="false" />
+
+                        <ImageView
+                            android:id="@+id/iv_avatar"
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_storeName"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="商铺名称"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/name_edit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="50pt"
+                            android:layout_toStartOf="@id/img_avatar"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:id="@+id/img_avatar"
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/store_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="商铺类别"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/tv_store_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="50pt"
+                            android:layout_toStartOf="@id/iv_avatar2"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:id="@+id/iv_avatar2"
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/store_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="商铺简介"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/tv_store_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="50pt"
+                            android:layout_toStartOf="@id/iv_avatar3"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:id="@+id/iv_avatar3"
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/store_local"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="商铺定位"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/tv_store_local"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="50pt"
+                            android:layout_toStartOf="@id/iv_avatar4"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:id="@+id/iv_avatar4"
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/store_local_adress"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:id="@+id/tv_diqu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="选择地区"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/city_text_adress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="60pt"
+                            android:layout_toEndOf="@id/tv_diqu"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="请点击选择省、市、区、"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_detail_adress"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:id="@+id/tv_dizhi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="详细地址"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/tv_store_local_adress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="60pt"
+                            android:layout_toEndOf="@id/tv_dizhi"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="请输入详细街道、楼栋等"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/divider_info_height"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <RelativeLayout
+                        android:id="@+id/store_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="营业时间"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/tv_store_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="50pt"
+                            android:layout_toStartOf="@id/iv_avatar_part"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:id="@+id/iv_avatar_part"
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/store_xiaofei"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="人均消费"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/tvStoreXiaofei"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="50pt"
+                            android:layout_toStartOf="@id/iv_avatar_part2"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:id="@+id/iv_avatar_part2"
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/store_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="100pt">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20pt"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="联系电话"
+                            android:textColor="#0C0C0C"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/tv_store_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="50pt"
+                            android:layout_toStartOf="@id/iv_avatar_part3"
+                            android:fontFamily="sans-serif-medium"
+                            android:textColor="#666666"
+                            android:textSize="32pt" />
+
+                        <ImageView
+                            android:id="@+id/iv_avatar_part3"
+                            android:layout_width="12pt"
+                            android:layout_height="20pt"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="20pt"
+                            android:src="@mipmap/icon_store_arrow" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20pt"
+                        android:layout_marginTop="30pt"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="店铺相册"
+                        android:textColor="#0C0C0C"
+                        android:textSize="32pt" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcv_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/text_edit"
+                        android:background="@color/white"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:descendantFocusability="blocksDescendants"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="10dp"
+                        tools:itemCount="8"
+                        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        tools:listitem="@layout/item_post_activity"
+                        tools:spanCount="3" />
+
+
+                    <TextView
+                        android:id="@+id/tv_submit"
+                        android:layout_width="match_parent"
+                        android:layout_height="70pt"
+                        android:layout_marginStart="32pt"
+                        android:layout_marginEnd="32pt"
+                        android:background="@drawable/round30red_shopcar"
+                        android:gravity="center"
+                        android:text="提交"
+                        android:textColor="#FFFFFF"
+                        android:textSize="28pt" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.LaunchActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/welcome_bg4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

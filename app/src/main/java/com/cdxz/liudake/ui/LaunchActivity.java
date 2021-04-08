@@ -1,5 +1,7 @@
 package com.cdxz.liudake.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 
@@ -37,6 +39,12 @@ public class LaunchActivity extends BaseActivity {
         return false;
     });
 
+
+    public static void startLaunchActivity(Context context) {
+        Intent intent = new Intent(context, LaunchActivity.class);
+        context.startActivity(intent);
+    }
+
     @Override
     protected int getContentViewId() {
         return R.layout.activity_launch;
@@ -63,7 +71,9 @@ public class LaunchActivity extends BaseActivity {
             @Override
             public void onDenied() {
                 ToastUtils.showShort("获取权限失败");
-                AppUtils.exitApp();
+//                AppUtils.exitApp();
+                handler.sendEmptyMessageDelayed(1, 500);
+
             }
         }).request();
     }

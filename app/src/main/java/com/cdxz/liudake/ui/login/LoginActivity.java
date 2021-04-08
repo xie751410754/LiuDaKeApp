@@ -51,6 +51,8 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
         context.startActivity(intent);
     }
 
+
+    boolean check = true;
     @Override
     public int initContentView(Bundle savedInstanceState) {
         return R.layout.activity_login_new;
@@ -59,6 +61,15 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
     @Override
     public void initViewObservable() {
         super.initViewObservable();
+        binding.ivCheckbox.setSelected(check);
+
+        binding.ivCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check =! check;
+                binding.ivCheckbox.setSelected(check);
+            }
+        });
         binding.forgetPwd.setOnClickListener(v -> {
             ResetPwdActivity.startResetPwdActivity(this);
         });
@@ -99,6 +110,11 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
             }
         });
         binding.loginBtn.setOnClickListener(v -> {
+
+            if (!check){
+                ToastUtils.showShort("隐私协议未同意，请勾选");
+                return;
+            }
             String phone = binding.phoneNumerEdit.getText().toString();
             if (StringUtils.isEmpty(phone)) {
                 ToastUtils.showShort("请输入手机号");

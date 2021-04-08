@@ -11,11 +11,14 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 
 import com.blankj.utilcode.util.AdaptScreenUtils;
+import com.cdxz.liudake.R;
+import com.gyf.immersionbar.ImmersionBar;
 
 public abstract class BaseTitleActivity<T extends ViewDataBinding> extends AppCompatActivity {
     protected T binding;
@@ -71,7 +74,11 @@ public abstract class BaseTitleActivity<T extends ViewDataBinding> extends AppCo
     }
 
     public void initData() {
-
+        int statusBarColor = ContextCompat.getColor(this, R.color.transparent);
+        ImmersionBar.with(this)
+                .fitsSystemWindows(false)
+                .statusBarColorInt(statusBarColor)
+                .statusBarDarkFont(true).init();
     }
 
 

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.adapter.shop_mall.HomeBannerAdapter;
@@ -25,6 +28,7 @@ import com.cdxz.liudake.bean.ShopBalance;
 import com.cdxz.liudake.bean.StoreOpenStatus;
 import com.cdxz.liudake.bean.StoreUnderMsgResult;
 import com.cdxz.liudake.databinding.ActivityStoreHomeBinding;
+import com.cdxz.liudake.databinding.ActivityStoreHomeNewBinding;
 import com.cdxz.liudake.ui.ScanQRCodeActivity;
 import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.BaseTitleActivity;
@@ -54,7 +58,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBinding> implements View.OnClickListener {
+public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeNewBinding> implements View.OnClickListener {
     Disposable disposable;
 
     private LoginBean.ShopBean shopList;
@@ -68,7 +72,7 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBindin
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_store_home;
+        return R.layout.activity_store_home_new;
     }
 
     @Override
@@ -81,39 +85,42 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBindin
     public void initViewObservable() {
         super.initViewObservable();
 
-        initToolbar(binding.toolbar);
+//        initToolbar(binding.toolbar);
         shopList = (LoginBean.ShopBean) getIntent().getSerializableExtra("shopList");
 
         Log.d(this.getClass().getCanonicalName(), "initViewObservable: " + shopList.getId());
 
-        binding.tvQr.setOnClickListener(this);
+//        binding.tvQr.setOnClickListener(this);
         binding.tvShoukuan.setOnClickListener(this);
         binding.tvTixian.setOnClickListener(this);
         binding.tvMessage.setOnClickListener(this);
-        binding.llAllGet1.setOnClickListener(this);
-        binding.llAllGet2.setOnClickListener(this);
+//        binding.llAllGet1.setOnClickListener(this);
+//        binding.llAllGet2.setOnClickListener(this);
         binding.tv5.setOnClickListener(this);
         binding.tv6.setOnClickListener(this);
 
         binding.tv8.setOnClickListener(this);
         binding.tv9.setOnClickListener(this);
-        binding.tv10.setOnClickListener(this);
+//        binding.tv10.setOnClickListener(this);
         binding.tv11.setOnClickListener(this);
         binding.tv12.setOnClickListener(this);
+
+        binding.imgBack.setOnClickListener(this);
+
 
         getIndexData();
         getBannerList();
 
 
-        disposable = Observable.interval(0, 10, TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(Long aLong) throws Exception {
-                        getUndermsg();
-                    }
-                });
+//        disposable = Observable.interval(0, 10, TimeUnit.SECONDS)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Consumer<Long>() {
+//                    @Override
+//                    public void accept(Long aLong) throws Exception {
+//                        getUndermsg();
+//                    }
+//                });
 
         changeOpenStatus(2, openStatusResult);
 
@@ -147,11 +154,11 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBindin
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
-            case R.id.tv_qr://扫一扫
-                ScanQRCodeActivity.startScanQRCodeActivity(this, ScanQRCodeActivity.TYPE_STORE_HOME);
-//                Intent intent = new Intent(StoreHomeActivity.this, CaptureActivity.class);
-//                startActivityForResult(intent, 0);
-                break;
+//            case R.id.tv_qr://扫一扫
+//                ScanQRCodeActivity.startScanQRCodeActivity(this, ScanQRCodeActivity.TYPE_STORE_HOME);
+////                Intent intent = new Intent(StoreHomeActivity.this, CaptureActivity.class);
+////                startActivityForResult(intent, 0);
+//                break;
             case R.id.tv_shoukuan://收款码
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("shopId", shopList.getId());
@@ -176,10 +183,10 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBindin
                 bundle2.putString("shopId", shopList.getId());
                 startActivity(StoreMessageActivity.class, bundle2);
                 break;
-            case R.id.ll_all_get1://推广收益
-                break;
-            case R.id.ll_all_get2://结算收益
-                break;
+//            case R.id.ll_all_get1://推广收益
+//                break;
+//            case R.id.ll_all_get2://结算收益
+//                break;
             case R.id.tv_5://店铺管理
                 Bundle bundle = new Bundle();
                 bundle.putString("shopId", shopList.getId());
@@ -263,6 +270,9 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBindin
                 });
 
                 break;
+            case R.id.img_back:
+                finish();
+                break;
         }
     }
 
@@ -327,6 +337,15 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBindin
 //        }
     }
 
+    @Override
+    public Resources getResources() {
+        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            return AdaptScreenUtils.adaptHeight(super.getResources(), 750);
+        } else {
+            return AdaptScreenUtils.adaptWidth(super.getResources(), 750);
+        }
+    }
+
     private void getBannerList() {
         HttpsUtil.getInstance(this).positionList(2, Constants.LNG, Constants.LAT, object -> {
             List<BannerBean> bannerBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), BannerBean.class);
@@ -353,5 +372,8 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeBindin
             }
         });
     }
+
+
+
 }
 

@@ -36,7 +36,6 @@ public class WelcomeBannerAdapter extends BannerAdapter<WelcomeDto, WelcomeBanne
     public void onBindView(BannerViewHolder holder, WelcomeDto data, int position, int size) {
         Glide.with(holder.imageView.getContext())
                 .load(data.getRes())
-                .placeholder(R.mipmap.img_default)
                 .into(holder.imageView);
 
         holder.itemView.setOnClickListener(v -> {

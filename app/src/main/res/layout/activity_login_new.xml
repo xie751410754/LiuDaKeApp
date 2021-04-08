@@ -14,88 +14,88 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <ImageView
-                android:layout_marginTop="100pt"
                 android:layout_width="155pt"
                 android:layout_height="152pt"
-                android:src="@mipmap/register_logo"/>
+                android:layout_marginTop="100pt"
+                android:src="@mipmap/register_logo" />
 
         </RelativeLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="600pt"
+            android:layout_marginStart="30pt"
             android:layout_marginTop="60pt"
             android:layout_marginEnd="30pt"
-            android:layout_marginStart="30pt"
             android:background="@drawable/r4_while_new"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="600pt">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:gravity="center"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="100pt">
+                android:layout_height="100pt"
+                android:gravity="center"
+                android:orientation="horizontal">
+
                 <com.cdxz.liudake.view.DrawableTextView
-                    android:gravity="center"
-                    android:textSize="28pt"
-                    android:textColor="#E62129"
                     android:layout_width="0pt"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:drawablePadding="5pt"
-                    app:dt_bottom_drawable="@mipmap/login_line"
+                    android:gravity="center"
                     android:text="手机登录"
-                    app:dt_bottom_width="100pt"
+                    android:textColor="#E62129"
+                    android:textSize="28pt"
+                    app:dt_bottom_drawable="@mipmap/login_line"
                     app:dt_bottom_height="5pt"
-                    />
+                    app:dt_bottom_width="100pt" />
 
                 <TextView
                     android:id="@+id/tv_zhuce"
-                    android:gravity="center"
+                    android:layout_width="0pt"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="28pt"
+                    android:gravity="center"
                     android:text="账号注册"
                     android:textColor="#333333"
-                    android:layout_width="0pt"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="28pt" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="30pt"
-                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="120pt"
+                android:layout_marginTop="30pt"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
 
                 <com.cdxz.liudake.view.ClearEditText
                     android:id="@+id/phone_numer_edit"
                     android:layout_width="0pt"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_marginStart="43pt"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:hint="请输入手机号"
-                    android:singleLine="true"
                     android:inputType="phone"
+                    android:singleLine="true"
                     android:textColor="#333333"
                     android:textColorHint="#666666"
                     android:textSize="24pt" />
 
                 <com.cdxz.liudake.view.DrawableTextView
-                    android:layout_margin="20pt"
-                    android:textSize="22pt"
-                    android:textColor="#333333"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="20pt"
                     android:drawablePadding="5pt"
                     android:text="+86"
+                    android:textColor="#333333"
+                    android:textSize="22pt"
                     app:dt_right_drawable="@mipmap/icon_black_down"
                     app:dt_right_height="16pt"
                     app:dt_right_width="16pt" />
@@ -104,29 +104,30 @@
             </LinearLayout>
 
             <View
-                android:layout_marginEnd="30pt"
-                android:layout_marginStart="30pt"
                 android:layout_width="match_parent"
                 android:layout_height="2pt"
+                android:layout_marginStart="30pt"
+                android:layout_marginEnd="30pt"
                 android:background="#EBECEE" />
+
             <LinearLayout
-                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="120pt"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
 
                 <com.cdxz.liudake.view.ClearEditText
-                    android:layout_marginEnd="20pt"
                     android:id="@+id/password_edit"
                     android:layout_width="0pt"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     android:layout_marginStart="43pt"
+                    android:layout_marginEnd="20pt"
+                    android:layout_weight="1"
                     android:background="@null"
                     android:hint="请输入密码"
-                    android:singleLine="true"
                     android:inputType="textPassword"
+                    android:singleLine="true"
                     android:textColor="#333333"
                     android:textColorHint="#666666"
                     android:textSize="24pt" />
@@ -135,10 +136,10 @@
             </LinearLayout>
 
             <View
-                android:layout_marginEnd="30pt"
-                android:layout_marginStart="30pt"
                 android:layout_width="match_parent"
                 android:layout_height="2pt"
+                android:layout_marginStart="30pt"
+                android:layout_marginEnd="30pt"
                 android:background="#EBECEE" />
 
             <Button
@@ -153,73 +154,80 @@
         </LinearLayout>
 
         <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="80pt">
+            android:layout_height="80pt"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/forget_pwd"
-                android:layout_marginStart="100pt"
-                android:textColor="#FFFFFF"
-                android:textSize="22pt"
-                android:text="忘记密码"
                 android:layout_width="0pt"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100pt"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"/>
+                android:text="忘记密码"
+                android:textColor="#FFFFFF"
+                android:textSize="22pt" />
 
             <TextView
                 android:id="@+id/register_account_btn"
-                android:layout_marginEnd="100pt"
-                android:gravity="right"
-                android:textColor="#FFFFFF"
-                android:textSize="22pt"
-                android:text="还没注册？"
                 android:layout_width="0pt"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="100pt"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
+                android:gravity="right"
+                android:text="还没注册？"
+                android:textColor="#FFFFFF"
+                android:textSize="22pt" />
 
 
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginBottom="30pt"
             android:gravity="bottom|center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/iv_checkbox"
+                android:layout_width="28pt"
+                android:layout_height="28pt"
+                android:layout_marginEnd="10pt"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_checkbox" />
 
             <TextView
-                android:textColor="#FFFFFF"
-                android:textSize="23pt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="登录即同意" />
+                android:text="登录即同意"
+                android:textColor="#FFFFFF"
+                android:textSize="23pt" />
 
             <TextView
-                android:textSize="23pt"
-                android:textColor="#F2FE44"
                 android:id="@+id/tv_xy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="《用户协议》" />
+                android:text="《用户协议》"
+                android:textColor="#F2FE44"
+                android:textSize="23pt" />
 
             <TextView
-                android:textColor="#FFFFFF"
-                android:textSize="23pt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="和" />
+                android:text="和"
+                android:textColor="#FFFFFF"
+                android:textSize="23pt" />
 
             <TextView
                 android:id="@+id/tv_ys"
-                android:textSize="23pt"
-                android:textColor="#F2FE44"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="《隐私政策》" />
+                android:text="《隐私政策》"
+                android:textColor="#F2FE44"
+                android:textSize="23pt" />
+
 
         </LinearLayout>
 

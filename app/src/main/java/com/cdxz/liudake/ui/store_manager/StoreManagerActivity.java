@@ -38,6 +38,7 @@ import com.cdxz.liudake.bean.StoreInfoDetailBean;
 import com.cdxz.liudake.bean.StoreInfoResult;
 import com.cdxz.liudake.bean.UploadBean;
 import com.cdxz.liudake.databinding.ActivityStoreManagerBinding;
+import com.cdxz.liudake.databinding.ActivityStoreManagerNewBinding;
 import com.cdxz.liudake.map.MapActivity;
 import com.cdxz.liudake.ui.base.BaseTitleActivity;
 import com.cdxz.liudake.util.GlideEngine;
@@ -72,7 +73,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManagerBinding> implements View.OnClickListener {
+public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManagerNewBinding> implements View.OnClickListener {
 
     String shopId;
     String logo;
@@ -93,13 +94,13 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_store_manager;
+        return R.layout.activity_store_manager_new;
     }
 
     @Override
     public void initViewObservable() {
         super.initViewObservable();
-        initToolbar(binding.toolbar);
+//        initToolbar(binding.toolbar);
 
         shopId = getIntent().getStringExtra("shopId");
 
@@ -113,7 +114,11 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
         binding.storePhone.setOnClickListener(this);
         binding.storeTime.setOnClickListener(this);
         binding.tvSubmit.setOnClickListener(this);
-        binding.storePinlun.setOnClickListener(this);
+        binding.storeLocalAdress.setOnClickListener(this);
+        binding.rlDetailAdress.setOnClickListener(this);
+        binding.rlStoreName.setOnClickListener(this);
+        binding.imgBack.setOnClickListener(this);
+//        binding.storePinlun.setOnClickListener(this);
         binding.cityTextAdress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -360,17 +365,7 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                 });
                 break;
             case R.id.name_edit://名称
-                new XPopup.Builder(StoreManagerActivity.this).asInputConfirm("商铺名称", "请输入商铺名称", new OnInputConfirmListener() {
-                    @Override
-                    public void onConfirm(String text) {
-                        if (TextUtils.isEmpty(text)) {
-                            ToastUtils.showShort("内容不能为空");
-                            return;
-                        }
-                        binding.nameEdit.setText(text);
-                        name = text;
-                    }
-                }).show();
+
                 break;
             case R.id.store_local://店铺地址
                 startActivityForResult(new Intent(StoreManagerActivity.this, MapActivity.class), 0);
@@ -491,10 +486,27 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
 
             case R.id.city_text_adress:
 
-                showPickerView();
+//                showPickerView();
 
                 break;
             case R.id.tv_store_local_adress:
+//                new XPopup.Builder(StoreManagerActivity.this).asInputConfirm("详细地址", "请输入详细地址", new OnInputConfirmListener() {
+//                    @Override
+//                    public void onConfirm(String text) {
+//                        if (TextUtils.isEmpty(text)) {
+//                            ToastUtils.showShort("内容不能为空");
+//                            return;
+//                        }
+//                        binding.tvStoreLocalAdress.setText(text);
+//                    }
+//                }).show();
+                break;
+
+            case R.id.store_local_adress:
+
+                showPickerView();
+                break;
+            case R.id.rl_detail_adress:
                 new XPopup.Builder(StoreManagerActivity.this).asInputConfirm("详细地址", "请输入详细地址", new OnInputConfirmListener() {
                     @Override
                     public void onConfirm(String text) {
@@ -505,6 +517,23 @@ public class StoreManagerActivity extends BaseTitleActivity<ActivityStoreManager
                         binding.tvStoreLocalAdress.setText(text);
                     }
                 }).show();
+                break;
+
+            case R.id.rl_storeName:
+                new XPopup.Builder(StoreManagerActivity.this).asInputConfirm("商铺名称", "请输入商铺名称", new OnInputConfirmListener() {
+                    @Override
+                    public void onConfirm(String text) {
+                        if (TextUtils.isEmpty(text)) {
+                            ToastUtils.showShort("内容不能为空");
+                            return;
+                        }
+                        binding.nameEdit.setText(text);
+                        name = text;
+                    }
+                }).show();
+                break;
+            case R.id.img_back:
+                finish();
                 break;
 
         }
