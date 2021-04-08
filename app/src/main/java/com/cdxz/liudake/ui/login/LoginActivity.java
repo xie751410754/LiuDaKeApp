@@ -68,6 +68,7 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
             public void onClick(View view) {
                 check =! check;
 
+
                 binding.ivCheckbox.setSelected(check);
             }
         });
