@@ -67,6 +67,7 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
             @Override
             public void onClick(View view) {
                 check =! check;
+
                 binding.ivCheckbox.setSelected(check);
             }
         });
