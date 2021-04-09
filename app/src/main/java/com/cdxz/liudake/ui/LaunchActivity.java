@@ -52,7 +52,7 @@ public class LaunchActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        hideSystemUi();
+//        hideSystemUi();
     }
 
     @Override

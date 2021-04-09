@@ -2,6 +2,10 @@ package com.cdxz.liudake.ui.main.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -54,6 +58,10 @@ public class LifeCircleFragment2 extends BaseFragment {
 
     @BindView(R.id.tvAddress)
     DrawableTextView tvAddress;
+    @BindView(R.id.tv_more)
+    TextView tv_more;
+    @BindView(R.id.img_more)
+    ImageView img_more;
 
     @BindView(R.id.banner)
     Banner banner;
@@ -114,6 +122,8 @@ public class LifeCircleFragment2 extends BaseFragment {
         //
         getBannerList();
         getStoreCat(true);
+
+
     }
 
     @BusUtils.Bus(tag = BusTag.POP_SUGGESTION)
@@ -155,6 +165,8 @@ public class LifeCircleFragment2 extends BaseFragment {
 
     }
 
+    OptionsPickerView pvOptions;
+
     private void getStoreCat(boolean isCat) {
         HttpsUtil.getInstance(getContext()).nearShopCat(1, object -> {
             List<LifeCircleCatBean> catBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), LifeCircleCatBean.class);
@@ -178,7 +190,11 @@ public class LifeCircleFragment2 extends BaseFragment {
             }
             getActivity().findViewById(R.id.tvShaixuan).setOnClickListener(v -> {
 
-                OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), (options1, options2, options3, v1) -> {
+
+//                tv_more.setTextColor(ContextCompat.getColor(getContext(), R.color.appColor));
+//                img_more.setImageResource(R.mipmap.icon_lifecircle_more_select);
+
+                pvOptions = new OptionsPickerBuilder(getContext(), (options1, options2, options3, v1) -> {
                     BusUtils.post(BusTag.GET_STORE_ID,
                             new GetStoreIdBean(catBeanList.get(options1).getId(),
                                     childBeanList.get(options1).get(options2).getId())
@@ -190,6 +206,7 @@ public class LifeCircleFragment2 extends BaseFragment {
                 pvOptions.setPicker(catBeanList, childBeanList);
                 pvOptions.show();
             });
+
         });
     }
 

@@ -61,6 +61,12 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
     @Override
     public void initViewObservable() {
         super.initViewObservable();
+
+        if (SPUtils.getInstance().getBoolean(Constants.IS_LOGIN, false)) {
+            toMain();
+            finish();
+        }
+
         binding.ivCheckbox.setSelected(check);
 
         binding.ivCheckbox.setOnClickListener(new View.OnClickListener() {
@@ -209,5 +215,19 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
         } else {
             return AdaptScreenUtils.adaptWidth(super.getResources(), 750);
         }
+    }
+
+    /**
+     * 跳转到登录页面
+     */
+    private void toLogin() {
+        LoginActivity.startLoginActivity(this);
+    }
+
+    /**
+     * 跳转到主页面
+     */
+    private void toMain() {
+        MainActivity.startMainActivity(this);
     }
 }

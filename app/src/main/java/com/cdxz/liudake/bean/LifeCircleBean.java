@@ -1,5 +1,7 @@
 package com.cdxz.liudake.bean;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 
 public class LifeCircleBean implements Serializable {
@@ -28,6 +30,15 @@ public class LifeCircleBean implements Serializable {
     private NoticeBean notice;
     private String is_follow;
     private String average_money;
+    private int  sales;
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
 
     public String getId() {
         return id;

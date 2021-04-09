@@ -366,9 +366,10 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeNewBin
             public void onSuccess(BaseBean<ShopBalance> shopBalanceBaseBean) {
                 Log.e("TAG", "onSuccess: ");
                 shopBalance = shopBalanceBaseBean.getData();
+                binding.tvShopBance.setText(shopBalance.getMy_balance().getShop_balance()+"");
                 binding.tvMoney.setText("￥"+shopBalance.getMy_balance().getToday_receive());
-                binding.tvTodayNeworder.setText(shopBalance.getMy_balance().getToday_ordernums()+"");
-                binding.tvStoreMoney.setText(shopBalance.getMy_balance().getShop_balance()+"");
+                binding.tvStoreMoney.setText(shopBalance.getMy_balance().getToday_ordernums()+"");
+                binding.tvTodayNeworder.setText(shopBalance.getMy_balance().getToday_ordernums_off()+"");
             }
         });
     }

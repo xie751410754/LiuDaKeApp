@@ -2,6 +2,7 @@ package com.cdxz.liudake.adapter.life_circle;
 
 import android.annotation.SuppressLint;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.bumptech.glide.Glide;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.base.Constants;
@@ -39,6 +40,7 @@ public class LifeCircleAdapter extends BaseQuickAdapter<LifeCircleBean, BaseView
         baseViewHolder.setText(R.id.tvStoreName, bean.getName())
                 .setText(R.id.tvDistance, String.format("%.2f km", bean.getDistance() / 1000))
                 .setText(R.id.tvAverageMoney, String.format("人均 ¥%s", bean.getAverage_money()))
+                .setText(R.id.tv_sales, "销量 "+bean.getSales())
                 .setText(R.id.tvTime, String.format("营业时间 %s-%s", bean.getOpen_start_time(), bean.getOpen_end_time()));
     }
 }

@@ -162,6 +162,14 @@ public class PopGoodsSpecifica extends BottomPopupView {
                 ToastUtils.showShort("请选择相应规格");
                 return;
             }
+            LogUtils.e("id - " + id.toString());
+
+            String result = "";
+            for (int i = 0; i < id.size(); i++) {
+                result = result + id.get(i) + "&&";
+            }
+            String content = result.substring(0, result.length() - 2);
+            LogUtils.e("result" + result + "zzz" + content);
             onSubmitListener.onSubmit(id.toString()
                     .replace("[", "")
                     .replace("]", "")

@@ -11,6 +11,7 @@ import com.cdxz.liudake.adapter.shop_mall.WelcomeBannerAdapter;
 import com.cdxz.liudake.bean.WelcomeDto;
 import com.cdxz.liudake.ui.LaunchActivity;
 import com.cdxz.liudake.ui.base.BaseActivity;
+import com.cdxz.liudake.ui.login.LoginActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.listener.OnPageChangeListener;
@@ -86,13 +87,16 @@ public class WelcomeActivity extends BaseActivity {
         imgGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LaunchActivity.startLaunchActivity(context);
+//                LaunchActivity.startLaunchActivity(context);
+                LoginActivity.startLoginActivity(context);
             }
         });
         tvGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LaunchActivity.startLaunchActivity(context);
+//                LaunchActivity.startLaunchActivity(context);
+                LoginActivity.startLoginActivity(context);
+
 
             }
         });

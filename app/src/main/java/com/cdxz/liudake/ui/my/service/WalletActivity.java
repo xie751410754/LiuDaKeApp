@@ -68,7 +68,7 @@ public class WalletActivity extends BaseActivity {
             ToPromoteActivity.startToPromoteActivity(this);
         });
         findViewById(R.id.shareLayout).setOnClickListener(v -> {
-            InviteCodeActivity.startInviteCodeActivity(this);
+            InviteCodeActivity.startInviteCodeActivity(this,"");
         });
     }
 }

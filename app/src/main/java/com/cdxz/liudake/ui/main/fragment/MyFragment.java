@@ -199,7 +199,7 @@ public class MyFragment extends BaseFragment {
                 SetActivity.startSetActivity(getContext());
                 break;
             case R.id.tvInviteCode:
-                InviteCodeActivity.startInviteCodeActivity(getContext());
+                InviteCodeActivity.startInviteCodeActivity(getContext(),"");
                 break;
             case R.id.scoreLayout1:
                 OrderListActivity.startOrderListActivity(getContext(), 0);

@@ -484,7 +484,16 @@ public class ShopBalance {
 
         private Object shop_balance;
         private Object today_receive;
-        private Object today_ordernums;
+        private int today_ordernums;
+        private int today_ordernums_off;
+
+        public int getToday_ordernums_off() {
+            return today_ordernums_off;
+        }
+
+        public void setToday_ordernums_off(int today_ordernums_off) {
+            this.today_ordernums_off = today_ordernums_off;
+        }
 
         public Object getShop_balance() {
             return shop_balance;
@@ -506,7 +515,7 @@ public class ShopBalance {
             return today_ordernums;
         }
 
-        public void setToday_ordernums(Object today_ordernums) {
+        public void setToday_ordernums(int today_ordernums) {
             this.today_ordernums = today_ordernums;
         }
     }

@@ -203,7 +203,7 @@ public class MyFragment2 extends BaseFragment {
                 SetActivity.startSetActivity(getContext());
                 break;
             case R.id.tvInviteCode:
-                InviteCodeActivity.startInviteCodeActivity(getContext());
+                InviteCodeActivity.startInviteCodeActivity(getContext(),headImg);
                 break;
             case R.id.scoreLayout1:
                 OrderListActivity.startOrderListActivity(getContext(), 0);
@@ -411,8 +411,10 @@ public class MyFragment2 extends BaseFragment {
         });
     }
 
+    String headImg;
     @SuppressLint("SetTextI18n")
     private void userIndex() {
+
         HttpsUtil.getInstance(getContext()).userIndex(object -> {
             UserIndexBean indexBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), UserIndexBean.class);
             getActivity().findViewById(R.id.ivAvatar).setOnClickListener(v -> {
@@ -422,6 +424,7 @@ public class MyFragment2 extends BaseFragment {
                     .load(Constants.PICTURE_HTTPS_URL + indexBean.getHead())
                     .placeholder(R.mipmap.img_default)
                     .into(ivAvatar);
+            headImg = indexBean.getHead();
             tvNick.setText(indexBean.getName());
             tv_kouling.setText("邀请口令："+indexBean.getUid());
             tvPhone.setText("TEL："+indexBean.getPhone().substring(0, 3) + "****" + indexBean.getPhone().substring(7, indexBean.getPhone().length()));

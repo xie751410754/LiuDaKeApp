@@ -28,6 +28,7 @@ import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.InviteCodeBean;
 import com.cdxz.liudake.ui.base.BaseActivity;
 import com.cdxz.liudake.util.ParseUtils;
+import com.cdxz.liudake.view.roundedImageView.RoundedImageView;
 
 import java.io.File;
 
@@ -38,29 +39,39 @@ public class InviteCodeActivity extends BaseActivity {
     @BindView(R.id.tvInviteCode)
     TextView tvInviteCode;
 
+    @BindView(R.id.ivAvatar)
+    RoundedImageView ivAvatar;
+
     @BindView(R.id.ivQrcode)
     ImageView ivQrcode;
 
     @BindView(R.id.qrcodeLayout)
     RelativeLayout qrcodeLayout;
 
-    public static void startInviteCodeActivity(Context context) {
+    public static void startInviteCodeActivity(Context context, String headImg) {
         Intent intent = new Intent(context, InviteCodeActivity.class);
+        intent.putExtra("head", headImg);
         context.startActivity(intent);
     }
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_invite_code;
+        return R.layout.activity_invite_code_new;
     }
 
     @Override
     protected void initViews() {
-        setTitleText("邀请码");
+//        setTitleText("邀请码");
+        Glide.with(context)
+                .load(Constants.PICTURE_HTTPS_URL + getIntent().getStringExtra("head"))
+                .placeholder(R.mipmap.img_default)
+                .into(ivAvatar);
     }
 
     @Override
     protected void initDatas() {
+
+
         HttpsUtil.getInstance(this).invitQrcode(object -> {
             InviteCodeBean inviteCodeBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), InviteCodeBean.class);
             tvInviteCode.setText(inviteCodeBean.getUid());
@@ -88,6 +99,10 @@ public class InviteCodeActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
+        findViewById(R.id.img_back).setOnClickListener(view -> {
+            finish();
+        });
         findViewById(R.id.tvSaveQRCode).setOnClickListener(v -> {
             File file = ImageUtils.save2Album(drawMeasureView(qrcodeLayout), Bitmap.CompressFormat.PNG);
             if (file != null) {

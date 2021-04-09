@@ -17,12 +17,14 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ObjectUtils;
+import com.blankj.utilcode.util.PermissionUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.TimeUtils;
@@ -309,7 +311,30 @@ public class ShopMallFragment2 extends BaseFragment {
         LocationClientOption option = new LocationClientOption();
         option.setIsNeedAddress(true);
         mLocationClient.setLocOption(option);
-        mLocationClient.start();
+
+        PermissionUtils.permission(
+                PermissionConstants.LOCATION,
+                PermissionConstants.STORAGE,
+                PermissionConstants.PHONE,
+                PermissionConstants.CAMERA
+        ).callback(new PermissionUtils.SimpleCallback() {
+            @Override
+            public void onGranted() {
+//                handler.sendEmptyMessageDelayed(1, 500);
+                mLocationClient.start();
+
+            }
+
+            @Override
+            public void onDenied() {
+                ToastUtils.showShort("获取权限失败");
+//                AppUtils.exitApp();
+//                handler.sendEmptyMessageDelayed(1, 500);
+
+            }
+        }).request();
+
+
 
         //
         menuAdapter = new MenuAdapter(menuList);

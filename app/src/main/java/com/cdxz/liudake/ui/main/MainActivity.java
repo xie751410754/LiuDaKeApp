@@ -23,11 +23,13 @@ import com.allenliu.versionchecklib.v2.AllenVersionChecker;
 import com.allenliu.versionchecklib.v2.builder.DownloadBuilder;
 import com.allenliu.versionchecklib.v2.builder.UIData;
 import com.allenliu.versionchecklib.v2.callback.RequestVersionListener;
+import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.PermissionUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -111,8 +113,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initDatas() {
 
-        LogUtils.e("xzl"+((Math.sqrt(375*375+667*667))/72));
+        LogUtils.e("xzl" + ((Math.sqrt(375 * 375 + 667 * 667)) / 72));
         BusUtils.register(this);
+
+
     }
 
     @BusUtils.Bus(tag = BusTag.GOODS_DETAIL_TO_CAR)
@@ -185,21 +189,20 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onResult(Object result) {
                 String json = GsonUtils.toJson(result);
-                LogUtils.e("版本升级："+json);
+                LogUtils.e("版本升级：" + json);
                 BaseBean baseBean = ParseUtils.parseJsonObject(json, BaseBean.class);
 
 
-
-                if(baseBean.getState().getCode()==0){
+                if (baseBean.getState().getCode() == 0) {
                     VersionUpdateBean versionUpdateBean = ParseUtils.parseJsonObject(GsonUtils.toJson(baseBean.getData()), VersionUpdateBean.class);
-                    if (versionUpdateBean.getHasNewVersion() == 1){
+                    if (versionUpdateBean.getHasNewVersion() == 1) {
 
                         AlertDialog alertDialog = new AlertDialog.Builder(context).setTitle("发现新版本")
                                 .setPositiveButton("升级新版本", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                                        Intent intent= new Intent();
+                                        Intent intent = new Intent();
                                         intent.setAction("android.intent.action.VIEW");
                                         Uri content_url = Uri.parse(versionUpdateBean.getUrl());
                                         intent.setData(content_url);
@@ -212,7 +215,7 @@ public class MainActivity extends BaseActivity {
                                     public void onClick(DialogInterface dialogInterface, int i) {
 
                                         dialogInterface.dismiss();
-                                        if (versionUpdateBean.getUpdateType() == 2){
+                                        if (versionUpdateBean.getUpdateType() == 2) {
                                             //2强制升级
                                             AppUtils.exitApp();
                                         }
