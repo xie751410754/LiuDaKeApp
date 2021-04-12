@@ -31,23 +31,49 @@ public class ThirdPartyMapsGuide {
     public static void goToBaiduActivity(Context context, String address, double lon, double lat) {
         double[] doubles = gcj02_To_Bd09(lon, lat);
         //启动路径规划页面
-        baiduMap(context,doubles[0],doubles[1],address);
+        baiduMap(context, doubles[0], doubles[1], address);
+    }
+
+    /**
+     * 百度坐标转换gcj-02
+     *
+     * @param address 目的地
+     * @param lat     必填 纬度
+     * @param lon     必填 经度
+     */
+    public static void transform(Context context, String address, double lat, double lon,int type) {
+
+        double[] doubles = bd09_To_Gcj02(lat, lon);
+        switch (type){
+            case 1:
+                goToGaoDeMap(context, doubles[1], doubles[0], address);
+
+                break;
+
+            case 2:
+                baiduMap(context, doubles[1], doubles[0], address);
+                break;
+
+            case 3:
+                goToTencentMap(context,address,doubles[1], doubles[0]);
+                break;
+        }
     }
 
     /**
      * 百度地图
      */
-    public static void baiduMap(Context context,double lng,double lat,String storeName) {
+    public static void baiduMap(Context context, double lng, double lat, String storeName) {
         if (isAvilible(context, PN_BAIDU_MAP)) {//传入指定应用包名
             Intent il = new Intent();
-            il.setData(Uri.parse("baidumap://map/direction?destination=latlng:" + lat + "," + lng +"|name:"+storeName + "&mode=driving"));
+            il.setData(Uri.parse("baidumap://map/direction?destination=latlng:" + lat + "," + lng + "|name:" + storeName + "&mode=driving"));
             startActivity(il);
         } else {//未安装
             //market为路径，id为包名
             //显示手机上所有的market商店
             ToastUtils.showShort("您尚未安装百度地图");
             //显示手机上所有的market商店
-            Uri uri = Uri.parse("market://details?id="+PN_BAIDU_MAP);
+            Uri uri = Uri.parse("market://details?id=" + PN_BAIDU_MAP);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         }
@@ -56,12 +82,12 @@ public class ThirdPartyMapsGuide {
     /**
      * 腾讯地图
      */
-    public static void goToTencentMap(Context context,String address,double lng,double lat) {
+    public static void goToTencentMap(Context context, String address, double lng, double lat) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         //将功能Scheme以URI的方式传入data
-        Uri uri = Uri.parse("qqmap://map/routeplan?type=drive&to="+address+"&tocoord=" + lat + "," + lng);
+        Uri uri = Uri.parse("qqmap://map/routeplan?type=drive&to=" + address + "&tocoord=" + lat + "," + lng);
         intent.setData(uri);
         if (intent.resolveActivity(context.getPackageManager()) != null) {
             //启动该页面即可
@@ -69,7 +95,7 @@ public class ThirdPartyMapsGuide {
         } else {
             ToastUtils.showShort("您尚未安装腾讯地图");
             //显示手机上所有的market商店
-            Uri uri1 = Uri.parse("market://details?id="+PN_TENCENT_MAP);
+            Uri uri1 = Uri.parse("market://details?id=" + PN_TENCENT_MAP);
             Intent intent1 = new Intent(Intent.ACTION_VIEW, uri1);
             startActivity(intent1);
         }
@@ -78,14 +104,14 @@ public class ThirdPartyMapsGuide {
     /**
      * 高德地图
      */
-    public static void goToGaoDeMap(Context context, double lng, double lat,String storeName) {
+    public static void goToGaoDeMap(Context context, double lng, double lat, String storeName) {
         if (isAvilible(context, PN_GAODE_MAP)) {//传入指定应用包名
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.addCategory(Intent.CATEGORY_DEFAULT);
             intent.setPackage(PN_GAODE_MAP);
             try {
-                intent = Intent.getIntent("amapuri://route/plan/?dlat=" + lat + "&dlon=" + lng+"&dname=" +storeName+ "&d&dev=0&t=0");
+                intent = Intent.getIntent("amapuri://route/plan/?dlat=" + lat + "&dlon=" + lng + "&dname=" + storeName + "&d&dev=0&t=0");
                 startActivity(intent);
             } catch (URISyntaxException e) {
                 e.printStackTrace();
@@ -94,13 +120,15 @@ public class ThirdPartyMapsGuide {
             //market为路径，id为包名
             //显示手机上所有的market商店
             ToastUtils.showShort("您尚未安装高德地图");
-            Uri uri = Uri.parse("market://details?id="+PN_GAODE_MAP);
+            Uri uri = Uri.parse("market://details?id=" + PN_GAODE_MAP);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         }
     }
 
-    /**检测应用是否安装*/
+    /**
+     * 检测应用是否安装
+     */
     private static boolean isAvilible(Context context, String packageName) {
         final PackageManager packageManager = context.getPackageManager();//获取packagemanager
         List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);//获取所有已安装程序的包信息
@@ -131,4 +159,22 @@ public class ThirdPartyMapsGuide {
         return gps;
     }
 
+
+    /**
+     * * 火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法 * * 将 BD-09 坐标转换成GCJ-02 坐标 * * @param
+     * bd_lat * @param bd_lon * @return
+     */
+    public static double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+
+    public static double[] bd09_To_Gcj02(double lat, double lon) {
+        double x = lon - 0.0065, y = lat - 0.006;
+        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * x_pi);
+        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
+        double tempLon = z * Math.cos(theta);
+        double tempLat = z * Math.sin(theta);
+        double[] gps = {tempLat, tempLon};
+        return gps;
+
+
+    }
 }

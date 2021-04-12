@@ -61,6 +61,7 @@ public class WithdrawalActivity extends BaseActivity {
     @BindView(R.id.etRedmi)
     EditText etRedmi;
 
+
     private String redmi;
     private int type = 2;
     private String withdraw_fee_value;
@@ -74,12 +75,12 @@ public class WithdrawalActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_withdrawal;
+        return R.layout.activity_withdrawal_new;
     }
 
     @Override
     protected void initViews() {
-        setTitleText("提现");
+//        setTitleText("提现");
     }
 
     @SuppressLint("DefaultLocale")
@@ -90,7 +91,7 @@ public class WithdrawalActivity extends BaseActivity {
             shopId = getIntent().getStringExtra("shopId");
             tvRemark.setVisibility(View.GONE);
         }
-        tvRedmi.setText(redmi);
+        tvRedmi.setText("人民币"+redmi);
 
         getBankInfo(shopId);
 
@@ -151,6 +152,14 @@ public class WithdrawalActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
+
+        findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         etRedmi.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

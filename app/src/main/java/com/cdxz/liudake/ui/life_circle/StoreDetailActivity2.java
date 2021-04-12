@@ -109,15 +109,15 @@ public class StoreDetailActivity2 extends BaseActivity {
             findViewById(R.id.img_call).setOnClickListener(v -> {
 
                 new XPopup.Builder(this)
-                      .asCustom(new PopSelector(context,detailBean.getContact(),new PopSelector.OnSelectListener() {
-                          @Override
-                          public void onClick() {
-                              Intent intent = new Intent(Intent.ACTION_CALL);
-                              Uri data = Uri.parse("tel:" + detailBean.getContact());
-                              intent.setData(data);
-                              startActivity(intent);
-                          }
-                      })).show();
+                        .asCustom(new PopSelector(context, detailBean.getContact(), new PopSelector.OnSelectListener() {
+                            @Override
+                            public void onClick() {
+                                Intent intent = new Intent(Intent.ACTION_CALL);
+                                Uri data = Uri.parse("tel:" + detailBean.getContact());
+                                intent.setData(data);
+                                startActivity(intent);
+                            }
+                        })).show();
 
             });
             findViewById(R.id.img_go).setOnClickListener(v -> {
@@ -137,16 +137,22 @@ public class StoreDetailActivity2 extends BaseActivity {
                             switch (position) {
                                 case 1:
 
-                                    ThirdPartyMapsGuide.goToGaoDeMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()), detailBean.getName());
+//                                    ThirdPartyMapsGuide.goToGaoDeMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()), detailBean.getName());
+                                    ThirdPartyMapsGuide.transform(context, detailBean.getName(), Double.valueOf(detailBean.getLat()), Double.valueOf(detailBean.getLng()), 1);
 
                                     break;
                                 case 2:
 
-                                    ThirdPartyMapsGuide.baiduMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()), detailBean.getName());
+                                    ThirdPartyMapsGuide.baiduMap(context, Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()),detailBean.getName());
+
+//                                    ThirdPartyMapsGuide.transform(context, detailBean.getName(), Double.valueOf(detailBean.getLat()), Double.valueOf(detailBean.getLng()), 2);
+
 
                                     break;
                                 case 3:
-                                    ThirdPartyMapsGuide.goToTencentMap(context, detailBean.getName(), Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()));
+//                                    ThirdPartyMapsGuide.goToTencentMap(context, detailBean.getName(), Double.valueOf(detailBean.getLng()), Double.valueOf(detailBean.getLat()));
+                                    ThirdPartyMapsGuide.transform(context, detailBean.getName(), Double.valueOf(detailBean.getLat()), Double.valueOf(detailBean.getLng()), 3);
+
 
                                     break;
                                 default:

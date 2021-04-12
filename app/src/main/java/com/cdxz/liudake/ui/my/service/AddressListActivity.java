@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.GsonUtils;
@@ -38,14 +39,14 @@ public class AddressListActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_address_list;
+        return R.layout.activity_address_list_new;
     }
 
     @Override
     protected void initViews() {
-        setTitleText("收货地址管理");
-        setTitleRightText("添加");
-        setTitleRightTextColor(R.color.color_343434);
+//        setTitleText("收货地址管理");
+//        setTitleRightText("添加");
+//        setTitleRightTextColor(R.color.color_343434);
         recyclerAddress.setLayoutManager(new LinearLayoutManager(this));
         recyclerAddress.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(12), true));
     }
@@ -58,6 +59,21 @@ public class AddressListActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
+        findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        findViewById(R.id.ll_adress_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddAddressActivity.startAddAddressActivity(context, null);
+
+            }
+        });
 
     }
 

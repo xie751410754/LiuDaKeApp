@@ -24,8 +24,9 @@
                     android:layout_height="match_parent" />
 
                 <LinearLayout
+                    android:paddingTop="20pt"
                     android:layout_width="match_parent"
-                    android:layout_height="60pt"
+                    android:layout_height="100pt"
                     android:layout_marginStart="20pt"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -37,6 +38,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:layout_gravity="bottom"
                             android:layout_width="19pt"
                             android:layout_height="38pt"
                             android:src="@mipmap/icon_return" />

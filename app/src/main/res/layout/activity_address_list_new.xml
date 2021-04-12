@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.my.service.WithdrawalActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130pt"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingTop="60pt">
+
+            <RelativeLayout
+                android:id="@+id/img_back"
+                android:layout_width="120pt"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="19pt"
+                    android:layout_height="38pt"
+                    android:layout_marginStart="20pt"
+                    android:contentDescription="@null"
+                    android:src="@mipmap/ic_black_back" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-medium"
+                android:text="地址管理"
+                android:textColor="#080808"
+                android:textSize="34pt" />
+
+            <ImageView
+                android:id="@+id/tv_message"
+                android:layout_width="32pt"
+                android:layout_height="38pt"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="20pt"
+                android:src="@mipmap/icon_store_home_news" />
+
+            <TextView
+                android:id="@+id/tv_under_msg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/circle_while"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#E20012"
+                android:textSize="10sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAddress"
+            android:layout_width="match_parent"
+            android:layout_height="0pt"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/ll_adress_add"
+            android:layout_width="match_parent"
+            android:layout_height="90pt"
+            android:layout_margin="40pt"
+            android:background="@drawable/bg_jianbian4"
+            android:gravity="center">
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:layout_width="wrap_content"
+                android:layout_height="90pt"
+                android:drawablePadding="33pt"
+                android:gravity="center"
+                android:text="添加新地址"
+                android:textColor="#FFFFFF"
+                android:textSize="28pt"
+                android:textStyle="bold"
+                app:dt_left_drawable="@mipmap/icon_adress_add"
+                app:dt_left_height="40pt"
+                app:dt_left_width="40pt" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
