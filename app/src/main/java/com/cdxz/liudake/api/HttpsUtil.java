@@ -1250,6 +1250,7 @@ public class HttpsUtil {
                     }
                 });
     }
+
     /**
      * 促销广告列表 banner
      *
