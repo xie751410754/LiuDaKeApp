@@ -347,6 +347,7 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeNewBin
     }
 
 
+
     private void getBannerList() {
         HttpsUtil.getInstance(this).positionList(2, Constants.LNG, Constants.LAT, object -> {
             List<BannerBean> bannerBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), BannerBean.class);
