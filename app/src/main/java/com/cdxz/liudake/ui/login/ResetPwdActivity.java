@@ -74,7 +74,7 @@ public class ResetPwdActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        setTitleText("重置密码");
+//        setTitleText("重置密码");
     }
 
     @Override
@@ -84,6 +84,13 @@ public class ResetPwdActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
+        findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         findViewById(R.id.btn_switchPwd).setOnClickListener(new View.OnClickListener() {
             @Override

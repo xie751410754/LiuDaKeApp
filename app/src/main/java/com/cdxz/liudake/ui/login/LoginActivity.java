@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.GsonUtils;
@@ -52,7 +53,7 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
     }
 
 
-    boolean check = true;
+    boolean check = false;
     @Override
     public int initContentView(Bundle savedInstanceState) {
         return R.layout.activity_login_new;
@@ -118,6 +119,11 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
             }
         });
         binding.loginBtn.setOnClickListener(v -> {
+            View view = this.getCurrentFocus();
+            if (view != null) {
+                InputMethodManager inputMethodManager = (InputMethodManager) this.getSystemService(this.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
 
             if (!check){
                 ToastUtils.showShort("隐私协议未同意，请勾选");

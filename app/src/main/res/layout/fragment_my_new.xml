@@ -29,11 +29,12 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="445pt"
+                android:layout_height="700pt"
                 android:background="@mipmap/shop_my_bg">
 
 
                 <RelativeLayout
+                    android:id="@+id/rl1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -114,29 +115,170 @@
 
                 </RelativeLayout>
 
-            </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="307pt"
+                    android:layout_below="@id/rl1"
+                    android:layout_marginStart="54pt"
+                    android:layout_marginTop="50pt"
+                    android:layout_marginEnd="43pt"
+                    android:background="@drawable/bg_jianbian6"
+                    android:orientation="vertical">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="320pt"
-                android:layout_marginStart="20pt"
-                android:layout_marginTop="-120pt"
-                android:layout_marginEnd="20pt"
-                android:background="@mipmap/shop_my_shouyi_bg"
-                android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="30pt"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:id="@+id/scoreLayout1"
+                            android:layout_width="0pt"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/tv_dailing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginStart="10pt"
+                                android:text="待领积分"
+                                android:textColor="@color/white"
+                                android:textSize="26pt" />
+
+                            <TextView
+                                android:id="@+id/tvLingquTag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_toRightOf="@id/tv_dailing"
+                                android:background="@drawable/round_shop_my"
+                                android:padding="5pt"
+                                android:text="领取"
+                                android:textColor="@color/white"
+                                android:textSize="16pt" />
+
+                            <TextView
+                                android:id="@+id/tvDaiLing"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_dailing"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="14pt"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="36pt" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="2pt"
+                            android:layout_height="80pt"
+                            android:background="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/scoreLayout2"
+                            android:layout_width="0pt"
+                            android:layout_height="100pt"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10pt"
+                                android:text="可用积分"
+                                android:textColor="@color/white"
+                                android:textSize="26pt" />
+
+                            <TextView
+                                android:id="@+id/tvKeYong"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10pt"
+                                android:layout_marginTop="14pt"
+                                android:text="600.00"
+                                android:textColor="@color/white"
+                                android:textSize="36pt" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="2pt"
+                            android:layout_height="80pt"
+                            android:background="@color/white" />
+
+                        <LinearLayout
+                            android:id="@+id/redmiLayout"
+                            android:layout_width="0pt"
+                            android:layout_height="100pt"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10pt"
+                                android:text="红米"
+                                android:textColor="@color/white"
+                                android:textSize="26pt" />
+
+                            <TextView
+                                android:id="@+id/tvRedmi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10pt"
+                                android:layout_marginTop="14pt"
+                                android:text="8468"
+                                android:textColor="@color/white"
+                                android:textSize="36pt" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20pt"
+                            android:layout_marginBottom="15pt"
+                            android:text="每月25号提现上月确认收货的订单收入"
+                            android:textColor="@color/white"
+                            android:textSize="20pt"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30pt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150pt"
+                    android:layout_below="@id/rl1"
+                    android:layout_marginStart="27pt"
+                    android:layout_marginTop="40pt"
                     android:layout_marginBottom="40pt"
-                    android:gravity="center_vertical"
+                    android:background="@mipmap/bg_shop_my_tixian"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:layout_marginStart="20pt"
                         android:text="可提现¥"
                         android:textColor="@color/white"
@@ -147,6 +289,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10pt"
+                        android:layout_marginTop="30pt"
                         android:fontFamily="sans-serif"
                         android:text="2689"
                         android:textColor="@color/white"
@@ -155,154 +298,55 @@
 
                     <androidx.legacy.widget.Space
                         android:layout_width="0pt"
-                        android:layout_height="0pt"
+                        android:layout_height="match_parent"
                         android:layout_weight="1" />
+
 
                     <TextView
                         android:id="@+id/tv_tiXian"
                         android:layout_width="160pt"
                         android:layout_height="54pt"
-                        android:layout_marginEnd="30pt"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginStart="30pt"
+                        android:layout_marginEnd="19pt"
+                        android:layout_marginBottom="18pt"
                         android:background="@mipmap/shop_my_tixian" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20pt"
-                    android:gravity="center"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="20pt"
+                    android:layout_marginBottom="20pt"
                     android:orientation="horizontal">
 
-                    <RelativeLayout
-                        android:id="@+id/scoreLayout1"
-                        android:layout_width="0pt"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/tv_dailing"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginStart="10pt"
-                            android:text="待领积分"
-                            android:textColor="@color/white"
-                            android:textSize="26pt" />
-
-                        <TextView
-                            android:id="@+id/tvLingquTag"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_toRightOf="@id/tv_dailing"
-                            android:background="@drawable/round_shop_my"
-                            android:padding="5pt"
-                            android:text="领取"
-                            android:textColor="@color/white"
-                            android:textSize="16pt" />
-
-                        <TextView
-                            android:id="@+id/tvDaiLing"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/tv_dailing"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="14pt"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="36pt" />
-
-                    </RelativeLayout>
-
-                    <View
-                        android:layout_width="2pt"
-                        android:layout_height="80pt"
-                        android:background="@color/white" />
-
-                    <LinearLayout
-                        android:id="@+id/scoreLayout2"
-                        android:layout_width="0pt"
-                        android:layout_height="100pt"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10pt"
-                            android:text="可用积分"
-                            android:textColor="@color/white"
-                            android:textSize="26pt" />
-
-                        <TextView
-                            android:id="@+id/tvKeYong"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10pt"
-                            android:layout_marginTop="14pt"
-                            android:text="600.00"
-                            android:textColor="@color/white"
-                            android:textSize="36pt" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="2pt"
-                        android:layout_height="80pt"
-                        android:background="@color/white" />
-
-                    <LinearLayout
-                        android:id="@+id/redmiLayout"
-                        android:layout_width="0pt"
-                        android:layout_height="100pt"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10pt"
-                            android:text="红米"
-                            android:textColor="@color/white"
-                            android:textSize="26pt" />
-
-                        <TextView
-                            android:id="@+id/tvRedmi"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10pt"
-                            android:layout_marginTop="14pt"
-                            android:text="8468"
-                            android:textColor="@color/white"
-                            android:textSize="36pt" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="bottom">
+                    <ImageView
+                        android:layout_width="34pt"
+                        android:layout_height="34pt"
+                        android:paddingTop="8pt"
+                        android:src="@mipmap/icon_radio_my" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/marqueeView"
+                        android:layout_width="530pt"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20pt"
-                        android:layout_marginBottom="15pt"
-                        android:text="每月25号提现上月确认收货的订单收入"
-                        android:textColor="@color/white"
-                        android:textSize="20pt"
-                        android:visibility="gone" />
+                        android:layout_marginStart="21pt"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="恭喜182***0721的用户赚取了20.00个积分"
+                        android:textColor="#FFFFFF"
+                        android:textSize="30pt" />
 
                 </LinearLayout>
 
 
-            </LinearLayout>
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -351,11 +395,11 @@
                     android:background="#EBECEE" />
 
                 <LinearLayout
-                    android:layout_marginTop="20pt"
-                    android:layout_marginBottom="20pt"
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="28pt"
+                    android:layout_marginBottom="29pt"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <com.cdxz.liudake.view.DrawableTextView
@@ -363,7 +407,7 @@
                         android:layout_width="0pt"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawablePadding="6pt"
+                        android:drawablePadding="11pt"
                         android:gravity="center"
                         android:text="待发货"
                         android:textColor="#222222"
@@ -376,7 +420,7 @@
                         android:layout_width="0pt"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawablePadding="6pt"
+                        android:drawablePadding="11pt"
                         android:gravity="center"
                         android:text="待付款"
                         android:textColor="#222222"
@@ -389,7 +433,7 @@
                         android:layout_width="0pt"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawablePadding="6pt"
+                        android:drawablePadding="11pt"
                         android:gravity="center"
                         android:text="待收货"
                         android:textColor="#222222"
@@ -402,7 +446,7 @@
                         android:layout_width="0pt"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawablePadding="6pt"
+                        android:drawablePadding="11pt"
                         android:gravity="center"
                         android:text="已完成"
                         android:textColor="#222222"
@@ -418,8 +462,9 @@
 
             <com.youth.banner.Banner
                 android:id="@+id/bannerMy"
+                app:banner_radius="20pt"
                 android:layout_width="match_parent"
-                android:layout_height="200pt"
+                android:layout_height="90pt"
                 android:layout_marginStart="20pt"
                 android:layout_marginEnd="20pt" />
 

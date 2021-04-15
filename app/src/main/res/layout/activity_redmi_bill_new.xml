@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.my.service.ScoreBillActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130pt"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingTop="60pt">
+
+        <RelativeLayout
+            android:id="@+id/img_back"
+            android:layout_width="120pt"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5pt">
+
+            <ImageView
+                android:layout_width="19pt"
+                android:layout_height="38pt"
+                android:layout_marginStart="20pt"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_black_back" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-medium"
+            android:text="红米账单"
+            android:textColor="#080808"
+            android:textSize="34pt" />
+
+        <ImageView
+            android:id="@+id/tv_message"
+            android:layout_width="32pt"
+            android:layout_height="38pt"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20pt"
+            android:src="@mipmap/icon_store_home_news" />
+
+        <TextView
+            android:id="@+id/tv_under_msg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/circle_while"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#E20012"
+            android:textSize="10sp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:background="#F1F1F1" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="265pt"
+        android:layout_marginStart="20pt"
+        android:layout_marginTop="40pt"
+        android:layout_marginEnd="20pt"
+        android:layout_marginBottom="40pt"
+        android:background="@drawable/bg_jianbian7"
+        android:paddingStart="74pt">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/Layout1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Layout2"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/tvTuiguang"
+                    style="@style/sp18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/sp12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="推广红米"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Layout2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Layout3"
+                app:layout_constraintStart_toEndOf="@id/Layout1">
+
+                <TextView
+                    android:id="@+id/tvJifen"
+                    style="@style/sp18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/sp12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="积分兑换"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Layout3"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/Layout4"
+                app:layout_constraintStart_toEndOf="@id/Layout2">
+
+                <TextView
+                    android:id="@+id/tvTixian"
+                    style="@style/sp18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/sp12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="红米提现"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Layout4"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/Layout3">
+
+                <TextView
+                    android:id="@+id/tvXiaofei"
+                    style="@style/sp18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/sp12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="红米消费"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvkeyong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60pt"
+                android:drawablePadding="20pt"
+                android:gravity="center"
+                android:text="可用红米"
+                android:textColor="#F3F5F7"
+                android:textSize="32pt"
+                app:dt_left_drawable="@mipmap/icon_money"
+                app:dt_left_height="38pt"
+                app:dt_left_width="38pt" />
+
+            <TextView
+                android:id="@+id/tvToPromoteNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvkeyong"
+                android:layout_marginTop="15pt"
+                android:text="5000.00"
+                android:textColor="@color/white"
+                android:textSize="70pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="337pt"
+                android:layout_height="337pt"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="-100pt"
+                android:src="@mipmap/bg_money" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100pt"
+        android:background="#F3F5F7"
+        android:paddingStart="20pt">
+
+        <com.cdxz.liudake.view.DrawableTextView
+            android:id="@+id/tvAllBill"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="11pt"
+            android:gravity="center"
+            android:paddingHorizontal="15dp"
+            android:text="全部账单"
+            android:textColor="#222222"
+            android:textSize="28pt"
+            app:dt_right_drawable="@mipmap/icon_down"
+            app:dt_right_height="20pt"
+            app:dt_right_width="20pt" />
+
+        <com.cdxz.liudake.view.DrawableTextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="50pt"
+            android:layout_toEndOf="@id/tvAllBill"
+            android:drawablePadding="11pt"
+            android:gravity="center"
+            android:paddingHorizontal="15dp"
+            android:text="选择时间"
+            android:textColor="#222222"
+            android:textSize="28pt"
+            app:dt_right_drawable="@mipmap/icon_down"
+            app:dt_right_height="20pt"
+            app:dt_right_width="20pt" />
+
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableLoadMore="true"
+        app:srlEnableLoadMoreWhenContentNotFull="false"
+        app:srlEnableRefresh="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerRedmiBill"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="15dp" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

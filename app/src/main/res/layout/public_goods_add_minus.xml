@@ -9,7 +9,7 @@
         android:id="@+id/ivMinus"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@mipmap/icon_minus" />
+        android:src="@mipmap/icon_reduce" />
 
     <TextView
         android:id="@+id/tvNum"
@@ -24,6 +24,6 @@
         android:id="@+id/ivAdd"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@mipmap/icon_add"
+        android:src="@mipmap/icon_plus"
         app:layout_constraintStart_toEndOf="@id/tvNum" />
 </androidx.constraintlayout.widget.ConstraintLayout>

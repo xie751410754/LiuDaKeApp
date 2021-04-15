@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
@@ -45,8 +46,8 @@ public class ScoreBillActivity extends BaseActivity {
     @BindView(R.id.tvKeYong)
     TextView tvKeYong;
 
-    @BindView(R.id.tvLingquScore)
-    TextView tvLingquScore;
+//    @BindView(R.id.tvLingquScore)
+//    TextView tvLingquScore;
 
     @BindView(R.id.tvRedmi)
     TextView tvRedmi;
@@ -76,12 +77,12 @@ public class ScoreBillActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_score_bill;
+        return R.layout.activity_score_bill_new;
     }
 
     @Override
     protected void initViews() {
-        setTitleText("积分账单");
+//        setTitleText("积分账单");
         recyclerScoreBill.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -95,6 +96,13 @@ public class ScoreBillActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
+        findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         tvType.setOnClickListener(v -> {
             new XPopup.Builder(this)
                     .asBottomList("", new String[]{
@@ -142,7 +150,7 @@ public class ScoreBillActivity extends BaseActivity {
             ScoreBillBean scoreBillBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), ScoreBillBean.class);
             tvDaiLing.setText(scoreBillBean.getMy_integral().getWait_integral());
             tvKeYong.setText(scoreBillBean.getIntegral());
-            tvLingquScore.setText(scoreBillBean.getMy_integral().getDetermine_integral());
+//            tvLingquScore.setText(scoreBillBean.getMy_integral().getDetermine_integral());
             tvRedmi.setText(scoreBillBean.getMy_integral().getRedmi_integral());
             tvGoods.setText(scoreBillBean.getMy_integral().getGoods_integral());
             if (CollectionUtils.isEmpty(scoreBillBean.getList())) {

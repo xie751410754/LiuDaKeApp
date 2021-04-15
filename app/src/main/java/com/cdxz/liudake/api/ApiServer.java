@@ -8,6 +8,7 @@ import com.cdxz.liudake.base.BaseBean;
 import com.cdxz.liudake.bean.CategoryListBean;
 import com.cdxz.liudake.bean.IndexAllInfoBean;
 import com.cdxz.liudake.bean.MessageListBean;
+import com.cdxz.liudake.bean.RadioDto;
 import com.cdxz.liudake.bean.ShopBalance;
 import com.cdxz.liudake.bean.StoreComment;
 import com.cdxz.liudake.bean.StoreGuideList;
@@ -863,6 +864,9 @@ public interface ApiServer {
             @Query("xizuetoken") String xizuetoken,
             @Query("shop_id") String shopId,
             @Query("page") int page);
+    //广播
+    @POST("user/api/gold_radio")
+    Observable<BaseBean<List<RadioDto>>> getRadioList();
 
     //设置支付密码
     @GET("user/api/set_pay_password")

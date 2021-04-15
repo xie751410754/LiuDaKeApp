@@ -14,6 +14,7 @@ import com.cdxz.liudake.base.BaseObserver;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.IndexAllInfoBean;
 import com.cdxz.liudake.bean.MessageListBean;
+import com.cdxz.liudake.bean.RadioDto;
 import com.cdxz.liudake.bean.ShopBalance;
 import com.cdxz.liudake.bean.StoreComment;
 import com.cdxz.liudake.bean.StoreGuideList;
@@ -1242,7 +1243,7 @@ public class HttpsUtil {
                 .positionList(UserInfoUtil.getUid(), position, lng, lat, UserInfoUtil.getToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                .subscribe(new BaseObserver<BaseBean>(context, false) {
                     @Override
                     public void onSuccess(BaseBean response) {
                         callback.onResult(response.getData());
@@ -1615,6 +1616,17 @@ public class HttpsUtil {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(baseBeanBaseObserver);
     }
+    /**
+     * radio
+     *
+     */
+    public void getRadioList(BaseObserver<BaseBean<List<RadioDto>>> baseBeanBaseObserver) {
+        ApiRetrofit.getInstance().getApiService()
+                .getRadioList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(baseBeanBaseObserver);
+    }
 
     /**
      * 设置支付密码
@@ -1780,7 +1792,7 @@ public class HttpsUtil {
                 .getWithdrawalInfo(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                .subscribe(new BaseObserver<BaseBean>(context, false) {
                     @Override
                     public void onSuccess(BaseBean response) {
 //                        ToastUtils.showShort(response.getState().getMsg());

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:background="@color/white"
+        android:background="#EBECEE"
         android:orientation="vertical">
 
 
@@ -24,6 +24,7 @@
             android:paddingTop="60pt">
 
             <RelativeLayout
+                android:layout_marginTop="5pt"
                 android:id="@+id/img_back"
                 android:layout_width="120pt"
                 android:layout_height="match_parent">
@@ -70,8 +71,14 @@
 
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:background="#F1F1F1" />
+
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="14pt"
             android:id="@+id/recyclerAddress"
             android:layout_width="match_parent"
             android:layout_height="0pt"

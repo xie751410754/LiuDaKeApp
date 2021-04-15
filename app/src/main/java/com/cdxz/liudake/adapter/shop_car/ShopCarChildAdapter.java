@@ -31,6 +31,7 @@ public class ShopCarChildAdapter extends BaseQuickAdapter<ShopCarListBean.ListBe
                 .into((RoundedImageView) baseViewHolder.getView(R.id.ivGoodsPic));
         baseViewHolder.setText(R.id.tvGoodsName, listBean.getName())
                 .setText(R.id.tvGoodsPrice, "￥" + listBean.getSaleprice())
+                .setText(R.id.goodsType, listBean.getGoods_attr())
                 .setText(R.id.tvNum, listBean.getBuycount());
         ImageView ivGoodsCheck = baseViewHolder.getView(R.id.ivGoodsCheck);
         if (listBean.getSelected().equals("1")) {

@@ -225,6 +225,7 @@
                         android:layout_height="100pt">
 
                         <TextView
+                            android:id="@+id/tvdingwei"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -240,9 +241,12 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="60pt"
                             android:layout_marginEnd="50pt"
                             android:layout_toStartOf="@id/iv_avatar4"
+                            android:layout_toEndOf="@id/tvdingwei"
                             android:fontFamily="sans-serif-medium"
+                            android:singleLine="true"
                             android:textColor="#666666"
                             android:textSize="32pt" />
 

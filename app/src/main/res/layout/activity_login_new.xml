@@ -105,7 +105,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2pt"
+                android:layout_height="1pt"
                 android:layout_marginStart="30pt"
                 android:layout_marginEnd="30pt"
                 android:background="#EBECEE" />
@@ -137,18 +137,21 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2pt"
+                android:layout_height="1pt"
                 android:layout_marginStart="30pt"
                 android:layout_marginEnd="30pt"
                 android:background="#EBECEE" />
 
             <Button
+                android:textSize="30pt"
+                android:textColor="#FEFEFE"
+                android:text="登录"
                 android:id="@+id/login_btn"
                 android:layout_width="480pt"
                 android:layout_height="80pt"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="80pt"
-                android:background="@mipmap/login_btn" />
+                android:background="@drawable/bg_jianbian5" />
 
 
         </LinearLayout>

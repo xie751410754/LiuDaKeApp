@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:background="#EBECEE"
+        android:background="#F3F5F7"
         android:orientation="vertical">
 
 

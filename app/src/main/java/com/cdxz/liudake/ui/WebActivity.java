@@ -66,7 +66,7 @@ public class WebActivity extends BaseActivity {
                 setTitleText("开店指南");
                 break;
             default:
-                setTitleText(null);
+                setTitleText("溜达客");
                 break;
         }
         String url = getIntent().getStringExtra("url");

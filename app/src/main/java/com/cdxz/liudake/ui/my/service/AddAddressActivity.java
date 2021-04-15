@@ -101,11 +101,11 @@ public class AddAddressActivity extends BaseActivity {
         if (ObjectUtils.isEmpty(addressListBean)) {
             setTitleText("添加地址");
             setTitleRightText("确认添加");
-            tvDeleteAddress.setVisibility(View.GONE);
+//            tvDeleteAddress.setVisibility(View.GONE);
         } else {
             setTitleText("编辑地址");
             setTitleRightText("确认编辑");
-            tvDeleteAddress.setVisibility(View.VISIBLE);
+//            tvDeleteAddress.setVisibility(View.VISIBLE);
             etName.setText(addressListBean.getName());
             etPhone.setText(addressListBean.getPhone());
             tvAddress.setText(addressListBean.getProvince() + " " + addressListBean.getCity() + " " + addressListBean.getDistrict());
@@ -272,7 +272,7 @@ public class AddAddressActivity extends BaseActivity {
 
     private void showPickerView() {
         if (levelList1.size() == 0 || cityList.size() == 0 || areaList.size() == 0) {
-            ToastUtils.showShort("省市区获取失败，请返回重试");
+            ToastUtils.showShort("正在获取中，请稍后...");
             return;
         }
         OptionsPickerView pickerView = new OptionsPickerBuilder(this, (options1, options2, options3, v) -> {

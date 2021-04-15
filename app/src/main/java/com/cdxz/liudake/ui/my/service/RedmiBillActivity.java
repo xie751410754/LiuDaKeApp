@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
@@ -113,12 +114,12 @@ public class RedmiBillActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_redmi_bill;
+        return R.layout.activity_redmi_bill_new;
     }
 
     @Override
     protected void initViews() {
-        setTitleText("红米账单");
+//        setTitleText("红米账单");
         recyclerRedmiBill.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -139,6 +140,13 @@ public class RedmiBillActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+
+        findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         refresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
@@ -186,12 +194,12 @@ public class RedmiBillActivity extends BaseActivity {
             tvJifen.setText(redmiBillBean.getMy_balance().getIntegral_balance());
             tvTixian.setText(redmiBillBean.getMy_balance().getWithdraw_balance());
             tvXiaofei.setText(redmiBillBean.getMy_balance().getXiaofei_balance());
-            findViewById(R.id.tvGoTixian).setOnClickListener(v -> {
-                if (ActivityUtils.isActivityExistsInStack(WithdrawalActivity.class)) {
-                    ActivityUtils.finishActivity(WithdrawalActivity.class);
-                }
-                WithdrawalActivity.startWithdrawalActivity(this, redmiBillBean.getUserInfo().getBalance());
-            });
+//            findViewById(R.id.tvGoTixian).setOnClickListener(v -> {
+//                if (ActivityUtils.isActivityExistsInStack(WithdrawalActivity.class)) {
+//                    ActivityUtils.finishActivity(WithdrawalActivity.class);
+//                }
+//                WithdrawalActivity.startWithdrawalActivity(this, redmiBillBean.getUserInfo().getBalance());
+//            });
             if (CollectionUtils.isEmpty(redmiBillBean.getList())) {
                 if (page == 1) {
                     refresh.finishRefreshWithNoMoreData();

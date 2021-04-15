@@ -189,7 +189,9 @@ public class LifeCircleChildFragment extends BaseFragment {
                     if (circleBeans.size() < Constants.LIST_SIZE) {
                         refreshStore.finishLoadMoreWithNoMoreData();
                     } else {
-                        refreshStore.finishRefresh();
+                        if (refreshStore!=null){
+                            refreshStore.finishRefresh();
+                        }
                     }
                 } else {
                     refreshStore.finishLoadMore();

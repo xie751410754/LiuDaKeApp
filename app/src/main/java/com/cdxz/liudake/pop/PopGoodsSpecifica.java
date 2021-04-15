@@ -164,12 +164,12 @@ public class PopGoodsSpecifica extends BottomPopupView {
             }
             LogUtils.e("id - " + id.toString());
 
-            String result = "";
-            for (int i = 0; i < id.size(); i++) {
-                result = result + id.get(i) + "&&";
-            }
-            String content = result.substring(0, result.length() - 2);
-            LogUtils.e("result" + result + "zzz" + content);
+//            String result = "";
+//            for (int i = 0; i < id.size(); i++) {
+//                result = result + id.get(i) + "&&";
+//            }
+//            String content = result.substring(0, result.length() - 2);
+//            LogUtils.e("result" + result + "zzz" + content);
             onSubmitListener.onSubmit(id.toString()
                     .replace("[", "")
                     .replace("]", "")

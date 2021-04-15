@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/titleRootLayout"
     android:layout_width="match_parent"
-    android:layout_height="80pt"
+    android:layout_height="100pt"
+    android:paddingTop="20pt"
+    android:layout_alignParentBottom="true"
     android:background="@color/white">
 
     <ImageView
         android:id="@+id/ivTitleBack"
-        android:layout_width="50pt"
-        android:layout_height="match_parent"
+        android:layout_width="40pt"
+        android:layout_height="40pt"
         android:onClick="onBack"
-        android:padding="16pt"
-        android:src="@mipmap/ic_black_back" />
+        android:src="@mipmap/ic_black_back"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTitleText"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleText"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:textSize="36pt"

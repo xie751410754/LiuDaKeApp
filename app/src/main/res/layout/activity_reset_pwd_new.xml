@@ -8,7 +8,61 @@
     android:orientation="vertical"
     tools:context=".ui.login.ResetPwdActivity">
 
-    <include layout="@layout/public_title_bar_new" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130pt"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingTop="60pt">
+
+        <RelativeLayout
+            android:layout_marginTop="5pt"
+            android:id="@+id/img_back"
+            android:layout_width="120pt"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="19pt"
+                android:layout_height="38pt"
+                android:layout_marginStart="20pt"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_black_back" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-medium"
+            android:text="重置密码"
+            android:textColor="@color/appColor"
+            android:textSize="34pt" />
+
+        <ImageView
+            android:id="@+id/tv_message"
+            android:layout_width="32pt"
+            android:layout_height="38pt"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20pt"
+            android:src="@mipmap/icon_store_home_news" />
+
+        <TextView
+            android:id="@+id/tv_under_msg"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/circle_while"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="#E20012"
+            android:textSize="10sp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
 
 
     <LinearLayout

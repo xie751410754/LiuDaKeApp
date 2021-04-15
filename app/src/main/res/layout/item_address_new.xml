@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:background="@drawable/round8white_shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="38pt"
+        android:paddingTop="30pt"
+        android:paddingEnd="38pt"
+        android:paddingBottom="34pt">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvUserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="收货人：唐一"
+                android:textColor="#3C3C3C"
+                android:textSize="30pt" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="0pt"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="17pt"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#3C3C3C"
+                android:textSize="28pt" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvAddressInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12pt"
+            android:text="此处填写详情地址信息此处填写详情地址信息此处填写 详情地址信息此处填写详情地址信息"
+            android:textColor="#AAAAAA"
+            android:textSize="24pt" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:layout_marginTop="30pt"
+            android:background="#F1F1F1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15pt"
+            android:orientation="horizontal">
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="16pt"
+                android:gravity="center"
+                android:text="默认地址"
+                android:textColor="@color/appColor"
+                android:textSize="24pt"
+                app:dt_left_drawable="@mipmap/icon_adress_select"
+                app:dt_left_height="30pt"
+                app:dt_left_width="30pt" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="0pt"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50pt"
+                android:drawablePadding="16pt"
+                android:gravity="center"
+                android:text="编辑"
+                android:textColor="#3C3C3C"
+                android:textSize="24pt"
+                app:dt_left_drawable="@mipmap/icon_adress_edit"
+                app:dt_left_height="26pt"
+                app:dt_left_width="26pt" />
+
+            <com.cdxz.liudake.view.DrawableTextView
+                android:id="@+id/tvDeleteAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="16pt"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="#3C3C3C"
+                android:textSize="24pt"
+                app:dt_left_drawable="@mipmap/icon_adress_delete"
+                app:dt_left_height="26pt"
+                app:dt_left_width="26pt" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

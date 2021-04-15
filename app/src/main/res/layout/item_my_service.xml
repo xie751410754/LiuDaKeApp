@@ -4,6 +4,8 @@
     android:id="@+id/tvService"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="30pt"
+    android:layout_marginBottom="30pt"
     android:drawablePadding="18pt"
     android:gravity="center"
     android:text="@string/app_name"

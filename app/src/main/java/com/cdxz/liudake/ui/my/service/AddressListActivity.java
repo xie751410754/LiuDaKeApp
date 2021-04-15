@@ -48,7 +48,7 @@ public class AddressListActivity extends BaseActivity {
 //        setTitleRightText("添加");
 //        setTitleRightTextColor(R.color.color_343434);
         recyclerAddress.setLayoutManager(new LinearLayoutManager(this));
-        recyclerAddress.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(12), true));
+        recyclerAddress.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(6), true));
     }
 
     @Override
