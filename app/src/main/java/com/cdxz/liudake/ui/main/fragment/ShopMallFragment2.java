@@ -596,7 +596,6 @@ public class ShopMallFragment2 extends BaseFragment {
     public void initActiveView(List<HomeIndexBean.GoodsCuxiaoBean> list) {
         if (list.size() >= 1 && list.get(0) != null && list.get(0).getGoods() != null) {
 
-
             activeName1.setText(list.get(0).getTitle());
             activeSubName1.setText(list.get(0).getSubtitle());
 
