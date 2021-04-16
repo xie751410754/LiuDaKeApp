@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.superluo:textbannerview:1.0.4@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4c161106615f42b703c1d5167bc420b0/jetified-textbannerview-1.0.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4c161106615f42b703c1d5167bc420b0/jetified-textbannerview-1.0.4/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4c161106615f42b703c1d5167bc420b0/jetified-textbannerview-1.0.4/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.superluo/textbannerview/1.0.4/93b3a11d64b8ef368f4fbe6dd21ecfd70b484cbd/textbannerview-1.0.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.superluo/textbannerview/1.0.4/a4886a8ecb27445ad4e19c27301a0d41fdf62fce/textbannerview-1.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

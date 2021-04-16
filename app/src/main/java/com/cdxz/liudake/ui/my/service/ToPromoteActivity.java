@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.CollectionUtils;
@@ -57,7 +58,7 @@ public class ToPromoteActivity extends BaseActivity {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_to_promote;
+        return R.layout.activity_to_promote_new;
     }
 
     @Override
@@ -76,6 +77,12 @@ public class ToPromoteActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
+        findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         refresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
@@ -94,7 +101,7 @@ public class ToPromoteActivity extends BaseActivity {
     private void getData() {
         HttpsUtil.getInstance(this).userTuiguang(page, object -> {
             ToPromoteBean promoteBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), ToPromoteBean.class);
-            if (promoteBean == null)return;
+            if (promoteBean == null) return;
             tvToPromoteNum.setText(String.valueOf(promoteBean.getCount()));
             tvZhitui.setText(String.valueOf(promoteBean.getZhi()));
             tvShangjia.setText(String.valueOf(promoteBean.getShop()));

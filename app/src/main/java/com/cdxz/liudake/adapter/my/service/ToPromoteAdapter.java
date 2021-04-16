@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ToPromoteAdapter extends BaseQuickAdapter<ToPromoteBean.ListBean, BaseViewHolder> {
     public ToPromoteAdapter(List<ToPromoteBean.ListBean> data) {
-        super(R.layout.item_top_romote, data);
+        super(R.layout.item_top_romote_new, data);
     }
 
     @Override

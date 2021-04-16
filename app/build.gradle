@@ -148,6 +148,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     //沉浸式状态栏管理
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
-
+    implementation'com.superluo:textbannerview:1.0.4'
+    implementation 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
 
 }

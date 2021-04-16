@@ -63,6 +63,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.lxj.xpopup.XPopup;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.superluo.textbannerlibrary.TextBannerView;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 
@@ -108,6 +109,8 @@ public class MyFragment2 extends BaseFragment {
     TextView tv_kouling;
     @BindView(R.id.marqueeView)
     TextView marqueeView;
+    @BindView(R.id.text_banner)
+    TextBannerView textBanner;
 
     @BindView(R.id.bannerMy)
     Banner bannerMy;
@@ -148,7 +151,7 @@ public class MyFragment2 extends BaseFragment {
     private final Handler mHandler = new Handler();
 
     private int i = 0;
-
+    ArrayList texts =new ArrayList<>();
     @Override
     protected void initData() {
         BusUtils.register(this);
@@ -168,7 +171,7 @@ public class MyFragment2 extends BaseFragment {
 //                            ToastUtils.showShort("您的入驻申请正在审核！");
                         } else if (bean.getStatus().equals("1")) {
 
-                            if (mAdapter!=null){
+                            if (mAdapter != null) {
                                 mAdapter.getData().remove(9);
                                 mAdapter.notifyDataSetChanged();
                             }
@@ -196,12 +199,17 @@ public class MyFragment2 extends BaseFragment {
             @Override
             public void onSuccess(BaseBean<List<RadioDto>> listBaseBean) {
                 if (listBaseBean.getData() == null) return;
+
+                for (int i = 0;i<listBaseBean.getData().size();i++){
+                    texts.add("恭喜" + listBaseBean.getData().get(i).getPhone() + "的用户赚取了" + listBaseBean.getData().get(i).getGold());
+                }
+                textBanner.setDatas(texts);
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        if (i==(listBaseBean.getData().size()-1)){
-                            i =0;
-                        }else {
+                        if (i == (listBaseBean.getData().size() - 1)) {
+                            i = 0;
+                        } else {
                             i++;
                         }
                         if (marqueeView != null) {
@@ -216,9 +224,21 @@ public class MyFragment2 extends BaseFragment {
         });
 
 
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        textBanner.startViewAnimator();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        textBanner.stopViewAnimator();
 
     }
+
 
     @Override
     public void onDestroyView() {
@@ -354,7 +374,6 @@ public class MyFragment2 extends BaseFragment {
 
         serviceBean = new ServiceBean(R.mipmap.shop_my_collectmoney, "收米");
         serviceBeanList.add(serviceBean);
-
 
 
         serviceBean = new ServiceBean(R.mipmap.shop_my_settle, "开店入驻");

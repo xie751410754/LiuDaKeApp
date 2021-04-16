@@ -11,11 +11,11 @@
     <LinearLayout
         android:id="@+id/ll1"
         android:layout_width="match_parent"
-        android:layout_height="100pt"
+        android:layout_height="120pt"
         android:background="#E62129"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingTop="30pt">
+        android:paddingTop="40pt">
 
         <com.cdxz.liudake.view.DrawableTextView
             android:id="@+id/tvAddress"
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="328pt"
                 android:layout_marginStart="20pt"
-                android:layout_marginTop="-240pt"
+                android:layout_marginTop="-230pt"
                 android:layout_marginEnd="20pt"
                 app:banner_radius="20pt"
                 app:layout_scrollFlags="scroll" />

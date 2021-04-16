@@ -29,12 +29,13 @@ import com.cdxz.liudake.base.BaseObserver;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.StoreQRBean;
 import com.cdxz.liudake.databinding.ActivityStoreQrBinding;
+import com.cdxz.liudake.databinding.ActivityStoreQrNewBinding;
 import com.cdxz.liudake.ui.base.BaseTitleActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
-public class StoreQRActivity extends BaseTitleActivity<ActivityStoreQrBinding> {
+public class StoreQRActivity extends BaseTitleActivity<ActivityStoreQrNewBinding> {
 
     String url = "http://www.baidu.com";
     Bitmap qrBitmap;
@@ -52,18 +53,25 @@ public class StoreQRActivity extends BaseTitleActivity<ActivityStoreQrBinding> {
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
-        return R.layout.activity_store_qr;
+        return R.layout.activity_store_qr_new;
     }
 
     @Override
     public void initViewObservable() {
         super.initViewObservable();
 
-        initToolbar(binding.toolbar);
+//        initToolbar(binding.toolbar);
 
         shopId = getIntent().getStringExtra("shopId");
 
         getData("0");
+
+        binding.imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         binding.mbShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +152,7 @@ public class StoreQRActivity extends BaseTitleActivity<ActivityStoreQrBinding> {
 
     //分享一张图片  
     public void shareSingleImage() {
-        if (file == null){
+        if (file == null) {
             file = new File(getApplication().getExternalCacheDir().getPath() + "/" + System.currentTimeMillis() + ".png");
 
             binding.ivQr.setDrawingCacheEnabled(true);
@@ -157,7 +165,7 @@ public class StoreQRActivity extends BaseTitleActivity<ActivityStoreQrBinding> {
 
         Uri imageUri = null; //imagePath--本地的文件路径
         try {
-            imageUri = FileProvider.getUriForFile(this,getPackageName()+".fileProvider",file);
+            imageUri = FileProvider.getUriForFile(this, getPackageName() + ".fileProvider", file);
         } catch (Exception e) {
             e.printStackTrace();
         }
