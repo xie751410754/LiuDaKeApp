@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Paint;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -172,6 +173,15 @@ public class ShopMallFragment2 extends BaseFragment {
     TextView two_tv_priceType;
     @BindView(R.id.two_tv_priceType2)
     TextView two_tv_priceType2;
+    @BindView(R.id.ll_miaosha2)
+    LinearLayout ll_miaosha2;
+    @BindView(R.id.tv_hour2)
+    TextView tv_hour2;
+    @BindView(R.id.tv_min2)
+    TextView tv_min2;
+    @BindView(R.id.tv_sec2)
+    TextView tv_sec2;
+
 
     @BindView(R.id.three_tvTips)
     TextView three_tvTips;
@@ -214,8 +224,6 @@ public class ShopMallFragment2 extends BaseFragment {
     TextView four_tv_priceType;
     @BindView(R.id.four_tv_priceType2)
     TextView four_tv_priceType2;
-    @BindView(R.id.ll_miaosha4)
-    LinearLayout ll_miaosha4;
 
     @BindView(R.id.four_tv_hour)
     TextView tv_hour;
@@ -225,6 +233,35 @@ public class ShopMallFragment2 extends BaseFragment {
     TextView tv_sec;
     @BindView(R.id.active4)
     View miaoshaView;
+
+    @BindView(R.id.singleActive)
+    View singleActive;
+    @BindView(R.id.timeView)
+    View timeView;
+    @BindView(R.id.tv_title)
+    TextView title;
+    @BindView(R.id.tv_subTitle)
+    TextView subTitle;
+    @BindView(R.id.tv_goodsName)
+    TextView goodsName;
+    @BindView(R.id.tv_score)
+    TextView score;
+    @BindView(R.id.tv_goodsPrice)
+    TextView goodsPrice;
+    @BindView(R.id.img_goods)
+    RoundedImageView img_goods;
+
+    @BindView(R.id.time_hour)
+    TextView time_hour;
+    @BindView(R.id.time_min)
+    TextView time_min;
+    @BindView(R.id.time_sec)
+    TextView time_sec;
+
+    @BindView(R.id.ll_active1)
+    LinearLayout ll_active1;
+    @BindView(R.id.ll_active2)
+    LinearLayout ll_active2;
 
     public LocationClient mLocationClient = null;
     private ShopMallFragment2.MyLocationListener myListener = new ShopMallFragment2.MyLocationListener();
@@ -333,7 +370,6 @@ public class ShopMallFragment2 extends BaseFragment {
 
             }
         }).request();
-
 
 
         //
@@ -594,6 +630,8 @@ public class ShopMallFragment2 extends BaseFragment {
     }
 
     public void initActiveView(List<HomeIndexBean.GoodsCuxiaoBean> list) {
+
+
         if (list.size() >= 1 && list.get(0) != null && list.get(0).getGoods() != null) {
 
             activeName1.setText(list.get(0).getTitle());
@@ -867,7 +905,6 @@ public class ShopMallFragment2 extends BaseFragment {
 
 
             four_tvTips2.setVisibility(View.GONE);
-            ll_miaosha4.setVisibility(View.VISIBLE);
 
             switch (list.get(3).getGoods().get(0).getPrice_type()) {
                 case "0":
@@ -949,15 +986,265 @@ public class ShopMallFragment2 extends BaseFragment {
                     @Override
                     public void onFinish() {
 //                    tvTips2.setText("活动已结束");
-                        miaoshaView.setAlpha(0.6f);
-                        miaoshaView.setClickable(false);
                     }
                 };
                 downTimer.start();
             }
         } else {
-            miaoshaView.setAlpha(0.6f);
-            miaoshaView.setClickable(false);
+        }
+
+        if (list.size() == 1 && list.get(0) != null && list.get(0).getGoods() != null && list.get(0).getGoods().size() >= 1) {
+            singleActive.setVisibility(View.VISIBLE);
+            ll_active1.setVisibility(View.GONE);
+            ll_active2.setVisibility(View.GONE);
+            if (list.get(0).getType().equals("5")) {
+                timeView.setVisibility(View.VISIBLE);
+                subTitle.setVisibility(View.GONE);
+                long startMills2 = TimeUtils.string2Millis(list.get(0).getStart_time(), "yyyy-MM-dd HH:mm:ss");
+                long endMills2 = TimeUtils.string2Millis(list.get(0).getEnd_time(), "yyyy-MM-dd HH:mm:ss");
+                long nowMills = TimeUtils.getNowMills();
+
+                if (nowMills < startMills2) {
+                    singleActive.setVisibility(View.GONE);
+//            tvTips2.setText("活动未开始");
+                } else if (nowMills > endMills2) {
+                    singleActive.setVisibility(View.GONE);
+
+//            tvTips2.setText("活动已结束");
+                } else {
+                    if (downTimer != null) {
+                        downTimer.cancel();
+                        downTimer = null;
+                    }
+                    long timeSpan = endMills2 - nowMills;
+//                    TimeUtils.getM
+                    LogUtils.e("时间差1 = " + timeSpan);
+                    downTimer = new CountDownTimer(timeSpan, 1000) {
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            long ss = millisUntilFinished / 1000;
+                            long h = ss / 3600;
+                            long m = ss % 3600 / 60;
+                            long s = ss % 3600 % 60;
+
+                            String H;
+                            if (h < 10) {
+                                H = "0" + h;
+                            } else {
+                                H = String.valueOf(h);
+                            }
+                            String M;
+                            if (m < 10) {
+                                M = "0" + m;
+                            } else {
+                                M = String.valueOf(m);
+                            }
+                            String S;
+                            if (s < 10) {
+                                S = "0" + s;
+                            } else {
+                                S = String.valueOf(s);
+                            }
+
+//                    tvTips2.setText(H + ":" + M + ":" + S);
+
+                            time_hour.setText(H);
+                            time_min.setText(M);
+                            time_sec.setText(S);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            singleActive.setVisibility(View.GONE);
+
+                        }
+                    };
+                    downTimer.start();
+                }
+            } else {
+                subTitle.setText(list.get(0).getSubtitle());
+                timeView.setVisibility(View.GONE);
+            }
+            title.setText(list.get(0).getTitle());
+            Glide.with(getContext())
+                    .load(list.get(0).getGoods().get(0).getUrl())
+                    .placeholder(R.mipmap.img_default)
+                    .into(img_goods);
+            goodsName.setText(list.get(0).getGoods().get(0).getName());
+            score.setText(list.get(0).getGoods().get(0).getCx_points() + "积分");
+            goodsPrice.setText(list.get(0).getGoods().get(0).getSaleprice());
+            goodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        } else {
+//            singleActive.setVisibility(View.GONE);
+
+        }
+        if (list.size() == 3 && list.get(2) != null && list.get(2).getGoods() != null && list.get(2).getGoods().size() >= 1) {
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) singleActive.getLayoutParams();
+            lp.topMargin = 0;
+            singleActive.setLayoutParams(lp);
+            singleActive.setVisibility(View.VISIBLE);
+            ll_active1.setVisibility(View.VISIBLE);
+            ll_active2.setVisibility(View.GONE);
+            if (list.get(2).getType().equals("5")) {
+                timeView.setVisibility(View.VISIBLE);
+                subTitle.setVisibility(View.GONE);
+                long startMills2 = TimeUtils.string2Millis(list.get(2).getStart_time(), "yyyy-MM-dd HH:mm:ss");
+                long endMills2 = TimeUtils.string2Millis(list.get(2).getEnd_time(), "yyyy-MM-dd HH:mm:ss");
+                long nowMills = TimeUtils.getNowMills();
+
+                if (nowMills < startMills2) {
+                    singleActive.setVisibility(View.GONE);
+//            tvTips2.setText("活动未开始");
+                } else if (nowMills > endMills2) {
+                    singleActive.setVisibility(View.GONE);
+//            tvTips2.setText("活动已结束");
+                } else {
+                    if (downTimer != null) {
+                        downTimer.cancel();
+                        downTimer = null;
+                    }
+                    long timeSpan = endMills2 - nowMills;
+//                    TimeUtils.getM
+                    LogUtils.e("时间差1 = " + timeSpan);
+                    downTimer = new CountDownTimer(timeSpan, 1000) {
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            long ss = millisUntilFinished / 1000;
+                            long h = ss / 3600;
+                            long m = ss % 3600 / 60;
+                            long s = ss % 3600 % 60;
+
+                            String H;
+                            if (h < 10) {
+                                H = "0" + h;
+                            } else {
+                                H = String.valueOf(h);
+                            }
+                            String M;
+                            if (m < 10) {
+                                M = "0" + m;
+                            } else {
+                                M = String.valueOf(m);
+                            }
+                            String S;
+                            if (s < 10) {
+                                S = "0" + s;
+                            } else {
+                                S = String.valueOf(s);
+                            }
+
+//                    tvTips2.setText(H + ":" + M + ":" + S);
+
+                            time_hour.setText(H);
+                            time_min.setText(M);
+                            time_sec.setText(S);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            singleActive.setVisibility(View.GONE);
+
+                        }
+                    };
+                    downTimer.start();
+                }
+            } else {
+                subTitle.setText(list.get(2).getSubtitle());
+                timeView.setVisibility(View.GONE);
+            }
+            title.setText(list.get(2).getTitle());
+            Glide.with(getContext())
+                    .load(list.get(2).getGoods().get(0).getUrl())
+                    .placeholder(R.mipmap.img_default)
+                    .into(img_goods);
+            goodsName.setText(list.get(2).getGoods().get(0).getName());
+            score.setText(list.get(2).getGoods().get(0).getCx_points() + "积分");
+            goodsPrice.setText(list.get(2).getGoods().get(0).getSaleprice());
+            goodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        } else {
+//            singleActive.setVisibility(View.GONE);
+
+        }
+
+        if (list.size() == 2 && list.get(1) != null && list.get(1).getGoods() != null && list.get(1).getGoods().size() >= 1) {
+            ll_active2.setVisibility(View.GONE);
+            singleActive.setVisibility(View.GONE);
+            if (list.get(1).getType().equals("5")) {
+                ll_miaosha2.setVisibility(View.VISIBLE);
+                two_tvTips2.setVisibility(View.GONE);
+                long startMills2 = TimeUtils.string2Millis(list.get(1).getStart_time(), "yyyy-MM-dd HH:mm:ss");
+                long endMills2 = TimeUtils.string2Millis(list.get(1).getEnd_time(), "yyyy-MM-dd HH:mm:ss");
+                long nowMills = TimeUtils.getNowMills();
+
+                if (nowMills < startMills2) {
+//            tvTips2.setText("活动未开始");
+                } else if (nowMills > endMills2) {
+//            tvTips2.setText("活动已结束");
+                } else {
+                    if (downTimer != null) {
+                        downTimer.cancel();
+                        downTimer = null;
+                    }
+                    long timeSpan = endMills2 - nowMills;
+//                    TimeUtils.getM
+                    LogUtils.e("时间差1 = " + timeSpan);
+                    downTimer = new CountDownTimer(timeSpan, 1000) {
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            long ss = millisUntilFinished / 1000;
+                            long h = ss / 3600;
+                            long m = ss % 3600 / 60;
+                            long s = ss % 3600 % 60;
+
+                            String H;
+                            if (h < 10) {
+                                H = "0" + h;
+                            } else {
+                                H = String.valueOf(h);
+                            }
+                            String M;
+                            if (m < 10) {
+                                M = "0" + m;
+                            } else {
+                                M = String.valueOf(m);
+                            }
+                            String S;
+                            if (s < 10) {
+                                S = "0" + s;
+                            } else {
+                                S = String.valueOf(s);
+                            }
+
+//                    tvTips2.setText(H + ":" + M + ":" + S);
+
+                            tv_hour2.setText(H);
+                            tv_min2.setText(M);
+                            tv_sec2.setText(S);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            ll_active1.setVisibility(View.GONE);
+                            singleActive.setVisibility(View.VISIBLE);
+
+                        }
+                    };
+                    downTimer.start();
+                }
+            } else {
+                two_tvTips2.setText(list.get(1).getSubtitle());
+                ll_miaosha2.setVisibility(View.GONE);
+            }
+        }
+
+
+        if (list.size() == 4) {
+            singleActive.setVisibility(View.GONE);
+            ll_active1.setVisibility(View.VISIBLE);
+            ll_active2.setVisibility(View.VISIBLE);
         }
 
 
@@ -974,7 +1261,7 @@ public class ShopMallFragment2 extends BaseFragment {
             @Override
             public void onClick(View view) {
                 if (list.size() >= 2) {
-                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(1).getId(), list.get(0).getTitle(), 5);
+                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(1).getId(), list.get(1).getTitle(), 5);
                 }
             }
         });
@@ -982,7 +1269,7 @@ public class ShopMallFragment2 extends BaseFragment {
             @Override
             public void onClick(View view) {
                 if (list.size() >= 3) {
-                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(2).getId(), list.get(0).getTitle(), 5);
+                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(2).getId(), list.get(2).getTitle(), 5);
 
                 }
             }
@@ -991,7 +1278,18 @@ public class ShopMallFragment2 extends BaseFragment {
             @Override
             public void onClick(View view) {
                 if (list.size() >= 4 && list.get(3).getGoods() != null) {
-                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(3).getId(), list.get(0).getTitle(), 5);
+                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(3).getId(), list.get(3).getTitle(), 5);
+                }
+            }
+        });
+        getActivity().findViewById(R.id.singleActive).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (list.size()==1) {
+                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(0).getId(), list.get(0).getTitle(), 5);
+                } else {
+                    HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(2).getId(), list.get(2).getTitle(), 5);
+
                 }
             }
         });

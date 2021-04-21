@@ -35,7 +35,7 @@ public class StoreBillAdapter extends BaseDelegateMultiAdapter<Object,BaseViewHo
         });
 
         getMultiTypeDelegate()
-                .addItemType(0, R.layout.item_store_today_settlement)
+                .addItemType(0, R.layout.item_store_today_settlement_new)
                 .addItemType(1, R.layout.item_store_today_invite);
 
     }
@@ -57,7 +57,7 @@ public class StoreBillAdapter extends BaseDelegateMultiAdapter<Object,BaseViewHo
                 case 0:
                     StoreTodaySettlementBean bean = (StoreTodaySettlementBean) o;
 
-                    baseViewHolder.setText(R.id.tv_postion,"第"+(baseViewHolder.getPosition()+1)+"位");
+                    baseViewHolder.setText(R.id.tv_postion,"第"+(baseViewHolder.getPosition()+1)+"单");
                     baseViewHolder.setText(R.id.tv_name,bean.getName() +" "+bean.getPhone());
 
                     if (!ObjectUtils.isEmpty(bean.getTo_account_time())){
@@ -73,7 +73,7 @@ public class StoreBillAdapter extends BaseDelegateMultiAdapter<Object,BaseViewHo
                 case 1:
                     StoreTodaySettlementCashBean bean1 = (StoreTodaySettlementCashBean) o;
 
-                    baseViewHolder.setText(R.id.tv_postion,"第"+(baseViewHolder.getPosition()+1)+"位");
+                    baseViewHolder.setText(R.id.tv_postion,"第"+(baseViewHolder.getPosition()+1)+"单");
                     baseViewHolder.setText(R.id.tv_name,bean1.getName() +" "+bean1.getPhone());
 
                         if (!ObjectUtils.isEmpty(bean1.getPaytime())){

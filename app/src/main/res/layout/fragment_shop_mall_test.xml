@@ -38,14 +38,14 @@
                     android:background="@mipmap/shop_mall_bg">
 
                     <LinearLayout
-                        android:paddingTop="40pt"
                         android:id="@+id/ll1"
                         android:layout_width="match_parent"
                         android:layout_height="120pt"
                         android:layout_marginStart="24pt"
                         android:layout_marginEnd="24pt"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingTop="40pt">
 
 
                         <com.cdxz.liudake.view.DrawableTextView
@@ -309,36 +309,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@mipmap/shop_mall_rl_bg"
-                    android:gravity="center"
+                    android:background="@drawable/bg_jianbian3"
                     android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100pt"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="20pt"
-                            android:text="超值"
-                            android:textColor="#E62129"
-                            android:textSize="32pt" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:text="好物"
-                            android:textColor="#222222"
-                            android:textSize="32pt" />
-
-
-                    </LinearLayout>
 
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -348,7 +320,11 @@
                         android:layout_margin="20pt"
                         android:visibility="gone" />
 
+
+
                     <LinearLayout
+                        android:layout_marginBottom="20pt"
+                        android:id="@+id/ll_active1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20pt"
@@ -371,8 +347,15 @@
                             android:layout_marginEnd="20pt"
                             android:layout_weight="1" />
                     </LinearLayout>
+                    <include
+                        android:id="@+id/singleActive"
+                        layout="@layout/item_shop_mall_single_active"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20pt" />
 
                     <LinearLayout
+                        android:id="@+id/ll_active2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20pt"

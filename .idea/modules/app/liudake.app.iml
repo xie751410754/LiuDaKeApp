@@ -89,6 +89,7 @@
     <orderEntry type="library" name="Gradle: androidx.databinding:databinding-adapters:3.6.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.databinding:databinding-runtime:3.6.2@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.databinding:viewbinding:3.6.2@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.Othershe:CalendarView:1.2.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.material:material:1.2.0-alpha05@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.appcompat:appcompat:1.2.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.legacy:legacy-support-v4:1.0.0@aar" level="project" />
@@ -152,7 +153,6 @@
     <orderEntry type="library" name="Gradle: com.sunfusheng:MarqueeView:1.4.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.gyf.immersionbar:immersionbar:3.0.0-beta05@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.superluo:textbannerview:1.0.4@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.dmytrodanylyk.shadow-layout:library:1.0.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: :alipaySdk-15.7.7-20200702160044:@aar" level="project" />
   </component>
 </module>

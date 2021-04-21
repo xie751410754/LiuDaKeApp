@@ -734,7 +734,9 @@ public interface ApiServer {
     Observable<BaseBean<List<StoreTodaySettlementBean>>> storeTodaySettlement(
             @Query("uid") String uid,
             @Query("xizuetoken") String xizuetoken,
-            @Query("shop_id") String shopId
+            @Query("shop_id") String shopId,
+            @Query("start_time") String start_time,
+            @Query("end_time") String end_time
 
     );
     /**
@@ -749,7 +751,9 @@ public interface ApiServer {
     Observable<BaseBean<List<StoreTodaySettlementCashBean>>> storeTodaySettlementCash(
             @Query("uid") String uid,
             @Query("xizuetoken") String xizuetoken,
-            @Query("shop_id") String shopId
+            @Query("shop_id") String shopId,
+            @Query("start_time") String start_time,
+            @Query("end_time") String end_time
 
     );
 

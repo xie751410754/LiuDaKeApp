@@ -290,7 +290,6 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:hint="请输入真实姓名"
-                    android:inputType="numberDecimal"
                     android:textColorHint="#D7D7D7"
                     android:textSize="28pt" />
 
@@ -319,7 +318,6 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:hint="请输入银行全称"
-                    android:inputType="numberDecimal"
                     android:textColorHint="#D7D7D7"
                     android:textSize="28pt" />
 
@@ -348,7 +346,6 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:hint="请输入开户行"
-                    android:inputType="numberDecimal"
                     android:textColorHint="#D7D7D7"
                     android:textSize="28pt" />
 

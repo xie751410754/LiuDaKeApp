@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20pt"
+    android:background="@drawable/round20white_shop_my"
+    android:orientation="vertical"
+    android:padding="20pt">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="秒杀已结束"
+            android:textColor="#222222"
+            android:textSize="32pt"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20pt"
+            android:fontFamily="sans-serif"
+            android:textColor="#808080"
+            android:textSize="24pt"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/timeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20pt"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/time_hour"
+                android:layout_width="29pt"
+                android:layout_height="24pt"
+                android:background="#222222"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="17pt" />
+
+            <TextView
+                android:layout_width="4pt"
+                android:layout_height="24pt"
+                android:layout_marginStart="3pt"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#222222"
+                android:textSize="17pt" />
+
+            <TextView
+                android:id="@+id/time_min"
+                android:layout_width="29pt"
+                android:layout_height="24pt"
+                android:background="#222222"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="17pt" />
+
+            <TextView
+                android:layout_width="4pt"
+                android:layout_height="24pt"
+                android:layout_marginStart="3pt"
+                android:gravity="center"
+                android:text=":"
+                android:textColor="#222222"
+                android:textSize="17pt" />
+
+            <TextView
+                android:id="@+id/time_sec"
+                android:layout_width="29pt"
+                android:layout_height="24pt"
+                android:background="#222222"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="17pt" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30pt"
+        android:paddingBottom="30pt">
+
+        <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+            android:id="@+id/img_goods"
+            android:layout_width="206pt"
+            android:layout_height="206pt"
+            android:scaleType="fitXY"
+            app:riv_corner_radius="8pt" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30pt"
+            android:layout_marginEnd="22pt"
+            android:layout_toEndOf="@id/img_goods">
+
+            <TextView
+                android:id="@+id/tv_goodsName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15pt"
+                android:maxLines="2"
+                android:text="云南特级红茶香高味醇红—醉金枝 味醇红—醉金枝"
+                android:textColor="#333333"
+                android:textSize="28pt" />
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_goodsName"
+                android:layout_marginTop="34pt"
+                android:text="￥0.0积分"
+                android:textColor="@color/appColor"
+                android:textSize="30pt"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_goodsPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_score"
+                android:layout_marginTop="5pt"
+                android:fontFamily="sans-serif"
+                android:text="￥0.00"
+                android:textColor="#808080"
+                android:textSize="22pt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/tv_goodsPrice"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_jianbian"
+                android:paddingStart="16pt"
+                android:paddingEnd="22pt"
+                android:paddingBottom="5pt"
+                android:text="立即疯抢 >"
+                android:textColor="#FFFFFF"
+                android:textSize="24pt" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

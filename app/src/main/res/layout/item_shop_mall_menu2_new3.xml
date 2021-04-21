@@ -26,6 +26,8 @@
             />
 
         <TextView
+            android:singleLine="true"
+
             android:text="敬请期待"
             android:layout_marginStart="20pt"
             android:id="@+id/three_tvTips2"

@@ -15,32 +15,34 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="暂无活动"
             android:id="@+id/two_tvTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
+            android:text="暂无活动"
             android:textColor="#222222"
             android:textSize="32pt" />
 
         <TextView
-            android:text="敬请期待"
+            android:singleLine="true"
             android:id="@+id/two_tvTips2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20pt"
+            android:text="敬请期待"
             android:textColor="#808080"
             android:textSize="24pt" />
 
         <LinearLayout
-            android:id="@+id/ll_miaosha"
+            android:id="@+id/ll_miaosha2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20pt"
             android:orientation="horizontal"
             android:visibility="gone">
 
             <TextView
-                android:id="@+id/tv_hour"
+                android:id="@+id/tv_hour2"
                 android:layout_width="29pt"
                 android:layout_height="24pt"
                 android:background="#222222"
@@ -59,7 +61,7 @@
                 android:textSize="17pt" />
 
             <TextView
-                android:id="@+id/tv_min"
+                android:id="@+id/tv_min2"
                 android:layout_width="29pt"
                 android:layout_height="24pt"
                 android:background="#222222"
@@ -78,7 +80,7 @@
                 android:textSize="17pt" />
 
             <TextView
-                android:id="@+id/tv_sec"
+                android:id="@+id/tv_sec2"
                 android:layout_width="29pt"
                 android:layout_height="24pt"
                 android:background="#222222"

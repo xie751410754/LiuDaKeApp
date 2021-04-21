@@ -11,8 +11,8 @@ android {
         applicationId "com.cdxz.liudake"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 26
-        versionName "2.0.5"
+        versionCode 28
+        versionName "2.0.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
@@ -149,6 +149,5 @@ dependencies {
     //沉浸式状态栏管理
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
     implementation'com.superluo:textbannerview:1.0.4'
-    implementation 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
-
+    implementation 'com.github.Othershe:CalendarView:1.2.1'
 }

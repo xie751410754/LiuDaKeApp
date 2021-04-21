@@ -1401,9 +1401,9 @@ public class HttpsUtil {
      * @param shopId
      * @return
      */
-    public void storeTodaySettlement(String shopId, BaseObserver<BaseBean<List<StoreTodaySettlementBean>>> baseObserver) {
+    public void storeTodaySettlement(String shopId,String startTime,String endTime, BaseObserver<BaseBean<List<StoreTodaySettlementBean>>> baseObserver) {
         ApiRetrofit.getInstance().getApiService()
-                .storeTodaySettlement(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopId)
+                .storeTodaySettlement(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopId,startTime,endTime)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(baseObserver);
@@ -1414,9 +1414,9 @@ public class HttpsUtil {
      * @param shopId
      * @return
      */
-    public void storeTodaySettlementCash(String shopId, BaseObserver<BaseBean<List<StoreTodaySettlementCashBean>>> baseObserver) {
+    public void storeTodaySettlementCash(String shopId,String startTime,String endTime, BaseObserver<BaseBean<List<StoreTodaySettlementCashBean>>> baseObserver) {
         ApiRetrofit.getInstance().getApiService()
-                .storeTodaySettlementCash(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopId)
+                .storeTodaySettlementCash(UserInfoUtil.getUid(), UserInfoUtil.getToken(), shopId,startTime,endTime)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(baseObserver);

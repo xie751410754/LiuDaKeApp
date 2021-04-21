@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4pt"
+        android:background="#F3F5F7" />
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="77pt"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="30pt"
+        android:paddingEnd="30pt">
+
+        <TextView
+            android:id="@+id/tvRedmi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="红米"
+            android:textColor="@color/appColor"
+            android:textSize="28pt" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="0pt"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+
+            android:layout_width="17pt"
+            android:layout_height="18pt"
+            android:src="@mipmap/icon_ok" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:background="#F1F1F1" />
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="77pt"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="30pt"
+        android:paddingEnd="30pt">
+
+        <TextView
+            android:id="@+id/tvCash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="现金"
+            android:textColor="@color/color_222222"
+            android:textSize="28pt" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="0pt"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="17pt"
+            android:layout_height="18pt"
+            android:src="@mipmap/icon_ok"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>
