@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.ui.base.BaseActivity;
 import com.cdxz.liudake.util.UserInfoUtil;
@@ -24,9 +29,12 @@ public class WebActivity extends BaseActivity {
     public static final int ABOUT = 3;
     public static final int WALLET_STRATEGY = 4;
     public static final int SHOP_START = 5;
+    public static final int JDSHOP_START = 6;
 
     @BindView(R.id.webView)
     WebView webView;
+    @BindView(R.id.titleBar)
+    ViewGroup titleBar;
 
     public static void startWebActivity(Context context, int type, String url) {
         Intent intent = new Intent(context, WebActivity.class);
@@ -44,7 +52,30 @@ public class WebActivity extends BaseActivity {
     protected void initViews() {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebChromeClient(new WebChromeClient());
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                try {
+                    /**安装了支付宝或者微信客户端，打开对应支付**/
+                    if (url.contains("platformapi/startApp") || url.contains("weixin://wap/pay?")) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                        return true;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    /**未安装微信客户端，屏蔽无法加载微信内部链接的错误页面提示，通过webview.loadUrl的方式加载自定义提示页面，
+                     * 提示用户先下载并安装微信客户端，由于支付宝支持H5支付，不用另行处理**/
+                    if (url.contains("weixin://wap/pay?")) {
+                        /**加载自定义提示页面**/
+                        ToastUtils.showShort("请先安装微信!");
+                    }
+                    return false;
+                }
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+
+        });
     }
 
     @Override
@@ -64,6 +95,10 @@ public class WebActivity extends BaseActivity {
                 break;
             case SHOP_START:
                 setTitleText("开店指南");
+                break;
+            case JDSHOP_START:
+                setTitleText("京东商品");
+//                titleBar.setVisibility(View.GONE);
                 break;
             default:
                 setTitleText("溜达客");

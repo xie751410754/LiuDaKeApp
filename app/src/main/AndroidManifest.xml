@@ -92,6 +92,12 @@
             <!--            </intent-filter>-->
         </activity>
         <activity android:name=".ui.main.WelcomeActivity">
+
+        </activity>
+        <activity android:name=".ui.main.LancherActivity"
+
+            android:screenOrientation="portrait"
+            android:theme="@style/WelcomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

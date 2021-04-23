@@ -14,25 +14,45 @@
         app:riv_corner_radius_top_left="8pt"
         app:riv_corner_radius_top_right="8pt" />
 
-    <TextView
-        android:id="@+id/tvGoodsName"
+    <RelativeLayout
+        android:paddingEnd="20pt"
+        android:paddingStart="20pt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17pt"
         android:layout_marginTop="20pt"
-        android:layout_marginEnd="20pt"
-        android:lineSpacingExtra="5pt"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:text="商品名称"
-        android:textColor="#333333"
-        android:textSize="28pt" />
+        >
+
+        <TextView
+
+            android:id="@+id/tvGoodsName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lineSpacingExtra="5pt"
+            android:maxLines="2"
+            android:text="商品名称"
+            android:textColor="#333333"
+            android:textSize="28pt" />
+
+        <TextView
+            android:layout_marginTop="5pt"
+            android:id="@+id/JDTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/r4_red"
+            android:paddingStart="10pt"
+            android:paddingEnd="10pt"
+            android:text="京东"
+            android:textColor="@color/white"
+            android:textSize="22pt" />
+    </RelativeLayout>
+
 
     <LinearLayout
-        android:layout_marginTop="10pt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="17pt"
+        android:layout_marginTop="10pt"
         android:orientation="horizontal">
 
         <TextView
@@ -66,7 +86,8 @@
             android:layout_marginEnd="20pt"
             android:text="¥0.00"
             android:textColor="#808080"
-            android:textSize="22pt" />
+            android:textSize="22pt"
+            android:visibility="gone" />
 
 
     </LinearLayout>

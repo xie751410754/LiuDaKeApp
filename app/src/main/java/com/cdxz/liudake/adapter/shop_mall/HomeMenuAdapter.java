@@ -11,6 +11,7 @@ import com.cdxz.liudake.R;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.HomeIndexBean;
 import com.cdxz.liudake.pop.PopSelector;
+import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsClassActivity;
 import com.cdxz.liudake.ui.shop_mall.HomeToGoodsListActivity;
 import com.cdxz.liudake.view.roundedImageView.RoundedImageView;
@@ -55,9 +56,14 @@ public class HomeMenuAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsActivit
 
             onSelectListener.onClick(getItemPosition(bean));
 
-            HomeToGoodsListActivity.startHomeToGoodsListActivity(
-                    getContext(), bean.getId(), bean.getName(), HomeToGoodsListActivity.HOME1
-            );
+            if (bean.getName().equals("京东")) {
+                WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/index/index?uid=230732");
+
+            } else {
+                HomeToGoodsListActivity.startHomeToGoodsListActivity(
+                        getContext(), bean.getId(), bean.getName(), HomeToGoodsListActivity.HOME1
+                );
+            }
 
 
         });

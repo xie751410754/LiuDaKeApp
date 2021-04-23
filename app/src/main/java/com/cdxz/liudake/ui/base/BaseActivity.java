@@ -55,7 +55,7 @@ public abstract class BaseActivity extends FragmentActivity {
         View contentView = LayoutInflater.from(this)
                 .inflate(getBaseLayoutId(), contentParent, false);
         sfl = contentView.findViewById(R.id.sfl);
-        ll_activity = contentView.findViewById(R.id.ll_activity);
+//        ll_activity = contentView.findViewById(R.id.ll_activity);
 
         if (layoutId > 0) {
             View src = LayoutInflater.from(this).inflate(layoutId, sfl, false);
@@ -65,11 +65,11 @@ public abstract class BaseActivity extends FragmentActivity {
         unbinder = ButterKnife.bind(this, contentView);
         setContentView(contentView);
         View vStatusBar = findViewById(R.id.v_status_bar);
-//        if (vStatusBar != null) {
-//            ViewGroup.LayoutParams lp = vStatusBar.getLayoutParams();
-//            lp.height = Build.VERSION.SDK_INT >= 19 ? BarUtils.getStatusBarHeight() : 0;
-//            vStatusBar.setLayoutParams(lp);
-//        }
+        if (vStatusBar != null) {
+            ViewGroup.LayoutParams lp = vStatusBar.getLayoutParams();
+            lp.height = Build.VERSION.SDK_INT >= 19 ? BarUtils.getStatusBarHeight() : 0;
+            vStatusBar.setLayoutParams(lp);
+        }
         int statusBarColor = ContextCompat.getColor(context, R.color.transparent);
         ImmersionBar.with(this)
                 .fitsSystemWindows(false)

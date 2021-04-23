@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.HomeIndexBean;
+import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsClassActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsListActivity;
 import com.cdxz.liudake.ui.shop_mall.HomeToGoodsListActivity;
@@ -31,6 +32,8 @@ public class MenuAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsActivityCla
         baseViewHolder.itemView.setOnClickListener(v -> {
             if (baseViewHolder.getAdapterPosition() + 1 == getData().size()) {
                 GoodsClassActivity.startGoodsClassActivity(getContext());
+            } else if (baseViewHolder.getAdapterPosition() == 0) {
+                WebActivity.startWebActivity(getContext(),6,"http://jd.liudake.cn/#/pages/index/index?uid=230732");
             } else {
                 HomeToGoodsListActivity.startHomeToGoodsListActivity(
                         getContext(), bean.getId(), bean.getName(), HomeToGoodsListActivity.HOME1

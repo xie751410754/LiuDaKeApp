@@ -52,6 +52,7 @@ import com.cdxz.liudake.ui.main.fragment.ShopMallFragment2;
 import com.cdxz.liudake.util.ParseUtils;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
@@ -91,6 +92,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+
         nav_view.setItemIconTintList(null);
         badge = nav_view.getOrCreateBadge(R.id.menuShopCar);
         badge.setVisible(false);
@@ -103,6 +105,7 @@ public class MainActivity extends BaseActivity {
         mFragments.add(new MyFragment2());
         setFragmentPosition(0);
     }
+
 
     @Override
     protected void onResume() {

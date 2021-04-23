@@ -11,11 +11,11 @@
     <LinearLayout
         android:id="@+id/ll1"
         android:layout_width="match_parent"
-        android:layout_height="120pt"
+        android:layout_height="130pt"
         android:background="#E62129"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingTop="40pt">
+        android:paddingTop="50pt">
 
         <com.cdxz.liudake.view.DrawableTextView
             android:id="@+id/tvAddress"

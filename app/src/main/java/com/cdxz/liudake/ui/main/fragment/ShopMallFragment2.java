@@ -2,13 +2,19 @@ package com.cdxz.liudake.ui.main.fragment;
 
 import android.annotation.SuppressLint;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +26,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.AdaptScreenUtils;
+import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
@@ -39,15 +46,18 @@ import com.cdxz.liudake.adapter.shop_mall.HomeCXBannerAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeGoodsAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeMenuAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeQianggouAdapter;
+import com.cdxz.liudake.adapter.shop_mall.JDHomeGoodsAdapter;
 import com.cdxz.liudake.adapter.shop_mall.Menu2Adapter;
 import com.cdxz.liudake.adapter.shop_mall.MenuAdapter;
 import com.cdxz.liudake.api.HttpsUtil;
+import com.cdxz.liudake.base.BaseBean;
 import com.cdxz.liudake.base.BusTag;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.BannerBean;
 import com.cdxz.liudake.bean.Bus.PopSuggestionBean;
 import com.cdxz.liudake.bean.CXBannerBean;
 import com.cdxz.liudake.bean.HomeIndexBean;
+import com.cdxz.liudake.bean.JDGoodsDto;
 import com.cdxz.liudake.ui.ScanQRCodeActivity;
 import com.cdxz.liudake.ui.SearchActivity;
 import com.cdxz.liudake.ui.base.BaseFragment;
@@ -60,20 +70,33 @@ import com.cdxz.liudake.view.DrawableTextView;
 import com.cdxz.liudake.view.GridSpacingItemDecoration;
 import com.cdxz.liudake.view.SpacesItemDecoration2;
 import com.cdxz.liudake.view.roundedImageView.RoundedImageView;
+import com.gyf.immersionbar.ImmersionBar;
 import com.lxj.xpopup.XPopup;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class ShopMallFragment2 extends BaseFragment {
 
@@ -266,6 +289,11 @@ public class ShopMallFragment2 extends BaseFragment {
     public LocationClient mLocationClient = null;
     private ShopMallFragment2.MyLocationListener myListener = new ShopMallFragment2.MyLocationListener();
 
+    @BindView(R.id.scrollView)
+    NestedScrollView scrollView;
+    @BindView(R.id.rl1)
+    View rl1;
+
 
     //
     private CountDownTimer downTimer;
@@ -275,6 +303,7 @@ public class ShopMallFragment2 extends BaseFragment {
     private ActivityAdapter activityAdapter;
     private ClassAdapter classAdapter;
     private HomeGoodsAdapter goodsAdapter;
+    private JDHomeGoodsAdapter jdHomeGoodsAdapter;
     private HomeQianggouAdapter qianggouAdapter;
     private List<HomeIndexBean.GoodsActivityClassBean> menuList = new ArrayList<>();
     private List<HomeIndexBean.GoodsActivityClassBean> homeMenuList = new ArrayList<>();
@@ -282,6 +311,7 @@ public class ShopMallFragment2 extends BaseFragment {
     private List<HomeIndexBean.GoodsCuxiao2Bean> activityList = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao3Bean> classList = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao4Bean> tuijianGoodsList = new ArrayList<>();
+    private List<JDGoodsDto.DataDTO> jdGoodsList = new ArrayList<>();
     private List<HomeIndexBean.TimeBean.ListBean> qianggouList = new ArrayList<>();
 
     public ShopMallFragment2() {
@@ -299,6 +329,30 @@ public class ShopMallFragment2 extends BaseFragment {
 
     }
 
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    refreshHome.finishLoadMoreWithNoMoreData();
+                    jdHomeGoodsAdapter.notifyDataSetChanged();
+                    break;
+                case 2:
+                    refreshHome.finishRefresh();
+                    jdHomeGoodsAdapter.notifyDataSetChanged();
+
+                    break;
+
+                case 3:
+                    refreshHome.finishLoadMore();
+                    jdHomeGoodsAdapter.notifyDataSetChanged();
+
+                    break;
+            }
+        }
+    };
+
     @Override
     protected int getResource() {
         return R.layout.fragment_shop_mall_test;
@@ -306,6 +360,7 @@ public class ShopMallFragment2 extends BaseFragment {
 
     @Override
     protected void initView() {
+
         //菜单
         GridLayoutManager menuLayout = new GridLayoutManager(getContext(), 5);
         recyclerMenu.setLayoutManager(menuLayout);
@@ -338,9 +393,12 @@ public class ShopMallFragment2 extends BaseFragment {
         recyclerQiangGou.setLayoutManager(qianggouLayout);
     }
 
+    private OkHttpClient okHttpClient;
+
     @Override
     protected void initData() {
         BusUtils.register(this);
+        okHttpClient = new OkHttpClient();
 
         mLocationClient = new LocationClient(getContext());
         //声明LocationClient类
@@ -402,7 +460,9 @@ public class ShopMallFragment2 extends BaseFragment {
         recyclerClass.setAdapter(classAdapter);
         //
         goodsAdapter = new HomeGoodsAdapter(tuijianGoodsList);
-        recyclerTuijianGoods.setAdapter(goodsAdapter);
+//        recyclerTuijianGoods.setAdapter(goodsAdapter);
+        jdHomeGoodsAdapter = new JDHomeGoodsAdapter(jdGoodsList);
+        recyclerTuijianGoods.setAdapter(jdHomeGoodsAdapter);
         //
         qianggouAdapter = new HomeQianggouAdapter(qianggouList);
         recyclerQiangGou.setAdapter(qianggouAdapter);
@@ -415,6 +475,65 @@ public class ShopMallFragment2 extends BaseFragment {
         //
         homeIndex();
         getcxList();
+
+        getJDGoods();
+    }
+
+    String url ;
+    int page = 1;
+
+    private void getJDGoods() {
+        url = "http://liudake.cn/api/pub/get" + "?param=" + "getindexpro" + "&pagesize=" + Constants.LIST_SIZE + "&page=" + page;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                ToastUtils.showShort("数据获取失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String responseBody = response.body().string();
+                JDGoodsDto baseBean = ParseUtils.parseJsonObject(responseBody, JDGoodsDto.class);
+
+                if (CollectionUtils.isEmpty(baseBean.getData())) {
+                    if (page == 1) {
+                        Message message = new Message();
+                        message.what = 1;
+                        mHandler.sendMessage(message);
+                    } else {
+                        Message message = new Message();
+                        message.what = 1;
+                        mHandler.sendMessage(message);
+                    }
+//                    jdGoodsList.clear();
+                } else {
+                    if (page == 1) {
+                        jdGoodsList.clear();
+                        if (baseBean.getCount() < Constants.LIST_SIZE) {
+                            Message message = new Message();
+                            message.what = 1;
+                            mHandler.sendMessage(message);
+                        } else {
+                            Message message = new Message();
+                            message.what = 2;
+                            mHandler.sendMessage(message);
+                        }
+                    } else {
+                        Message message = new Message();
+                        message.what = 3;
+                        mHandler.sendMessage(message);
+                    }
+                    jdGoodsList.addAll(baseBean.getData());
+                }
+
+            }
+        });
     }
 
     @BusUtils.Bus(tag = BusTag.POP_SUGGESTION)
@@ -427,7 +546,27 @@ public class ShopMallFragment2 extends BaseFragment {
 
     @Override
     protected void initListener() {
-        refreshHome.setOnRefreshListener(refreshLayout -> homeIndex());
+
+        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+
+                    page++;
+                    getJDGoods();
+                }
+
+            }
+        });
+//        refreshHome.setOnRefreshListener(refreshLayout -> homeIndex());
+        refreshHome.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                homeIndex();
+                page =1;
+                getJDGoods();
+            }
+        });
         getActivity().findViewById(R.id.ivScan).setOnClickListener(v -> {
             ScanQRCodeActivity.startScanQRCodeActivity(getContext(), ScanQRCodeActivity.TYPE_PAY);
 //            Intent intent = new Intent(getContext(), CaptureActivity.class);
@@ -436,6 +575,20 @@ public class ShopMallFragment2 extends BaseFragment {
         getActivity().findViewById(R.id.dtv_more).setOnClickListener(v -> {
             GoodsClassActivity.startGoodsClassActivity(getContext());
 
+        });
+
+        refreshHome.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                page++;
+                getJDGoods();
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                page = 1;
+                getJDGoods();
+            }
         });
 
     }
@@ -1285,7 +1438,7 @@ public class ShopMallFragment2 extends BaseFragment {
         getActivity().findViewById(R.id.singleActive).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (list.size()==1) {
+                if (list.size() == 1) {
                     HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(0).getId(), list.get(0).getTitle(), 5);
                 } else {
                     HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(), list.get(2).getId(), list.get(2).getTitle(), 5);

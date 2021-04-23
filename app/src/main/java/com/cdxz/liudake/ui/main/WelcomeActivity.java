@@ -1,13 +1,17 @@
 package com.cdxz.liudake.ui.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.blankj.utilcode.util.AdaptScreenUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.adapter.shop_mall.WelcomeBannerAdapter;
+import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.WelcomeDto;
 import com.cdxz.liudake.ui.LaunchActivity;
 import com.cdxz.liudake.ui.base.BaseActivity;
@@ -26,6 +30,11 @@ public class WelcomeActivity extends BaseActivity {
     private ImageView tvGo;
     List<WelcomeDto> list = new ArrayList<>();
 
+    public static void start(Context context) {
+        Intent starter = new Intent(context, WelcomeActivity.class);
+        context.startActivity(starter);
+    }
+
     @Override
     protected int getContentViewId() {
         return R.layout.activity_welcome;
@@ -33,6 +42,11 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+
+        if (SPUtils.getInstance().getBoolean(Constants.IS_LOGIN, false)) {
+            LoginActivity.startLoginActivity(this);
+            finish();
+        }
 
         banner = findViewById(R.id.banner);
         imgGo = findViewById(R.id.img_go);

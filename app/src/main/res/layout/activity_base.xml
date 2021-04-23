@@ -12,8 +12,8 @@
         android:visibility="gone"
         android:id="@+id/v_status_bar"
         android:layout_width="match_parent"
-        android:layout_height="150pt"
-        android:background="@color/transparent"
+        android:layout_height="100pt"
+        android:background="@color/appColor"
         />
 
 

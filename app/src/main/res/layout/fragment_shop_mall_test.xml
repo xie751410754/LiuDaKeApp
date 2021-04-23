@@ -40,12 +40,12 @@
                     <LinearLayout
                         android:id="@+id/ll1"
                         android:layout_width="match_parent"
-                        android:layout_height="120pt"
+                        android:layout_height="130pt"
                         android:layout_marginStart="24pt"
                         android:layout_marginEnd="24pt"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingTop="40pt">
+                        android:paddingTop="50pt">
 
 
                         <com.cdxz.liudake.view.DrawableTextView
@@ -143,7 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="300pt"
                     android:layout_marginStart="20pt"
-                    android:layout_marginTop="200pt"
+                    android:layout_marginTop="220pt"
                     android:layout_marginEnd="20pt"
                     app:banner_radius="8pt" />
 
@@ -191,11 +191,14 @@
                     android:overScrollMode="never" />
 
                 <com.youth.banner.Banner
+                    android:layout_marginStart="20pt"
+                    android:layout_marginEnd="20pt"
                     android:id="@+id/cxBanner"
                     android:layout_width="match_parent"
-                    android:layout_height="180pt"
+                    android:layout_height="150pt"
                     android:layout_marginBottom="20pt"
-                    android:background="@color/white" />
+                    app:banner_radius="8pt"
+                     />
 
 
                 <com.cdxz.liudake.view.roundedImageView.RoundedImageView
@@ -436,7 +439,7 @@
                             android:layout_marginStart="20pt"
                             android:layout_marginTop="30pt"
                             android:layout_marginEnd="20pt"
-                            android:text="推荐商品"
+                            android:text="京东推荐商品"
                             android:textColor="#E62129"
                             android:textSize="34pt" />
 
