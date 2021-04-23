@@ -50,6 +50,7 @@ public abstract class BaseActivity extends FragmentActivity {
         ScreenUtils.setPortrait(this);
 //        BarUtils.setStatusBarLightMode(this, true);
 
+
         final int layoutId = getContentViewId();
         ViewGroup contentParent = findViewById(android.R.id.content);
         View contentView = LayoutInflater.from(this)
