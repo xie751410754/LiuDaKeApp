@@ -68,6 +68,7 @@ public class HttpsUtil {
     }
 
 
+
     public void getMerchant(int region,int page,int pageSize,HttpsCallback callback){
 
         ApiRetrofit.getInstance().getApiService()
@@ -146,6 +147,7 @@ public class HttpsUtil {
                     }
                 });
     }
+
 
     /**
      * 获取验证码

@@ -10,12 +10,14 @@ import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsClassActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsListActivity;
 import com.cdxz.liudake.ui.shop_mall.HomeToGoodsListActivity;
+import com.cdxz.liudake.util.UserInfoUtil;
 import com.cdxz.liudake.view.DrawableTextView;
 import com.cdxz.liudake.view.roundedImageView.RoundedImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 import java.util.List;
+import java.util.Random;
 
 public class MenuAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsActivityClassBean, BaseViewHolder> {
     public MenuAdapter(List<HomeIndexBean.GoodsActivityClassBean> data) {
@@ -33,7 +35,7 @@ public class MenuAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsActivityCla
             if (baseViewHolder.getAdapterPosition() + 1 == getData().size()) {
                 GoodsClassActivity.startGoodsClassActivity(getContext());
             } else if (baseViewHolder.getAdapterPosition() == 0) {
-                WebActivity.startWebActivity(getContext(),6,"http://jd.liudake.cn/#/pages/index/index?uid=230732");
+                WebActivity.startWebActivity(getContext(),6,"http://jd.liudake.cn/#/pages/index/index?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
             } else {
                 HomeToGoodsListActivity.startHomeToGoodsListActivity(
                         getContext(), bean.getId(), bean.getName(), HomeToGoodsListActivity.HOME1

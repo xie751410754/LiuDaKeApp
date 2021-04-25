@@ -332,7 +332,7 @@
                     <com.superluo.textbannerlibrary.TextBannerView
                         android:id="@+id/text_banner"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40pt"
                         android:layout_marginStart="21pt"
                         android:textSize="30pt"
                         app:setAnimDuration="100"

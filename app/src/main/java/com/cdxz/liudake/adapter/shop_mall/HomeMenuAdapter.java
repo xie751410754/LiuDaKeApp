@@ -14,11 +14,13 @@ import com.cdxz.liudake.pop.PopSelector;
 import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsClassActivity;
 import com.cdxz.liudake.ui.shop_mall.HomeToGoodsListActivity;
+import com.cdxz.liudake.util.UserInfoUtil;
 import com.cdxz.liudake.view.roundedImageView.RoundedImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 import java.util.List;
+import java.util.Random;
 
 public class HomeMenuAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsActivityClassBean, BaseViewHolder> {
 
@@ -57,7 +59,7 @@ public class HomeMenuAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsActivit
             onSelectListener.onClick(getItemPosition(bean));
 
             if (bean.getName().equals("京东")) {
-                WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/index/index?uid=230732");
+                WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/index/index?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
 
             } else {
                 HomeToGoodsListActivity.startHomeToGoodsListActivity(

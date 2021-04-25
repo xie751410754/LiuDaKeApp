@@ -17,6 +17,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 import java.util.List;
+import java.util.Random;
 
 public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, BaseViewHolder> {
     public JDHomeGoodsAdapter(List<JDGoodsDto.DataDTO> data) {
@@ -26,7 +27,7 @@ public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, Bas
     @Override
     protected void convert(BaseViewHolder baseViewHolder, JDGoodsDto.DataDTO goodsBean) {
         baseViewHolder.itemView.setOnClickListener(v -> {
-            WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pagesA/goodDetail/goodDetail?goodNum=" + goodsBean.getGoodNum() + "&uid=" + UserInfoUtil.getUid());
+            WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pagesA/goodDetail/goodDetail?goodNum=" + goodsBean.getGoodNum() + "&uid=" + UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
         });
 //        LogUtils.e("数据 = " + GsonUtils.toJson(goodsBean));
         if (!StringUtils.isEmpty(goodsBean.getImagePath())) {
