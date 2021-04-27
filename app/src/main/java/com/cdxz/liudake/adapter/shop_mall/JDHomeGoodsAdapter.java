@@ -30,7 +30,6 @@ public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, Bas
         super(R.layout.item_shop_mall_goods_new, data);
     }
 
-
     @Override
     protected void convert(BaseViewHolder baseViewHolder, JDGoodsDto.DataDTO goodsBean) {
         baseViewHolder.itemView.setOnClickListener(v -> {
