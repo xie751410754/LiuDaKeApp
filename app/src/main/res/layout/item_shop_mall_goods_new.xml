@@ -49,6 +49,7 @@
 
 
     <LinearLayout
+        android:layout_marginBottom="20pt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="17pt"
@@ -66,6 +67,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/tvScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,20 +91,18 @@
             android:textSize="22pt"
             android:visibility="gone" />
 
-
+        <TextView
+            android:layout_marginEnd="20pt"
+            android:id="@+id/tvSellNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已售 0"
+            android:textColor="#808080"
+            android:textSize="20pt" />
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/tvSellNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17pt"
-        android:layout_marginTop="4pt"
-        android:layout_marginBottom="20pt"
-        android:text="已售 0"
-        android:textColor="#808080"
-        android:textSize="20pt" />
+
 
 
 </LinearLayout>

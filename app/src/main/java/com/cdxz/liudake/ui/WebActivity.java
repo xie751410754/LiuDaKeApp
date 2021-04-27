@@ -1,5 +1,6 @@
 package com.cdxz.liudake.ui;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +10,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
@@ -61,6 +64,11 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void initViews() {
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT); // 开启 DOM storage API 功能
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setDatabaseEnabled(true);
+        webView.getSettings().setAppCacheEnabled(true);
+
         webView.setWebChromeClient(new WebChromeClient(){
             @Override
             public void onPermissionRequest(PermissionRequest request) {
@@ -100,6 +108,25 @@ public class WebActivity extends BaseActivity {
                 startActivityForResult(Intent.createChooser(i, "Choose"), CHOOSE_REQUEST_CODE);
             }
         });
+        webView.getSettings().setDatabaseEnabled(true);
+
+        // 点击后退按钮,让WebView后退一页(也可以覆写Activity的onKeyDown方法)
+        webView.setOnKeyListener(new View.OnKeyListener() {
+
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (i == KeyEvent.KEYCODE_BACK && webView.canGoBack()) { // 表示按返回键
+                        // 时的操作
+                        webView.goBack();
+                        // webview.goForward();//前进
+                        return true; // 已处理
+                    }
+                }
+                return false;
+
+            }
+        });
 
 
         webView.setWebViewClient(new WebViewClient() {
@@ -109,6 +136,7 @@ public class WebActivity extends BaseActivity {
                     /**安装了支付宝或者微信客户端，打开对应支付**/
                     if (url.contains("platformapi/startApp") || url.contains("weixin://wap/pay?")) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         return true;
                     }
@@ -125,8 +153,10 @@ public class WebActivity extends BaseActivity {
                 return super.shouldOverrideUrlLoading(view, url);
             }
 
+
         });
     }
+
 
     @Override
     protected void initDatas() {

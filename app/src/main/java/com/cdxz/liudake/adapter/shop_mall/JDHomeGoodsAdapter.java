@@ -1,10 +1,16 @@
 package com.cdxz.liudake.adapter.shop_mall;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
+import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.HomeIndexBean;
@@ -32,17 +38,30 @@ public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, Bas
 //        LogUtils.e("数据 = " + GsonUtils.toJson(goodsBean));
         if (!StringUtils.isEmpty(goodsBean.getImagePath())) {
             Glide.with(getContext())
+                    .asDrawable()
                     .load(goodsBean.getImagePath().startsWith("http") ? goodsBean.getImagePath() : Constants.PICTURE_HTTPS_URL + goodsBean.getImagePath())
                     .placeholder(R.mipmap.img_default)
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .override(200,200)
                     .into((RoundedImageView) baseViewHolder.getView(R.id.ivImage));
         }
         baseViewHolder.setText(R.id.tvGoodsName, "           "+goodsBean.getName())
-                .setText(R.id.tvGoodsNewPrice, "¥" + goodsBean.getSalePrice() + "+")
+                .setText(R.id.tvGoodsNewPrice, "¥" + goodsBean.getSalePrice() )
                 .setText(R.id.tvGoodsPrice, "¥" + goodsBean.getJD_Price())
                 .setText(R.id.tvSellNum, "已售 " + goodsBean.getSaleCount())
                 .setText(R.id.tvScore, goodsBean.getJifen() + "积分");
 
         TextView tvGoodsPrice = baseViewHolder.getView(R.id.tvGoodsPrice);
         tvGoodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+    }
+
+    @Override
+    public void onViewRecycled(@NonNull BaseViewHolder holder) {
+        super.onViewRecycled(holder);
+        RoundedImageView imageView =holder.getView(R.id.ivImage);
+        if (imageView!=null){
+            Glide.with(getContext()).clear(imageView);
+        }
     }
 }

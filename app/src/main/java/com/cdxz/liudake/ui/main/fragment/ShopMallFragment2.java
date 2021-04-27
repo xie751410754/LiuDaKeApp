@@ -481,9 +481,10 @@ public class ShopMallFragment2 extends BaseFragment {
 
     String url ;
     int page = 1;
+    int pageSize=20;
 
     private void getJDGoods() {
-        url = "http://liudake.cn/api/pub/get" + "?param=" + "getindexpro" + "&pagesize=" + Constants.LIST_SIZE + "&page=" + page;
+        url = "http://liudake.cn/api/pub/get" + "?param=" + "getindexpro" + "&pagesize=" + pageSize + "&page=" + page;
 
         Request request = new Request.Builder()
                 .url(url)
@@ -1398,6 +1399,9 @@ public class ShopMallFragment2 extends BaseFragment {
             singleActive.setVisibility(View.GONE);
             ll_active1.setVisibility(View.VISIBLE);
             ll_active2.setVisibility(View.VISIBLE);
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) ll_active2.getLayoutParams();
+            lp.topMargin = 0;
+            ll_active2.setLayoutParams(lp);
         }
 
 

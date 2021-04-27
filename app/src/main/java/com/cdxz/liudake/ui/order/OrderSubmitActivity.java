@@ -311,7 +311,8 @@ public class OrderSubmitActivity extends BaseActivity {
                 ToastUtils.showShort("请添加收货地址");
                 return;
             }
-            new XPopup.Builder(this).asCustom(new PopPayPwd(this, text -> {
+            
+            if (pay_type==5||pay_type==4){
                 int is_balance = 0;
                 int is_gold = 0;
                 if ("NO".equals(tvRedmiDeduction.getTag())) {
@@ -325,7 +326,7 @@ public class OrderSubmitActivity extends BaseActivity {
                     is_gold = 1;
                 }
                 HttpsUtil.getInstance(OrderSubmitActivity.this).submitOrder(
-                        is_balance, is_gold, addressid, pay_type, text, object -> {
+                        is_balance, is_gold, addressid, pay_type, "", object -> {
                             SubmitOrderBean orderBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), SubmitOrderBean.class);
                             if (orderBean.getPayprice() > 0) {
                                 //调支付宝或微信
@@ -336,7 +337,36 @@ public class OrderSubmitActivity extends BaseActivity {
                                 finish();
                             }
                         });
-            })).show();
+            }else {
+                new XPopup.Builder(this).asCustom(new PopPayPwd(this, text -> {
+                    int is_balance = 0;
+                    int is_gold = 0;
+                    if ("NO".equals(tvRedmiDeduction.getTag())) {
+                        is_balance = 0;
+                    } else if ("YES".equals(tvRedmiDeduction.getTag())) {
+                        is_balance = 1;
+                    }
+                    if ("NO".equals(tvIntegralDeduction.getTag())) {
+                        is_gold = 0;
+                    } else if ("YES".equals(tvIntegralDeduction.getTag())) {
+                        is_gold = 1;
+                    }
+                    HttpsUtil.getInstance(OrderSubmitActivity.this).submitOrder(
+                            is_balance, is_gold, addressid, pay_type, text, object -> {
+                                SubmitOrderBean orderBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), SubmitOrderBean.class);
+                                if (orderBean.getPayprice() > 0) {
+                                    //调支付宝或微信
+                                    pay(orderBean.getOrder().getId());
+                                } else {
+                                    BusUtils.post(BusTag.UPDATE_CAR);
+                                    OrderListActivity.startOrderListActivity(OrderSubmitActivity.this, 0);
+                                    finish();
+                                }
+                            });
+                })).show();
+            }
+
+
         });
     }
 

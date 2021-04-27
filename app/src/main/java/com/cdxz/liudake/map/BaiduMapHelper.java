@@ -77,11 +77,13 @@ public class BaiduMapHelper extends MapHelper {
 
     }
 
+
+    private int i =0;
     @SuppressWarnings("deprecation")
     private void requestLocationOnce(@Nullable final OnSuccessListener<BDLocation> onSuccessListener,
                                      @Nullable final OnErrorListener onErrorListener) {
         LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(LocationClientOption.LocationMode.Battery_Saving);           // 设置定位模式
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);           // 设置定位模式
         option.setCoorType("bd09ll");                                  // 返回的定位结果是百度经纬度,默认值gcj02
         option.setScanSpan(5000);                                      // 设置发起定位请求的间隔时间为10s
         option.setIsNeedAddress(true);
@@ -95,9 +97,14 @@ public class BaiduMapHelper extends MapHelper {
             @Override
             @SuppressWarnings("deprecation")
             public void onReceiveLocation(BDLocation location) {
-                // 只定位一次就停止，
-                locationClient.unRegisterLocationListener(this);
+//                i++;
+//                if (i==10){
+//                    // 只定位一次就停止，
+                locationClient.unRegisterLocationListener(locationListener);
                 locationClient.stop();
+//                }
+
+
                 int resultCode;
                 if (location == null) {
                     if (onErrorListener != null) {
@@ -461,6 +468,7 @@ public class BaiduMapHelper extends MapHelper {
         void pause() {
             super.pause();
             mapView.onPause();
+
         }
 
         @Override
@@ -473,6 +481,7 @@ public class BaiduMapHelper extends MapHelper {
                 // 从parent移除，以便复用，
                 ((ViewGroup) mapView.getParent()).removeView(mapView);
             }
+
         }
 
         @Override

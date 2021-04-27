@@ -15,6 +15,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:maxLength="6"
             android:id="@+id/four_tvTips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
