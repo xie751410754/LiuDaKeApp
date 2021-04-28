@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 
+import com.baidu.location.Address;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -78,7 +79,7 @@ public class BaiduMapHelper extends MapHelper {
     }
 
 
-    private int i =0;
+    private int i =1;
     @SuppressWarnings("deprecation")
     private void requestLocationOnce(@Nullable final OnSuccessListener<BDLocation> onSuccessListener,
                                      @Nullable final OnErrorListener onErrorListener) {
@@ -87,6 +88,7 @@ public class BaiduMapHelper extends MapHelper {
         option.setCoorType("bd09ll");                                  // 返回的定位结果是百度经纬度,默认值gcj02
         option.setScanSpan(5000);                                      // 设置发起定位请求的间隔时间为10s
         option.setIsNeedAddress(true);
+        option.setOpenGps(true);
         option.setNeedDeviceDirect(false);
         locationClient.setLocOption(option);
         if (locationListener != null) {
@@ -97,9 +99,9 @@ public class BaiduMapHelper extends MapHelper {
             @Override
             @SuppressWarnings("deprecation")
             public void onReceiveLocation(BDLocation location) {
-//                i++;
-//                if (i==10){
-//                    // 只定位一次就停止，
+                i++;
+//                if (i==5){
+                    // 只定位一次就停止，
                 locationClient.unRegisterLocationListener(locationListener);
                 locationClient.stop();
 //                }
@@ -127,6 +129,10 @@ public class BaiduMapHelper extends MapHelper {
                 if (onSuccessListener != null) {
                     currentCity = location.getCity();
                     currentAddress = location.getAddrStr();
+                    String buildingName = location.getBuildingName();
+                    Address adresss = location.getAddress();
+                    String adress = adresss.address;
+//                    pianyi(location.getLongitude(),location.getLatitude());
                     onSuccessListener.onSuccess(location);
                 }
             }
@@ -137,6 +143,17 @@ public class BaiduMapHelper extends MapHelper {
     }
 
 
+    private LatLng pianyi(double lon,double lat)
+    {
+        double x = lon; double y = lat;
+        double z = Math.sqrt(x*x+y*y) + 0.00002 *Math.sin(y*Math.PI) ;
+        double temp =Math.atan2(y, x)  + 0.000003 * Math.cos(x*Math.PI);
+
+        double bdLon = z * Math.cos(temp) + 0.0065;
+        double bdLat = z * Math.sin(temp) + 0.006;
+        LatLng newcenpt = new LatLng(bdLat, bdLon);
+        return newcenpt;
+    }
 
 
     @Override
@@ -482,6 +499,12 @@ public class BaiduMapHelper extends MapHelper {
                 ((ViewGroup) mapView.getParent()).removeView(mapView);
             }
 
+            locationClient.stop();
+
+            if (locationListener != null) {
+                // 以防万一，如果有已经注册了的listener，先取消，
+                locationClient.unRegisterLocationListener(locationListener);
+            }
         }
 
         @Override
