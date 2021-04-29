@@ -66,6 +66,7 @@
         <activity android:name=".ui.SearchActivity" />
         <activity android:name=".ui.shop_mall.MessageListActivity" />
         <activity android:name=".ui.shop_mall.GoodsDetailActivity" />
+        <activity android:name=".ui.shop_mall.JDBaopinGoodsListActivity" />
 
         <activity android:name=".ui.store_manager.BillActivity" />
         <activity android:name=".ui.store_manager.StoreCoreActivity" />

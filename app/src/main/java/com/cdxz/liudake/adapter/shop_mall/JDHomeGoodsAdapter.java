@@ -3,6 +3,7 @@ package com.cdxz.liudake.adapter.shop_mall;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Paint;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,11 @@ public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, Bas
     public JDHomeGoodsAdapter(List<JDGoodsDto.DataDTO> data) {
         super(R.layout.item_shop_mall_goods_new, data);
     }
+    boolean isBaopin=false;
+
+    public void setScore(boolean isBaoPin){
+        this.isBaopin = isBaoPin;
+    }
 
     @Override
     protected void convert(BaseViewHolder baseViewHolder, JDGoodsDto.DataDTO goodsBean) {
@@ -46,22 +52,21 @@ public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, Bas
                     .override(200,200)
                     .into((RoundedImageView) baseViewHolder.getView(R.id.ivImage));
         }
+        if (isBaopin){
+            baseViewHolder.itemView.findViewById(R.id.tvScore).setVisibility(View.VISIBLE);
+        }else {
+            baseViewHolder.itemView.findViewById(R.id.tvScore).setVisibility(View.GONE);
+
+        }
         baseViewHolder.setText(R.id.tvGoodsName, "           "+goodsBean.getName())
                 .setText(R.id.tvGoodsNewPrice, "¥" + goodsBean.getSalePrice() )
                 .setText(R.id.tvGoodsPrice, "¥" + goodsBean.getJD_Price())
                 .setText(R.id.tvSellNum, "已售 " + goodsBean.getSaleCount())
-                .setText(R.id.tvScore, goodsBean.getJifen() + "积分");
+                .setText(R.id.tvScore, "+"+goodsBean.getJifen() + "积分");
 
         TextView tvGoodsPrice = baseViewHolder.getView(R.id.tvGoodsPrice);
         tvGoodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
     }
 
-    @Override
-    public void onViewRecycled(@NonNull BaseViewHolder holder) {
-        super.onViewRecycled(holder);
-        RoundedImageView imageView =holder.getView(R.id.ivImage);
-        if (imageView!=null){
-            Glide.with(getContext()).clear(imageView);
-        }
-    }
+
 }

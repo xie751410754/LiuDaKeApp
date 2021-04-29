@@ -19,9 +19,11 @@ import com.cdxz.liudake.api.HttpsCallback;
 import com.cdxz.liudake.api.HttpsUtil;
 import com.cdxz.liudake.api.UploadUtil;
 import com.cdxz.liudake.base.Constants;
+import com.cdxz.liudake.bean.GetSetBean;
 import com.cdxz.liudake.bean.RegionBean;
 import com.cdxz.liudake.bean.ShopInfoDto;
 import com.cdxz.liudake.databinding.ActivityOpenStoreType3Binding;
+import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.Base2Activity;
 import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.util.PictureUtil;
@@ -156,6 +158,14 @@ public class OpenStoreType3Activity extends Base2Activity<ActivityOpenStoreType3
     String phone;
     @Override
     protected void initListener() {
+
+        binding.integrityXieyi.setOnClickListener(v -> {
+            get_set(1);
+        });
+        binding.foodsafeXieyi.setOnClickListener(v -> {
+            get_set(2);
+        });
+
         binding.tvGetCode.setOnClickListener(v -> {
              phone = binding.etPhone.getText().toString();
             if (StringUtils.isEmpty(phone)) {
@@ -461,5 +471,48 @@ public class OpenStoreType3Activity extends Base2Activity<ActivityOpenStoreType3
         super.onDestroy();
         downTimer.cancel();
         downTimer = null;
+    }
+
+    private void get_set(int i) {
+        HttpsUtil.getInstance(this).get_set(object -> {
+            if ("-1".equals(object)) {
+                switch (i) {
+                    case 0:
+                        ToastUtils.showShort("关于溜达客获取失败");
+                        break;
+                    case 1:
+                        ToastUtils.showShort("诚信承诺书获取失败");
+                        break;
+                    case 2:
+                        ToastUtils.showShort("食品安全承诺书获取失败");
+                        break;
+                }
+            } else {
+                List<GetSetBean> getSetBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), GetSetBean.class);
+                switch (i) {
+                    case 0:
+                        for (GetSetBean setBean : getSetBeanList) {
+                            if ("about".equals(setBean.getKey())) {
+                                WebActivity.startWebActivity(OpenStoreType3Activity.this, WebActivity.ABOUT, setBean.getValue());
+                            }
+                        }
+                        break;
+                    case 1:
+                        for (GetSetBean setBean : getSetBeanList) {
+                            if ("integrity_xieyi".equals(setBean.getKey())) {
+                                WebActivity.startWebActivity(OpenStoreType3Activity.this, WebActivity.INTERRITY_XIE_YI, setBean.getValue());
+                            }
+                        }
+                        break;
+                    case 2:
+                        for (GetSetBean setBean : getSetBeanList) {
+                            if ("foodsafe_xieyi".equals(setBean.getKey())) {
+                                WebActivity.startWebActivity(OpenStoreType3Activity.this, WebActivity.FOODSAFE_XIE_YI, setBean.getValue());
+                            }
+                        }
+                        break;
+                }
+            }
+        });
     }
 }

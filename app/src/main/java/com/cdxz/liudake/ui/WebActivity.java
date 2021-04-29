@@ -40,6 +40,8 @@ public class WebActivity extends BaseActivity {
     public static final int WALLET_STRATEGY = 4;
     public static final int SHOP_START = 5;
     public static final int JDSHOP_START = 6;
+    public static final int INTERRITY_XIE_YI = 7;
+    public static final int  FOODSAFE_XIE_YI = 8;
 
     private ValueCallback<Uri[]> uploadFiles;
     private static final int CHOOSE_REQUEST_CODE = 0x9001;
@@ -179,6 +181,13 @@ public class WebActivity extends BaseActivity {
             case JDSHOP_START:
                 setTitleText("京东商品");
 //                titleBar.setVisibility(View.GONE);
+                break;
+
+            case INTERRITY_XIE_YI:
+                setTitle("诚信承诺书");
+                break;
+            case FOODSAFE_XIE_YI:
+                setTitle("食品安全承诺书");
                 break;
             default:
                 setTitleText("溜达客");

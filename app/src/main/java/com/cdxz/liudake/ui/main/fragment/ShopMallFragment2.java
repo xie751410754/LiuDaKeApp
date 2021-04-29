@@ -64,6 +64,7 @@ import com.cdxz.liudake.ui.base.BaseFragment;
 import com.cdxz.liudake.ui.life_circle.LifeCircleMapActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsClassActivity;
 import com.cdxz.liudake.ui.shop_mall.HomeToGoodsListActivity;
+import com.cdxz.liudake.ui.shop_mall.JDBaopinGoodsListActivity;
 import com.cdxz.liudake.ui.shop_mall.MessageListActivity;
 import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.view.DrawableTextView;
@@ -294,6 +295,16 @@ public class ShopMallFragment2 extends BaseFragment {
     @BindView(R.id.rl1)
     View rl1;
 
+    @BindView(R.id.tv_jd_goodsName)
+    TextView jd_goodsName;
+    @BindView(R.id.tv_jd_score)
+    TextView jd_score;
+    @BindView(R.id.tv_jd_goodsPrice)
+    TextView jd_goodsPrice;
+    @BindView(R.id.jd_img_goods)
+    RoundedImageView jd_img_goods;
+    @BindView(R.id.jd_singleActive)
+    LinearLayout jd_singleActive;
 
     //
     private CountDownTimer downTimer;
@@ -348,6 +359,20 @@ public class ShopMallFragment2 extends BaseFragment {
                     refreshHome.finishLoadMore();
                     jdHomeGoodsAdapter.notifyDataSetChanged();
 
+                    break;
+                case 10:
+                    jd_singleActive.setVisibility(View.GONE);
+                    break;
+                case 11:
+                    List<JDGoodsDto.DataDTO> jdGoodsDto = (List<JDGoodsDto.DataDTO>) msg.obj;
+                    jd_goodsName.setText(jdGoodsDto.get(0).getName());
+                    Glide.with(getContext())
+                            .load(jdGoodsDto.get(0).getImagePath())
+                            .placeholder(R.mipmap.img_default)
+                            .into(jd_img_goods);
+                    jd_score.setText(jdGoodsDto.get(0).getJifen()+"积分");
+                    jd_goodsPrice.setText("￥"+jdGoodsDto.get(0).getSalePrice());
+//                    jd_goodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
                     break;
             }
         }
@@ -477,6 +502,8 @@ public class ShopMallFragment2 extends BaseFragment {
         getcxList();
 
         getJDGoods();
+
+        getBaopinJDGoods();
     }
 
     String url ;
@@ -537,6 +564,43 @@ public class ShopMallFragment2 extends BaseFragment {
         });
     }
 
+
+    private void getBaopinJDGoods() {
+
+        String url = "http://liudake.cn/api/pub/get" + "?param=" + "getbaopinprolist" ;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                ToastUtils.showShort("数据获取失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String responseBody = response.body().string();
+                JDGoodsDto baseBean = ParseUtils.parseJsonObject(responseBody, JDGoodsDto.class);
+
+                if (CollectionUtils.isEmpty(baseBean.getData())) {
+                        Message message = new Message();
+                        message.what = 10;
+                        mHandler.sendMessage(message);
+
+                } else {
+                    Message message = new Message();
+                    message.what = 11;
+                    message.obj = baseBean.getData();
+                    mHandler.sendMessage(message);
+                }
+
+            }
+        });
+    }
+
     @BusUtils.Bus(tag = BusTag.POP_SUGGESTION)
     public void onPopSuggestion(PopSuggestionBean bean) {
         mLocationClient.stop();
@@ -547,6 +611,13 @@ public class ShopMallFragment2 extends BaseFragment {
 
     @Override
     protected void initListener() {
+
+        jd_singleActive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                JDBaopinGoodsListActivity.startHomeToGoodsListActivity(getContext());
+            }
+        });
 
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
@@ -566,6 +637,7 @@ public class ShopMallFragment2 extends BaseFragment {
                 homeIndex();
                 page =1;
                 getJDGoods();
+                getBaopinJDGoods();
             }
         });
         getActivity().findViewById(R.id.ivScan).setOnClickListener(v -> {

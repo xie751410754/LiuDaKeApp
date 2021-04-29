@@ -550,12 +550,46 @@
                     android:textColor="@color/white"
                     android:textStyle="bold" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/sp12.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="提交即同意" />
+
+                    <TextView
+                        android:id="@+id/integrity_xieyi"
+                        style="@style/sp12.AppColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="《诚信承诺书》" />
+
+                    <TextView
+                        style="@style/sp12.Black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="和" />
+
+                    <TextView
+                        android:id="@+id/foodsafe_xieyi"
+                        style="@style/sp12.AppColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="《食品安全承诺书》" />
+                </LinearLayout>
+
                 <TextView
                     style="@style/sp14.999999"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center"
                     android:text="预计3个工作日内完成" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
