@@ -298,7 +298,6 @@ public class WebActivity extends BaseActivity {
                     public void onFailure(Call call, IOException e) {
                         ToastUtils.showShort("图片获取失败");
 
-
                     }
 
                     @Override
