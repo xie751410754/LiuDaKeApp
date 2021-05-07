@@ -11,8 +11,8 @@ android {
         applicationId "com.cdxz.liudake"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 31
-        versionName "2.1.0"
+        versionCode 32
+        versionName "2.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
@@ -150,4 +150,7 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
     implementation'com.superluo:textbannerview:1.0.4'
     implementation 'com.github.Othershe:CalendarView:1.2.1'
+
+    //支付模块(支付宝 微信)[暂为待优化模块，谨慎]
+    implementation 'com.github.tamsiree.RxTool:RxPay:2.6.2'
 }

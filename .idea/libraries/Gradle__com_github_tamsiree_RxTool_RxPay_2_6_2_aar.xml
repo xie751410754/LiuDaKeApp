@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.tamsiree.RxTool:RxPay:2.6.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/901b1620ec0fe47fda3652132103a3f3/RxPay-2.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/901b1620ec0fe47fda3652132103a3f3/RxPay-2.6.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/901b1620ec0fe47fda3652132103a3f3/RxPay-2.6.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.tamsiree.RxTool/RxPay/2.6.2/eb73efae596f18448b0a79558a92eb6111ec0abd/RxPay-2.6.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

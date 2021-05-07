@@ -3,6 +3,8 @@ package com.cdxz.liudake.ui.shop_mall;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Build;
@@ -25,6 +27,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
+import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -50,16 +53,26 @@ import com.cdxz.liudake.view.SpacesItemDecoration;
 import com.cdxz.liudake.view.roundedImageView.RoundedImageView;
 import com.lxj.xpopup.XPopup;
 import com.sunfusheng.marqueeview.MarqueeView;
+import com.tamsiree.rxpay.wechat.share.WechatShareModel;
+import com.tamsiree.rxpay.wechat.share.WechatShareTools;
 import com.youth.banner.Banner;
 import com.youth.banner.adapter.BannerAdapter;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.listener.OnPageChangeListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import static com.cdxz.liudake.base.Constants.WX_APP_ID;
 
 public class GoodsDetailActivity extends BaseActivity {
 
@@ -130,6 +143,8 @@ public class GoodsDetailActivity extends BaseActivity {
     TextView tvIndex;
 
     int bannerSize = 0;
+    WechatShareModel mWechatShareModel;
+
 
     //
     private GoodsCommentAdapter commentAdapter;
@@ -155,6 +170,7 @@ public class GoodsDetailActivity extends BaseActivity {
         intent.putExtra("need_phone_number", needPhoneNumber);
         context.startActivity(intent);
     }
+    private OkHttpClient okHttpClient;
 
 
     @Override
@@ -164,6 +180,9 @@ public class GoodsDetailActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+
+        okHttpClient = new OkHttpClient();
+
         ivTitleBack.setColorFilter(ContextCompat.getColor(this, R.color.color_343434));
         ivShare.setColorFilter(ContextCompat.getColor(this, R.color.color_343434));
 
@@ -273,15 +292,69 @@ public class GoodsDetailActivity extends BaseActivity {
                         startActivity(intent);
                     }).show();
         });
-
         findViewById(R.id.ivShare).setOnClickListener(v -> {
-            Intent textIntent = new Intent(Intent.ACTION_SEND);
-            textIntent.setType("text/plain");
-            textIntent.putExtra(Intent.EXTRA_TEXT, Constants.BASE_HTTPS_URL + "Home/index/regist/invitecode/" + UserInfoUtil.getUid());
-            startActivity(Intent.createChooser(textIntent, "分享"));
+//            Intent textIntent = new Intent(Intent.ACTION_SEND);
+//            textIntent.setType("text/plain");
+//            textIntent.putExtra(Intent.EXTRA_TEXT, Constants.BASE_HTTPS_URL + "Home/index/regist/invitecode/" + UserInfoUtil.getUid());
+//            textIntent.putExtra(Intent.EXTRA_SUBJECT,"溜达客");
+//            textIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(Intent.createChooser(textIntent, "分享"));
+
+            WechatShareTools.init(context, WX_APP_ID);//初始化
+
+            String url = Constants.BASE_HTTPS_URL+"Home/index/regist/invitecode/"+ UserInfoUtil.getUid();//网页链接
+
+            String description = Constants.BASE_HTTPS_URL+"Home/index/regist/invitecode/"+ UserInfoUtil.getUid();//描述
+
+
+            Request request = new Request.Builder()
+                    .url(goodsLogo)
+                    .build();
+            Call call = okHttpClient.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    ToastUtils.showShort("图片获取失败");
+
+
+
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.body() == null) {
+                        return;
+                    }
+
+                    byte [] byte_image = response.body().bytes();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mWechatShareModel = new WechatShareModel(url, tvGoodsName.getText().toString(), description, byte_image);
+
+//Friend 分享微信好友,Zone 分享微信朋友圈,Favorites 分享微信收藏
+                            WechatShareTools.shareURL(mWechatShareModel, WechatShareTools.SharePlace.Friend);//分享操作
+                        }
+                    });
+                }
+            });
+//            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.logo);//获取Bitmap
+//            byte[] bitmapByte = ImageUtils.bitmap2Bytes(bitmap,Bitmap.CompressFormat.PNG,90);
+//            byte[] bitmapByte = RxImageTool.bitmap2Bytes(bitmap, Bitmap.CompressFormat.PNG);//将 Bitmap 转换成 byte[]
+
+
+
+
+
+
         });
+
+
     }
 
+
+    String goodsLogo;
     @SuppressLint("SetTextI18n")
     private void getGoodsDetail() {
         HttpsUtil.getInstance(this).goodsDetail(getIntent().getStringExtra("goodsId"), Constants.LNG, Constants.LAT, null, Constants.CITY,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"), object -> {
@@ -297,6 +370,7 @@ public class GoodsDetailActivity extends BaseActivity {
 
             }
 
+            goodsLogo = detailBean.getLogo();
 
             tvGoodsPrice.setText("￥" + detailBean.getSaleprice());
             tvGoodsOldPrice.setText("￥" + detailBean.getOrginalprice());

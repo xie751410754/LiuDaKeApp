@@ -1312,6 +1312,8 @@ public class ShopMallFragment2 extends BaseFragment {
             singleActive.setVisibility(View.VISIBLE);
             ll_active1.setVisibility(View.VISIBLE);
             ll_active2.setVisibility(View.GONE);
+            title.setText(list.get(2).getTitle());
+            subTitle.setText(list.get(2).getSubtitle());
             if (list.get(2).getType().equals("5")) {
                 timeView.setVisibility(View.VISIBLE);
                 subTitle.setVisibility(View.GONE);
@@ -1377,22 +1379,42 @@ public class ShopMallFragment2 extends BaseFragment {
                     downTimer.start();
                 }
             } else {
-                subTitle.setText(list.get(2).getSubtitle());
+                subTitle.setVisibility(View.VISIBLE);
                 timeView.setVisibility(View.GONE);
             }
-            title.setText(list.get(2).getTitle());
             Glide.with(getContext())
                     .load(list.get(2).getGoods().get(0).getUrl())
                     .placeholder(R.mipmap.img_default)
                     .into(img_goods);
             goodsName.setText(list.get(2).getGoods().get(0).getName());
-            score.setText(list.get(2).getGoods().get(0).getCx_points() + "积分");
+//            score.setText(list.get(2).getGoods().get(0).getCx_points() + "积分");
             goodsPrice.setText(list.get(2).getGoods().get(0).getSaleprice());
             goodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-        } else {
-//            singleActive.setVisibility(View.GONE);
+            switch (list.get(2).getGoods().get(0).getPrice_type()) {
+                case "0":
+                    score.setText("运费￥" + list.get(2).getGoods().get(0).getCx_postage());
+                    break;
+                case "1":
+                    score.setText("运费￥" + list.get(2).getGoods().get(0).getCx_postage());
 
+                    break;
+                case "2":
+
+                    score.setText("￥" + list.get(2).getGoods().get(0).getCx_price());
+
+
+                    break;
+                case "3":
+                    score.setText("￥" + list.get(2).getGoods().get(0).getCx_price());
+
+                    break;
+                default:
+                    score.setText("￥" + list.get(2).getGoods().get(0).getCx_price());
+
+
+            }
         }
+
 
         if (list.size() == 2 && list.get(1) != null && list.get(1).getGoods() != null && list.get(1).getGoods().size() >= 1) {
             ll_active2.setVisibility(View.GONE);

@@ -7,12 +7,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -21,16 +25,30 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.JsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.R;
+import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.pop.PopUploadAvatar;
 import com.cdxz.liudake.ui.base.BaseActivity;
 import com.cdxz.liudake.util.PictureUtil;
 import com.cdxz.liudake.util.UserInfoUtil;
 import com.lxj.xpopup.XPopup;
+import com.tamsiree.rxpay.wechat.share.WechatShareModel;
+import com.tamsiree.rxpay.wechat.share.WechatShareTools;
+
+import java.io.IOException;
 
 import butterknife.BindView;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+import static com.cdxz.liudake.base.Constants.WX_APP_ID;
 
 public class WebActivity extends BaseActivity {
 
@@ -41,7 +59,7 @@ public class WebActivity extends BaseActivity {
     public static final int SHOP_START = 5;
     public static final int JDSHOP_START = 6;
     public static final int INTERRITY_XIE_YI = 7;
-    public static final int  FOODSAFE_XIE_YI = 8;
+    public static final int FOODSAFE_XIE_YI = 8;
 
     private ValueCallback<Uri[]> uploadFiles;
     private static final int CHOOSE_REQUEST_CODE = 0x9001;
@@ -50,6 +68,9 @@ public class WebActivity extends BaseActivity {
     WebView webView;
     @BindView(R.id.titleBar)
     ViewGroup titleBar;
+
+    private OkHttpClient okHttpClient;
+    WechatShareModel mWechatShareModel;
 
     public static void startWebActivity(Context context, int type, String url) {
         Intent intent = new Intent(context, WebActivity.class);
@@ -65,13 +86,21 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+
+        WechatShareTools.init(this, WX_APP_ID);//初始化
+
+        okHttpClient = new OkHttpClient();
+
         webView.getSettings().setJavaScriptEnabled(true);
+        // 设置webview加载的页面的模式,缩放至屏幕的大小
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.addJavascriptInterface(new InJavaScriptLocalObj(), "injectedObject");
         webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT); // 开启 DOM storage API 功能
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setDatabaseEnabled(true);
         webView.getSettings().setAppCacheEnabled(true);
 
-        webView.setWebChromeClient(new WebChromeClient(){
+        webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onPermissionRequest(PermissionRequest request) {
                 super.onPermissionRequest(request);
@@ -103,6 +132,7 @@ public class WebActivity extends BaseActivity {
                 return true;
 
             }
+
             private void openFileChooseProcess() {
                 Intent i = new Intent(Intent.ACTION_GET_CONTENT);
                 i.addCategory(Intent.CATEGORY_OPENABLE);
@@ -241,4 +271,61 @@ public class WebActivity extends BaseActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    public final class InJavaScriptLocalObj {
+        @JavascriptInterface
+        public void startFunction(String html) {
+
+
+            LogUtils.e("html", html);
+
+            if (!TextUtils.isEmpty(html)) {
+                String goodsName = JsonUtils.getString(html, "title", "溜达客");
+                String goodsLogo = JsonUtils.getString(html, "url", "溜达客");
+
+
+                String url = Constants.BASE_HTTPS_URL + "Home/index/regist/invitecode/" + UserInfoUtil.getUid();//网页链接
+
+                String description = Constants.BASE_HTTPS_URL + "Home/index/regist/invitecode/" + UserInfoUtil.getUid();//描述
+
+
+                Request request = new Request.Builder()
+                        .url(goodsLogo)
+                        .build();
+                Call call = okHttpClient.newCall(request);
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        ToastUtils.showShort("图片获取失败");
+
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        if (response.body() == null) {
+                            return;
+                        }
+
+                        byte[] byte_image = response.body().bytes();
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(byte_image, 0, byte_image.length);
+                        byte[] bitmapByte = ImageUtils.compressByQuality(bitmap, 9549L);
+
+                        mWechatShareModel = new WechatShareModel(url, goodsName, description, bitmapByte);
+
+                        //Friend 分享微信好友,Zone 分享微信朋友圈,Favorites 分享微信收藏
+                        WechatShareTools.shareURL(mWechatShareModel, WechatShareTools.SharePlace.Friend);//分享操作
+
+                    }
+                });
+
+
+            }
+
+
+        }
+
+
+    }
+
 }

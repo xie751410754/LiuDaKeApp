@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
@@ -35,6 +36,7 @@ import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.view.DrawableTextView;
 import com.cdxz.liudake.view.GridSpacingItemDecoration;
 import com.lxj.xpopup.XPopup;
+import com.lxj.xpopup.impl.LoadingPopupView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
@@ -75,6 +77,7 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
     EditText etSearch;
     @BindView(R.id.topLayout)
     RelativeLayout topLayout;
+    private LoadingPopupView loadingPopupView;
 
 
     private JDHomeGoodsAdapter mAdapter;
@@ -83,6 +86,8 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
     private List<JDGoodsDto.DataDTO> goodsBeanList = new ArrayList<>();
     private int homeType;
     private OkHttpClient okHttpClient;
+
+    boolean firstEnter = false;
 
     public static void startHomeToGoodsListActivity(Context context) {
         Intent intent = new Intent(context, JDBaopinGoodsListActivity.class);
@@ -122,6 +127,7 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+        firstEnter = true;
 //        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 //        fragmentList.add(new GoodsListFragment());
 //        fragmentList.add(new GoodsListFragment());
@@ -250,6 +256,11 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
 
     private void goodsList(String val) {
 
+        if (firstEnter){
+
+            postLoading();
+            firstEnter = false;
+        }
 
         LogUtils.e("xzl"+url+val);
         Request request = new Request.Builder()
@@ -260,11 +271,25 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+
+                if (loadingPopupView.isShow()){
+                    loadingPopupView.dismiss();
+                }
                 ToastUtils.showShort("数据获取失败");
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (loadingPopupView.isShow()){
+                            loadingPopupView.dismiss();
+                        }
+                    }
+                });
                 final String responseBody = response.body().string();
                 JDGoodsDto baseBean = ParseUtils.parseJsonObject(responseBody, JDGoodsDto.class);
 
@@ -304,4 +329,14 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
 
 
     }
+
+    void postLoading(){
+        loadingPopupView = (LoadingPopupView) new XPopup.Builder(ActivityUtils.getTopActivity())
+                .hasShadowBg(false)
+                .dismissOnTouchOutside(false)
+                .dismissOnBackPressed(false)
+                .asLoading()
+                .show();
+    }
+
 }
