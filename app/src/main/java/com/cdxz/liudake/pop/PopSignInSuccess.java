@@ -41,7 +41,6 @@ public class PopSignInSuccess extends CenterPopupView {
         });
     }
 
-
     public interface KnowListener {
         void onSubmit();
     }
