@@ -48,7 +48,7 @@ public abstract class BaseObserver<T extends BaseBean> implements Observer<T> {
             loadingPopupView = (LoadingPopupView) new XPopup.Builder(ActivityUtils.getTopActivity())
                     .hasShadowBg(false)
                     .dismissOnTouchOutside(false)
-                    .dismissOnBackPressed(false)
+                    .dismissOnBackPressed(true)
                     .asLoading()
                     .show();
             loadingPopupView.post(() -> LogUtils.e("onSubscribe"));

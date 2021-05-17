@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F5F7"
+    android:orientation="vertical"
+    tools:context=".ui.my.service.OpenStoreTypeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_ruzhu"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100pt"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/img_back"
+                android:layout_width="120pt"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="19pt"
+                    android:layout_height="38pt"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="20pt"
+                    android:contentDescription="@null"
+                    android:src="@mipmap/icon_back_store_home" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:text="入驻类型选择"
+                android:textColor="@color/white"
+                android:textSize="32pt"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/tv_message"
+                android:layout_width="32pt"
+                android:layout_height="38pt"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="20pt"
+                android:src="@mipmap/icon_store_home_news"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_under_msg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/circle_while"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#E20012"
+                android:textSize="10sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28pt"
+            android:layout_marginTop="80pt"
+            android:text="请选择认证类型"
+            android:textColor="@color/white"
+            android:textSize="46pt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28pt"
+            android:layout_marginTop="16pt"
+            android:layout_marginBottom="72pt"
+            android:text="请按真实经营情况慎重选择"
+            android:textColor="#ccffffff"
+            android:textSize="24pt" />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/tvGeTiGong"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20pt"
+        android:layout_marginTop="30pt"
+        android:layout_marginEnd="20pt"
+        android:background="@drawable/round8white_shop"
+        android:orientation="vertical">
+
+        <com.cdxz.liudake.view.DrawableTextView
+            android:id="@+id/tv_geti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40pt"
+            android:layout_marginTop="56pt"
+            android:drawablePadding="30pt"
+            android:gravity="center"
+            android:text="个体工商户"
+            android:textColor="#222222"
+            android:textSize="32pt"
+            app:dt_right_drawable="@mipmap/icon_right_arrow"
+            app:dt_right_height="16pt"
+            app:dt_right_width="10pt" />
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_geti"
+            android:layout_marginStart="40pt"
+            android:layout_marginTop="16pt"
+            android:text="适用营业执照或者类型包括个体商户、 "
+            android:textColor="#666666"
+            android:textSize="26pt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv1"
+            android:layout_marginStart="40pt"
+            android:layout_marginBottom="67pt"
+            android:text="个人独资企业"
+            android:textColor="#666666"
+            android:textSize="26pt" />
+
+        <ImageView
+            android:layout_width="150pt"
+            android:layout_height="150pt"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30pt"
+            android:src="@mipmap/icon_geti" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tvQiye"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20pt"
+        android:layout_marginTop="30pt"
+        android:layout_marginEnd="20pt"
+        android:background="@drawable/round8white_shop"
+        android:orientation="vertical">
+
+        <com.cdxz.liudake.view.DrawableTextView
+            android:id="@+id/tv_jiti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40pt"
+            android:layout_marginTop="56pt"
+            android:drawablePadding="30pt"
+            android:gravity="center"
+            android:text="企业/公司户"
+            android:textColor="#222222"
+            android:textSize="32pt"
+            app:dt_right_drawable="@mipmap/icon_right_arrow"
+            app:dt_right_height="16pt"
+            app:dt_right_width="10pt" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_jiti"
+            android:layout_marginStart="40pt"
+            android:layout_marginTop="16pt"
+            android:text="适用营业执照名称或类型包含有限公司、"
+            android:textColor="#666666"
+            android:textSize="26pt" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv2"
+            android:layout_marginStart="40pt"
+            android:layout_marginBottom="67pt"
+            android:text="股份有限公司、自然人独资等"
+            android:textColor="#666666"
+            android:textSize="26pt" />
+
+        <ImageView
+            android:layout_width="150pt"
+            android:layout_height="150pt"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30pt"
+            android:src="@mipmap/icon_qiye" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvXiaoWei"
+        style="@style/sp18"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_order_button_bg"
+        android:gravity="center"
+        android:text="个体小微商户"
+        android:textColor="@color/color_FF5033"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvSubmitType"
+        style="@style/sp16"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:background="@drawable/shape_buy_bg2"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+</LinearLayout>

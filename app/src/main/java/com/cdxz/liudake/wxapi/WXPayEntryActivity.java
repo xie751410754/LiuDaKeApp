@@ -56,9 +56,11 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                     break;
                 case -1:
                     ToastUtils.showShort("支付失败");
+
                     break;
                 case -2:
                     ToastUtils.showShort("取消支付");
+
                     break;
             }
             finish();

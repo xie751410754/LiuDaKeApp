@@ -124,6 +124,7 @@ public class OrderSubmitActivity extends BaseActivity {
     private String addressid;
     //微信支付
     private IWXAPI api;
+    private String orderId;
 
     public static void startOrderSubmitActivity(Context context, ShopCarSettlementBean bean) {
         Intent intent = new Intent(context, OrderSubmitActivity.class);
@@ -139,10 +140,13 @@ public class OrderSubmitActivity extends BaseActivity {
             String resultStatus = payResult.getResultStatus();
             // 判断resultStatus 为9000则代表支付成功
             if (StringUtils.equals(resultStatus, "9000")) {
-                ToastUtils.showShort("支付成功");
-                BusUtils.post(BusTag.UPDATE_CAR);
-                OrderListActivity.startOrderListActivity(OrderSubmitActivity.this, 0);
+//                ToastUtils.showShort("支付成功");
+//                BusUtils.post(BusTag.UPDATE_CAR);
+//                OrderListActivity.startOrderListActivity(OrderSubmitActivity.this, 0);
+//                finish();
+                PaySuccessActivity.startPaySuccessActivity(context,orderId);
                 finish();
+
             } else {
                 ToastUtils.showShort("支付失败");
             }
@@ -355,6 +359,7 @@ public class OrderSubmitActivity extends BaseActivity {
                             is_balance, is_gold, addressid, pay_type, text, object -> {
                                 SubmitOrderBean orderBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), SubmitOrderBean.class);
                                 if (orderBean.getPayprice() > 0) {
+                                    orderId = orderBean.getOrder().getId();
                                     //调支付宝或微信
                                     pay(orderBean.getOrder().getId());
                                 } else {
@@ -382,8 +387,10 @@ public class OrderSubmitActivity extends BaseActivity {
 
     @BusUtils.Bus(tag = BusTag.WX_PAY_SUCCESS)
     public void onPaySuccess() {
-        BusUtils.post(BusTag.UPDATE_CAR);
-        OrderListActivity.startOrderListActivity(OrderSubmitActivity.this, 0);
+//        BusUtils.post(BusTag.UPDATE_CAR);
+//        OrderListActivity.startOrderListActivity(OrderSubmitActivity.this, 0);
+//        finish();
+        PaySuccessActivity.startPaySuccessActivity(context,orderId);
         finish();
     }
 

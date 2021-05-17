@@ -23,7 +23,6 @@
         >
 
         <TextView
-
             android:id="@+id/tvGoodsName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +41,7 @@
             android:background="@drawable/r4_red"
             android:paddingStart="10pt"
             android:paddingEnd="10pt"
-            android:text="京东"
+            android:text="京东物流"
             android:textColor="@color/white"
             android:textSize="22pt" />
     </RelativeLayout>

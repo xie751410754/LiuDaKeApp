@@ -25,11 +25,14 @@ import com.cdxz.liudake.bean.LoginBean;
 import com.cdxz.liudake.bean.RegionBean;
 import com.cdxz.liudake.bean.ShopInfoDto;
 import com.cdxz.liudake.databinding.ActivityOpenStoreType1Binding;
+import com.cdxz.liudake.pop.PopRegisterSuccess;
+import com.cdxz.liudake.pop.PopReportSuccess;
 import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.Base2Activity;
 import com.cdxz.liudake.ui.login.LoginActivity;
 import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.util.PictureUtil;
+import com.lxj.xpopup.XPopup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,9 +77,9 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
 
     @Override
     protected void initDatas() {
-        
+
         getMyShopInfo();
-        
+
         getRegion();
     }
 
@@ -94,7 +97,6 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
         });
 
 
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -105,7 +107,7 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
         binding.etIDCardNumber.setText(shopInfoDto.getZhengjian());
         binding.etEmail.setText(shopInfoDto.getEmail());
         binding.etCompanyPhone.setText(shopInfoDto.getContact());
-        binding.tvCity.setText(shopInfoDto.getProvince_name()+" "+shopInfoDto.getCity_name()+" "+shopInfoDto.getRegion_name());
+        binding.tvCity.setText(shopInfoDto.getProvince_name() + " " + shopInfoDto.getCity_name() + " " + shopInfoDto.getRegion_name());
         binding.etAddress.setText(shopInfoDto.getAddress());
         binding.etBlank.setText(shopInfoDto.getContactperson_number());
         binding.etBlankCode.setText(shopInfoDto.getKaihu());
@@ -124,33 +126,33 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
 
 
         Glide.with(this)
-                .load(Constants.BASE_URL+"/"+shopInfoDto.getLicense())
+                .load(Constants.BASE_URL + "/" + shopInfoDto.getLicense())
                 .placeholder(R.mipmap.img_default)
                 .into(binding.ivLicense);
 
         binding.etContactPerson.setText(shopInfoDto.getContactperson());
         Glide.with(this)
-                .load(Constants.BASE_URL+"/"+shopInfoDto.getPicture1())
+                .load(Constants.BASE_URL + "/" + shopInfoDto.getPicture1())
                 .placeholder(R.mipmap.img_default)
                 .into(binding.ivFront);
         Glide.with(this)
-                .load(Constants.BASE_URL+"/"+shopInfoDto.getPicture2())
+                .load(Constants.BASE_URL + "/" + shopInfoDto.getPicture2())
                 .placeholder(R.mipmap.img_default)
                 .into(binding.ivReverse);
         Glide.with(this)
-                .load(Constants.BASE_URL+"/"+shopInfoDto.getPermit_picture())
+                .load(Constants.BASE_URL + "/" + shopInfoDto.getPermit_picture())
                 .placeholder(R.mipmap.img_default)
                 .into(binding.ivKaiHuPic);
         Glide.with(this)
-                .load(Constants.BASE_URL+"/"+shopInfoDto.getShop_picture())
+                .load(Constants.BASE_URL + "/" + shopInfoDto.getShop_picture())
                 .placeholder(R.mipmap.img_default)
                 .into(binding.ivMenTou);
         Glide.with(this)
-                .load(Constants.BASE_URL+"/"+shopInfoDto.getShop_env_picture1())
+                .load(Constants.BASE_URL + "/" + shopInfoDto.getShop_env_picture1())
                 .placeholder(R.mipmap.img_default)
                 .into(binding.ivPicture1);
         Glide.with(this)
-                .load(Constants.BASE_URL+"/"+shopInfoDto.getShop_env_picture2())
+                .load(Constants.BASE_URL + "/" + shopInfoDto.getShop_env_picture2())
                 .placeholder(R.mipmap.img_default)
                 .into(binding.ivPicture2);
         binding.etZhekou.setText(shopInfoDto.getShare_rate());
@@ -158,6 +160,7 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
     }
 
     String phone;
+
     @Override
     protected void initListener() {
 
@@ -388,9 +391,16 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
             LogUtils.e(" ======= " + region_name);
             HttpsUtil.getInstance(this).regShopCompany(
                     1, name, jianjie, xukeNum, zhengjian, email, contact, province_name, city_name, region_name, address, contactperson_number, kaihu,
-                    number, license, contactperson, front_picture + "," + reverse_picture, permit_picture, shop_picture, shop_env_picture1, shop_env_picture2, zhekou, code,phone, object -> {
-                        ActivityUtils.finishActivity(OpenStoreTypeActivity.class);
-                        finish();
+                    number, license, contactperson, front_picture + "," + reverse_picture, permit_picture, shop_picture, shop_env_picture1, shop_env_picture2, zhekou, code, phone, object -> {
+
+
+                        new XPopup.Builder(this).asCustom(new PopReportSuccess(this, new PopReportSuccess.KnowListener() {
+                            @Override
+                            public void onSubmit() {
+                                ActivityUtils.finishActivity(OpenStoreTypeActivity.class);
+                                finish();
+                            }
+                        })).show();
                     });
         });
     }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg_pop_sign_in">
+
+        <ImageView
+            android:layout_width="575pt"
+            android:layout_height="327pt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="600pt"
+            android:src="@mipmap/bg_pop2" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="680pt"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="签到成功"
+                android:textColor="#FC5030"
+                android:textSize="30pt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获得积分分红"
+                android:textColor="#69250F"
+                android:textSize="30pt" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#69250F"
+                android:textSize="60pt" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="780pt"
+            android:layout_centerHorizontal="true"
+            android:textColor="#69250F"
+            android:textSize="20pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="每日签到成功交易积分万分之五自动转红米"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

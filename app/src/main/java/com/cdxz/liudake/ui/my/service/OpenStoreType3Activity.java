@@ -23,10 +23,12 @@ import com.cdxz.liudake.bean.GetSetBean;
 import com.cdxz.liudake.bean.RegionBean;
 import com.cdxz.liudake.bean.ShopInfoDto;
 import com.cdxz.liudake.databinding.ActivityOpenStoreType3Binding;
+import com.cdxz.liudake.pop.PopReportSuccess;
 import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.Base2Activity;
 import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.util.PictureUtil;
+import com.lxj.xpopup.XPopup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -387,8 +389,13 @@ public class OpenStoreType3Activity extends Base2Activity<ActivityOpenStoreType3
             HttpsUtil.getInstance(this).regShopCompany(
                     3, name, jianjie, xukeNum, zhengjian, email, contact, province_name, city_name, region_name, address, contactperson_number, kaihu,
                     number, license, contactperson, front_picture + "," + reverse_picture, permit_picture, shop_picture, shop_env_picture1, shop_env_picture2, zhekou, code,phone, object -> {
-                        ActivityUtils.finishActivity(OpenStoreTypeActivity.class);
-                        finish();
+                        new XPopup.Builder(this).asCustom(new PopReportSuccess(this, new PopReportSuccess.KnowListener() {
+                            @Override
+                            public void onSubmit() {
+                                ActivityUtils.finishActivity(OpenStoreTypeActivity.class);
+                                finish();
+                            }
+                        })).show();
                     });
         });
     }

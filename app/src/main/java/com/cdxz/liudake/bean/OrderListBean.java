@@ -497,6 +497,15 @@ public class OrderListBean implements Serializable {
         private String extend;
         private String logo;
         private String iscomment;
+        private String cx_id;
+
+        public String getCx_id() {
+            return cx_id;
+        }
+
+        public void setCx_id(String cx_id) {
+            this.cx_id = cx_id;
+        }
 
         public String getId() {
             return id;

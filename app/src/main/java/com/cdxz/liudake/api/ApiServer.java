@@ -5,6 +5,7 @@ import androidx.databinding.ObservableField;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.cdxz.liudake.base.BaseBean;
+import com.cdxz.liudake.bean.AdvertDto;
 import com.cdxz.liudake.bean.CategoryListBean;
 import com.cdxz.liudake.bean.IndexAllInfoBean;
 import com.cdxz.liudake.bean.MessageListBean;
@@ -965,4 +966,13 @@ public interface ApiServer {
             @Field("xizuetoken") String xizuetoken,
             @Field("shop_id") String shop_id
     );
+
+    @FormUrlEncoded
+    @POST("user/app/get_sign_in")
+    Observable<BaseBean<List<AdvertDto>>> getAd(
+            @Field("uid") String uid,
+            @Field("xizuetoken") String xizuetoken
+    );
+
+
 }

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DC1820">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/img_back"
+                        android:layout_width="120pt"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="19pt"
+                            android:layout_height="38pt"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="20pt"
+                            android:contentDescription="@null"
+                            android:src="@mipmap/icon_back_store_home" />
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerInParent="true"
+                        android:text="每日签到"
+                        android:textColor="@color/white"
+                        android:textSize="32pt"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/tv_message"
+                        android:layout_width="32pt"
+                        android:layout_height="38pt"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginEnd="20pt"
+                        android:src="@mipmap/icon_store_home_news"
+                        android:visibility="gone" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="330pt"
+                    android:layout_marginStart="30pt"
+                    android:layout_marginTop="50pt"
+                    android:layout_marginEnd="30pt"
+                    android:background="@mipmap/bg_sign_in"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="积分"
+                        android:textColor="@color/color_222222"
+                        android:textSize="30pt" />
+
+                    <TextView
+                        android:id="@+id/tv_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40pt"
+                        android:text="0.00"
+                        android:textColor="#D0323D"
+                        android:textSize="100pt"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:layout_width="match_parent"
+                android:layout_height="460pt"
+                android:layout_marginTop="400pt"
+                android:background="@mipmap/bg_sign_in2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_signIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20pt"
+                    android:background="@drawable/bg_jianbian8"
+                    android:paddingStart="160pt"
+                    android:paddingTop="25pt"
+                    android:paddingEnd="160pt"
+                    android:paddingBottom="25pt"
+                    android:text="立即签到"
+                    android:textColor="@color/white"
+                    android:textSize="36pt" />
+
+                <LinearLayout
+                    android:layout_marginTop="30pt"
+                    android:layout_marginStart="30pt"
+                    android:layout_marginEnd="30pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round20white_shop_my"
+                    android:orientation="vertical"
+                    android:paddingStart="37pt"
+                    android:paddingTop="33pt"
+                    android:paddingEnd="37pt"
+                    android:paddingBottom="33pt">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="已连续签到"
+                            android:textColor="@color/color_222222"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/continues"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="0"
+                            android:textColor="@color/color_222222"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="天"
+                            android:textColor="@color/color_222222"
+                            android:textSize="32pt" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginTop="10pt"
+                        android:id="@+id/rv_signIn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                         />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="签到规则"
+                        android:textColor="@color/color_222222"
+                        android:textSize="28pt" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll1"
+                android:layout_marginStart="20pt"
+                android:layout_marginEnd="20pt"
+                android:layout_marginBottom="20pt"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/bg_sign_in3"
+                    android:paddingStart="100pt"
+                    android:paddingTop="16pt"
+                    android:paddingEnd="100pt"
+                    android:paddingBottom="16pt"
+                    android:text="签到规则"
+                    android:textColor="@color/white"
+                    android:textSize="30pt" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="415pt"
+                    android:background="@mipmap/bg_sign_in_bottom"
+                    android:orientation="vertical"
+                    android:paddingStart="60pt"
+                    android:paddingTop="70pt">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1、每日签到积分自动补贴；"
+                        android:textColor="@color/color_222222"
+                        android:textSize="24pt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20pt"
+                        android:text=" 2、如果中断未签到，签到天数将重新计算"
+                        android:textColor="#222222"
+                        android:textSize="24pt"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

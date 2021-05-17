@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        app:delay_time="5000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <com.cdxz.liudake.util.CountDownView
+        android:id="@+id/countDownView"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:countdownTime="15"
+        app:progressTextColor="@color/white"
+        app:ringWidth="5.0"
+        app:progressTextSize="10dp"
+        >
+
+    </com.cdxz.liudake.util.CountDownView>
+
+
+
+</RelativeLayout>

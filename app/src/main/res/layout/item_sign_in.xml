@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_bg"
+    android:layout_width="80pt"
+    android:layout_height="110pt"
+    android:background="@mipmap/bg_week"
+    android:orientation="vertical">
+
+    <TextView
+        android:paddingEnd="3pt"
+        android:id="@+id/tv_vipScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25pt"
+        android:text="+0.75"
+        android:textColor="#FF8900"
+        android:textSize="14pt" />
+
+    <TextView
+        android:id="@+id/tv_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20pt"
+        android:text="周一"
+        android:textColor="#666666"
+        android:textSize="22pt" />
+
+
+</LinearLayout>

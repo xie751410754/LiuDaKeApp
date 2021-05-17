@@ -12,6 +12,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.base.BaseBean;
 import com.cdxz.liudake.base.BaseObserver;
 import com.cdxz.liudake.base.Constants;
+import com.cdxz.liudake.bean.AdvertDto;
 import com.cdxz.liudake.bean.IndexAllInfoBean;
 import com.cdxz.liudake.bean.MessageListBean;
 import com.cdxz.liudake.bean.RadioDto;
@@ -1802,6 +1803,17 @@ public class HttpsUtil {
                         callback.onResult(response.getData());
                     }
                 });
+    }
+
+
+
+
+    public void getAd(BaseObserver<BaseBean<List<AdvertDto>>> baseBeanBaseObserver) {
+        ApiRetrofit.getInstance().getApiService()
+                .getAd(UserInfoUtil.getUid(), UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(baseBeanBaseObserver);
     }
 
 

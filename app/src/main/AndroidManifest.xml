@@ -49,6 +49,7 @@
         <activity android:name=".ui.my.service.WalletActivity" />
         <activity android:name=".ui.my.service.ToPromoteActivity" />
         <activity android:name=".ui.my.InviteCodeActivity" />
+        <activity android:name=".ui.my.SignInActivity" />
         <activity android:name=".ui.my.SetPayPwdActivity" />
         <activity android:name=".ui.my.AboutUsActivity" />
         <activity android:name=".ui.my.SetActivity" />
@@ -56,6 +57,7 @@
         <activity android:name=".ui.my.service.FAQActivity" />
         <activity android:name=".ui.order.OrderDetailActivity" />
         <activity android:name=".ui.order.OrderListActivity" />
+        <activity android:name=".ui.order.PaySuccessActivity" />
         <activity android:name=".ui.life_circle.StoreDetailActivity" />
         <activity android:name=".ui.life_circle.StoreDetailActivity2" />
         <activity android:name=".ui.life_circle.StoreListActivity" />

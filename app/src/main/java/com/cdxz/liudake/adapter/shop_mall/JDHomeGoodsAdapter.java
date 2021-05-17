@@ -58,7 +58,7 @@ public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, Bas
             baseViewHolder.itemView.findViewById(R.id.tvScore).setVisibility(View.GONE);
 
         }
-        baseViewHolder.setText(R.id.tvGoodsName, "           "+goodsBean.getName())
+        baseViewHolder.setText(R.id.tvGoodsName, "                "+goodsBean.getName())
                 .setText(R.id.tvGoodsNewPrice, "¥" + goodsBean.getSalePrice() )
                 .setText(R.id.tvGoodsPrice, "¥" + goodsBean.getJD_Price())
                 .setText(R.id.tvSellNum, "已售 " + goodsBean.getSaleCount())

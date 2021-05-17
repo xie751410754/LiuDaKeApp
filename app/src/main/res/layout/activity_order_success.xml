@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.my.service.WithdrawalActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130pt"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingTop="60pt">
+
+            <RelativeLayout
+                android:id="@+id/img_back"
+                android:layout_width="120pt"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5pt">
+
+                <ImageView
+                    android:layout_width="19pt"
+                    android:layout_height="38pt"
+                    android:layout_marginStart="20pt"
+                    android:contentDescription="@null"
+                    android:src="@mipmap/ic_black_back" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-medium"
+                android:text="支付成功"
+                android:textColor="#080808"
+                android:textSize="34pt" />
+
+            <ImageView
+                android:id="@+id/tv_message"
+                android:layout_width="32pt"
+                android:layout_height="38pt"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="20pt"
+                android:src="@mipmap/icon_store_home_news" />
+
+            <TextView
+                android:id="@+id/tv_under_msg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/circle_while"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#E20012"
+                android:textSize="10sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1pt"
+            android:background="#F1F1F1" />
+
+        <ImageView
+            android:layout_width="135pt"
+            android:layout_height="135pt"
+            android:layout_gravity="center"
+            android:layout_marginTop="60pt"
+            android:src="@mipmap/icon_pay_success" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30pt"
+            android:text="订单支付成功！"
+            android:textColor="#080808"
+            android:textSize="31pt" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30pt"
+            android:layout_marginTop="30pt"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_orderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#686868"
+                android:textSize="27pt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18pt"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="实付金额："
+                    android:textColor="#686868"
+                    android:textSize="27pt" />
+
+                <TextView
+                    android:id="@+id/tv_totalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF4444"
+                    android:textSize="27pt" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_payMent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18pt"
+                android:textColor="#686868"
+                android:textSize="27pt" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2pt"
+                android:layout_marginTop="15pt"
+                android:background="#E5E5E5" />
+
+            <TextView
+                android:id="@+id/tv_orderInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18pt"
+                android:textColor="#686868"
+                android:textSize="27pt" />
+
+            <TextView
+                android:id="@+id/tv_orderAdress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18pt"
+                android:text="收货地址： 云南省昆明市五华区XXXXXX"
+                android:textColor="#686868"
+                android:textSize="27pt" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center">
+
+            <ImageView
+                android:id="@+id/img_watch"
+                android:layout_width="600pt"
+                android:layout_height="90pt"
+                android:layout_marginBottom="40pt"
+                android:src="@mipmap/bg_watch_order" />
+
+            <ImageView
+                android:id="@+id/img_again"
+                android:layout_width="600pt"
+                android:layout_height="90pt"
+                android:layout_below="@id/img_watch"
+                android:layout_marginBottom="100pt"
+                android:src="@mipmap/bg_order_again" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

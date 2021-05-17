@@ -44,6 +44,7 @@ import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.BaseFragment;
 import com.cdxz.liudake.ui.my.InviteCodeActivity;
 import com.cdxz.liudake.ui.my.SetActivity;
+import com.cdxz.liudake.ui.my.SignInActivity;
 import com.cdxz.liudake.ui.my.UserInfoActivity;
 import com.cdxz.liudake.ui.my.service.AddressListActivity;
 import com.cdxz.liudake.ui.my.service.CollectActivity;
@@ -295,7 +296,7 @@ public class MyFragment2 extends BaseFragment {
     @SuppressLint("NonConstantResourceId")
     @OnClick({R.id.ivSet, R.id.tvInviteCode,
             R.id.scoreLayout1, R.id.scoreLayout2, R.id.redmiLayout,
-            R.id.tvOrderAll, R.id.tvOrder1, R.id.tvOrder2, R.id.tvOrder3, R.id.tv_tiXian, R.id.tv_sendGoods, R.id.tvCopyInviteCode})
+            R.id.tvOrderAll, R.id.tvOrder1, R.id.tvOrder2, R.id.tvOrder3, R.id.tv_tiXian, R.id.tv_sendGoods, R.id.tvCopyInviteCode,R.id.tv_signIn})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ivSet:
@@ -342,6 +343,9 @@ public class MyFragment2 extends BaseFragment {
                 // 将ClipData内容放到系统剪贴板里。
                 cm.setPrimaryClip(mClipData);
                 ToastUtils.showShort("复制成功");
+                break;
+            case R.id.tv_signIn:
+                SignInActivity.startSignInActivity(getContext());
                 break;
         }
     }

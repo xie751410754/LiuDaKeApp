@@ -81,13 +81,21 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
 
 
     private JDHomeGoodsAdapter mAdapter;
-    private int page = 1;
+    private int page =1 ;
     private int sort = 0;
     private List<JDGoodsDto.DataDTO> goodsBeanList = new ArrayList<>();
     private int homeType;
     private OkHttpClient okHttpClient;
 
     boolean firstEnter = false;
+
+    String key;
+    int pageSize = 30;
+    int order;//1:综合推荐 2:价格3：销量
+    int asc;//1:升序 2：降序
+
+
+
 
     public static void startHomeToGoodsListActivity(Context context) {
         Intent intent = new Intent(context, JDBaopinGoodsListActivity.class);
@@ -246,15 +254,9 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
         });
     }
 
-    String key;
-    int pageSize = 20;
-    int order;//1:综合推荐 2:价格3：销量
-    int asc;//1:升序 2：降序
-    String url = "http://liudake.cn/api/pub/get" + "?param=" + "getbaopinprolist" + "&pagesize=" + pageSize + "&page=" + page ;
-
-
 
     private void goodsList(String val) {
+        String url = "http://liudake.cn/api/pub/get" + "?param=" + "getbaopinprolist" + "&pagesize=" + pageSize + "&page=" + page ;
 
         if (firstEnter){
 
@@ -272,9 +274,15 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
             @Override
             public void onFailure(Call call, IOException e) {
 
-                if (loadingPopupView.isShow()){
-                    loadingPopupView.dismiss();
-                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (loadingPopupView !=null&&loadingPopupView.isShow()){
+                            loadingPopupView.dismiss();
+                            loadingPopupView = null;
+                        }
+                    }
+                });
                 ToastUtils.showShort("数据获取失败");
             }
 
@@ -331,10 +339,10 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
     }
 
     void postLoading(){
-        loadingPopupView = (LoadingPopupView) new XPopup.Builder(ActivityUtils.getTopActivity())
+        loadingPopupView = (LoadingPopupView) new XPopup.Builder(context)
                 .hasShadowBg(false)
                 .dismissOnTouchOutside(false)
-                .dismissOnBackPressed(false)
+                .dismissOnBackPressed(true)
                 .asLoading()
                 .show();
     }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="658pt"
+        android:layout_height="788pt"
+        android:background="@mipmap/bg_pop_sign_in2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="320pt"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="恭喜签到成功"
+                android:textColor="@color/white"
+                android:textSize="36pt" />
+
+            <LinearLayout
+                android:layout_marginTop="80pt"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="签到成功"
+                    android:textColor="#FC5030"
+                    android:textSize="30pt" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="获得积分分红"
+                    android:textColor="#69250F"
+                    android:textSize="30pt" />
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#69250F"
+                    android:textSize="30pt" />
+            </LinearLayout>
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50pt"
+                android:textColor="#69250F"
+                android:textSize="20pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="每日签到成功交易积分万分之五自动转红米"/>
+
+            <TextView
+                android:layout_marginTop="80pt"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="再接再厉，记得每天签到哦"
+                android:textColor="@color/white"
+                android:textSize="24pt" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+    <ImageView
+        android:id="@+id/img_close"
+        android:layout_width="45pt"
+        android:layout_height="45pt"
+        android:layout_below="@id/rl1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60pt"
+        android:src="@mipmap/icon_sign_in_back" />
+
+
+
+</RelativeLayout>
