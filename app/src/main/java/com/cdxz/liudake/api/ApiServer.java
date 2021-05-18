@@ -497,7 +497,8 @@ public interface ApiServer {
             @Field("uid") String uid,
             @Field("page") int page,
             @Field("pageSize") int pageSize,
-            @Field("xizuetoken") String xizuetoken
+            @Field("xizuetoken") String xizuetoken,
+            @Field("search") String search
     );
 
     //个人中心 我的钱包

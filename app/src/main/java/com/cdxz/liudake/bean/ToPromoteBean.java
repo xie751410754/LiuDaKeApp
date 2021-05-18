@@ -58,6 +58,15 @@ public class ToPromoteBean implements Serializable {
         private String createtime;
         private String shopnums;
         private String amount;
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
 
         public String getUid() {
             return uid;

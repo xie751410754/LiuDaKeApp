@@ -917,9 +917,9 @@ public class HttpsUtil {
      * @param page
      * @param callback
      */
-    public void userTuiguang(int page, HttpsCallback callback) {
+    public void userTuiguang(int page,String keyWord , HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .userTuiguang(UserInfoUtil.getUid(), page, Constants.LIST_SIZE, UserInfoUtil.getToken())
+                .userTuiguang(UserInfoUtil.getUid(), page, Constants.LIST_SIZE, UserInfoUtil.getToken(),keyWord)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {

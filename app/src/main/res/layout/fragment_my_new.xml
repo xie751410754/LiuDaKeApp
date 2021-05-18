@@ -44,7 +44,7 @@
                         android:layout_width="120pt"
                         android:layout_height="120pt"
                         android:layout_marginStart="20pt"
-                        android:layout_marginTop="68pt"
+                        android:layout_centerVertical="true"
                         app:riv_oval="true" />
 
                     <TextView
@@ -78,6 +78,15 @@
                         android:text="邀请口令：1257889920"
                         android:textColor="@color/white"
                         android:textSize="26pt" />
+                    <TextView
+                        android:id="@+id/tv_tuijianCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_kouling"
+                        android:layout_alignStart="@id/tvNick"
+                        android:text="推荐码："
+                        android:textColor="@color/white"
+                        android:textSize="26pt" />
 
                     <TextView
                         android:id="@+id/tvCopyInviteCode"
@@ -92,7 +101,7 @@
                         android:id="@+id/tvInviteCode"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_kouling"
+                        android:layout_below="@id/tv_tuijianCode"
                         android:layout_alignStart="@id/tvNick"
                         android:layout_marginTop="20pt"
                         android:background="@drawable/round_shop_my"

@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.CollectionUtils;
@@ -40,9 +43,13 @@ public class ToPromoteActivity extends BaseActivity {
 
     @BindView(R.id.tvFenhong)
     TextView tvFenhong;
+    @BindView(R.id.tv_serach)
+    TextView tv_serach;
 
     @BindView(R.id.refresh)
     SmartRefreshLayout refresh;
+    @BindView(R.id.et_search)
+    EditText et_search;
 
     @BindView(R.id.recyclerToPromote)
     RecyclerView recyclerToPromote;
@@ -63,8 +70,10 @@ public class ToPromoteActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
-        setTitleText("我的推广");
+//        setTitleText("我的推广");
         recyclerToPromote.setLayoutManager(new LinearLayoutManager(this));
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     }
 
     @Override
@@ -72,7 +81,7 @@ public class ToPromoteActivity extends BaseActivity {
         mAdapter = new ToPromoteAdapter(listBeanList);
         recyclerToPromote.setAdapter(mAdapter);
         mAdapter.setEmptyView(R.layout.public_no_data);
-        getData();
+        getData("");
     }
 
     @Override
@@ -83,23 +92,39 @@ public class ToPromoteActivity extends BaseActivity {
                 finish();
             }
         });
+
+        et_search.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                String keyWord = et_search.getText().toString();
+                getData(keyWord);
+            }
+            return false;
+        });
+
+        tv_serach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String keyWord = et_search.getText().toString();
+                getData(keyWord);
+            }
+        });
         refresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 page++;
-                getData();
+                getData("");
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 page = 1;
-                getData();
+                getData("");
             }
         });
     }
 
-    private void getData() {
-        HttpsUtil.getInstance(this).userTuiguang(page, object -> {
+    private void getData(String keyWord) {
+        HttpsUtil.getInstance(this).userTuiguang(page, keyWord, object -> {
             ToPromoteBean promoteBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), ToPromoteBean.class);
             if (promoteBean == null) return;
             tvToPromoteNum.setText(String.valueOf(promoteBean.getCount()));

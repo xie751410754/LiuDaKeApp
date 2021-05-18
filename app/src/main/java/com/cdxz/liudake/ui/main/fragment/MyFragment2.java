@@ -108,6 +108,8 @@ public class MyFragment2 extends BaseFragment {
 
     @BindView(R.id.tv_kouling)
     TextView tv_kouling;
+    @BindView(R.id.tv_tuijianCode)
+    TextView tv_tuijianCode;
     @BindView(R.id.marqueeView)
     TextView marqueeView;
     @BindView(R.id.text_banner)
@@ -538,6 +540,7 @@ public class MyFragment2 extends BaseFragment {
             headImg = indexBean.getHead();
             tvNick.setText(indexBean.getName());
             tv_kouling.setText("邀请口令：" + indexBean.getUid());
+            tv_tuijianCode.setText("推荐码："+indexBean.getInvitecode());
             tvPhone.setText("TEL：" + indexBean.getPhone().substring(0, 3) + "****" + indexBean.getPhone().substring(7, indexBean.getPhone().length()));
             tvDaiLing.setText(indexBean.getWait_integral());
             tvKeYong.setText(indexBean.getIntegral());

@@ -17,7 +17,7 @@ public class ToPromoteAdapter extends BaseQuickAdapter<ToPromoteBean.ListBean, B
 
     @Override
     protected void convert(BaseViewHolder baseViewHolder, ToPromoteBean.ListBean bean) {
-        baseViewHolder.setText(R.id.tvUser, bean.getPhone())
+        baseViewHolder.setText(R.id.tvUser, bean.getName()+"  "+bean.getPhone())
 //                .setText(R.id.tvRemark, bean.getRemark())
                 .setText(R.id.tvDate, TimeUtils.millis2String(Long.parseLong(bean.getCreatetime()) * 1000, "yyyy.MM.dd HH:mm"))
                 .setText(R.id.tvShouyi, "+" + bean.getAmount());
