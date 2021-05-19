@@ -33,6 +33,7 @@ import com.cdxz.liudake.bean.JDGoodsDto;
 import com.cdxz.liudake.pop.PopLifeCirclePrice;
 import com.cdxz.liudake.ui.base.BaseActivity;
 import com.cdxz.liudake.util.ParseUtils;
+import com.cdxz.liudake.util.TtsManager;
 import com.cdxz.liudake.view.DrawableTextView;
 import com.cdxz.liudake.view.GridSpacingItemDecoration;
 import com.lxj.xpopup.XPopup;
@@ -166,7 +167,11 @@ public class JDBaopinGoodsListActivity extends BaseActivity {
 
     @Override
     protected void initDatas() {
+
+
+
         okHttpClient = new OkHttpClient();
+
 
         mAdapter = new JDHomeGoodsAdapter(goodsBeanList);
         mAdapter.setScore(true);

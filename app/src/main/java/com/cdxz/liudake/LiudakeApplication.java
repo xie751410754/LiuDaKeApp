@@ -14,6 +14,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.cdxz.liudake.map.MapHelper;
 import com.cdxz.liudake.service.LocationService;
+import com.cdxz.liudake.util.TtsManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
@@ -21,9 +22,12 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import java.io.File;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class LiudakeApplication extends Application {
 
     private static Context context;
+    private static boolean isDebug;
 
     static {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> new ClassicsHeader(context));
@@ -35,6 +39,8 @@ public class LiudakeApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this;
+        //在应用启动时初始化一次
+        TtsManager.getInstance().init();
         MapHelper.initContext(getApplicationContext());
         MapHelper.setMapType(MapHelper.MapType.BAIDU);
         //在使用SDK各组件之前初始化context信息，传入ApplicationContext
@@ -45,6 +51,10 @@ public class LiudakeApplication extends Application {
 //        ZXingLibrary.initDisplayOpinion(this);
 
         Utils.init(this);
+        isDebug = AppUtils.isAppDebug();
+        JPushInterface.setDebugMode(isDebug);    // 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);            // 初始化 JPush
+
         File file = getExternalFilesDir(File.separator + AppUtils.getAppPackageName() + File.separator);
         if (FileUtils.createOrExistsDir(file)) {
             CrashUtils.init(file, (crashInfo, e) -> {

@@ -34,6 +34,8 @@ import com.cdxz.liudake.util.ParseUtils;
 
 import java.util.List;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
     CountDownTimer downTimer = new CountDownTimer(60 * 1000, 1000) {
         @Override
@@ -144,7 +146,9 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
                     ToastUtils.showShort("请输入密码");
                     return;
                 }
-                HttpsUtil.getInstance(this).loginByPwd(phone, pwd, object -> {
+                String registrationID = JPushInterface.getRegistrationID(LiudakeApplication.getContext());
+
+                HttpsUtil.getInstance(this).loginByPwd(phone, pwd,registrationID, object -> {
                     SPUtils.getInstance().put(Constants.IS_LOGIN, true);
                     LoginBean loginBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), LoginBean.class);
                     ACache.get(this).put(Constants.CACHE_LOGIN, loginBean);

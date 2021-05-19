@@ -19,6 +19,12 @@ android {
             abiFilters "armeabi", "armeabi-v7a", "x86"
             // abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "c0345fd6509e0e788c84d54d", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
     }
 
     signingConfigs {
@@ -153,4 +159,8 @@ dependencies {
 
     //支付模块(支付宝 微信)[暂为待优化模块，谨慎]
     implementation 'com.github.tamsiree.RxTool:RxPay:2.6.2'
+
+    //JPush
+    api 'cn.jiguang.sdk:jpush:3.3.2'
+    api 'cn.jiguang.sdk:jcore:2.0.1'
 }

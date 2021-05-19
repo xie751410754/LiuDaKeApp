@@ -28,21 +28,21 @@ public class ScoreBillAdapter extends BaseQuickAdapter<ScoreBillBean.ListBean, B
         TextView tvJinE = baseViewHolder.getView(R.id.tvJinE);
         tvTitle.setText(bean.getRemark());
         tvJinE.setText(bean.getAmount());
-        switch (bean.getType()) {
+        switch (bean.getIn_out()) {
             case "1"://购物下单 减
                 String t1 = "购物下单使用";
-                String j1 = "-";
+                String j1 = "+";
 //                tvTitle.setText(t1);
                 tvJinE.setText(j1 + bean.getAmount());
-                tvJinE.setTextColor(ContextCompat.getColor(getContext(), R.color.color_222222));
+                tvJinE.setTextColor(ContextCompat.getColor(getContext(), R.color.color_FF6600));
 
                 break;
             case "2"://订单完成 加
                 String t2 = "订单完成赠送";
-                String j2 = "+";
+                String j2 = "-";
 //                tvTitle.setText(t2);
                 tvJinE.setText(j2 + bean.getAmount());
-                tvJinE.setTextColor(ContextCompat.getColor(getContext(), R.color.color_FF6600));
+                tvJinE.setTextColor(ContextCompat.getColor(getContext(), R.color.color_222222));
 
                 break;
             case "3"://线下消费 加

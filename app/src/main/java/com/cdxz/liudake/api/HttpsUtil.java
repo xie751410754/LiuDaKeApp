@@ -206,9 +206,9 @@ public class HttpsUtil {
      * @param password
      * @param callback
      */
-    public void loginByPwd(String phone, String password, HttpsCallback callback) {
+    public void loginByPwd(String phone, String password, String jpushID,HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .loginByPwd(phone, password, DeviceUtils.getUniqueDeviceId())
+                .loginByPwd(phone, password, DeviceUtils.getUniqueDeviceId(),jpushID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {

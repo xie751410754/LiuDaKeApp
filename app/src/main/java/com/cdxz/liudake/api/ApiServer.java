@@ -98,7 +98,8 @@ public interface ApiServer {
     Observable<BaseBean> loginByPwd(
             @Field("phone") String phone,
             @Field("password") String password,
-            @Field("mark") String mark
+            @Field("mark") String mark,
+            @Field("RegistrationID") String RegistrationID
     );
 
     //搜索
