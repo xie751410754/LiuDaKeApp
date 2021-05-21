@@ -147,6 +147,7 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
                     return;
                 }
                 String registrationID = JPushInterface.getRegistrationID(LiudakeApplication.getContext());
+                LogUtils.e("registrationID ="+registrationID);
 
                 HttpsUtil.getInstance(this).loginByPwd(phone, pwd,registrationID, object -> {
                     SPUtils.getInstance().put(Constants.IS_LOGIN, true);

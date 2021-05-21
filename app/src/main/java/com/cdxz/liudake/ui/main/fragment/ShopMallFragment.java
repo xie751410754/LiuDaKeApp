@@ -204,7 +204,14 @@ public class ShopMallFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-        refreshHome.setOnRefreshListener(refreshLayout -> homeIndex());
+//        refreshHome.setOnRefreshListener(refreshLayout -> homeIndex());
+
+        refreshHome.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                homeIndex();
+            }
+        });
     }
 
     @BusUtils.Bus(tag = BusTag.UPDATE_MESSAGE_NUM)

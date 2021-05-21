@@ -153,7 +153,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-medium"
-                            android:text="今日红米订单"
+                            android:text="红米订单"
                             android:textColor="#66ffffff"
                             android:textSize="28pt" />
 
@@ -180,7 +180,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-medium"
-                            android:text="今日现金订单"
+                            android:text="现金订单"
                             android:textColor="#66ffffff"
                             android:textSize="28pt" />
 

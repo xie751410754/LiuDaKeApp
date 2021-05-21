@@ -150,8 +150,11 @@ public interface ApiServer {
     );
 
     //首页
+    @FormUrlEncoded
     @POST("Home/api/index_now")
-    Observable<BaseBean> homeIndex();
+    Observable<BaseBean> homeIndex(
+            @Field("uid") String uid
+    );
 
     //商品详情
     @FormUrlEncoded

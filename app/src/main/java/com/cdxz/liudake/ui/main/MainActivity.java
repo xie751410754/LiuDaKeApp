@@ -111,6 +111,12 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         updateVersion();
+        getHomeIndex();
+
+    }
+
+    private void getHomeIndex() {
+        HttpsUtil.getInstance(context).homeIndex(object -> {});
     }
 
     @Override

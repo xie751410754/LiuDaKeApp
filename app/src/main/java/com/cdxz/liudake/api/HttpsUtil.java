@@ -326,7 +326,7 @@ public class HttpsUtil {
      */
     public void homeIndex(HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .homeIndex()
+                .homeIndex(UserInfoUtil.getUid())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {

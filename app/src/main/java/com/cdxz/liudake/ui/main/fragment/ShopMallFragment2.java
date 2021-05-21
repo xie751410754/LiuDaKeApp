@@ -659,8 +659,10 @@ public class ShopMallFragment2 extends BaseFragment {
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                page = 1;
+                homeIndex();
+                page =1;
                 getJDGoods();
+                getBaopinJDGoods();
             }
         });
 

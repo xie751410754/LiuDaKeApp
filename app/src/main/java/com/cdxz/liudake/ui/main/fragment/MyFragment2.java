@@ -540,7 +540,7 @@ public class MyFragment2 extends BaseFragment {
             headImg = indexBean.getHead();
             tvNick.setText(indexBean.getName());
             tv_kouling.setText("邀请口令：" + indexBean.getUid());
-            tv_tuijianCode.setText("推荐码："+indexBean.getInvitecode());
+            tv_tuijianCode.setText("推荐人："+indexBean.getInvitecode());
             tvPhone.setText("TEL：" + indexBean.getPhone().substring(0, 3) + "****" + indexBean.getPhone().substring(7, indexBean.getPhone().length()));
             tvDaiLing.setText(indexBean.getWait_integral());
             tvKeYong.setText(indexBean.getIntegral());
