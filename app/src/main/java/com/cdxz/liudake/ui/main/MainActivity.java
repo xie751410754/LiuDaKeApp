@@ -111,6 +111,7 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         updateVersion();
+
         getHomeIndex();
 
     }
