@@ -46,6 +46,8 @@ import com.cdxz.liudake.adapter.shop_mall.HomeCXBannerAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeGoodsAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeMenuAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeQianggouAdapter;
+import com.cdxz.liudake.adapter.shop_mall.JDCategoryAdapter;
+import com.cdxz.liudake.adapter.shop_mall.JDCategoryMenuAdapter;
 import com.cdxz.liudake.adapter.shop_mall.JDHomeGoodsAdapter;
 import com.cdxz.liudake.adapter.shop_mall.Menu2Adapter;
 import com.cdxz.liudake.adapter.shop_mall.MenuAdapter;
@@ -57,9 +59,12 @@ import com.cdxz.liudake.bean.BannerBean;
 import com.cdxz.liudake.bean.Bus.PopSuggestionBean;
 import com.cdxz.liudake.bean.CXBannerBean;
 import com.cdxz.liudake.bean.HomeIndexBean;
+import com.cdxz.liudake.bean.JDCategoryDto;
+import com.cdxz.liudake.bean.JDCategoryMenuDto;
 import com.cdxz.liudake.bean.JDGoodsDto;
 import com.cdxz.liudake.ui.ScanQRCodeActivity;
 import com.cdxz.liudake.ui.SearchActivity;
+import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.BaseFragment;
 import com.cdxz.liudake.ui.life_circle.LifeCircleMapActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsClassActivity;
@@ -67,6 +72,7 @@ import com.cdxz.liudake.ui.shop_mall.HomeToGoodsListActivity;
 import com.cdxz.liudake.ui.shop_mall.JDBaopinGoodsListActivity;
 import com.cdxz.liudake.ui.shop_mall.MessageListActivity;
 import com.cdxz.liudake.util.ParseUtils;
+import com.cdxz.liudake.util.UserInfoUtil;
 import com.cdxz.liudake.view.DrawableTextView;
 import com.cdxz.liudake.view.GridSpacingItemDecoration;
 import com.cdxz.liudake.view.SpacesItemDecoration2;
@@ -87,6 +93,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -315,6 +322,8 @@ public class ShopMallFragment2 extends BaseFragment {
     private ClassAdapter classAdapter;
     private HomeGoodsAdapter goodsAdapter;
     private JDHomeGoodsAdapter jdHomeGoodsAdapter;
+    private JDCategoryAdapter jdCategoryAdapter;
+    private JDCategoryMenuAdapter jdCategoryMenuAdapter;
     private HomeQianggouAdapter qianggouAdapter;
     private List<HomeIndexBean.GoodsActivityClassBean> menuList = new ArrayList<>();
     private List<HomeIndexBean.GoodsActivityClassBean> homeMenuList = new ArrayList<>();
@@ -323,6 +332,8 @@ public class ShopMallFragment2 extends BaseFragment {
     private List<HomeIndexBean.GoodsCuxiao3Bean> classList = new ArrayList<>();
     private List<HomeIndexBean.GoodsCuxiao4Bean> tuijianGoodsList = new ArrayList<>();
     private List<JDGoodsDto.DataDTO> jdGoodsList = new ArrayList<>();
+    private List<JDCategoryDto.DataDTO> jdCategoryList = new ArrayList<>();
+    private List<JDCategoryMenuDto.DataDTO> jdCategoryMenuList = new ArrayList<>();
     private List<HomeIndexBean.TimeBean.ListBean> qianggouList = new ArrayList<>();
 
     public ShopMallFragment2() {
@@ -373,6 +384,29 @@ public class ShopMallFragment2 extends BaseFragment {
                     jd_score.setText(jdGoodsDto.get(0).getJifen()+"积分");
                     jd_goodsPrice.setText("￥"+jdGoodsDto.get(0).getSalePrice());
 //                    jd_goodsPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+                    break;
+
+                case 12:
+
+                    break;
+
+                case 13:
+                    jdCategoryList.clear();
+                    List<JDCategoryDto.DataDTO> jdCategorry = (List<JDCategoryDto.DataDTO>) msg.obj;
+                    jdCategoryList.addAll(jdCategorry);
+                    jdCategoryList.get(0).setSelected(true);
+                    jdCategoryAdapter.notifyDataSetChanged();
+
+                    break;
+                case 14:
+
+                    break;
+
+                case 15:
+                    jdCategoryMenuList.clear();
+                    List<JDCategoryMenuDto.DataDTO> jdCategorryMenu = (List<JDCategoryMenuDto.DataDTO>) msg.obj;
+                    jdCategoryMenuList.addAll(jdCategorryMenu);
+                    jdCategoryMenuAdapter.notifyDataSetChanged();
                     break;
             }
         }
@@ -457,7 +491,9 @@ public class ShopMallFragment2 extends BaseFragment {
 
         //
         menuAdapter = new MenuAdapter(menuList);
-        recyclerMenu.setAdapter(menuAdapter);
+//        recyclerMenu.setAdapter(menuAdapter);
+        jdCategoryMenuAdapter = new JDCategoryMenuAdapter(jdCategoryMenuList);
+        recyclerMenu.setAdapter(jdCategoryMenuAdapter);
         //
         homeMenuAdapter = new HomeMenuAdapter(homeMenuList, new HomeMenuAdapter.OnSelectListener() {
             @Override
@@ -473,7 +509,22 @@ public class ShopMallFragment2 extends BaseFragment {
 
             }
         });
-        recyclerView.setAdapter(homeMenuAdapter);
+//        recyclerView.setAdapter(homeMenuAdapter);
+        jdCategoryAdapter = new JDCategoryAdapter(jdCategoryList, new JDCategoryAdapter.OnSelectListener() {
+            @Override
+            public void onClick(int position) {
+
+                for (int i = 0; i < jdCategoryList.size(); i++) {
+                    jdCategoryList.get(i).setSelected(false);
+
+                }
+                jdCategoryList.get(position).setSelected(true);
+                jdCategoryAdapter.notifyDataSetChanged();
+
+
+            }
+        });
+        recyclerView.setAdapter(jdCategoryAdapter);
         //
         menu2Adapter = new Menu2Adapter(menu2List);
         recyclerMenu2.setAdapter(menu2Adapter);
@@ -501,9 +552,84 @@ public class ShopMallFragment2 extends BaseFragment {
         homeIndex();
         getcxList();
 
+        getJDCategoryList();
+
+        getJDCategoryMenuList();
+
         getJDGoods();
 
         getBaopinJDGoods();
+    }
+
+    private void getJDCategoryMenuList() {
+        String url = "http://liudake.cn/api/pub/get" + "?param=" + "getCategoryapp" ;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                ToastUtils.showShort("数据获取失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String responseBody = response.body().string();
+                JDCategoryMenuDto baseBean = ParseUtils.parseJsonObject(responseBody, JDCategoryMenuDto.class);
+
+                if (CollectionUtils.isEmpty(baseBean.getData())) {
+                    Message message = new Message();
+                    message.what = 14;
+                    mHandler.sendMessage(message);
+
+                } else {
+                    Message message = new Message();
+                    message.what = 15;
+                    message.obj = baseBean.getData();
+                    mHandler.sendMessage(message);
+                }
+
+            }
+        });
+    }
+
+    private void getJDCategoryList() {
+
+        String url = "http://liudake.cn/api/pub/get" + "?param=" + "getCategoryfirst" ;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                ToastUtils.showShort("数据获取失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                final String responseBody = response.body().string();
+                JDCategoryDto baseBean = ParseUtils.parseJsonObject(responseBody, JDCategoryDto.class);
+
+                if (CollectionUtils.isEmpty(baseBean.getData())) {
+                    Message message = new Message();
+                    message.what = 12;
+                    mHandler.sendMessage(message);
+
+                } else {
+                    Message message = new Message();
+                    message.what = 13;
+                    message.obj = baseBean.getData();
+                    mHandler.sendMessage(message);
+                }
+
+            }
+        });
     }
 
     String url ;
@@ -646,7 +772,9 @@ public class ShopMallFragment2 extends BaseFragment {
 //            startActivityForResult(intent, 0);
         });
         getActivity().findViewById(R.id.dtv_more).setOnClickListener(v -> {
-            GoodsClassActivity.startGoodsClassActivity(getContext());
+//            GoodsClassActivity.startGoodsClassActivity(getContext());
+            WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/life/life?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
+
 
         });
 
