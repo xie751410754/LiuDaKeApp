@@ -68,6 +68,7 @@ public class ZhiTuiRankActivity extends BaseActivity {
 
     }
 
+
     @Override
     protected void initDatas() {
         mAdapter = new ZhiTuiRankAdapter(listBeanList);
