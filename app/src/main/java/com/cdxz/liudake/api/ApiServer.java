@@ -22,6 +22,7 @@ import com.cdxz.liudake.bean.StoreTodayInviteBean;
 import com.cdxz.liudake.bean.StoreTodaySettlementBean;
 import com.cdxz.liudake.bean.StoreTodaySettlementCashBean;
 import com.cdxz.liudake.bean.StoreUnderMsgResult;
+import com.cdxz.liudake.bean.ZhiTuiRankDto;
 
 import java.io.File;
 import java.util.List;
@@ -218,6 +219,26 @@ public interface ApiServer {
     @FormUrlEncoded
     @POST("home/api/get_cuxiao_goods")
     Observable<BaseBean> activeGoodsList(
+            @Field("page") int page,
+            @Field("pageSize") int pageSize,
+            @Field("activity_id") String activity_id,
+            @Field("cuxiao_id") String cuxiao_id,
+            @Field("cateid") String cateid,
+            @Field("brand") String brand,
+            @Field("keywords") String keywords,
+            @Field("shopid") String shopid,
+            @Field("shopcateid") String shopcateid,
+            @Field("lat") String lat,
+            @Field("lng") String lng,
+            @Field("sort") int sort,
+            @Field("uid") String uid,
+            @Field("xizuetoken") String xizuetoken
+
+    );
+
+    @FormUrlEncoded
+    @POST("home/api/get_tehui_goods")
+    Observable<BaseBean> disscountGoodsList(
             @Field("page") int page,
             @Field("pageSize") int pageSize,
             @Field("activity_id") String activity_id,
@@ -503,6 +524,14 @@ public interface ApiServer {
             @Field("pageSize") int pageSize,
             @Field("xizuetoken") String xizuetoken,
             @Field("search") String search
+    );
+    @FormUrlEncoded
+    @POST("order/api/zhituiRank")
+    Observable<BaseBean> zhituiRank(
+            @Field("uid") String uid,
+            @Field("page") int page,
+            @Field("pagesize") int pageSize,
+            @Field("xizuetoken") String xizuetoken
     );
 
     //个人中心 我的钱包

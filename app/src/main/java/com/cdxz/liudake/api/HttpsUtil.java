@@ -464,6 +464,19 @@ public class HttpsUtil {
                     }
                 });
     }
+    public void disscountGoodsList(int page, String activity_id, String guxiao_id, String cateid, String brand, String keywords, String shopid, String shopcateid,
+                          String lat, String lng, int sort, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .disscountGoodsList(page, Constants.LIST_SIZE, activity_id, guxiao_id, cateid, brand, keywords, shopid, shopcateid, lat, lng, sort, UserInfoUtil.getUid(), UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
 
     /**
      * 添加收货地址
@@ -920,6 +933,19 @@ public class HttpsUtil {
     public void userTuiguang(int page,String keyWord , HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
                 .userTuiguang(UserInfoUtil.getUid(), page, Constants.LIST_SIZE, UserInfoUtil.getToken(),keyWord)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
+
+    public void zhituiRank(int page, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .zhituiRank(UserInfoUtil.getUid(), page, Constants.LIST_SIZE, UserInfoUtil.getToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {

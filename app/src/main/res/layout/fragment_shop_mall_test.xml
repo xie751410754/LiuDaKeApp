@@ -200,6 +200,16 @@
                     app:banner_radius="8pt"
                      />
 
+                <ImageView
+                    android:id="@+id/img_tejia"
+                    android:layout_marginEnd="20pt"
+                    android:layout_marginStart="20pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="216pt"
+                    android:src="@mipmap/bg_jd_tejia"
+                    android:scaleType="fitXY"
+                    />
+
 
                 <com.cdxz.liudake.view.roundedImageView.RoundedImageView
                     android:id="@+id/ivRoundedImageView"

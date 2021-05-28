@@ -248,6 +248,32 @@ public class HomeToGoodsListActivity extends BaseActivity {
                         }
                         mAdapter.notifyDataSetChanged();
                     });
+        }else if (homeType ==100){
+            HttpsUtil.getInstance(this).disscountGoodsList(page, null, getIntent().getStringExtra("id"), null,
+                    null, null, null, null, Constants.LAT, Constants.LNG, sort, object -> {
+                        List<GoodsBean> beanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), GoodsBean.class);
+                        if (CollectionUtils.isEmpty(beanList)) {
+                            if (page == 1) {
+                                refresh.finishRefreshWithNoMoreData();
+                            } else {
+                                refresh.finishLoadMoreWithNoMoreData();
+                            }
+                            goodsBeanList.clear();
+                        } else {
+                            if (page == 1) {
+                                goodsBeanList.clear();
+                                if (beanList.size() < Constants.LIST_SIZE) {
+                                    refresh.finishLoadMoreWithNoMoreData();
+                                } else {
+                                    refresh.finishRefresh();
+                                }
+                            } else {
+                                refresh.finishLoadMore();
+                            }
+                            goodsBeanList.addAll(beanList);
+                        }
+                        mAdapter.notifyDataSetChanged();
+                    });
         }
     }
 }

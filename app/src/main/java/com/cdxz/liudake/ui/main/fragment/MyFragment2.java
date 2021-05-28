@@ -46,6 +46,7 @@ import com.cdxz.liudake.ui.my.InviteCodeActivity;
 import com.cdxz.liudake.ui.my.SetActivity;
 import com.cdxz.liudake.ui.my.SignInActivity;
 import com.cdxz.liudake.ui.my.UserInfoActivity;
+import com.cdxz.liudake.ui.my.ZhiTuiRankActivity;
 import com.cdxz.liudake.ui.my.service.AddressListActivity;
 import com.cdxz.liudake.ui.my.service.CollectActivity;
 import com.cdxz.liudake.ui.my.service.FAQActivity;
@@ -175,7 +176,7 @@ public class MyFragment2 extends BaseFragment {
                         } else if (bean.getStatus().equals("1")) {
 
                             if (mAdapter != null) {
-                                mAdapter.getData().remove(9);
+                                mAdapter.getData().remove(10);
                                 mAdapter.notifyDataSetChanged();
                             }
                         } else if (bean.getStatus().equals("2")) {
@@ -380,6 +381,8 @@ public class MyFragment2 extends BaseFragment {
 
         serviceBean = new ServiceBean(R.mipmap.shop_my_collectmoney, "收米");
         serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_rank_zhitui, "直推榜");
+        serviceBeanList.add(serviceBean);
 
 
         serviceBean = new ServiceBean(R.mipmap.shop_my_settle, "开店入驻");
@@ -473,6 +476,10 @@ public class MyFragment2 extends BaseFragment {
 
                         break;
                     case 9:
+
+                        ZhiTuiRankActivity.startZhiTuiRankActivity(getContext());
+                        break;
+                    case 10:
 //                        OpenStoreActivity.startOpenStoreActivity(getContext());
                         HttpsUtil.getInstance(getContext()).userInfo(object -> {
                             try {

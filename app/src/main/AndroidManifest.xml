@@ -52,6 +52,7 @@
         <activity android:name=".ui.my.SignInActivity" />
         <activity android:name=".ui.my.SetPayPwdActivity" />
         <activity android:name=".ui.my.AboutUsActivity" />
+        <activity android:name=".ui.my.ZhiTuiRankActivity" />
         <activity android:name=".ui.my.SetActivity" />
         <activity android:name=".ui.my.UserInfoActivity" />
         <activity android:name=".ui.my.service.FAQActivity" />

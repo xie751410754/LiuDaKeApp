@@ -70,6 +70,7 @@ import com.cdxz.liudake.ui.life_circle.LifeCircleMapActivity;
 import com.cdxz.liudake.ui.shop_mall.GoodsClassActivity;
 import com.cdxz.liudake.ui.shop_mall.HomeToGoodsListActivity;
 import com.cdxz.liudake.ui.shop_mall.JDBaopinGoodsListActivity;
+import com.cdxz.liudake.ui.shop_mall.JDGoodsListActivity;
 import com.cdxz.liudake.ui.shop_mall.MessageListActivity;
 import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.util.UserInfoUtil;
@@ -772,8 +773,8 @@ public class ShopMallFragment2 extends BaseFragment {
 //            startActivityForResult(intent, 0);
         });
         getActivity().findViewById(R.id.dtv_more).setOnClickListener(v -> {
-//            GoodsClassActivity.startGoodsClassActivity(getContext());
-            WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/life/life?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
+            GoodsClassActivity.startGoodsClassActivity(getContext());
+//            WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/life/life?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
 
 
         });
@@ -794,6 +795,14 @@ public class ShopMallFragment2 extends BaseFragment {
             }
         });
 
+
+        getActivity().findViewById(R.id.img_tejia).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(),"","特价专区",100);
+            }
+        });
+
     }
 
     @BusUtils.Bus(tag = BusTag.UPDATE_MESSAGE_NUM)
@@ -806,7 +815,10 @@ public class ShopMallFragment2 extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tvHomeSearch:
-                SearchActivity.startSearchActivity(getContext(), null);
+//                SearchActivity.startSearchActivity(getContext(), null);
+
+                JDGoodsListActivity.starJDGoodsListActivity(getContext(),"","京东商品");
+
                 break;
             case R.id.ivMsg:
 //                ToastUtils.showShort("暂无消息");

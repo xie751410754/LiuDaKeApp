@@ -51,15 +51,15 @@ public class GoodsAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolder> {
                 .setText(R.id.tvScore, "积分 " + goodsBean.getGold());
 
 
-        try {
-            if (Double.parseDouble(goodsBean.getSaleprice()) == 0 && Double.parseDouble(goodsBean.getGold()) > 0) {
-                baseViewHolder.getView(R.id.tvSellNum).setVisibility(View.INVISIBLE);
-            } else {
-                baseViewHolder.getView(R.id.tvSellNum).setVisibility(View.VISIBLE);
-            }
-        } catch (Exception e) {
-
-        }
+//        try {
+//            if (Double.parseDouble(goodsBean.getSaleprice()) == 0 && Double.parseDouble(goodsBean.getGold()) > 0) {
+//                baseViewHolder.getView(R.id.tvSellNum).setVisibility(View.INVISIBLE);
+//            } else {
+//                baseViewHolder.getView(R.id.tvSellNum).setVisibility(View.VISIBLE);
+//            }
+//        } catch (Exception e) {
+//
+//        }
 
 
         TextView tvGoodsPrice = baseViewHolder.getView(R.id.tvGoodsPrice);
