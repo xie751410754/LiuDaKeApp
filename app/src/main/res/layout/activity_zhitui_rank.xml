@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:fontFamily="sans-serif-medium"
-                    android:text="直推排行榜"
+                    android:text="本月直推排行榜"
                     android:textColor="@color/white"
                     android:textSize="34pt" />
 
