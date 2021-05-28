@@ -11,7 +11,7 @@
         android:layout_height="100pt"
         android:layout_marginTop="20pt"
         android:orientation="horizontal"
-        android:paddingStart="45pt"
+        android:paddingStart="25pt"
         android:paddingEnd="51pt">
 
         <TextView

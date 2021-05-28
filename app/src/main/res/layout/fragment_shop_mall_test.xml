@@ -206,7 +206,7 @@
                     android:layout_marginStart="20pt"
                     android:layout_width="match_parent"
                     android:layout_height="216pt"
-                    android:src="@mipmap/bg_jd_tejia"
+                    android:src="@mipmap/bg_tejia_new"
                     android:scaleType="fitXY"
                     />
 

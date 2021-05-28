@@ -20,6 +20,7 @@ public class GoodsAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolder> {
 
 
     String id;
+     int homeType;
 
     public GoodsAdapter(List<GoodsBean> data) {
         super(R.layout.item_shop_mall_goods, data);
@@ -30,11 +31,18 @@ public class GoodsAdapter extends BaseQuickAdapter<GoodsBean, BaseViewHolder> {
         this.id = id;
     }
 
+    public void checkHomeType(int type){this.homeType = type;}
+
     @Override
     protected void convert(BaseViewHolder baseViewHolder, GoodsBean goodsBean) {
         baseViewHolder.itemView.setOnClickListener(v -> {
             if (StringUtils.isEmpty(id)) {
-                GoodsDetailActivity.startGoodsDetailActivity(getContext(), goodsBean.getId());
+                if (homeType==100){
+                    GoodsDetailActivity.startGoodsDetailActivity(getContext(),goodsBean.getId(),homeType);
+                }else {
+
+                    GoodsDetailActivity.startGoodsDetailActivity(getContext(), goodsBean.getId());
+                }
             } else {
                 GoodsDetailActivity.startGoodsDetailActivity(getContext(), goodsBean.getId(), id);
 

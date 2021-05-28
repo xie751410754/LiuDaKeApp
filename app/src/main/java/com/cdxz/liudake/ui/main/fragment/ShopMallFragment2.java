@@ -799,7 +799,7 @@ public class ShopMallFragment2 extends BaseFragment {
         getActivity().findViewById(R.id.img_tejia).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(),"","特价专区",100);
+                HomeToGoodsListActivity.startHomeToGoodsListActivity(getContext(),"","特惠专区",100);
             }
         });
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F5F7"
+    android:paddingTop="10dp"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.shop_mall.GoodsListActivity">
 

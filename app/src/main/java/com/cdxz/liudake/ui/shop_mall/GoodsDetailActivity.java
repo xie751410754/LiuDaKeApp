@@ -163,6 +163,12 @@ public class GoodsDetailActivity extends BaseActivity {
         intent.putExtra("cuxiao_id", activeId);
         context.startActivity(intent);
     }
+    public static void startGoodsDetailActivity(Context context, String goodsId, int homeType) {
+        Intent intent = new Intent(context, GoodsDetailActivity.class);
+        intent.putExtra("goodsId", goodsId);
+        intent.putExtra("homeType", homeType);
+        context.startActivity(intent);
+    }
 
     public static void startGoodsDetailActivity(Context context, String goodsId, boolean needPhoneNumber) {
         Intent intent = new Intent(context, GoodsDetailActivity.class);
@@ -398,15 +404,22 @@ public class GoodsDetailActivity extends BaseActivity {
                         .show();
             });
             findViewById(R.id.tvAddShopCar).setOnClickListener(v -> {
-                if (CollectionUtils.isEmpty(detailBean.getSize())) {
-                    orderAddCar(null, 1,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"));
-                } else {
-                    new XPopup.Builder(this)
-                            .asCustom(new PopGoodsSpecifica(this, detailBean, (s, num) -> {
-                                tvSelectCanShu.setText("已选择：" + s);
-                                orderAddCar(s, num,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"));
-                            })).show();
+                if (getIntent().getIntExtra("homeType",0)==100){
+
+                    ToastUtils.showShort("特价专区商品无法加购，请直接购买");
+                }else {
+                    if (CollectionUtils.isEmpty(detailBean.getSize())) {
+                        orderAddCar(null, 1,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"));
+                    } else {
+                        new XPopup.Builder(this)
+                                .asCustom(new PopGoodsSpecifica(this, detailBean, (s, num) -> {
+                                    tvSelectCanShu.setText("已选择：" + s);
+                                    orderAddCar(s, num,getIntent().getStringExtra("cuxiao_id") == null ? "0" : getIntent().getStringExtra("cuxiao_id"));
+                                })).show();
+                    }
                 }
+
+
             });
             findViewById(R.id.tvBuy).setOnClickListener(v -> {
                 new XPopup.Builder(this)
@@ -416,19 +429,26 @@ public class GoodsDetailActivity extends BaseActivity {
                         })).show();
             });
             tvCollect.setOnClickListener(v -> {
-                if (detailBean.getIscollection() == 1) {
-                    HttpsUtil.getInstance(this).goodsCollect(detailBean.getId(), 1, obj -> {
-                        detailBean.setIscollection(0);
-                        tvCollect.setTopDrawable(ContextCompat.getDrawable(this, R.mipmap.icon_colloction));
-                        tvCollect.setText("收藏");
-                    });
-                } else {
-                    HttpsUtil.getInstance(this).goodsCollect(detailBean.getId(), 0, obj -> {
-                        detailBean.setIscollection(1);
-                        tvCollect.setTopDrawable(ContextCompat.getDrawable(this, R.mipmap.icon_star_yellow));
-                        tvCollect.setText("已收藏");
-                    });
+
+                if (getIntent().getIntExtra("homeType",0)==100){
+                    ToastUtils.showShort("特价专区商品无法收藏，请直接购买");
+
+                }else {
+                    if (detailBean.getIscollection() == 1) {
+                        HttpsUtil.getInstance(this).goodsCollect(detailBean.getId(), 1, obj -> {
+                            detailBean.setIscollection(0);
+                            tvCollect.setTopDrawable(ContextCompat.getDrawable(this, R.mipmap.icon_colloction));
+                            tvCollect.setText("收藏");
+                        });
+                    } else {
+                        HttpsUtil.getInstance(this).goodsCollect(detailBean.getId(), 0, obj -> {
+                            detailBean.setIscollection(1);
+                            tvCollect.setTopDrawable(ContextCompat.getDrawable(this, R.mipmap.icon_star_yellow));
+                            tvCollect.setText("已收藏");
+                        });
+                    }
                 }
+
             });
             banner.setAdapter(new GoodsDetailBannerAdapter(detailBean.getGallery()), true)
                     .setIndicator(new CircleIndicator(this));

@@ -109,6 +109,7 @@ public class HomeToGoodsListActivity extends BaseActivity {
         if (getIntent().getStringExtra("id") != null) {
             mAdapter.setActiveID(getIntent().getStringExtra("id"));
         }
+        mAdapter.checkHomeType(homeType);
         goodsList();
     }
 
