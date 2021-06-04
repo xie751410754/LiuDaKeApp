@@ -28,7 +28,6 @@ public class TransferAccountSuccessfulActivity extends BaseActivity {
     TextView tv_order;
 
 
-
     String balance,phone,time,order;
 
     public static void startTransferAccountSuccessfulActivity(Context context,String balance,String phone,String time,String order) {
