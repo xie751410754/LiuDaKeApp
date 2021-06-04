@@ -59,6 +59,7 @@ public class TransferAccountSuccessfulActivity extends BaseActivity {
     }
 
 
+
     @Override
     protected void initDatas() {
 
