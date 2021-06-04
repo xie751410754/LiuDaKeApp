@@ -20,6 +20,9 @@
       "{ desc: com.cdxz.liudake.ui.main.fragment.MyFragment2#onUpdateUserInfo(com.cdxz.liudake.bean.Bus.UpdateUserInfoBean bean) }",
       "{ desc: com.cdxz.liudake.ui.my.UserInfoActivity#onUpdateUserInfo(com.cdxz.liudake.bean.Bus.UpdateUserInfoBean bean) }"
     ],
+    "transfer": [
+      "{ desc: com.cdxz.liudake.ui.main.fragment.MyFragment2#transferSucess() }"
+    ],
     "update_car": [
       "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment#onUpdateCar() }",
       "{ desc: com.cdxz.liudake.ui.main.fragment.ShopCarFragment2#onUpdateCar() }"

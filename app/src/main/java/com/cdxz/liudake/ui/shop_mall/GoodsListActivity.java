@@ -184,7 +184,7 @@ public class GoodsListActivity extends BaseActivity {
                         } else {
                             refresh.finishLoadMoreWithNoMoreData();
                         }
-                        goodsBeanList.clear();
+//                        goodsBeanList.clear();
                     } else {
                         if (page == 1) {
                             goodsBeanList.clear();

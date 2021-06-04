@@ -89,11 +89,17 @@ public class RegisterActivity extends BaseTitleActivity<ActivityRegisterNewBindi
     }
 
     private void register() {
+        String name = binding.tvName.getText().toString();
         String phone = binding.phoneNumerEdit.getText().toString();
         String pwd = binding.passwordEdit.getText().toString();
         String pwd2 = binding.passwordEditSubmit.getText().toString();
         String invitationCode = binding.etInvitationCode.getText().toString();
         String code = binding.authCodeEdit.getText().toString();
+
+        if (StringUtils.isEmpty(name)) {
+            ToastUtils.showShort("请输入姓名");
+            return;
+        }
 
         if (StringUtils.isEmpty(phone)) {
             ToastUtils.showShort("请输入手机号");
@@ -119,7 +125,7 @@ public class RegisterActivity extends BaseTitleActivity<ActivityRegisterNewBindi
             ToastUtils.showShort("两次密码输入不一致");
             return;
         }
-        HttpsUtil.getInstance(this).register(phone, pwd, code, invitationCode, object -> {
+        HttpsUtil.getInstance(this).register(name ,phone, pwd, code, invitationCode, object -> {
 
             new XPopup.Builder(this).asCustom(new PopRegisterSuccess(this, new PopRegisterSuccess.OnPwdListener() {
                 @Override

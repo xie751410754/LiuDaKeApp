@@ -61,6 +61,7 @@ public class WebActivity extends BaseActivity {
     public static final int INTERRITY_XIE_YI = 7;
     public static final int FOODSAFE_XIE_YI = 8;
 
+
     private ValueCallback<Uri[]> uploadFiles;
     private static final int CHOOSE_REQUEST_CODE = 0x9001;
     private ValueCallback<Uri> uploadFile;//定义接受返回值
@@ -86,6 +87,39 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+
+        switch (getIntent().getIntExtra("type", USER_XIE_YI)) {
+            case USER_XIE_YI:
+                setTitleText("用户协议");
+                break;
+            case PRIVATE_XIE_YI:
+                setTitleText("隐私协议");
+                break;
+            case ABOUT:
+                setTitleText("关于溜达客");
+                break;
+            case WALLET_STRATEGY:
+                setTitleText("钱包攻略");
+                break;
+            case SHOP_START:
+                setTitleText("开店指南");
+                break;
+            case JDSHOP_START:
+                setTitleText("京东商品");
+//                titleBar.setVisibility(View.GONE);
+                break;
+
+            case INTERRITY_XIE_YI:
+                setTitle("诚信承诺书");
+                break;
+            case FOODSAFE_XIE_YI:
+                setTitle("食品安全承诺书");
+                break;
+
+            default:
+                setTitleText("溜达客");
+                break;
+        }
 
         WechatShareTools.init(this, WX_APP_ID);//初始化
 
@@ -192,37 +226,7 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void initDatas() {
-        switch (getIntent().getIntExtra("type", USER_XIE_YI)) {
-            case USER_XIE_YI:
-                setTitleText("用户协议");
-                break;
-            case PRIVATE_XIE_YI:
-                setTitleText("隐私协议");
-                break;
-            case ABOUT:
-                setTitleText("关于溜达客");
-                break;
-            case WALLET_STRATEGY:
-                setTitleText("钱包攻略");
-                break;
-            case SHOP_START:
-                setTitleText("开店指南");
-                break;
-            case JDSHOP_START:
-                setTitleText("京东商品");
-//                titleBar.setVisibility(View.GONE);
-                break;
 
-            case INTERRITY_XIE_YI:
-                setTitle("诚信承诺书");
-                break;
-            case FOODSAFE_XIE_YI:
-                setTitle("食品安全承诺书");
-                break;
-            default:
-                setTitleText("溜达客");
-                break;
-        }
         String url = getIntent().getStringExtra("url");
         assert url != null;
         if (url.startsWith("http://") || url.startsWith("https://")) {
@@ -327,4 +331,12 @@ public class WebActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (webView!=null){
+
+            webView.clearCache(true);
+        }
+    }
 }

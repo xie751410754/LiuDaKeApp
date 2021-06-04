@@ -99,7 +99,7 @@ public class MessageListActivity extends BaseActivity {
                     } else {
                         refreshMessage.finishLoadMoreWithNoMoreData();
                     }
-                    messageListBeans.clear();
+//                    messageListBeans.clear();
                 } else {
                     if (page == 1) {
                         messageListBeans.clear();

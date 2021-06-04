@@ -45,6 +45,7 @@ import com.cdxz.liudake.ui.base.BaseFragment;
 import com.cdxz.liudake.ui.my.InviteCodeActivity;
 import com.cdxz.liudake.ui.my.SetActivity;
 import com.cdxz.liudake.ui.my.SignInActivity;
+import com.cdxz.liudake.ui.my.TransferAccountActivity;
 import com.cdxz.liudake.ui.my.UserInfoActivity;
 import com.cdxz.liudake.ui.my.ZhiTuiRankActivity;
 import com.cdxz.liudake.ui.my.service.AddressListActivity;
@@ -75,6 +76,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -176,7 +178,7 @@ public class MyFragment2 extends BaseFragment {
                         } else if (bean.getStatus().equals("1")) {
 
                             if (mAdapter != null) {
-                                mAdapter.getData().remove(10);
+                                mAdapter.getData().remove(11);
                                 mAdapter.notifyDataSetChanged();
                             }
                         } else if (bean.getStatus().equals("2")) {
@@ -256,6 +258,10 @@ public class MyFragment2 extends BaseFragment {
         //
         tvNick.setText(bean.getName());
     }
+    @BusUtils.Bus(tag = "transfer")
+    public void transferSucess() {
+        userIndex();
+    }
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -299,7 +305,7 @@ public class MyFragment2 extends BaseFragment {
     @SuppressLint("NonConstantResourceId")
     @OnClick({R.id.ivSet, R.id.tvInviteCode,
             R.id.scoreLayout1, R.id.scoreLayout2, R.id.redmiLayout,
-            R.id.tvOrderAll, R.id.tvOrder1, R.id.tvOrder2, R.id.tvOrder3, R.id.tv_tiXian, R.id.tv_sendGoods, R.id.tvCopyInviteCode,R.id.tv_signIn})
+            R.id.tvOrderAll, R.id.tvOrder1, R.id.tvOrder2, R.id.tvOrder3, R.id.tv_tiXian, R.id.tv_sendGoods, R.id.tvCopyInviteCode,R.id.tv_signIn,R.id.dtv_jdOrder})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ivSet:
@@ -350,6 +356,10 @@ public class MyFragment2 extends BaseFragment {
             case R.id.tv_signIn:
                 SignInActivity.startSignInActivity(getContext());
                 break;
+            case R.id.dtv_jdOrder:
+                WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/singal/singal?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
+
+                break;
         }
     }
 
@@ -382,6 +392,8 @@ public class MyFragment2 extends BaseFragment {
         serviceBean = new ServiceBean(R.mipmap.shop_my_collectmoney, "收米");
         serviceBeanList.add(serviceBean);
         serviceBean = new ServiceBean(R.mipmap.icon_rank_zhitui, "直推榜");
+        serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_transfer_account, "转账");
         serviceBeanList.add(serviceBean);
 
 
@@ -479,7 +491,12 @@ public class MyFragment2 extends BaseFragment {
 
                         ZhiTuiRankActivity.startZhiTuiRankActivity(getContext());
                         break;
+
                     case 10:
+
+                        TransferAccountActivity.startTransferAccountActivity(getContext(),tvKeYong.getText().toString(),tvRedmi.getText().toString());
+                        break;
+                    case 11:
 //                        OpenStoreActivity.startOpenStoreActivity(getContext());
                         HttpsUtil.getInstance(getContext()).userInfo(object -> {
                             try {

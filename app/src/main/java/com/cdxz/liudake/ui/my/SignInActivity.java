@@ -19,8 +19,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.BusUtils;
+import com.blankj.utilcode.util.ClickUtils;
 import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.R;
@@ -70,6 +72,8 @@ public class SignInActivity extends BaseActivity {
 
     @BindView(R.id.tv_score)
     TextView tv_score;
+    @BindView(R.id.tv_signIn)
+    TextView tv_signIn;
     @BindView(R.id.rv_signIn)
     RecyclerView rv_signIn;
 
@@ -120,6 +124,7 @@ public class SignInActivity extends BaseActivity {
                     break;
 
                 case 3:
+                    tv_signIn.setClickable(true);
                     VIPScoreDto vipScoreDto = (VIPScoreDto) msg.obj;
                     if (vipScoreDto.getCode()==1){
 
@@ -232,9 +237,12 @@ public class SignInActivity extends BaseActivity {
             }
         });
 
+
+
         findViewById(R.id.tv_signIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LogUtils.e("点击了签到");
                 signIn();
             }
         });
@@ -243,6 +251,7 @@ public class SignInActivity extends BaseActivity {
     }
 
     private void signIn() {
+        tv_signIn.setClickable(false);
         Request request = new Request.Builder()
                 .url("http://liudake.cn/api/sign/signin?uid=" + UserInfoUtil.getUid())
                 .get()
@@ -253,6 +262,7 @@ public class SignInActivity extends BaseActivity {
             public void onFailure(Call call, IOException e) {
 
                 ToastUtils.showShort("数据获取失败");
+
             }
 
             @Override

@@ -9,6 +9,17 @@ public class HomeIndexBean implements Serializable {
     private List<BannerBean> imgs;
     private List<GoodsActivityClassBean> goods_activity_class;
     private List<GoodsCuxiaoBean> goods_cuxiao;
+
+    public List<GoodsCuxiaoBean> getTehui() {
+        return tehui;
+    }
+
+    public void setTehui(List<GoodsCuxiaoBean> tehui) {
+        this.tehui = tehui;
+    }
+
+    private List<GoodsCuxiaoBean> tehui;
+
     private List<GoodsCuxiao1Bean> goods_cuxiao1;
     private List<GoodsCuxiao2Bean> goods_cuxiao2;
     private List<GoodsCuxiao3Bean> goods_cuxiao3;

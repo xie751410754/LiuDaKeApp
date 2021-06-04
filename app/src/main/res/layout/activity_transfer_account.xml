@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F5F7"
+    android:orientation="vertical">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="#F3F5F7"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="500pt"
+                android:background="@drawable/bg_jianbian3"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100pt"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/img_back"
+                        android:layout_width="120pt"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="19pt"
+                            android:layout_height="38pt"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="20pt"
+                            android:contentDescription="@null"
+                            android:src="@mipmap/icon_back_store_home" />
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerInParent="true"
+                        android:text="我的金库"
+                        android:textColor="@color/white"
+                        android:textSize="32pt"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1pt"
+                    android:layout_margin="20pt"
+                    android:background="#F1F1F1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="30pt"
+                    android:background="@drawable/round20white_shop_my"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="40pt">
+
+                        <TextView
+                            android:id="@+id/tv_redMi_balance"
+                            android:paddingStart="40pt"
+                            android:paddingEnd="40pt"
+                            android:paddingTop="8pt"
+                            android:paddingBottom="8pt"
+                            android:background="@drawable/selector_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="红米资产"
+                            android:textColor="@color/tc_code"
+                            android:textSize="32pt" />
+
+                        <TextView
+                            android:id="@+id/tv_jifen_balance"
+                            android:background="@drawable/selector_tv_right"
+                            android:paddingStart="40pt"
+                            android:paddingEnd="40pt"
+                            android:paddingTop="8pt"
+                            android:paddingBottom="8pt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="积分资产"
+                            android:textColor="@color/tc_code"
+                            android:textSize="32pt" />
+                    </LinearLayout>
+                    
+                    <View
+                        android:layout_marginTop="30pt"
+                        android:layout_marginStart="28pt"
+                        android:layout_marginEnd="28pt"
+                        android:layout_width="match_parent"
+                        android:layout_height="1pt"
+                        android:background="#E5E5E5"/>
+
+                    <TextView
+                        android:layout_marginTop="30pt"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="账户资产"
+                        android:textColor="@color/color_666666"
+                        android:textSize="26pt"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_balance"
+                        android:layout_marginTop="5pt"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#425062"
+                        android:textSize="60pt"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingStart="20pt"
+                android:gravity="center_vertical"
+                android:background="#FFF5EC"
+                android:layout_marginTop="30pt"
+                android:layout_width="match_parent"
+                android:layout_height="85pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我要转账"
+                    android:textSize="32pt"
+                    android:textColor="#425062"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_margin="20pt"
+                android:background="@drawable/round8white_shop"
+                android:layout_width="match_parent"
+                android:layout_height="105pt">
+
+                <com.cdxz.liudake.view.ClearEditText
+                    android:id="@+id/et_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30pt"
+                    android:background="@null"
+                    android:hint="输入你要转账的电话号码"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="#333333"
+                    android:textColorHint="#D7D7D7"
+                    android:textSize="32pt" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="20pt"
+                android:layout_marginStart="20pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="金额"
+                android:textSize="32pt"
+                android:textColor="#425062"
+
+                />
+
+            <LinearLayout
+                android:layout_margin="20pt"
+                android:background="@drawable/round8white_shop"
+                android:layout_width="match_parent"
+                android:layout_height="172pt">
+                <com.cdxz.liudake.view.ClearEditText
+                    android:id="@+id/et_balance"
+                    android:layout_marginStart="30pt"
+                    android:layout_marginEnd="30pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="￥00.00"
+                    android:singleLine="true"
+                    android:textColor="#333333"
+                    android:textColorHint="#D7D7D7"
+                    android:textSize="32pt"
+                    android:background="@null"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_marginTop="100pt"
+                android:layout_marginEnd="20pt"
+                android:layout_marginStart="20pt"
+                android:gravity="center"
+                android:background="@drawable/bg_jianbian5"
+                android:layout_width="match_parent"
+                android:layout_height="110pt"
+                android:text="转账￥00.00"
+                android:textColor="#D7D7D7"
+                android:textSize="28pt"
+                />
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

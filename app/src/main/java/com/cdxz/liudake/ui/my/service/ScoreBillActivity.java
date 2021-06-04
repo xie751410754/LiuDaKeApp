@@ -159,7 +159,7 @@ public class ScoreBillActivity extends BaseActivity {
                 } else {
                     refresh.finishLoadMoreWithNoMoreData();
                 }
-                listBeanList.clear();
+//                listBeanList.clear();
             } else {
                 if (page == 1) {
                     listBeanList.clear();

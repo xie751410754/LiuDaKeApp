@@ -441,6 +441,19 @@
                     android:orientation="horizontal">
 
                     <com.cdxz.liudake.view.DrawableTextView
+                        android:id="@+id/dtv_jdOrder"
+                        android:layout_width="0pt"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawablePadding="11pt"
+                        android:gravity="center"
+                        android:text="京东订单"
+                        android:textColor="#222222"
+                        app:dt_top_drawable="@mipmap/icon_jd_order"
+                        app:dt_top_height="36pt"
+                        app:dt_top_width="36pt" />
+
+                    <com.cdxz.liudake.view.DrawableTextView
                         android:id="@+id/tvOrder2"
                         android:layout_width="0pt"
                         android:layout_height="wrap_content"
@@ -491,6 +504,7 @@
                         app:dt_top_drawable="@mipmap/shop_my_getgoods"
                         app:dt_top_height="36pt"
                         app:dt_top_width="36pt" />
+
 
 
                 </LinearLayout>

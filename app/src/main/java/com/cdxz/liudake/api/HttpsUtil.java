@@ -134,9 +134,9 @@ public class HttpsUtil {
      * @param phone
      * @param callback
      */
-    public void register(String phone, String password, String code, String invitecode, HttpsCallback callback) {
+    public void register(String name,String phone, String password, String code, String invitecode, HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .register(phone, password, code, invitecode,
+                .register(name,phone, password, code, invitecode,
                         Build.VERSION.RELEASE, Build.MODEL, DeviceUtils.getUniqueDeviceId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -932,7 +932,7 @@ public class HttpsUtil {
      */
     public void userTuiguang(int page,String keyWord , HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .userTuiguang(UserInfoUtil.getUid(), page, Constants.LIST_SIZE, UserInfoUtil.getToken(),keyWord)
+                .userTuiguang(UserInfoUtil.getUid(), page, 15, UserInfoUtil.getToken(),keyWord)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
@@ -1563,6 +1563,23 @@ public class HttpsUtil {
                     @Override
                     public void onSuccess(BaseBean response) {
                         ToastUtils.showShort(response.getState().getMsg());
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
+    /**
+     * 转账
+     *
+     * @param callback
+     */
+    public void transferAccount(String amount, String type, String phone, String pay_password, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .transfer(UserInfoUtil.getUid(), amount, type, phone,  pay_password, UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
                         callback.onResult(response.getData());
                     }
                 });

@@ -166,7 +166,7 @@ public class SearchResultActivity extends BaseActivity {
                         } else {
                             refresh.finishLoadMoreWithNoMoreData();
                         }
-                        goodsBeanList.clear();
+//                        goodsBeanList.clear();
                     } else {
                         if (page == 1) {
                             goodsBeanList.clear();

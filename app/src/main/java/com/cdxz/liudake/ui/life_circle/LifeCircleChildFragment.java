@@ -68,7 +68,7 @@ public class LifeCircleChildFragment extends BaseFragment {
     TextView tvPrice;
 
     private int page = 1;
-    private int sort = 1;
+    private int sort = 2;
     private String cat_id = "", fastcateid = "";
     private LifeCircleAdapter mAdapter;
     private List<LifeCircleBean> lifeCircleBeanList = new ArrayList<>();

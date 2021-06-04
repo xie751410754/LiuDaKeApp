@@ -29,7 +29,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_marginTop="250pt"
+            android:layout_marginTop="230pt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="44pt"
@@ -59,6 +59,42 @@
 
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginStart="100pt"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="120pt"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24pt"
+                        android:layout_height="38pt"
+                        android:src="@mipmap/register_recommend"/>
+
+                    <com.cdxz.liudake.view.ClearEditText
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="43pt"
+                        android:background="@null"
+                        android:hint="输入你的名字"
+                        android:singleLine="true"
+                        android:inputType="textPassword"
+                        android:textColor="#333333"
+                        android:textColorHint="#666666"
+                        android:textSize="24pt" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginEnd="30pt"
+                    android:layout_marginStart="30pt"
+                    android:layout_width="match_parent"
+                    android:layout_height="2pt"
+                    android:background="#EBECEE" />
+
                 <LinearLayout
                     android:layout_marginStart="100pt"
                     android:gravity="center_vertical"
@@ -249,7 +285,7 @@
         <TextView
             android:gravity="center"
             android:id="@+id/tv_back_login"
-            android:layout_marginBottom="50pt"
+            android:layout_marginBottom="30pt"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
@@ -260,10 +296,9 @@
 
         <Button
             android:id="@+id/next_step_btn"
-            android:layout_marginBottom="150pt"
+            android:layout_marginBottom="100pt"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="500pt"
             android:background="@mipmap/register_zhuce"
             android:layout_width="480pt"
             android:layout_height="80pt"/>

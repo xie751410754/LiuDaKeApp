@@ -48,6 +48,8 @@
         <activity android:name=".ui.my.service.OpenStoreActivity" />
         <activity android:name=".ui.my.service.WalletActivity" />
         <activity android:name=".ui.my.service.ToPromoteActivity" />
+        <activity android:name=".ui.my.TransferAccountActivity" />
+        <activity android:name=".ui.my.TransferAccountSuccessfulActivity" />
         <activity android:name=".ui.my.InviteCodeActivity" />
         <activity android:name=".ui.my.SignInActivity" />
         <activity android:name=".ui.my.SetPayPwdActivity" />

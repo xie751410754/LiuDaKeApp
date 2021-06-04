@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_jianbian3"
+    >
+
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="70pt"
+            android:layout_marginTop="100pt"
+            android:layout_marginStart="20pt"
+            android:layout_marginEnd="20pt"
+            android:background="@drawable/round8white_shop"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@mipmap/icon_transfer"
+                android:layout_marginTop="120pt"
+                android:layout_width="170pt"
+                android:layout_height="170pt"
+                />
+            <TextView
+                android:layout_marginTop="20pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="转账成功"
+                android:textSize="28pt"
+                android:textColor="@color/color_222222"
+                />
+            <TextView
+                android:id="@+id/tv_balance"
+                android:layout_marginTop="30pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF6600"
+                android:textSize="60pt"
+
+                />
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_marginTop="30pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28pt"
+                android:textColor="@color/color_666666"
+                />
+            <View
+                android:layout_marginTop="60pt"
+                android:layout_marginStart="30pt"
+                android:layout_marginEnd="30pt"
+                android:layout_width="match_parent"
+                android:layout_height="1pt"
+                />
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_marginTop="40pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_999999"
+                android:textSize="28pt"
+                />
+            <TextView
+                android:id="@+id/tv_order"
+                android:layout_marginTop="10pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_999999"
+                android:textSize="28pt"
+                />
+            <TextView
+                android:id="@+id/tv_back"
+                android:layout_marginTop="150pt"
+                android:layout_marginEnd="100pt"
+                android:layout_marginStart="100pt"
+                android:gravity="center"
+                android:background="@drawable/bg_jianbian5"
+                android:layout_width="match_parent"
+                android:layout_height="78pt"
+                android:text="返回"
+                android:textColor="@color/white"
+                android:textSize="28pt"
+                />
+
+        </LinearLayout>
+
+
+</RelativeLayout>

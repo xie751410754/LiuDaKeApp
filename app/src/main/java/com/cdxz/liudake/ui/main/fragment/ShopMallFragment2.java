@@ -9,6 +9,7 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -313,6 +314,10 @@ public class ShopMallFragment2 extends BaseFragment {
     RoundedImageView jd_img_goods;
     @BindView(R.id.jd_singleActive)
     LinearLayout jd_singleActive;
+
+
+    @BindView(R.id.img_tejia)
+    ImageView img_tejia;
 
     //
     private CountDownTimer downTimer;
@@ -895,6 +900,13 @@ public class ShopMallFragment2 extends BaseFragment {
             menu2List.addAll(homeIndexBean.getGoods_cuxiao());
             menu2Adapter.notifyDataSetChanged();
 
+            List<HomeIndexBean.GoodsCuxiaoBean> tehuiList = homeIndexBean.getTehui();
+            if (tehuiList.size()>0){
+                Glide.with(getContext())
+                        .load(tehuiList.get(0).getUrl())
+                        .placeholder(R.mipmap.img_default)
+                        .into(img_tejia);
+            }
             initActiveView(homeIndexBean.getGoods_cuxiao());
 
 //            //活动专栏

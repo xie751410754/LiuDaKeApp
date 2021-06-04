@@ -201,12 +201,11 @@
                      />
 
                 <ImageView
-                    android:id="@+id/img_tejia"
-                    android:layout_marginEnd="20pt"
                     android:layout_marginStart="20pt"
+                    android:layout_marginEnd="20pt"
+                    android:id="@+id/img_tejia"
                     android:layout_width="match_parent"
-                    android:layout_height="216pt"
-                    android:src="@mipmap/bg_tejia_new"
+                    android:layout_height="320pt"
                     android:scaleType="fitXY"
                     />
 
@@ -320,6 +319,7 @@
 
 
                 <LinearLayout
+                    android:layout_marginTop="20pt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_jianbian3"

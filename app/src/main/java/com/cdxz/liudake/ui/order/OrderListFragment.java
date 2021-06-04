@@ -174,7 +174,7 @@ public class OrderListFragment extends BaseFragment implements OrderListAdapter.
                 } else {
                     refreshOrder.finishLoadMoreWithNoMoreData();
                 }
-                orderListBeanList.clear();
+//                orderListBeanList.clear();
             } else {
                 if (page == 1) {
                     orderListBeanList.clear();

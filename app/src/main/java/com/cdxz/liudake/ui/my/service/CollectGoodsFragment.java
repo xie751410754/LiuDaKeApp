@@ -110,7 +110,7 @@ public class CollectGoodsFragment extends BaseFragment {
                 } else {
                     refresh.finishLoadMoreWithNoMoreData();
                 }
-                collectGoodsBeanList.clear();
+//                collectGoodsBeanList.clear();
             } else {
                 if (page == 1) {
                     collectGoodsBeanList.clear();

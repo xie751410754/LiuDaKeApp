@@ -180,7 +180,7 @@ public class SearchLifeCircleChildFragment extends BaseFragment {
                 } else {
                     refreshStore.finishLoadMoreWithNoMoreData();
                 }
-                lifeCircleBeanList.clear();
+//                lifeCircleBeanList.clear();
             } else {
                 if (page == 1) {
                     lifeCircleBeanList.clear();

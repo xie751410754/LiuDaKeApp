@@ -137,11 +137,11 @@ public class ToPromoteActivity extends BaseActivity {
                 } else {
                     refresh.finishLoadMoreWithNoMoreData();
                 }
-                listBeanList.clear();
+//                listBeanList.clear();
             } else {
                 if (page == 1) {
                     listBeanList.clear();
-                    if (promoteBean.getList().size() < Constants.LIST_SIZE) {
+                    if (promoteBean.getList().size() < 15) {
                         refresh.finishLoadMoreWithNoMoreData();
                     } else {
                         refresh.finishRefresh();

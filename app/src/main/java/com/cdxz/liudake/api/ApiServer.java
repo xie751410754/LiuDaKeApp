@@ -65,6 +65,7 @@ public interface ApiServer {
     @FormUrlEncoded
     @POST("User/Api/regist")
     Observable<BaseBean> register(
+            @Field("name") String name,
             @Field("phone") String phone,
             @Field("password") String password,
             @Field("code") String code,
@@ -858,6 +859,17 @@ public interface ApiServer {
             @Field("is_balance") int is_balance,
             @Field("shopid") String shopid,
             @Field("payment") int payment,
+            @Field("pay_password") String pay_password,
+            @Field("xizuetoken") String xizuetoken
+    );
+    //转账
+    @FormUrlEncoded
+    @POST("User/Api/transfer")
+    Observable<BaseBean> transfer(
+            @Field("uid") String uid,
+            @Field("amount") String amount,
+            @Field("type") String type,
+            @Field("tophone") String tophone,
             @Field("pay_password") String pay_password,
             @Field("xizuetoken") String xizuetoken
     );
