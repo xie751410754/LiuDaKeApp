@@ -35,7 +35,7 @@ public class MenuAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsActivityCla
             if (baseViewHolder.getAdapterPosition() + 1 == getData().size()) {
                 GoodsClassActivity.startGoodsClassActivity(getContext());
             } else if (baseViewHolder.getAdapterPosition() == 0) {
-                WebActivity.startWebActivity(getContext(),6,"http://jd.liudake.cn/#/pages/index/index?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
+                WebActivity.startWebActivity(getContext(),"京东商品","http://jd.liudake.cn/#/pages/index/index?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
             } else {
                 HomeToGoodsListActivity.startHomeToGoodsListActivity(
                         getContext(), bean.getId(), bean.getName(), HomeToGoodsListActivity.HOME1

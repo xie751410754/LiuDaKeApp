@@ -5,6 +5,38 @@ import java.util.List;
 
 public class HomeIndexBean implements Serializable {
 
+
+    private List<NoticeDto> notice_sys;
+
+    public List<NoticeDto> getNotice_sys() {
+        return notice_sys;
+    }
+
+    public void setNotice_sys(List<NoticeDto> notice_sys) {
+        this.notice_sys = notice_sys;
+    }
+
+    public static class NoticeDto{
+        private String title;
+        private String content;
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+    }
+
     private Advertisement2Bean advertisement2;
     private List<BannerBean> imgs;
     private List<GoodsActivityClassBean> goods_activity_class;

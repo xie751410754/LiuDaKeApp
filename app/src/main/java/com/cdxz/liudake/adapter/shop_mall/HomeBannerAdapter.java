@@ -49,10 +49,10 @@ public class HomeBannerAdapter extends BannerAdapter<BannerBean, HomeBannerAdapt
 
                     break;
                 case "1":
-                    WebActivity.startWebActivity(holder.imageView.getContext(), 0, data.getUrl());
+                    WebActivity.startWebActivity(holder.imageView.getContext(), "溜达客", data.getUrl());
                     break;
                 case "2":
-                    WebActivity.startWebActivity(holder.imageView.getContext(), 0, data.getHtmlcontent());
+                    WebActivity.startWebActivity(holder.imageView.getContext(), "溜达客", data.getHtmlcontent());
                     break;
                 case "3":
                     GoodsDetailActivity.startGoodsDetailActivity(holder.imageView.getContext(), data.getGoodsid());

@@ -140,21 +140,21 @@ public class AboutUsActivity extends BaseActivity {
                     case 0:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("about".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(AboutUsActivity.this, WebActivity.ABOUT, setBean.getValue());
+                                WebActivity.startWebActivity(AboutUsActivity.this, "关于溜达客", setBean.getValue());
                             }
                         }
                         break;
                     case 1:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("user_xieyi".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(AboutUsActivity.this, WebActivity.USER_XIE_YI, setBean.getValue());
+                                WebActivity.startWebActivity(AboutUsActivity.this,"用户协议", setBean.getValue());
                             }
                         }
                         break;
                     case 2:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("yishi_xieyi".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(AboutUsActivity.this, WebActivity.PRIVATE_XIE_YI, setBean.getValue());
+                                WebActivity.startWebActivity(AboutUsActivity.this, "隐私协议", setBean.getValue());
                             }
                         }
                         break;

@@ -505,21 +505,21 @@ public class OpenStoreType1Activity extends Base2Activity<ActivityOpenStoreType1
                     case 0:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("about".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(OpenStoreType1Activity.this, WebActivity.ABOUT, setBean.getValue());
+                                WebActivity.startWebActivity(OpenStoreType1Activity.this, "关于溜达客", setBean.getValue());
                             }
                         }
                         break;
                     case 1:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("integrity_xieyi".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(OpenStoreType1Activity.this, WebActivity.INTERRITY_XIE_YI, setBean.getValue());
+                                WebActivity.startWebActivity(OpenStoreType1Activity.this, "诚信承诺书", setBean.getValue());
                             }
                         }
                         break;
                     case 2:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("foodsafe_xieyi".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(OpenStoreType1Activity.this, WebActivity.FOODSAFE_XIE_YI, setBean.getValue());
+                                WebActivity.startWebActivity(OpenStoreType1Activity.this, "食品安全承诺书", setBean.getValue());
                             }
                         }
                         break;

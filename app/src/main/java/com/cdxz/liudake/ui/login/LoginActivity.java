@@ -188,21 +188,21 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
                     case 0:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("about".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(LoginActivity.this, WebActivity.ABOUT, setBean.getValue());
+                                WebActivity.startWebActivity(LoginActivity.this, "关于溜达客", setBean.getValue());
                             }
                         }
                         break;
                     case 1:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("user_xieyi".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(LoginActivity.this, WebActivity.USER_XIE_YI, setBean.getValue());
+                                WebActivity.startWebActivity(LoginActivity.this, "用户协议", setBean.getValue());
                             }
                         }
                         break;
                     case 2:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("yishi_xieyi".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(LoginActivity.this, WebActivity.PRIVATE_XIE_YI, setBean.getValue());
+                                WebActivity.startWebActivity(LoginActivity.this, "隐私协议", setBean.getValue());
                             }
                         }
                         break;

@@ -368,7 +368,7 @@ public class MyFragment extends BaseFragment {
                         break;
 
                     case 9:
-                        WebActivity.startWebActivity(getContext(), 0, "http://liudake.cn/#/pages/index/index"+"?uid="+ UserInfoUtil.getUid());
+                        WebActivity.startWebActivity(getContext(), "溜达客", "http://liudake.cn/#/pages/index/index"+"?uid="+ UserInfoUtil.getUid());
 
                         break;
                 }

@@ -59,7 +59,7 @@ public class HomeMenuAdapter extends BaseQuickAdapter<HomeIndexBean.GoodsActivit
             onSelectListener.onClick(getItemPosition(bean));
 
             if (bean.getName().equals("京东")) {
-                WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/index/index?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
+                WebActivity.startWebActivity(getContext(), "京东商品", "http://jd.liudake.cn/#/pages/index/index?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
 
             } else {
                 HomeToGoodsListActivity.startHomeToGoodsListActivity(

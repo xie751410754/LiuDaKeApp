@@ -88,7 +88,7 @@ public class ScanQRCodeActivity extends BaseActivity implements QRCodeView.Deleg
             String[] s = result.split("shop_id=");
             StorePayActivity.startStorePayActivity(this, s[1]);
         } else {
-            WebActivity.startWebActivity(this, 0, result);
+            WebActivity.startWebActivity(this, "溜达客", result);
 //            new XPopup.Builder(this)
 //                    .asConfirm("扫描结果", result, () -> {
 //                        if (zxingView != null) {

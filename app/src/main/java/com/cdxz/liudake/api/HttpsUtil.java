@@ -1584,6 +1584,24 @@ public class HttpsUtil {
                     }
                 });
     }
+    /**
+     * 推荐
+     *
+     * @param callback
+     */
+    public void tuijian( String invateCode, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .tuijian(UserInfoUtil.getUid(),  invateCode, UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        ToastUtils.showShort(response.getState().getMsg());
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
 
     /**
      * 确认收货

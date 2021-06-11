@@ -873,6 +873,14 @@ public interface ApiServer {
             @Field("pay_password") String pay_password,
             @Field("xizuetoken") String xizuetoken
     );
+    //转账
+    @FormUrlEncoded
+    @POST("User/Api/user_set_invitecode")
+    Observable<BaseBean> tuijian(
+            @Field("uid") String uid,
+            @Field("invitecode") String invitecode,
+            @Field("xizuetoken") String xizuetoken
+    );
 
     //确认收货
     @FormUrlEncoded

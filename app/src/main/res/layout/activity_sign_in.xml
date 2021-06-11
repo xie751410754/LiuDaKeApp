@@ -96,8 +96,8 @@
             <LinearLayout
                 android:id="@+id/ll1"
                 android:layout_width="match_parent"
-                android:layout_height="460pt"
-                android:layout_marginTop="400pt"
+                android:layout_height="980pt"
+                android:layout_marginTop="380pt"
                 android:background="@mipmap/bg_sign_in2"
                 android:orientation="vertical">
 
@@ -106,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20pt"
+                    android:layout_marginTop="80pt"
                     android:background="@drawable/bg_jianbian8"
                     android:paddingStart="160pt"
                     android:paddingTop="25pt"
@@ -130,6 +130,7 @@
                     android:paddingBottom="33pt">
 
                     <LinearLayout
+                        android:visibility="visible"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -162,21 +163,44 @@
                     </LinearLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:visibility="gone"
                         android:layout_marginTop="10pt"
                         android:id="@+id/rv_signIn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                          />
 
-                    <TextView
-                        android:visibility="gone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
-                        android:text="签到规则"
-                        android:textColor="@color/color_222222"
-                        android:textSize="28pt" />
+                    <include layout="@layout/pop_calendar" />
 
+                    <com.haibin.calendarview.CalendarView
+                        android:id="@+id/calendarView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        app:calendar_padding="10dp"
+                        app:current_month_lunar_text_color="#CFCFCF"
+                        app:current_month_text_color="#333333"
+                        app:min_year="2004"
+                        app:month_view="com.cdxz.liudake.view.ColorfulMonthView"
+                        app:month_view_show_mode="mode_only_current"
+                        app:other_month_text_color="#e1e1e1"
+                        app:scheme_lunar_text_color="#ffffff"
+                        app:scheme_text="假"
+                        app:scheme_text_color="#fff"
+                        app:scheme_theme_color="#128c4b"
+                        app:selected_lunar_text_color="#fff"
+                        app:selected_text_color="#fff"
+                        app:selected_theme_color="#108cd4"
+                        app:week_background="#fff"
+                        app:week_text_color="#111"
+                        app:week_view="com.cdxz.liudake.view.colorful.ColorfulWeekView"
+                        app:year_view_day_text_color="#333333"
+                        app:year_view_day_text_size="9sp"
+                        app:year_view_month_text_color="#ff0000"
+                        app:year_view_month_text_size="20sp"
+                        app:year_view_scheme_color="#f17706"
+                        app:select_mode="multi_mode"
+                        />
 
                 </LinearLayout>
 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,7 +39,10 @@ import com.cdxz.liudake.bean.LoginBean;
 import com.cdxz.liudake.bean.RadioDto;
 import com.cdxz.liudake.bean.ServiceBean;
 import com.cdxz.liudake.bean.StoreComment;
+import com.cdxz.liudake.bean.TransferAccountDto;
 import com.cdxz.liudake.bean.UserIndexBean;
+import com.cdxz.liudake.pop.PopPayPwd;
+import com.cdxz.liudake.pop.PopTuiJian;
 import com.cdxz.liudake.ui.LookUpActivity;
 import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.BaseFragment;
@@ -46,6 +50,7 @@ import com.cdxz.liudake.ui.my.InviteCodeActivity;
 import com.cdxz.liudake.ui.my.SetActivity;
 import com.cdxz.liudake.ui.my.SignInActivity;
 import com.cdxz.liudake.ui.my.TransferAccountActivity;
+import com.cdxz.liudake.ui.my.TransferAccountSuccessfulActivity;
 import com.cdxz.liudake.ui.my.UserInfoActivity;
 import com.cdxz.liudake.ui.my.ZhiTuiRankActivity;
 import com.cdxz.liudake.ui.my.service.AddressListActivity;
@@ -305,7 +310,7 @@ public class MyFragment2 extends BaseFragment {
     @SuppressLint("NonConstantResourceId")
     @OnClick({R.id.ivSet, R.id.tvInviteCode,
             R.id.scoreLayout1, R.id.scoreLayout2, R.id.redmiLayout,
-            R.id.tvOrderAll, R.id.tvOrder1, R.id.tvOrder2, R.id.tvOrder3, R.id.tv_tiXian, R.id.tv_sendGoods, R.id.tvCopyInviteCode,R.id.tv_signIn,R.id.dtv_jdOrder})
+            R.id.tvOrderAll, R.id.tvOrder1, R.id.tvOrder2, R.id.tvOrder3, R.id.tv_tiXian, R.id.tv_sendGoods, R.id.tvCopyInviteCode,R.id.tv_signIn,R.id.dtv_jdOrder,R.id.tv_tuijianCode})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ivSet:
@@ -357,8 +362,16 @@ public class MyFragment2 extends BaseFragment {
                 SignInActivity.startSignInActivity(getContext());
                 break;
             case R.id.dtv_jdOrder:
-                WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pages/singal/singal?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
+                WebActivity.startWebActivity(getContext(), "京东订单", "http://jd.liudake.cn/#/pages/singal/singal?uid="+ UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
 
+                break;
+
+            case R.id.tv_tuijianCode:
+                new XPopup.Builder(getContext()).asCustom(new PopTuiJian(getContext(), text -> {
+                    HttpsUtil.getInstance(getContext()).tuijian( text, object -> {
+                        userIndex();
+                    });
+                })).show();
                 break;
         }
     }
@@ -484,7 +497,7 @@ public class MyFragment2 extends BaseFragment {
                         break;
 
                     case 8:
-                        WebActivity.startWebActivity(getContext(), 0, "http://liudake.cn/#/pages/index/index" + "?uid=" + UserInfoUtil.getUid());
+                        WebActivity.startWebActivity(getContext(), "收米", "http://liudake.cn/#/pages/index/index" + "?uid=" + UserInfoUtil.getUid());
 
                         break;
                     case 9:
@@ -564,7 +577,15 @@ public class MyFragment2 extends BaseFragment {
             headImg = indexBean.getHead();
             tvNick.setText(indexBean.getName());
             tv_kouling.setText("邀请口令：" + indexBean.getUid());
-            tv_tuijianCode.setText("推荐人："+indexBean.getInvitecode());
+            if (TextUtils.isEmpty(indexBean.getInvitecode())){
+                tv_tuijianCode.setText("暂无推荐人,请点击设置推荐人>");
+                tv_tuijianCode.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.color_FE9D44));
+                tv_tuijianCode.setClickable(true);
+            }else {
+
+                tv_tuijianCode.setText("推荐人："+indexBean.getInvitecode());
+                tv_tuijianCode.setClickable(false);
+            }
             tvPhone.setText("TEL：" + indexBean.getPhone().substring(0, 3) + "****" + indexBean.getPhone().substring(7, indexBean.getPhone().length()));
             tvDaiLing.setText(indexBean.getWait_integral());
             tvKeYong.setText(indexBean.getIntegral());

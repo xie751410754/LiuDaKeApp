@@ -157,21 +157,21 @@ public class RegisterActivity extends BaseTitleActivity<ActivityRegisterNewBindi
                     case 0:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("about".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(RegisterActivity.this, WebActivity.ABOUT, setBean.getValue());
+                                WebActivity.startWebActivity(RegisterActivity.this, "关于溜达客", setBean.getValue());
                             }
                         }
                         break;
                     case 1:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("user_xieyi".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(RegisterActivity.this, WebActivity.USER_XIE_YI, setBean.getValue());
+                                WebActivity.startWebActivity(RegisterActivity.this, "用户协议", setBean.getValue());
                             }
                         }
                         break;
                     case 2:
                         for (GetSetBean setBean : getSetBeanList) {
                             if ("yishi_xieyi".equals(setBean.getKey())) {
-                                WebActivity.startWebActivity(RegisterActivity.this, WebActivity.PRIVATE_XIE_YI, setBean.getValue());
+                                WebActivity.startWebActivity(RegisterActivity.this, "隐私协议", setBean.getValue());
                             }
                         }
                         break;

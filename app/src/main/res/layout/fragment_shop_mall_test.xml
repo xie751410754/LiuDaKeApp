@@ -103,6 +103,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:visibility="invisible"
                         android:id="@+id/ll2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -143,7 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="300pt"
                     android:layout_marginStart="20pt"
-                    android:layout_marginTop="220pt"
+                    android:layout_marginTop="150pt"
                     android:layout_marginEnd="20pt"
                     app:banner_radius="8pt" />
 
@@ -157,6 +158,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/ll_notice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20pt"
@@ -167,12 +169,12 @@
                     android:visibility="visible">
 
                     <com.cdxz.liudake.view.DrawableTextView
+                        android:id="@+id/tv_notice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:drawablePadding="7pt"
                         android:fontFamily="sans-serif-medium"
-                        android:text="溜达客祝大家购物愉快！"
                         android:textColor="#222222"
                         android:textSize="24pt"
                         app:dt_left_drawable="@mipmap/shop_mall_radio"
@@ -191,6 +193,7 @@
                     android:overScrollMode="never" />
 
                 <com.youth.banner.Banner
+                    android:visibility="gone"
                     android:layout_marginStart="20pt"
                     android:layout_marginEnd="20pt"
                     android:id="@+id/cxBanner"

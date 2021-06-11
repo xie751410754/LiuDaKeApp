@@ -30,7 +30,7 @@ public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, Bas
     public JDHomeGoodsAdapter(List<JDGoodsDto.DataDTO> data) {
         super(R.layout.item_shop_mall_goods_new, data);
     }
-    boolean isBaopin=false;
+    boolean isBaopin=true;
 
     public void setScore(boolean isBaoPin){
         this.isBaopin = isBaoPin;
@@ -39,7 +39,7 @@ public class JDHomeGoodsAdapter extends BaseQuickAdapter<JDGoodsDto.DataDTO, Bas
     @Override
     protected void convert(BaseViewHolder baseViewHolder, JDGoodsDto.DataDTO goodsBean) {
         baseViewHolder.itemView.setOnClickListener(v -> {
-            WebActivity.startWebActivity(getContext(), 6, "http://jd.liudake.cn/#/pagesA/goodDetail/goodDetail?goodNum=" + goodsBean.getGoodNum() + "&uid=" + UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
+            WebActivity.startWebActivity(getContext(), "京东商品", "http://jd.liudake.cn/#/pagesA/goodDetail/goodDetail?goodNum=" + goodsBean.getGoodNum() + "&uid=" + UserInfoUtil.getUid()+"&rd="+new Random().nextInt(100));
         });
 //        LogUtils.e("数据 = " + GsonUtils.toJson(goodsBean));
         if (!StringUtils.isEmpty(goodsBean.getImagePath())) {

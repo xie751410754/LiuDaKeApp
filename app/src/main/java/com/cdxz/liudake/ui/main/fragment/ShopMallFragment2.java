@@ -318,7 +318,12 @@ public class ShopMallFragment2 extends BaseFragment {
 
     @BindView(R.id.img_tejia)
     ImageView img_tejia;
+    @BindView(R.id.ll_notice)
+    LinearLayout ll_notice;
+    @BindView(R.id.tv_notice)
+    DrawableTextView tv_notice;
 
+    String noticeContent;
     //
     private CountDownTimer downTimer;
     private MenuAdapter menuAdapter;
@@ -744,6 +749,13 @@ public class ShopMallFragment2 extends BaseFragment {
     @Override
     protected void initListener() {
 
+        ll_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebActivity.startWebActivity(getContext(),tv_notice.getText().toString(),noticeContent);
+            }
+        });
+
         jd_singleActive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -899,6 +911,12 @@ public class ShopMallFragment2 extends BaseFragment {
             menu2List.clear();
             menu2List.addAll(homeIndexBean.getGoods_cuxiao());
             menu2Adapter.notifyDataSetChanged();
+
+            List<HomeIndexBean.NoticeDto> notice_sys = homeIndexBean.getNotice_sys();
+            if (notice_sys.size()>0){
+                tv_notice.setText(notice_sys.get(0).getTitle());
+                noticeContent = notice_sys.get(0).getContent();
+            }
 
             List<HomeIndexBean.GoodsCuxiaoBean> tehuiList = homeIndexBean.getTehui();
             if (tehuiList.size()>0){

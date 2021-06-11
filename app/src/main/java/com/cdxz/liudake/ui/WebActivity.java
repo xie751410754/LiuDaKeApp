@@ -73,9 +73,15 @@ public class WebActivity extends BaseActivity {
     private OkHttpClient okHttpClient;
     WechatShareModel mWechatShareModel;
 
-    public static void startWebActivity(Context context, int type, String url) {
+//    public static void startWebActivity(Context context, int type, String url) {
+//        Intent intent = new Intent(context, WebActivity.class);
+//        intent.putExtra("type", type);
+//        intent.putExtra("url", url);
+//        context.startActivity(intent);
+//    }
+    public static void startWebActivity(Context context, String title, String url) {
         Intent intent = new Intent(context, WebActivity.class);
-        intent.putExtra("type", type);
+        intent.putExtra("title", title);
         intent.putExtra("url", url);
         context.startActivity(intent);
     }
@@ -88,38 +94,9 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void initViews() {
 
-        switch (getIntent().getIntExtra("type", USER_XIE_YI)) {
-            case USER_XIE_YI:
-                setTitleText("用户协议");
-                break;
-            case PRIVATE_XIE_YI:
-                setTitleText("隐私协议");
-                break;
-            case ABOUT:
-                setTitleText("关于溜达客");
-                break;
-            case WALLET_STRATEGY:
-                setTitleText("钱包攻略");
-                break;
-            case SHOP_START:
-                setTitleText("开店指南");
-                break;
-            case JDSHOP_START:
-                setTitleText("京东商品");
-//                titleBar.setVisibility(View.GONE);
-                break;
+        String title = getIntent().getStringExtra("title");
+        setTitleText(title);
 
-            case INTERRITY_XIE_YI:
-                setTitle("诚信承诺书");
-                break;
-            case FOODSAFE_XIE_YI:
-                setTitle("食品安全承诺书");
-                break;
-
-            default:
-                setTitleText("溜达客");
-                break;
-        }
 
         WechatShareTools.init(this, WX_APP_ID);//初始化
 

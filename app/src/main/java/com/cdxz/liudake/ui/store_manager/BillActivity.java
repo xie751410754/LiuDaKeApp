@@ -1,7 +1,6 @@
 package com.cdxz.liudake.ui.store_manager;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -9,7 +8,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
@@ -22,26 +20,17 @@ import com.cdxz.liudake.adapter.store_manager.StoreBillAdapter;
 import com.cdxz.liudake.api.HttpsUtil;
 import com.cdxz.liudake.base.BaseBean;
 import com.cdxz.liudake.base.BaseObserver;
-import com.cdxz.liudake.bean.IndexAllInfoBean;
 import com.cdxz.liudake.bean.StoreTodayInviteBean;
 import com.cdxz.liudake.bean.StoreTodaySettlementBean;
 import com.cdxz.liudake.bean.StoreTodaySettlementCashBean;
-import com.cdxz.liudake.databinding.ActivityBillBinding;
 import com.cdxz.liudake.databinding.ActivityBillNewBinding;
 import com.cdxz.liudake.pop.PopBillView;
-import com.cdxz.liudake.pop.PopCalendar;
-import com.cdxz.liudake.pop.PopMap;
-import com.cdxz.liudake.pop.PopSuggestion;
 import com.cdxz.liudake.ui.base.BaseTitleActivity;
-import com.cdxz.liudake.ui.life_circle.LifeCircleMapActivity;
-import com.cdxz.liudake.util.ThirdPartyMapsGuide;
 import com.lxj.xpopup.XPopup;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.List;
-
-import io.reactivex.Observable;
 
 public class BillActivity extends BaseTitleActivity<ActivityBillNewBinding> {
 

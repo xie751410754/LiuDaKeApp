@@ -24,13 +24,29 @@ public class JDCategoryMenuAdapter extends BaseQuickAdapter<JDCategoryMenuDto.Da
 
     @Override
     protected void convert(BaseViewHolder baseViewHolder, JDCategoryMenuDto.DataDTO bean) {
-        Glide.with(getContext())
-                .load(bean.getMainPic().startsWith("http") ? bean.getMainPic() : Constants.PICTURE_HTTPS_URL + bean.getMainPic())
-                .placeholder(R.mipmap.img_default)
-                .into((RoundedImageView) baseViewHolder.getView(R.id.ivPic));
-        baseViewHolder.setText(R.id.tvTitle, bean.getSTitle());
+
+        if (baseViewHolder.getAdapterPosition()==9){
+            baseViewHolder.setText(R.id.tvTitle, "全部");
+            Glide.with(getContext())
+                    .load("http://47.108.198.70//Uploads//Picture//message//20201113//5fae26c8c9aac.png")
+                    .placeholder(R.mipmap.shop_mall_more)
+                    .into((RoundedImageView) baseViewHolder.getView(R.id.ivPic));
+        }else {
+            baseViewHolder.setText(R.id.tvTitle, bean.getSTitle());
+            Glide.with(getContext())
+                    .load(bean.getMainPic().startsWith("http") ? bean.getMainPic() : Constants.PICTURE_HTTPS_URL + bean.getMainPic())
+                    .placeholder(R.mipmap.img_default)
+                    .into((RoundedImageView) baseViewHolder.getView(R.id.ivPic));
+        }
         baseViewHolder.itemView.setOnClickListener(v -> {
-            JDGoodsListActivity.starJDGoodsListActivity(getContext(),bean.getCatId(),bean.getName());
+
+            if (baseViewHolder.getAdapterPosition() + 1 == getData().size()){
+                GoodsClassActivity.startGoodsClassActivity(getContext());
+
+            }else {
+
+                JDGoodsListActivity.starJDGoodsListActivity(getContext(),bean.getCatId(),bean.getName());
+            }
         });
     }
 }

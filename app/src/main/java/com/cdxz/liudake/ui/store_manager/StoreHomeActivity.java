@@ -204,7 +204,7 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeNewBin
                             String value = jsonObject.getString("value");
                             String content = jsonObject.getString("content");
                             if (key.equals("balance_info")) {
-                                WebActivity.startWebActivity(this, WebActivity.WALLET_STRATEGY, value);
+                                WebActivity.startWebActivity(this, "钱包攻略", value);
                             }
                         }
                     } catch (JSONException e) {
@@ -237,7 +237,7 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeNewBin
                             String value = jsonObject.getString("value");
                             String content = jsonObject.getString("content");
                             if (key.equals("shop_start_info")) {
-                                WebActivity.startWebActivity(this, WebActivity.SHOP_START, value);
+                                WebActivity.startWebActivity(this, "开店指南", value);
                             }
                         }
                     } catch (JSONException e) {

@@ -84,7 +84,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_kouling"
                         android:layout_alignStart="@id/tvNick"
-                        android:text="推荐人："
                         android:textColor="@color/white"
                         android:textSize="26pt" />
 
