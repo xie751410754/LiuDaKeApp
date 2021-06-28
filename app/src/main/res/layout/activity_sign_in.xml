@@ -96,8 +96,8 @@
             <LinearLayout
                 android:id="@+id/ll1"
                 android:layout_width="match_parent"
-                android:layout_height="980pt"
-                android:layout_marginTop="380pt"
+                android:layout_height="1180pt"
+                android:layout_marginTop="350pt"
                 android:background="@mipmap/bg_sign_in2"
                 android:orientation="vertical">
 
@@ -106,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="80pt"
+                    android:layout_marginTop="95pt"
                     android:background="@drawable/bg_jianbian8"
                     android:paddingStart="160pt"
                     android:paddingTop="25pt"
@@ -177,7 +177,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#fff"
-                        app:calendar_padding="10dp"
+                        app:calendar_padding="5dp"
                         app:current_month_lunar_text_color="#CFCFCF"
                         app:current_month_text_color="#333333"
                         app:min_year="2004"
