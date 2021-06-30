@@ -69,6 +69,7 @@ public class ZhiTuiRankActivity extends BaseActivity {
         return R.layout.activity_zhitui_rank;
     }
 
+
     @Override
     protected void initViews() {
        type =  getIntent().getIntExtra("type",0);
