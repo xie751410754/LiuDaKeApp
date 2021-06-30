@@ -18,6 +18,7 @@ import com.cdxz.liudake.api.HttpsUtil;
 import com.cdxz.liudake.bean.OrderListBean;
 import com.cdxz.liudake.databinding.ActivityApplyAfterSalesBinding;
 import com.cdxz.liudake.ui.base.BaseActivity;
+import com.gyf.immersionbar.ImmersionBar;
 
 public class ApplyAfterSalesActivity extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class ApplyAfterSalesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_apply_after_sales);
+        ImmersionBar.with(this).statusBarColor(R.color.transparent).statusBarDarkFont(true).init();
         binding.setLifecycleOwner(this);
         //
         ((TextView) binding.include.findViewById(R.id.tvTitleText)).setText("申请售后");

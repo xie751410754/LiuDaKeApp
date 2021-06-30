@@ -408,6 +408,8 @@ public class MyFragment2 extends BaseFragment {
         serviceBeanList.add(serviceBean);
         serviceBean = new ServiceBean(R.mipmap.icon_transfer_account, "转账");
         serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_rank_zhitui, "特惠榜");
+        serviceBeanList.add(serviceBean);
 
 
         serviceBean = new ServiceBean(R.mipmap.shop_my_settle, "开店入驻");
@@ -502,7 +504,7 @@ public class MyFragment2 extends BaseFragment {
                         break;
                     case 9:
 
-                        ZhiTuiRankActivity.startZhiTuiRankActivity(getContext());
+                        ZhiTuiRankActivity.startZhiTuiRankActivity(getContext(),1);
                         break;
 
                     case 10:
@@ -510,6 +512,10 @@ public class MyFragment2 extends BaseFragment {
                         TransferAccountActivity.startTransferAccountActivity(getContext(),tvKeYong.getText().toString(),tvRedmi.getText().toString());
                         break;
                     case 11:
+                        ZhiTuiRankActivity.startZhiTuiRankActivity(getContext(),2);
+
+                        break;
+                    case 12:
 //                        OpenStoreActivity.startOpenStoreActivity(getContext());
                         HttpsUtil.getInstance(getContext()).userInfo(object -> {
                             try {

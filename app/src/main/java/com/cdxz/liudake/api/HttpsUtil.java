@@ -955,6 +955,18 @@ public class HttpsUtil {
                     }
                 });
     }
+    public void activityRank(int page, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .activityRank(UserInfoUtil.getUid(), page, Constants.LIST_SIZE, UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
 
     /**
      * 个人中心 我的钱包

@@ -30,6 +30,16 @@ public class LifeCircleBean implements Serializable {
     private NoticeBean notice;
     private String is_follow;
     private String average_money;
+    private String money;
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
     private int  sales;
 
     public int getSales() {

@@ -41,6 +41,7 @@ public class LifeCircleAdapter extends BaseQuickAdapter<LifeCircleBean, BaseView
                 .setText(R.id.tvDistance, String.format("%.2f km", bean.getDistance() / 1000))
                 .setText(R.id.tvAverageMoney, String.format("人均 ¥%s", bean.getAverage_money()))
                 .setText(R.id.tv_sales, "销量 "+bean.getSales())
+                .setText(R.id.tv_achievement, "销售额 "+bean.getMoney())
                 .setText(R.id.tvTime, String.format("营业时间 %s-%s", bean.getOpen_start_time(), bean.getOpen_end_time()));
     }
 }

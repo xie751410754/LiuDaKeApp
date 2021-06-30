@@ -534,6 +534,14 @@ public interface ApiServer {
             @Field("pagesize") int pageSize,
             @Field("xizuetoken") String xizuetoken
     );
+    @FormUrlEncoded
+    @POST("order/api/activityRank")
+    Observable<BaseBean> activityRank(
+            @Field("uid") String uid,
+            @Field("page") int page,
+            @Field("pagesize") int pageSize,
+            @Field("xizuetoken") String xizuetoken
+    );
 
     //个人中心 我的钱包
     @FormUrlEncoded

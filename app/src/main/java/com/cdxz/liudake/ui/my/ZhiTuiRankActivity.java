@@ -47,13 +47,20 @@ public class ZhiTuiRankActivity extends BaseActivity {
 
     @BindView(R.id.rv_rank)
     RecyclerView recyclerToPromote;
+    @BindView(R.id.tv_title)
+    TextView tv_title;
+    @BindView(R.id.tv_achievement)
+    TextView tv_achievement;
+    private int type = 0;
 
     private ZhiTuiRankAdapter mAdapter;
     private List<ZhiTuiRankDto> listBeanList = new ArrayList<>();
     private int page = 1;
 
-    public static void startZhiTuiRankActivity(Context context) {
+
+    public static void startZhiTuiRankActivity(Context context,int type) {
         Intent intent = new Intent(context, ZhiTuiRankActivity.class);
+        intent.putExtra("type",type);
         context.startActivity(intent);
     }
 
@@ -64,6 +71,15 @@ public class ZhiTuiRankActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+       type =  getIntent().getIntExtra("type",0);
+       if (type==1){
+           tv_title.setText("本月直推排行榜");
+           tv_achievement.setText("直推数");
+       }else {
+           tv_title.setText("特惠专区排行榜");
+           tv_achievement.setText("数量");
+
+       }
         recyclerToPromote.setLayoutManager(new LinearLayoutManager(this));
 
     }
@@ -103,33 +119,63 @@ public class ZhiTuiRankActivity extends BaseActivity {
 
     private void getData() {
 
+        if (type ==1){
 
-        HttpsUtil.getInstance(this).zhituiRank(page, object -> {
-            List<ZhiTuiRankDto> beanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), ZhiTuiRankDto.class);
+            HttpsUtil.getInstance(this).zhituiRank(page, object -> {
+                List<ZhiTuiRankDto> beanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), ZhiTuiRankDto.class);
 
-            if (beanList == null) return;
-            if (CollectionUtils.isEmpty(beanList)) {
-                if (page == 1) {
-                    refresh.finishRefreshWithNoMoreData();
-                } else {
-                    refresh.finishLoadMoreWithNoMoreData();
-                }
-//                listBeanList.clear();
-            } else {
-                if (page == 1) {
-                    listBeanList.clear();
-                    if (beanList.size() < Constants.LIST_SIZE) {
-                        refresh.finishLoadMoreWithNoMoreData();
+                if (beanList == null) return;
+                if (CollectionUtils.isEmpty(beanList)) {
+                    if (page == 1) {
+                        refresh.finishRefreshWithNoMoreData();
                     } else {
-                        refresh.finishRefresh();
+                        refresh.finishLoadMoreWithNoMoreData();
                     }
+//                listBeanList.clear();
                 } else {
-                    refresh.finishLoadMore();
+                    if (page == 1) {
+                        listBeanList.clear();
+                        if (beanList.size() < Constants.LIST_SIZE) {
+                            refresh.finishLoadMoreWithNoMoreData();
+                        } else {
+                            refresh.finishRefresh();
+                        }
+                    } else {
+                        refresh.finishLoadMore();
+                    }
+                    listBeanList.addAll(beanList);
                 }
-                listBeanList.addAll(beanList);
-            }
-            mAdapter.notifyDataSetChanged();
-        });
+                mAdapter.notifyDataSetChanged();
+            });
+        }else {
+            HttpsUtil.getInstance(this).activityRank(page, object -> {
+                List<ZhiTuiRankDto> beanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), ZhiTuiRankDto.class);
+
+                if (beanList == null) return;
+                if (CollectionUtils.isEmpty(beanList)) {
+                    if (page == 1) {
+                        refresh.finishRefreshWithNoMoreData();
+                    } else {
+                        refresh.finishLoadMoreWithNoMoreData();
+                    }
+//                listBeanList.clear();
+                } else {
+                    if (page == 1) {
+                        listBeanList.clear();
+                        if (beanList.size() < Constants.LIST_SIZE) {
+                            refresh.finishLoadMoreWithNoMoreData();
+                        } else {
+                            refresh.finishRefresh();
+                        }
+                    } else {
+                        refresh.finishLoadMore();
+                    }
+                    listBeanList.addAll(beanList);
+                }
+                mAdapter.notifyDataSetChanged();
+            });
+        }
+
     }
 
     @Override
