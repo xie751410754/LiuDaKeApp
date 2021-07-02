@@ -535,6 +535,14 @@ public interface ApiServer {
             @Field("xizuetoken") String xizuetoken
     );
     @FormUrlEncoded
+    @POST("order/api/rewardRank")
+    Observable<BaseBean> rewardRank(
+            @Field("uid") String uid,
+            @Field("page") int page,
+            @Field("pagesize") int pageSize,
+            @Field("xizuetoken") String xizuetoken
+    );
+    @FormUrlEncoded
     @POST("order/api/activityRank")
     Observable<BaseBean> activityRank(
             @Field("uid") String uid,

@@ -183,7 +183,7 @@ public class MyFragment2 extends BaseFragment {
                         } else if (bean.getStatus().equals("1")) {
 
                             if (mAdapter != null) {
-                                mAdapter.getData().remove(11);
+                                mAdapter.getData().remove(13);
                                 mAdapter.notifyDataSetChanged();
                             }
                         } else if (bean.getStatus().equals("2")) {
@@ -404,11 +404,14 @@ public class MyFragment2 extends BaseFragment {
 
         serviceBean = new ServiceBean(R.mipmap.shop_my_collectmoney, "收米");
         serviceBeanList.add(serviceBean);
-        serviceBean = new ServiceBean(R.mipmap.icon_rank_zhitui, "直推榜");
-        serviceBeanList.add(serviceBean);
         serviceBean = new ServiceBean(R.mipmap.icon_transfer_account, "转账");
         serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_rank_zhitui, "直推榜");
+        serviceBeanList.add(serviceBean);
+
         serviceBean = new ServiceBean(R.mipmap.icon_rank_zhitui, "特惠榜");
+        serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_rank_zhitui, "奖励榜");
         serviceBeanList.add(serviceBean);
 
 
@@ -503,19 +506,24 @@ public class MyFragment2 extends BaseFragment {
 
                         break;
                     case 9:
+                        TransferAccountActivity.startTransferAccountActivity(getContext(),tvKeYong.getText().toString(),tvRedmi.getText().toString());
 
-                        ZhiTuiRankActivity.startZhiTuiRankActivity(getContext(),1);
                         break;
 
                     case 10:
 
-                        TransferAccountActivity.startTransferAccountActivity(getContext(),tvKeYong.getText().toString(),tvRedmi.getText().toString());
+                        ZhiTuiRankActivity.startZhiTuiRankActivity(getContext(),1);
+
                         break;
                     case 11:
                         ZhiTuiRankActivity.startZhiTuiRankActivity(getContext(),2);
 
                         break;
                     case 12:
+                        ZhiTuiRankActivity.startZhiTuiRankActivity(getContext(),3);
+
+                        break;
+                    case 13:
 //                        OpenStoreActivity.startOpenStoreActivity(getContext());
                         HttpsUtil.getInstance(getContext()).userInfo(object -> {
                             try {

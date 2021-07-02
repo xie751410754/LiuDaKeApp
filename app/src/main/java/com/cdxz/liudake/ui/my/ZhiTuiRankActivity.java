@@ -74,11 +74,15 @@ public class ZhiTuiRankActivity extends BaseActivity {
     protected void initViews() {
        type =  getIntent().getIntExtra("type",0);
        if (type==1){
-           tv_title.setText("本月直推排行榜");
+           tv_title.setText("直推排行榜");
            tv_achievement.setText("直推数");
-       }else {
+       }else if (type ==2){
            tv_title.setText("特惠专区排行榜");
-           tv_achievement.setText("数量");
+           tv_achievement.setText("直推销量");
+
+       }else {
+           tv_title.setText("奖励排行榜");
+           tv_achievement.setText("有效直推数");
 
        }
         recyclerToPromote.setLayoutManager(new LinearLayoutManager(this));
@@ -148,8 +152,35 @@ public class ZhiTuiRankActivity extends BaseActivity {
                 }
                 mAdapter.notifyDataSetChanged();
             });
-        }else {
+        }else if(type ==2){//特惠榜
             HttpsUtil.getInstance(this).activityRank(page, object -> {
+                List<ZhiTuiRankDto> beanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), ZhiTuiRankDto.class);
+
+                if (beanList == null) return;
+                if (CollectionUtils.isEmpty(beanList)) {
+                    if (page == 1) {
+                        refresh.finishRefreshWithNoMoreData();
+                    } else {
+                        refresh.finishLoadMoreWithNoMoreData();
+                    }
+//                listBeanList.clear();
+                } else {
+                    if (page == 1) {
+                        listBeanList.clear();
+                        if (beanList.size() < Constants.LIST_SIZE) {
+                            refresh.finishLoadMoreWithNoMoreData();
+                        } else {
+                            refresh.finishRefresh();
+                        }
+                    } else {
+                        refresh.finishLoadMore();
+                    }
+                    listBeanList.addAll(beanList);
+                }
+                mAdapter.notifyDataSetChanged();
+            });
+        }else {
+            HttpsUtil.getInstance(this).rewardRank(page, object -> {
                 List<ZhiTuiRankDto> beanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), ZhiTuiRankDto.class);
 
                 if (beanList == null) return;
