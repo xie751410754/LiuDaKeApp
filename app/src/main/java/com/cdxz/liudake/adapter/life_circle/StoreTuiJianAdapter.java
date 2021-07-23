@@ -30,6 +30,7 @@ public class StoreTuiJianAdapter extends BaseQuickAdapter<TuiJianStoreDto, BaseV
         super(R.layout.item_store_tuijian, data);
     }
 
+
     private boolean isEdit = false;
     @SuppressLint("DefaultLocale")
     @Override
