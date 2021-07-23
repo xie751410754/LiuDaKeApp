@@ -1,15 +1,23 @@
 package com.cdxz.liudake.ui.login;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.blankj.utilcode.util.AdaptScreenUtils;
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.BusUtils;
+import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.RegexUtils;
@@ -19,9 +27,14 @@ import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.LiudakeApplication;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.api.HttpsUtil;
+import com.cdxz.liudake.base.BusTag;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.GetSetBean;
+import com.cdxz.liudake.bean.JDSecondCategoryDto;
 import com.cdxz.liudake.bean.LoginBean;
+import com.cdxz.liudake.bean.ShopCarListBean;
+import com.cdxz.liudake.bean.WeiXin;
+import com.cdxz.liudake.bean.WeiXinToken;
 import com.cdxz.liudake.databinding.ActivityLoginBinding;
 import com.cdxz.liudake.databinding.ActivityLoginNewBinding;
 import com.cdxz.liudake.ui.WebActivity;
@@ -31,10 +44,19 @@ import com.cdxz.liudake.ui.main.MainActivity;
 import com.cdxz.liudake.ui.my.AboutUsActivity;
 import com.cdxz.liudake.util.ACache;
 import com.cdxz.liudake.util.ParseUtils;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
+import java.io.IOException;
 import java.util.List;
 
 import cn.jpush.android.api.JPushInterface;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
     CountDownTimer downTimer = new CountDownTimer(60 * 1000, 1000) {
@@ -54,6 +76,8 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
         context.startActivity(intent);
     }
 
+    private IWXAPI wxAPI;
+    private OkHttpClient okHttpClient;
 
     boolean check = false;
     @Override
@@ -61,9 +85,16 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
         return R.layout.activity_login_new;
     }
 
+
+
+
     @Override
     public void initViewObservable() {
         super.initViewObservable();
+        BusUtils.register(this);
+        wxAPI = WXAPIFactory.createWXAPI(this,Constants.WX_APP_ID,true);
+        wxAPI.registerApp(Constants.WX_APP_ID);
+        okHttpClient = new OkHttpClient();
 
         if (SPUtils.getInstance().getBoolean(Constants.IS_LOGIN, false)) {
             toMain();
@@ -88,8 +119,20 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
             @Override
             public void onClick(View view) {
                 startActivity(RegisterActivity.class);
+//                login();
+            }
+
+
+        });
+
+        binding.wechatLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                login();
             }
         });
+
+
         binding.tvZhuce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,8 +196,13 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
                     SPUtils.getInstance().put(Constants.IS_LOGIN, true);
                     LoginBean loginBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), LoginBean.class);
                     ACache.get(this).put(Constants.CACHE_LOGIN, loginBean);
-                    MainActivity.startMainActivity(this);
-                    finish();
+
+                    if (loginBean.getIs_connect_wechat()==0){
+                        showDialog();
+                    }else {
+                        MainActivity.startMainActivity(this);
+                        finish();
+                    }
                 });
             } else {
 
@@ -166,6 +214,105 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
         binding.tvYs.setOnClickListener(v -> {
             get_set(2);
         });
+    }
+
+    private void showDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).setTitle("系统发现您暂未绑定微信，点击绑定按钮绑定微信交易更方便哦")
+                .setPositiveButton("绑定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        login();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        toMain();
+                        finish();
+                        dialogInterface.dismiss();
+
+                    }
+                })
+                .create();
+
+        alertDialog.show();
+    }
+
+    /**
+     * 微信登陆(三个步骤)
+     * 1.微信授权登陆
+     * 2.根据授权登陆code 获取该用户token
+     * 3.根据token获取用户资料
+     */
+    public void login(){
+        SendAuth.Req req = new SendAuth.Req();
+        req.scope = "snsapi_userinfo";
+        req.state = String.valueOf(System.currentTimeMillis());
+        wxAPI.sendReq(req);
+    }
+
+
+
+    @BusUtils.Bus(tag = "xzl")
+    public void onVXResponse(String code) {
+        getAccessToken(code);
+
+    }
+
+
+    public void getAccessToken(String code){
+        String url = "https://api.weixin.qq.com/sns/oauth2/access_token?" +
+                "appid="+Constants.WX_APP_ID+"&secret="+Constants.WX_SECRET+
+                "&code="+code+"&grant_type=authorization_code";
+
+            Request request = new Request.Builder()
+                    .url(url)
+                    .get()
+                    .build();
+            Call call = okHttpClient.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    ToastUtils.showShort("数据获取失败");
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    final String responseBody = response.body().string();
+                    WeiXinToken baseBean = ParseUtils.parseJsonObject(responseBody, WeiXinToken.class);
+
+                    if(baseBean.getErrcode()==0){//请求成功
+                        getWeiXinUserInfo(baseBean);
+                    }else{//请求失败
+                        ToastUtils.showShort("授权失败");
+                    }
+
+
+                }
+            });
+
+    }
+
+
+    public void getWeiXinUserInfo(WeiXinToken weiXinToken){
+
+
+
+        HttpsUtil.getInstance(this).loginByWechat(weiXinToken.getOpenid(),weiXinToken.getUnionid(),object -> {
+
+            if (!SPUtils.getInstance().getBoolean(Constants.IS_LOGIN, false)) {
+                SPUtils.getInstance().put(Constants.IS_LOGIN, true);
+                LoginBean loginBean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), LoginBean.class);
+                ACache.get(this).put(Constants.CACHE_LOGIN, loginBean);
+            }
+            toMain();
+            finish();
+
+
+        });
+
+
     }
 
     private void get_set(int i) {
@@ -216,6 +363,7 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
         super.onDestroy();
         downTimer.cancel();
         downTimer = null;
+        BusUtils.unregister(this);
     }
 
 

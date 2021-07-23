@@ -9,7 +9,7 @@
     <com.cdxz.liudake.view.roundedImageView.RoundedImageView
         android:id="@+id/ivStorePic"
         android:layout_width="match_parent"
-        android:layout_height="286pt"
+        android:layout_height="332pt"
         android:scaleType="centerCrop"
         app:riv_corner_radius_top_left="8pt"
         app:riv_corner_radius_top_right="8pt" />
@@ -97,6 +97,7 @@
             android:layout_weight="1"
             />
         <TextView
+            android:visibility="gone"
             android:layout_marginStart="10pt"
             android:layout_marginTop="20pt"
             android:layout_marginBottom="10pt"

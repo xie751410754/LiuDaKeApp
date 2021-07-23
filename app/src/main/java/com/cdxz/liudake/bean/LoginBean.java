@@ -33,6 +33,15 @@ public class LoginBean implements Serializable {
     private DynamicsBean dynamics;
     private String xizuetoken;
     private List<ShopBean> shop_list;
+    private int is_connect_wechat;
+
+    public int getIs_connect_wechat() {
+        return is_connect_wechat;
+    }
+
+    public void setIs_connect_wechat(int is_connect_wechat) {
+        this.is_connect_wechat = is_connect_wechat;
+    }
 
     public String getUid() {
         return uid;

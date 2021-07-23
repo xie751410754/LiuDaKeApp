@@ -63,6 +63,8 @@
         <activity android:name=".ui.order.PaySuccessActivity" />
         <activity android:name=".ui.life_circle.StoreDetailActivity" />
         <activity android:name=".ui.life_circle.StoreDetailActivity2" />
+        <activity android:name=".ui.life_circle.TuiJianDetailActivity" />
+        <activity android:name=".ui.life_circle.SubCategoryActivity" />
         <activity android:name=".ui.life_circle.StoreListActivity" />
         <activity android:name=".ui.shop_mall.GoodsClassActivity" />
         <activity android:name=".ui.shop_mall.GoodsListActivity" />
@@ -83,6 +85,8 @@
         <activity android:name=".ui.store_manager.StoreCommentActivity" />
         <activity android:name=".ui.store_manager.StoreGuideActivity" />
         <activity android:name=".ui.store_manager.StoreManagerActivity" />
+        <activity android:name=".ui.store_manager.GoodsManagerActivity" />
+        <activity android:name=".ui.store_manager.AddGoodsActivity" />
         <activity android:name=".ui.store_manager.StorePayActivity" />
         <activity android:name=".ui.store_manager.StoreQRActivity" />
         <activity android:name=".ui.store_manager.StoreMessageActivity" />

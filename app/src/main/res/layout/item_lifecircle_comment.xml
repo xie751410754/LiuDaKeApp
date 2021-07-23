@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20pt"
+    android:background="@drawable/round8white_shop"
+    android:orientation="vertical">
+    
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.cdxz.liudake.view.roundedImageView.RoundedImageView
+            android:id="@+id/img_head"
+            android:layout_width="68pt"
+            android:layout_height="68pt"
+            android:src="@mipmap/img_default"
+            app:riv_oval="true"
+            android:layout_marginStart="22pt" />
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24pt"
+            android:textColor="#202020"
+            />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="0pt"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2021.03-15 18:26"
+            android:textColor="#202020"
+            android:textSize="24pt" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_content"
+        android:padding="20pt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lineSpacingExtra="5pt"
+        android:maxLines="3"
+        android:textColor="#333333"
+        android:textSize="24pt" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:layout_alignParentBottom="true"
+        android:background="#F1F1F1" />
+
+
+
+</LinearLayout>

@@ -16,4 +16,5 @@ public class Constants {
     public static String LNG = "104.06";
     public static String CITY = "成都市";
     public static final String WX_APP_ID = "wx8d512655cc82b4d9";
+    public static final String WX_SECRET = "1150c914f50408b28048e96f7865a706";
 }

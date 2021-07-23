@@ -63,6 +63,8 @@ import com.cdxz.liudake.bean.HomeIndexBean;
 import com.cdxz.liudake.bean.JDCategoryDto;
 import com.cdxz.liudake.bean.JDCategoryMenuDto;
 import com.cdxz.liudake.bean.JDGoodsDto;
+import com.cdxz.liudake.bean.PopupAdDto;
+import com.cdxz.liudake.pop.PopCommonAdvert;
 import com.cdxz.liudake.ui.ScanQRCodeActivity;
 import com.cdxz.liudake.ui.SearchActivity;
 import com.cdxz.liudake.ui.WebActivity;
@@ -570,6 +572,13 @@ public class ShopMallFragment2 extends BaseFragment {
         getJDGoods();
 
         getBaopinJDGoods();
+
+
+        HttpsUtil.getInstance(getContext()).getPopupAd(7, object -> {
+            PopupAdDto bean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), PopupAdDto.class);
+            new XPopup.Builder(getContext()).asCustom(new PopCommonAdvert(getContext(),bean.getImg(),bean.getUrl())).show();
+
+        });
     }
 
     private void getJDCategoryMenuList() {

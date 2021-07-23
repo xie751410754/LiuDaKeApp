@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.my.service.ScoreBillActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="250pt"
+        android:background="@drawable/bg_jianbian8_noround">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130pt"
+                android:orientation="horizontal"
+                android:paddingTop="60pt">
+
+                <RelativeLayout
+                    android:id="@+id/img_back"
+                    android:layout_width="120pt"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5pt">
+
+                    <ImageView
+                        android:layout_width="19pt"
+                        android:layout_height="38pt"
+                        android:layout_marginStart="20pt"
+                        android:contentDescription="@null"
+                        android:src="@mipmap/icon_back_store_home" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:text="美食吃货"
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/white"
+                    android:textSize="34pt" />
+
+            </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:padding="20pt"
+        android:layout_marginTop="150pt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/round42white_shop"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_margin="20pt"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="64pt"
+            android:background="@drawable/shape_sub_category_stroke"
+            >
+
+            <ImageView
+                android:layout_margin="16pt"
+                android:layout_width="34pt"
+                android:layout_height="30pt"
+                android:src="@drawable/search"
+                />
+
+            <com.cdxz.liudake.view.ClearEditText
+                android:id="@+id/et_search"
+                android:layout_width="0pt"
+                android:layout_height="match_parent"
+                android:paddingStart="20pt"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="关键词搜索"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:textColorHint="@color/color_bbbbbb"
+                android:textSize="24pt" />
+
+            <TextView
+                android:id="@+id/tv_serach"
+                android:background="@drawable/round30red_shopcar"
+                android:paddingStart="40pt"
+                android:paddingEnd="40pt"
+                android:paddingTop="12pt"
+                android:paddingBottom="12pt"
+                android:textColor="@color/white"
+                android:textSize="30pt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索"
+                />
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:layout_marginTop="10pt"
+            android:id="@+id/recyclerService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="10pt" />
+
+        <com.stx.xhb.pagemenulibrary.PageMenuLayout
+            android:id="@+id/pagemenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:pagemenu_row_count="2"
+            app:pagemenu_span_count="5"/>
+
+        <FrameLayout
+            android:id="@+id/flyt_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

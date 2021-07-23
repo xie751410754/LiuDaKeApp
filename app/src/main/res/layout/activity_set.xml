@@ -104,6 +104,19 @@
         app:dt_right_height="24dp"
         app:dt_right_width="24dp" />
 
+
+
+    <com.cdxz.liudake.view.DrawableTextView
+        android:id="@+id/bindWX"
+        style="@style/sp14.Black"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:text="绑定微信"
+        app:dt_right_drawable="@mipmap/icon_more"
+        app:dt_right_height="24dp"
+        app:dt_right_width="24dp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"

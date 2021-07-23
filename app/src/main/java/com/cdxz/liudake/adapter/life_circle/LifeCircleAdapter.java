@@ -38,7 +38,7 @@ public class LifeCircleAdapter extends BaseQuickAdapter<LifeCircleBean, BaseView
                     .into((RoundedImageView) baseViewHolder.getView(R.id.ivStorePic));
         }
         baseViewHolder.setText(R.id.tvStoreName, bean.getName())
-                .setText(R.id.tvDistance, String.format("%.2f km", bean.getDistance() / 1000))
+                .setText(R.id.tvDistance, String.format("距离您 %.2f km", bean.getDistance() / 1000))
                 .setText(R.id.tvAverageMoney, String.format("人均 ¥%s", bean.getAverage_money()))
                 .setText(R.id.tv_sales, "销量 "+bean.getSales())
                 .setText(R.id.tv_achievement, "销售额 "+bean.getMoney())

@@ -278,17 +278,17 @@
                         app:dt_top_width="40pt" />
 
                     <com.cdxz.liudake.view.DrawableTextView
+                        android:id="@+id/tv_addGoods"
                         android:layout_width="0pt"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:drawablePadding="6pt"
                         android:gravity="center"
-                        android:text="待付款"
+                        android:text="商品管理"
                         android:textColor="#222222"
-                        android:visibility="invisible"
-                        app:dt_top_drawable="@mipmap/shop_my_waitgetgoods"
-                        app:dt_top_height="36pt"
-                        app:dt_top_width="36pt" />
+                        app:dt_top_drawable="@mipmap/icon_store_addgoods"
+                        app:dt_top_height="55pt"
+                        app:dt_top_width="49pt" />
 
 
                 </LinearLayout>

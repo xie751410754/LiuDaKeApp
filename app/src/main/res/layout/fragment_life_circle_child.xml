@@ -4,42 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F5F7"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.life_circle.LifeCircleChildFragment">
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:paddingHorizontal="15dp">
+        >
 
 
 
-        <TextView
+        <com.cdxz.liudake.view.DrawableTextView
             android:id="@+id/tvSale"
-            style="@style/sp14.AppColor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="销量最高" />
-        <TextView
-            android:id="@+id/tvPaixu"
-            style="@style/sp14.999999"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="距离最近" />
-
-        <TextView
-            android:id="@+id/tvPrice"
-            style="@style/sp14.999999"
+            android:text="距离最近"
+            android:textColor="#FF6600"
+            android:textSize="18dp"
+            app:dt_bottom_drawable="@mipmap/icon_life_down"
+            app:dt_bottom_height="5dp"
+            app:dt_bottom_width="23dp" />
+        <com.cdxz.liudake.view.DrawableTextView
+            android:id="@+id/tvPaixu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical|end"
-            android:text="价格" />
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="销量最高"
+            android:textColor="@color/color_999999"
+            android:textSize="18dp"
+            app:dt_bottom_drawable="@null"
+            app:dt_bottom_height="5dp"
+            app:dt_bottom_width="23dp" />
+        <com.cdxz.liudake.view.DrawableTextView
+            android:id="@+id/tvPrice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            android:text="价格"
+            android:textColor="@color/color_999999"
+            android:textSize="18dp"
+            app:dt_bottom_drawable="@null"
+            app:dt_bottom_height="5dp"
+            app:dt_bottom_width="23dp" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvPaixu"-->
+<!--            style="@style/sp14.999999"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:text="距离最近" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvPrice"-->
+<!--            style="@style/sp14.999999"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center_vertical|end"-->
+<!--            android:text="价格" />-->
     </LinearLayout>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -54,8 +86,7 @@
             android:id="@+id/recyclerStore"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="10pt"
-            android:layout_marginEnd="10pt" />
+           />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

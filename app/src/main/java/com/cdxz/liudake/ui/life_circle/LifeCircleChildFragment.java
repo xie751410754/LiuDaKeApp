@@ -20,6 +20,7 @@ import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SizeUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.adapter.life_circle.LifeCircleAdapter;
 import com.cdxz.liudake.api.HttpsUtil;
@@ -30,6 +31,7 @@ import com.cdxz.liudake.bean.LifeCircleBean;
 import com.cdxz.liudake.pop.PopLifeCirclePrice;
 import com.cdxz.liudake.ui.base.BaseFragment;
 import com.cdxz.liudake.util.ParseUtils;
+import com.cdxz.liudake.view.DrawableTextView;
 import com.cdxz.liudake.view.GridSpacingItemDecoration;
 import com.cdxz.liudake.view.SpacesItemDecoration;
 import com.cdxz.liudake.view.SpacesItemDecoration2;
@@ -59,16 +61,16 @@ public class LifeCircleChildFragment extends BaseFragment {
 
 
     @BindView(R.id.tvPaixu)
-    TextView tvPaixu;
+    DrawableTextView tvPaixu;
 
     @BindView(R.id.tvSale)
-    TextView tvSale;
+    DrawableTextView tvSale;
 
     @BindView(R.id.tvPrice)
-    TextView tvPrice;
+    DrawableTextView tvPrice;
 
     private int page = 1;
-    private int sort = 2;
+    private int sort = 1;
     private String cat_id = "", fastcateid = "";
     private LifeCircleAdapter mAdapter;
     private List<LifeCircleBean> lifeCircleBeanList = new ArrayList<>();
@@ -77,10 +79,11 @@ public class LifeCircleChildFragment extends BaseFragment {
         // Required empty public constructor
     }
 
-    public static LifeCircleChildFragment newInstance(String cat_id) {
+    public static LifeCircleChildFragment newInstance(String cat_id,String type) {
         LifeCircleChildFragment fragment = new LifeCircleChildFragment();
         Bundle args = new Bundle();
         args.putString("cat_id", cat_id);
+        args.putString("type", type);
         fragment.setArguments(args);
         return fragment;
     }
@@ -98,11 +101,21 @@ public class LifeCircleChildFragment extends BaseFragment {
     @Override
     protected void initView() {
 
-        StaggeredGridLayoutManager recyclerViewLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        recyclerStore.addItemDecoration(new SpacesItemDecoration2(20));
+        if (getArguments().getString("type").equals("1")){
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) recyclerStore.getLayoutParams();
+            lp.setMargins(40,40,40,40);
+            recyclerStore.setLayoutParams(lp);
+            recyclerStore.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        recyclerStore.setLayoutManager(recyclerViewLayoutManager);
-//        recyclerStore.setLayoutManager(new LinearLayoutManager(getContext()));
+        }else {
+            StaggeredGridLayoutManager recyclerViewLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+            recyclerStore.addItemDecoration(new SpacesItemDecoration2(20));
+
+            recyclerStore.setLayoutManager(recyclerViewLayoutManager);
+        }
+
+
+
     }
 
     @Override
@@ -118,6 +131,27 @@ public class LifeCircleChildFragment extends BaseFragment {
         }
     }
 
+    String keywords;
+    @BusUtils.Bus(tag ="SubCategoryActivity")
+    public void onKeywords(String keywords) {
+        LogUtils.e("keywords = " + keywords);
+        this.keywords = keywords;
+        page = 1;
+        sort = 1;
+        tvPaixu.setTextColor(ContextCompat.getColor(getContext(), R.color.appColor));
+        tvSale.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
+        tvPrice.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
+        searchNearShop();
+    }
+    @BusUtils.Bus(tag ="SubCategory")
+    public void onSubCategory(String id) {
+        page = 1;
+        sort = 1;
+        cat_id = id;
+
+        getStoreList();
+    }
+
     @BusUtils.Bus(tag = BusTag.GET_STORE_ID)
     public void onGetStoreId(GetStoreIdBean bean) {
         LogUtils.e("bean = " + GsonUtils.toJson(bean));
@@ -125,34 +159,57 @@ public class LifeCircleChildFragment extends BaseFragment {
 //        fastcateid = bean.getFastcateid();
         page = 1;
         sort = 1;
-        tvPaixu.setTextColor(ContextCompat.getColor(getContext(), R.color.appColor));
+        tvPaixu.setTextColor(ContextCompat.getColor(getContext(), R.color.color_FF6600));
+        tvPaixu.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_life_down));
+
         tvSale.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
+        tvSale.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_bg_gray));
+
         tvPrice.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
+        tvPrice.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_bg_gray));
+
         getStoreList();
     }
 
     @Override
     protected void initListener() {
         tvPaixu.setOnClickListener(v -> {
-            tvPaixu.setTextColor(ContextCompat.getColor(getContext(), R.color.appColor));
+            tvPaixu.setTextColor(ContextCompat.getColor(getContext(), R.color.color_FF6600));
+            tvPaixu.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_life_down));
             tvSale.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
+            tvSale.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_bg_gray));
+
             tvPrice.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
-            sort = 1;
+            tvPrice.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_bg_gray));
+
+            sort = 2;
             getStoreList();
         });
         tvSale.setOnClickListener(v -> {
             tvPaixu.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
-            tvSale.setTextColor(ContextCompat.getColor(getContext(), R.color.appColor));
+            tvPaixu.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_bg_gray));
+
+            tvSale.setTextColor(ContextCompat.getColor(getContext(), R.color.color_FF6600));
+            tvSale.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_life_down));
+
             tvPrice.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
-            sort = 2;
+            tvPrice.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_bg_gray));
+
+            sort = 1;
             getStoreList();
         });
         tvPrice.setOnClickListener(v -> {
             new XPopup.Builder(getContext())
                     .asCustom(new PopLifeCirclePrice(getContext(), (sort, text) -> {
                         tvPaixu.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
+                        tvPaixu.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_bg_gray));
+
                         tvSale.setTextColor(ContextCompat.getColor(getContext(), R.color.color_999999));
-                        tvPrice.setTextColor(ContextCompat.getColor(getContext(), R.color.appColor));
+                        tvSale.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_bg_gray));
+
+                        tvPrice.setTextColor(ContextCompat.getColor(getContext(), R.color.color_FF6600));
+                        tvPrice.setBottomDrawable(ContextCompat.getDrawable(getContext(),R.mipmap.icon_life_down));
+
                         this.sort = sort;
                         tvPrice.setText(text);
                         getStoreList();
@@ -168,6 +225,8 @@ public class LifeCircleChildFragment extends BaseFragment {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 page = 1;
+                sort =1;
+                cat_id="";
                 getStoreList();
             }
         });
@@ -177,6 +236,7 @@ public class LifeCircleChildFragment extends BaseFragment {
         HttpsUtil.getInstance(getContext()).nearShop(Constants.LNG, Constants.LAT, page, cat_id, fastcateid, sort, object -> {
             List<LifeCircleBean> circleBeans = ParseUtils.parseJsonArray(GsonUtils.toJson(object), LifeCircleBean.class);
             if (CollectionUtils.isEmpty(circleBeans)) {
+                ToastUtils.showShort("该类暂无店铺");
                 if (page == 1) {
                     refreshStore.finishRefreshWithNoMoreData();
                 } else {
@@ -192,6 +252,36 @@ public class LifeCircleChildFragment extends BaseFragment {
                         if (refreshStore!=null){
                             refreshStore.finishRefresh();
                         }
+                    }
+                } else {
+                    refreshStore.finishLoadMore();
+                }
+                lifeCircleBeanList.addAll(circleBeans);
+            }
+            mAdapter.notifyDataSetChanged();
+        });
+
+
+
+    }
+
+    private void searchNearShop() {
+        HttpsUtil.getInstance(getContext()).searchNearShop(keywords, page, sort, cat_id, Constants.LNG, Constants.LAT, object -> {
+            List<LifeCircleBean> circleBeans = ParseUtils.parseJsonArray(GsonUtils.toJson(object), LifeCircleBean.class);
+            if (CollectionUtils.isEmpty(circleBeans)) {
+                if (page == 1) {
+                    refreshStore.finishRefreshWithNoMoreData();
+                } else {
+                    refreshStore.finishLoadMoreWithNoMoreData();
+                }
+//                lifeCircleBeanList.clear();
+            } else {
+                if (page == 1) {
+                    lifeCircleBeanList.clear();
+                    if (circleBeans.size() < Constants.LIST_SIZE) {
+                        refreshStore.finishLoadMoreWithNoMoreData();
+                    } else {
+                        refreshStore.finishRefresh();
                     }
                 } else {
                     refreshStore.finishLoadMore();

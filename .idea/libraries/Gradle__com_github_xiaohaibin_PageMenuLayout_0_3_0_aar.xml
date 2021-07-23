@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.xiaohaibin:PageMenuLayout:0.3.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dbc03b0d85693dc3d6d8b24f3b2e8e1c/jetified-PageMenuLayout-0.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dbc03b0d85693dc3d6d8b24f3b2e8e1c/jetified-PageMenuLayout-0.3.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dbc03b0d85693dc3d6d8b24f3b2e8e1c/jetified-PageMenuLayout-0.3.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.xiaohaibin/PageMenuLayout/0.3.0/621aee8040a96e6558eda8747561b6f77a961952/PageMenuLayout-0.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

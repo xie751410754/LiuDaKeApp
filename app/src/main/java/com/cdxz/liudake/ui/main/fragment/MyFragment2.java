@@ -36,11 +36,13 @@ import com.cdxz.liudake.bean.BannerBean;
 import com.cdxz.liudake.bean.Bus.UpdateUserInfoBean;
 import com.cdxz.liudake.bean.InviteCodeBean;
 import com.cdxz.liudake.bean.LoginBean;
+import com.cdxz.liudake.bean.PopupAdDto;
 import com.cdxz.liudake.bean.RadioDto;
 import com.cdxz.liudake.bean.ServiceBean;
 import com.cdxz.liudake.bean.StoreComment;
 import com.cdxz.liudake.bean.TransferAccountDto;
 import com.cdxz.liudake.bean.UserIndexBean;
+import com.cdxz.liudake.pop.PopCommonAdvert;
 import com.cdxz.liudake.pop.PopPayPwd;
 import com.cdxz.liudake.pop.PopTuiJian;
 import com.cdxz.liudake.ui.LookUpActivity;
@@ -502,6 +504,13 @@ public class MyFragment2 extends BaseFragment {
                         break;
 
                     case 8:
+
+//                        HttpsUtil.getInstance(getContext()).getPopupAd(9, object -> {
+//                            PopupAdDto bean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), PopupAdDto.class);
+//                            new XPopup.Builder(getContext()).asCustom(new PopCommonAdvert(getContext(),bean.getImg(),bean.getUrl())).show();
+//
+//                        });
+
                         WebActivity.startWebActivity(getContext(), "收米", "http://liudake.cn/#/pages/index/index" + "?uid=" + UserInfoUtil.getUid());
 
                         break;
@@ -600,7 +609,10 @@ public class MyFragment2 extends BaseFragment {
                 tv_tuijianCode.setText("推荐人："+indexBean.getInvitecode());
                 tv_tuijianCode.setClickable(false);
             }
-            tvPhone.setText("TEL：" + indexBean.getPhone().substring(0, 3) + "****" + indexBean.getPhone().substring(7, indexBean.getPhone().length()));
+            if (!TextUtils.isEmpty(indexBean.getPhone())){
+
+                tvPhone.setText("TEL：" + indexBean.getPhone().substring(0, 3) + "****" + indexBean.getPhone().substring(7, indexBean.getPhone().length()));
+            }
             tvDaiLing.setText(indexBean.getWait_integral());
             tvKeYong.setText(indexBean.getIntegral());
             tvRedmi.setText(indexBean.getBalance());

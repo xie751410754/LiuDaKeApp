@@ -219,6 +219,24 @@ public class HttpsUtil {
                     }
                 });
     }
+    /**
+     * 微信登录
+     *
+     * @param callback
+     */
+        public void loginByWechat(String openid,String unionid,HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .loginByWechat(UserInfoUtil.getUid(),UserInfoUtil.getToken(),openid,unionid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        ToastUtils.showShort(response.getState().getMsg());
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
 
     /**
      * 搜索
@@ -255,6 +273,18 @@ public class HttpsUtil {
     public void hotSearch(int type, HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
                 .hotSearch(type)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
+    public void getPopupAd(int type, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .getPopupAd(type)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
@@ -574,6 +604,19 @@ public class HttpsUtil {
                     }
                 });
     }
+    public void deleteTuiJianGoods(String shopid,String goodId ,HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .deleteTuiJianGoods(shopid,goodId,UserInfoUtil.getUid(), UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        ToastUtils.showShort(response.getState().getMsg());
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
 
     /**
      * 积分账单
@@ -852,6 +895,41 @@ public class HttpsUtil {
                 .nearShop(UserInfoUtil.getUid(), lng, lat, Constants.LIST_SIZE, page, 2, cat_id, fastcateid, sort, UserInfoUtil.getToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, false) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+
+    }
+    /**
+     *
+     * @param page
+     * @param callback
+     */
+    public void nearShopGoodsList( int page, String id, int status ,HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .nearShopGoodsList( Constants.LIST_SIZE, page, id,status,UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+
+    }
+    /**
+     *
+     * @param callback
+     */
+    public void getGoodsInfo( String shopId, String id, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .getGoodsInfo(shopId, id, UserInfoUtil.getToken(),UserInfoUtil.getUid())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
                     @Override
                     public void onSuccess(BaseBean response) {
@@ -905,6 +983,25 @@ public class HttpsUtil {
                 });
 
     }
+    /**
+     * 生活圈评价
+     *
+     * @param id
+     * @param callback
+     */
+    public void nearShopDetail(String id,int page,int commentType, HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .NearshopDetail(UserInfoUtil.getUid(), id, UserInfoUtil.getToken(),page,Constants.LIST_SIZE,commentType)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+
+    }
 
     /**
      * 获取店铺管理分类信息
@@ -914,6 +1011,30 @@ public class HttpsUtil {
     public void getStoreClass(HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
                 .getStoreClass(UserInfoUtil.getUid(), 1, UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
+    public void getGoodsCate(String keyword ,HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .getGoodsCate(UserInfoUtil.getUid(), keyword, UserInfoUtil.getToken())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseBean>(context, true) {
+                    @Override
+                    public void onSuccess(BaseBean response) {
+                        callback.onResult(response.getData());
+                    }
+                });
+    }
+    public void commentShop(String shopId,String content,HttpsCallback callback) {
+        ApiRetrofit.getInstance().getApiService()
+                .commentShop(UserInfoUtil.getUid(), shopId,content, UserInfoUtil.getToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {
@@ -1349,9 +1470,9 @@ public class HttpsUtil {
      * @param type     1周边商家，2便利店
      * @param callback
      */
-    public void nearShopCat(int type, HttpsCallback callback) {
+    public void nearShopCat(int type,String comId ,HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
-                .nearShopCat(UserInfoUtil.getToken(), type)
+                .nearShopCat(UserInfoUtil.getToken(),comId, type)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {

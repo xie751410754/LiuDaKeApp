@@ -8,13 +8,17 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.blankj.utilcode.util.AdaptScreenUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.StringUtils;
 import com.cdxz.liudake.R;
+import com.cdxz.liudake.adapter.BasePagerAdapter;
 import com.cdxz.liudake.adapter.life_circle.LifeCircleBannerAdapter;
 import com.cdxz.liudake.adapter.life_circle.StoreCommentAdapter;
 import com.cdxz.liudake.api.HttpsUtil;
@@ -25,6 +29,8 @@ import com.cdxz.liudake.ui.base.BaseActivity;
 import com.cdxz.liudake.util.ParseUtils;
 import com.cdxz.liudake.util.ThirdPartyMapsGuide;
 import com.cdxz.liudake.view.DrawableTextView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.lxj.xpopup.XPopup;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
@@ -56,6 +62,15 @@ public class StoreDetailActivity2 extends BaseActivity {
     @BindView(R.id.tvStoreAddress)
     TextView tvStoreAddress;
 
+    @BindView(R.id.tabLayout)
+    TabLayout tabLayout;
+
+    @BindView(R.id.viewPagerList)
+    ViewPager2 viewPagerList;
+
+    private final List<Fragment> fragmentList = new ArrayList<>();
+    private String mTitles[] = {
+            "商家推荐",  "评价"};
 
     @BindView(R.id.recyclerStoreComment)
     RecyclerView recyclerStoreComment;
@@ -82,6 +97,19 @@ public class StoreDetailActivity2 extends BaseActivity {
 
     @Override
     protected void initDatas() {
+
+        fragmentList.add(TuiJianStoreFragment.newInstance(getIntent().getStringExtra("id")));
+        fragmentList.add(CommentFragment.newInstance(getIntent().getStringExtra("id")));
+        viewPagerList.setAdapter(new BasePagerAdapter(this, fragmentList));
+        TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPagerList, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(mTitles[position]);
+            }
+        });
+        mediator.attach();
+
+
         List<Object> objects = new ArrayList<>();
         mAdapter = new StoreCommentAdapter(objects);
         recyclerStoreComment.setAdapter(mAdapter);

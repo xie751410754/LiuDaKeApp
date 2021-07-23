@@ -22,4 +22,7 @@ public class UserInfoUtil {
     public static String getPhone() {
         return ObjectUtils.isEmpty(getLoginInfo()) ? "" : getLoginInfo().getBind_phone();
     }
+    public static String getHeadIMG() {
+        return ObjectUtils.isEmpty(getLoginInfo()) ? "" : getLoginInfo().getHead();
+    }
 }

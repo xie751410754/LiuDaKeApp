@@ -167,7 +167,7 @@ public class LifeCircleFragment extends BaseFragment {
     }
 
     private void getStoreCat(boolean isCat) {
-        HttpsUtil.getInstance(getContext()).nearShopCat(1, object -> {
+        HttpsUtil.getInstance(getContext()).nearShopCat(1,"", object -> {
             List<LifeCircleCatBean> catBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), LifeCircleCatBean.class);
             LifeCircleCatBean bean = new LifeCircleCatBean();
             bean.setId("");
@@ -177,7 +177,7 @@ public class LifeCircleFragment extends BaseFragment {
             parseData(catBeanList);
             if (isCat) {
                 for (int i = 0; i < catBeanList.size(); i++) {
-                    fragmentList.add(LifeCircleChildFragment.newInstance(catBeanList.get(i).getId()));
+                    fragmentList.add(LifeCircleChildFragment.newInstance(catBeanList.get(i).getId(),"1"));
                 }
                 viewPagerList.setAdapter(new BasePagerAdapter(getActivity(), fragmentList));
                 TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPagerList, (tab, position) -> {

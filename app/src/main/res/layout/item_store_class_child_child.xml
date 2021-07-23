@@ -15,4 +15,9 @@
         android:padding="15dp"
         android:gravity="center"
         android:text="@string/app_name" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1pt"
+        android:layout_alignParentBottom="true"
+        android:background="#F1F1F1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

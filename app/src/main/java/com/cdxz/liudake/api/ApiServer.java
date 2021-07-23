@@ -103,6 +103,15 @@ public interface ApiServer {
             @Field("mark") String mark,
             @Field("RegistrationID") String RegistrationID
     );
+    //微信登录
+    @FormUrlEncoded
+    @POST("User/Api/login_app_wechat")
+    Observable<BaseBean> loginByWechat(
+            @Field("uid") String uid,
+            @Field("xizuetoken") String xizuetoken,
+            @Field("openid") String openid,
+            @Field("unionid") String unionid
+    );
 
     //搜索
     @FormUrlEncoded
@@ -124,6 +133,11 @@ public interface ApiServer {
     @FormUrlEncoded
     @POST("Shop/Api/hotSearch")
     Observable<BaseBean> hotSearch(
+            @Field("type") int type
+    );
+    @FormUrlEncoded
+    @POST("Shop/Api/getPopupAd")
+    Observable<BaseBean> getPopupAd(
             @Field("type") int type
     );
 
@@ -308,6 +322,15 @@ public interface ApiServer {
             @Field("id") String id,
             @Field("xizuetoken") String xizuetoken
     );
+    //删除商品
+    @FormUrlEncoded
+    @POST("Nearshop/Api/deleteGoods")
+    Observable<BaseBean> deleteTuiJianGoods(
+            @Field("shopid") String shopid,
+            @Field("goods_id") String goods_id,
+            @Field("uid") String uid,
+            @Field("xizuetoken") String xizuetoken
+    );
 
     //积分账单
     @FormUrlEncoded
@@ -473,6 +496,21 @@ public interface ApiServer {
             @Field("type") int type,
             @Field("xizuetoken") String xizuetoken
     );
+    @FormUrlEncoded
+    @POST("Nearshop/Api/getGoodsCate")
+    Observable<BaseBean> getGoodsCate(
+            @Field("uid") String uid,
+            @Field("search_key") String search_key,
+            @Field("xizuetoken") String xizuetoken
+    );
+    @FormUrlEncoded
+    @POST("Nearshop/Api/commentShop")
+    Observable<BaseBean> commentShop(
+            @Field("uid") String uid,
+            @Field("shop_id") String shop_id,
+            @Field("content") String content,
+            @Field("xizuetoken") String xizuetoken
+    );
 
 
     //生活圈
@@ -489,6 +527,24 @@ public interface ApiServer {
             @Field("fastcateid") String fastcateid,
             @Field("sort") int sort,
             @Field("xizuetoken") String xizuetoken
+    );
+    //生活圈推荐产品
+    @FormUrlEncoded
+    @POST("Nearshop/Api/nearShopGoodsList")
+    Observable<BaseBean> nearShopGoodsList(
+            @Field("pagesize") int pagesize,
+            @Field("page") int page,
+            @Field("id") String id,
+            @Field("status") int status,
+            @Field("xizuetoken") String xizuetoken
+    );
+    @FormUrlEncoded
+    @POST("Nearshop/Api/getGoodsInfo")
+    Observable<BaseBean> getGoodsInfo(
+            @Field("shopid") String shopId,
+            @Field("id") String id,
+            @Field("xizuetoken") String xizuetoken,
+            @Field("uid") String uid
     );
 
     //搜索生活圈
@@ -514,6 +570,16 @@ public interface ApiServer {
             @Field("uid") String uid,
             @Field("id") String id,
             @Field("xizuetoken") String xizuetoken
+    );
+    @FormUrlEncoded
+    @POST("Shop/Api/detail")
+    Observable<BaseBean> NearshopDetail(
+            @Field("uid") String uid,
+            @Field("id") String id,
+            @Field("xizuetoken") String xizuetoken,
+            @Field("page") int page,
+            @Field("pageSize") int pageSize,
+            @Field("comment_type") int comment_type
     );
 
     //个人中心 我的推广
@@ -734,6 +800,7 @@ public interface ApiServer {
     @POST("Nearshop/Api/nearShopCat")
     Observable<BaseBean> nearShopCat(
             @Field("xizuetoken") String xizuetoken,
+            @Field("comid") String comid,
             @Field("type") int type
     );
 

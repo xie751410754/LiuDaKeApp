@@ -91,7 +91,7 @@ public class StoreListActivity extends BaseActivity {
     }
 
     private void getStoreCat() {
-        HttpsUtil.getInstance(this).nearShopCat(1, object -> {
+        HttpsUtil.getInstance(this).nearShopCat(1,"", object -> {
             List<LifeCircleCatBean> catBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), LifeCircleCatBean.class);
             LifeCircleCatBean bean = new LifeCircleCatBean();
             bean.setId("");

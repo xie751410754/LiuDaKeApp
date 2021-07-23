@@ -34,7 +34,6 @@
 
 
                 <RelativeLayout
-                    android:layout_marginTop="30pt"
                     android:id="@+id/rl1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -118,7 +117,7 @@
                         android:layout_width="40pt"
                         android:layout_height="40pt"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="68pt"
+                        android:layout_marginTop="88pt"
                         android:layout_marginEnd="20pt"
                         android:src="@mipmap/shop_my_set" />
 
@@ -452,6 +451,7 @@
                         app:dt_top_drawable="@mipmap/icon_jd_order"
                         app:dt_top_height="36pt"
                         app:dt_top_width="36pt" />
+
 
                     <com.cdxz.liudake.view.DrawableTextView
                         android:id="@+id/tvOrder2"

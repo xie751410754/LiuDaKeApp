@@ -9,6 +9,16 @@ public class LifeCircleCatBean implements Serializable, IPickerViewData {
 
     private String id;
     private String name;
+    private String logo;
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
     private List<ChildBean> child;
 
     public String getId() {
@@ -44,6 +54,16 @@ public class LifeCircleCatBean implements Serializable, IPickerViewData {
 
         private String id;
         private String name;
+        private String logo;
+
+        public String getLogo() {
+            return logo;
+        }
+
+        public void setLogo(String logo) {
+            this.logo = logo;
+        }
+
         private List<?> ads;
 
         public String getId() {

@@ -104,6 +104,7 @@ public class WebActivity extends BaseActivity {
 
         webView.getSettings().setJavaScriptEnabled(true);
         // 设置webview加载的页面的模式,缩放至屏幕的大小
+        webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.addJavascriptInterface(new InJavaScriptLocalObj(), "injectedObject");
         webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT); // 开启 DOM storage API 功能

@@ -106,6 +106,7 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeNewBin
         binding.tv12.setOnClickListener(this);
 
         binding.imgBack.setOnClickListener(this);
+        binding.tvAddGoods.setOnClickListener(this);
 
 
         getIndexData();
@@ -123,6 +124,8 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeNewBin
 //                });
 
         changeOpenStatus(2, openStatusResult);
+
+
 
         binding.swOff.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +157,12 @@ public class StoreHomeActivity extends BaseTitleActivity<ActivityStoreHomeNewBin
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
+
+            case R.id.tv_addGoods:
+//                AddGoodsActivity.startAddGoodsActivity(this,shopList.getId());
+                GoodsManagerActivity.startGoodsManagerActivity(this,shopList.getId());
+
+                break;
 //            case R.id.tv_qr://扫一扫
 //                ScanQRCodeActivity.startScanQRCodeActivity(this, ScanQRCodeActivity.TYPE_STORE_HOME);
 ////                Intent intent = new Intent(StoreHomeActivity.this, CaptureActivity.class);

@@ -2,14 +2,18 @@ package com.cdxz.liudake.ui.main.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.baidu.location.BDAbstractLocationListener;
@@ -22,27 +26,58 @@ import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.CollectionUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.SizeUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.cdxz.liudake.R;
 import com.cdxz.liudake.adapter.BasePagerAdapter;
+import com.cdxz.liudake.adapter.my.LifecircleCategoryAdapter;
+import com.cdxz.liudake.adapter.my.MyServiceAdapter;
 import com.cdxz.liudake.adapter.shop_mall.HomeBannerAdapter;
+import com.cdxz.liudake.adapter.shop_mall.SearchHotAdapter;
 import com.cdxz.liudake.api.HttpsUtil;
 import com.cdxz.liudake.base.BusTag;
 import com.cdxz.liudake.base.Constants;
 import com.cdxz.liudake.bean.BannerBean;
 import com.cdxz.liudake.bean.Bus.GetStoreIdBean;
 import com.cdxz.liudake.bean.Bus.PopSuggestionBean;
+import com.cdxz.liudake.bean.HotSearchBean;
 import com.cdxz.liudake.bean.LifeCircleCatBean;
+import com.cdxz.liudake.bean.LoginBean;
+import com.cdxz.liudake.bean.PopupAdDto;
+import com.cdxz.liudake.bean.ServiceBean;
+import com.cdxz.liudake.pop.PopCommonAdvert;
+import com.cdxz.liudake.ui.LookUpActivity;
 import com.cdxz.liudake.ui.ScanQRCodeActivity;
+import com.cdxz.liudake.ui.WebActivity;
 import com.cdxz.liudake.ui.base.BaseFragment;
 import com.cdxz.liudake.ui.life_circle.LifeCircleChildFragment;
 import com.cdxz.liudake.ui.life_circle.LifeCircleMapActivity;
 import com.cdxz.liudake.ui.life_circle.StoreListActivity;
+import com.cdxz.liudake.ui.life_circle.SubCategoryActivity;
+import com.cdxz.liudake.ui.my.TransferAccountActivity;
+import com.cdxz.liudake.ui.my.ZhiTuiRankActivity;
+import com.cdxz.liudake.ui.my.service.AddressListActivity;
+import com.cdxz.liudake.ui.my.service.CollectActivity;
+import com.cdxz.liudake.ui.my.service.FAQActivity;
+import com.cdxz.liudake.ui.my.service.OpenStoreTypeActivity;
+import com.cdxz.liudake.ui.my.service.ToPromoteActivity;
+import com.cdxz.liudake.ui.my.service.WithdrawalActivity;
+import com.cdxz.liudake.ui.store_manager.StoreHomeActivity;
 import com.cdxz.liudake.util.ParseUtils;
+import com.cdxz.liudake.util.UserInfoUtil;
 import com.cdxz.liudake.view.DrawableTextView;
+import com.cdxz.liudake.view.GridSpacingItemDecoration;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.lxj.xpopup.XPopup;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,11 +107,18 @@ public class LifeCircleFragment2 extends BaseFragment {
     @BindView(R.id.viewPagerList)
     ViewPager2 viewPagerList;
 
+
+    @BindView(R.id.recyclerService)
+    RecyclerView recyclerService;
+
+    private LifecircleCategoryAdapter mAdapter;
+
+
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener = new MyLocationListener();
 
     private final List<Fragment> fragmentList = new ArrayList<>();
-
+    List<LifeCircleCatBean> cateList = new ArrayList<>();
     public LifeCircleFragment2() {
         // Required empty public constructor
     }
@@ -96,11 +138,20 @@ public class LifeCircleFragment2 extends BaseFragment {
 
     @Override
     protected int getResource() {
-        return R.layout.fragment_shop_mall_new22;
+        return R.layout.fragment_life_circle_new;
     }
 
     @Override
     protected void initView() {
+        recyclerService.setLayoutManager(new GridLayoutManager(getContext(), 5));
+        recyclerService.addItemDecoration(new GridSpacingItemDecoration(5, SizeUtils.dp2px(10), false));
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
 
     @Override
@@ -122,7 +173,12 @@ public class LifeCircleFragment2 extends BaseFragment {
         //
         getBannerList();
         getStoreCat(true);
+        initMyService();
+        HttpsUtil.getInstance(getContext()).getPopupAd(8, object -> {
+            PopupAdDto bean = ParseUtils.parseJsonObject(GsonUtils.toJson(object), PopupAdDto.class);
+            new XPopup.Builder(getContext()).asCustom(new PopCommonAdvert(getContext(),bean.getImg(),bean.getUrl())).show();
 
+        });
 
     }
 
@@ -165,20 +221,64 @@ public class LifeCircleFragment2 extends BaseFragment {
 
     }
 
+
+    private void initMyService() {
+        List<ServiceBean> serviceBeanList = new ArrayList<>();
+        ServiceBean serviceBean;
+
+        serviceBean = new ServiceBean(R.mipmap.icon_life_foods, "美食吃货");
+        serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_life_hotel, "酒店住宿");
+        serviceBeanList.add(serviceBean);
+
+
+        serviceBean = new ServiceBean(R.mipmap.icon_life_travel, "出行旅游");
+        serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_life_ktv, "休闲娱乐");
+        serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_life_services, "生活服务");
+        serviceBeanList.add(serviceBean);
+
+        serviceBean = new ServiceBean(R.mipmap.icon_life_monturn, "景点游玩");
+        serviceBeanList.add(serviceBean);
+
+        serviceBean = new ServiceBean(R.mipmap.icon_life_shopping, "购物超市");
+        serviceBeanList.add(serviceBean);
+
+        serviceBean = new ServiceBean(R.mipmap.icon_life_pifa, "物品批发");
+        serviceBeanList.add(serviceBean);
+
+        serviceBean = new ServiceBean(R.mipmap.icon_life_jiaoyu, "教育培训");
+        serviceBeanList.add(serviceBean);
+        serviceBean = new ServiceBean(R.mipmap.icon_life_jiaju, "家具用品");
+        serviceBeanList.add(serviceBean);
+
+
+    }
+
     OptionsPickerView pvOptions;
 
     private void getStoreCat(boolean isCat) {
-        HttpsUtil.getInstance(getContext()).nearShopCat(1, object -> {
+        HttpsUtil.getInstance(getContext()).nearShopCat(1, "",object -> {
             List<LifeCircleCatBean> catBeanList = ParseUtils.parseJsonArray(GsonUtils.toJson(object), LifeCircleCatBean.class);
-            LifeCircleCatBean bean = new LifeCircleCatBean();
-            bean.setId("");
-            bean.setName("推荐");
-            catBeanList.add(0, bean);
+
+            mAdapter = new LifecircleCategoryAdapter(catBeanList);
+            recyclerService.setAdapter(mAdapter);
+            mAdapter.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                    SubCategoryActivity.startSubCategoryActivity(getContext(),mAdapter.getData().get(position).getId(),mAdapter.getData().get(position).getName());
+                }
+            });
+//            LifeCircleCatBean bean = new LifeCircleCatBean();
+//            bean.setId("");
+//            bean.setName("推荐");
+//            catBeanList.add(0, bean);
             //
             parseData(catBeanList);
             if (isCat) {
                 for (int i = 0; i < catBeanList.size(); i++) {
-                    fragmentList.add(LifeCircleChildFragment.newInstance(catBeanList.get(i).getId()));
+                    fragmentList.add(LifeCircleChildFragment.newInstance(catBeanList.get(i).getId(),"1"));
                 }
                 viewPagerList.setAdapter(new BasePagerAdapter(getActivity(), fragmentList));
                 TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPagerList, (tab, position) -> {
