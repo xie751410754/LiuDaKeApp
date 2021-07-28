@@ -77,7 +77,6 @@ public class WithdrawalActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
-
     @Override
     protected int getContentViewId() {
         return R.layout.activity_withdrawal_new;
