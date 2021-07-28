@@ -654,7 +654,8 @@ public interface ApiServer {
             @Field("shop_id") String shopId,
             @Field("bank") String bank,
             @Field("sub_bank") String subBank,
-            @Field("xizuetoken") String xizuetoken
+            @Field("xizuetoken") String xizuetoken,
+            @Field("is_auto_withdraw") String is_auto_withdraw
     );
 
     //个人中心 开店入驻

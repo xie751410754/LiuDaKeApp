@@ -1171,10 +1171,10 @@ public class HttpsUtil {
      * @param callback
      */
     public void redmiTixian(String account_from, String account_number, String account_fee, int type,
-                            String type_name, String user_real_name, String shopid, String back,String subBack,HttpsCallback callback) {
+                            String type_name, String user_real_name, String shopid, String back,String subBack,String is_auto_withdraw,HttpsCallback callback) {
         ApiRetrofit.getInstance().getApiService()
                 .redmiTixian(UserInfoUtil.getUid(), account_from, account_number, account_fee, type, type_name,
-                        user_real_name, shopid,back,subBack, UserInfoUtil.getToken())
+                        user_real_name, shopid,back,subBack, UserInfoUtil.getToken(),is_auto_withdraw)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<BaseBean>(context, true) {

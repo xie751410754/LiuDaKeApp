@@ -124,11 +124,14 @@ public class LifeCircleChildFragment extends BaseFragment {
         mAdapter = new LifeCircleAdapter(lifeCircleBeanList);
         recyclerStore.setAdapter(mAdapter);
         mAdapter.setEmptyView(R.layout.public_no_data);
-        if (getArguments() != null) {
+        if (!(getArguments() != null&&getArguments().getString("type").equals("1"))) {
             cat_id = getArguments().getString("cat_id");
             LogUtils.e("cat_id = " + cat_id);
-            getStoreList();
+        }else {
+            cat_id = "";
         }
+        getStoreList();
+
     }
 
     String keywords;

@@ -24,6 +24,7 @@ import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.blankj.utilcode.util.BusUtils;
 import com.blankj.utilcode.util.CollectionUtils;
+import com.blankj.utilcode.util.FragmentUtils;
 import com.blankj.utilcode.util.GsonUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.SizeUtils;
@@ -276,6 +277,11 @@ public class LifeCircleFragment2 extends BaseFragment {
 //            catBeanList.add(0, bean);
             //
             parseData(catBeanList);
+
+//            LifeCircleChildFragment lifeCircleChildFragment = LifeCircleChildFragment.newInstance("","1");
+//            FragmentUtils.add(getChildFragmentManager(),lifeCircleChildFragment,R.id.flyt_container);
+
+
             if (isCat) {
                 for (int i = 0; i < catBeanList.size(); i++) {
                     fragmentList.add(LifeCircleChildFragment.newInstance(catBeanList.get(i).getId(),"1"));

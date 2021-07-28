@@ -1,12 +1,14 @@
 package com.cdxz.liudake.ui.my.service;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
@@ -45,6 +47,8 @@ public class WithdrawalActivity extends BaseActivity {
 
     @BindView(R.id.tvType)
     DrawableTextView tvType;
+    @BindView(R.id.dtv_auto)
+    DrawableTextView dtv_auto;
 
     @BindView(R.id.et_input1)
     EditText et_input1;
@@ -96,7 +100,7 @@ public class WithdrawalActivity extends BaseActivity {
         getBankInfo(shopId);
 
         //
-        HttpsUtil.getInstance(this).withdrawFeeValue(object -> {
+        HttpsUtil.getInstance(context).withdrawFeeValue(object -> {
             try {
                 JSONArray jsonArray = new JSONArray(GsonUtils.toJson(object));
                 for (int i = 0; i < jsonArray.length(); i++) {
@@ -104,13 +108,27 @@ public class WithdrawalActivity extends BaseActivity {
                     String key = jsonObject.getString("key");
                     String value = jsonObject.getString("value");
                     String content = jsonObject.getString("content");
-                    if (key.equals("withdraw_fee_value")) {
-                        withdraw_fee_value = value;
-                        tvRemark.setText(String.format("备注：将收取%.2f%%的手续费", Float.parseFloat(withdraw_fee_value) * 100));
-                        findViewById(R.id.tvAll).setOnClickListener(v -> {
-                            etRedmi.setText(redmi);
-                            etRedmi.setSelection(redmi.length());
-                        });
+
+
+                    if (!isSelector){
+
+                        if (key.equals("withdraw_fee_value")) {
+                            withdraw_fee_value = value;
+                            tvRemark.setText(String.format("备注：将收取%.2f%%的手续费", Float.parseFloat(withdraw_fee_value) * 100));
+                            findViewById(R.id.tvAll).setOnClickListener(v -> {
+                                etRedmi.setText(redmi);
+                                etRedmi.setSelection(redmi.length());
+                            });
+                        }
+                    }else {
+                        if (key.equals("withdraw_auto_fee_value")) {
+                            withdraw_fee_value = value;
+                            tvRemark.setText(String.format("备注：将收取%.2f%%的手续费", Float.parseFloat(withdraw_fee_value) * 100));
+                            findViewById(R.id.tvAll).setOnClickListener(v -> {
+                                etRedmi.setText(redmi);
+                                etRedmi.setSelection(redmi.length());
+                            });
+                        }
                     }
                 }
             } catch (JSONException e) {
@@ -150,8 +168,72 @@ public class WithdrawalActivity extends BaseActivity {
     }
 
 
+    private boolean isSelector = false;
+    private String is_auto_withdraw = "0";
+
     @Override
     protected void initListener() {
+
+        dtv_auto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isSelector = !isSelector;
+                if (isSelector){
+                    is_auto_withdraw = "1";
+                    dtv_auto.setLeftDrawable(ContextCompat.getDrawable(context, R.mipmap.icon_tixian_selector));
+                }else {
+                    is_auto_withdraw = "0";
+                    dtv_auto.setLeftDrawable(ContextCompat.getDrawable(context, R.mipmap.icon_tixian_normal));
+                }
+
+                HttpsUtil.getInstance(context).withdrawFeeValue(object -> {
+                    try {
+                        JSONArray jsonArray = new JSONArray(GsonUtils.toJson(object));
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            String key = jsonObject.getString("key");
+                            String value = jsonObject.getString("value");
+                            String content = jsonObject.getString("content");
+
+
+                            if (!isSelector){
+
+                                if (key.equals("withdraw_fee_value")) {
+                                    withdraw_fee_value = value;
+                                    if (TextUtils.isEmpty(etRedmi.getText().toString().trim())){
+
+                                        tvRemark.setText(String.format("备注：将收取%.2f%%的手续费", Float.parseFloat(withdraw_fee_value) * 100));
+                                    }else {
+                                        shiji(etRedmi.getText().toString().trim());
+                                    }
+                                    findViewById(R.id.tvAll).setOnClickListener(v -> {
+                                        etRedmi.setText(redmi);
+                                        etRedmi.setSelection(redmi.length());
+                                    });
+                                }
+                            }else {
+                                if (key.equals("withdraw_auto_fee_value")) {
+                                    withdraw_fee_value = value;
+//                                    tvRemark.setText(String.format("备注：将收取%.2f%%的手续费", Float.parseFloat(withdraw_fee_value) * 100));
+                                    if (TextUtils.isEmpty(etRedmi.getText().toString().trim())){
+
+                                        tvRemark.setText(String.format("备注：将收取%.2f%%的手续费", Float.parseFloat(withdraw_fee_value) * 100));
+                                    }else {
+                                        shiji(etRedmi.getText().toString().trim());
+                                    }
+                                    findViewById(R.id.tvAll).setOnClickListener(v -> {
+                                        etRedmi.setText(redmi);
+                                        etRedmi.setSelection(redmi.length());
+                                    });
+                                }
+                            }
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+        });
 
 
         findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
@@ -270,7 +352,7 @@ public class WithdrawalActivity extends BaseActivity {
                 break;
         }
         HttpsUtil.getInstance(this).redmiTixian(account_from, account_number, withdraw_fee_value, type,
-                type_name, user_real_name,shopId,back,sub_back, object -> {
+                type_name, user_real_name,shopId,back,sub_back,is_auto_withdraw, object -> {
             finish();
         });
     }

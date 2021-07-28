@@ -260,6 +260,9 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+
+
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPagerList"
             android:layout_width="match_parent"
