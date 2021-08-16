@@ -35,7 +35,6 @@ public class StoreTuiJianAdapter extends BaseQuickAdapter<TuiJianStoreDto, BaseV
     @SuppressLint("DefaultLocale")
     @Override
     protected void convert(BaseViewHolder baseViewHolder, TuiJianStoreDto bean) {
-
         if (isEdit){
             baseViewHolder.getView(R.id.tvEdit).setVisibility(View.VISIBLE);
             baseViewHolder.getView(R.id.tvDeleteAddress).setVisibility(View.VISIBLE);
@@ -49,8 +48,6 @@ public class StoreTuiJianAdapter extends BaseQuickAdapter<TuiJianStoreDto, BaseV
             baseViewHolder.getView(R.id.tvBuy).setVisibility(View.VISIBLE);
 
         }
-
-
         if (bean.getGoods_image()!=null&&bean.getGoods_image().size()>0) {
 
             Glide.with(getContext())

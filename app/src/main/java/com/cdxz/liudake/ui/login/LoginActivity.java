@@ -128,6 +128,11 @@ public class LoginActivity extends BaseTitleActivity<ActivityLoginNewBinding> {
         binding.wechatLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (!check){
+                    ToastUtils.showShort("隐私协议未同意，请勾选");
+                    return;
+                }
                 login();
             }
         });
